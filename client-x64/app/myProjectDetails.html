@@ -1,0 +1,57 @@
+<div class="my-project-nav">
+    <li id="projectView" class="my-project-nav-active" data-page="projectView"><a href="javascript:;"><i class="iconfont">&#xe632;</i>基本信息</a></li>
+    <li id="my-project-struct" style="display:none;"><a href="javascript:;"><i class="iconfont">&#xe634;</i>组织结构</a></li>
+    <ul id="project-step" style="display: none">
+        <li data-page="asset"><a href="javascript:;">资产</a></li>
+        <li data-page="shot"><a href="javascript:;">镜头</a></li>
+    </ul>
+    <li id="assetManagement" style="display:none;" data-page="assetManagement"><a href="javascript:;" draggable="false"><i class="iconfont">&#xe62c;</i>资产管理</a></li>
+    <li id="shotManagement" style="display:none;" data-page="shotManagement"><a href="javascript:;" draggable="false"><i class="iconfont">&#xe62b;</i>镜头管理</a></li>
+    <li id="contractMg" style="display:none;" data-page="contractMg" onclick="location.href='#/contractManagement'"><a href="javascript:" draggable="false"><i class="iconfont">&#xe635;</i>合同管理</a></li>
+    <li id="statistics" style="display:none;" data-page="statistics"><a href="javascript:;"><i class="iconfont">&#xe62f;</i>统<span class="zhan-wei">站位</span>计</a></li>
+    <li id="projectDataBase" style="display:none;" data-page="projectDataBase"><a href="javascript:;"><i class="iconfont">&#xe630;</i>项目数据</a></li>
+    <li id="operationLog" style="display:none;" data-page="operationLog"><a href="javascript:;"><i class="iconfont">&#xe62e;</i>操作记录</a></li>
+    <li id="fundManagment" style="display:none;" data-page="fundManagment"><a href="javascript:;"><i class="iconfont">&#xe686;</i>资金管理</a></li>
+</div>
+<!-- 项目信息载入 -->
+<div id="my-project-info" >
+
+</div>
+<script>
+    $(function(){
+        //添加元素
+        $('#my-project-info').loadPage('projectView'); //加载 项目查看页
+
+        //projectCommon.getProjectAuthoritys(localStorage.getItem('projectId')); //获取项目权限
+        //添加事件
+        var $navItems = $('li','.my-project-nav');
+        $navItems.click(function() {
+
+            $(this).siblings().removeClass('my-project-nav-active');
+            $(this).addClass('my-project-nav-active');
+            $('#my-project-info').loadPage(this.dataset.page);
+
+        });
+
+        var myProjectStructObj= $('#my-project-struct');
+        myProjectStructObj.click(function(){
+            var subordinateOfThis= $(this).next('#project-step');
+            subordinateOfThis.css({'display':'block'});
+            subordinateOfThis.find('li').eq(0).trigger('click');
+        });
+
+        var projectStepObj= $('#project-step');
+        myProjectStructObj.siblings('li').click(function(){
+            projectStepObj.css({'display':'none'});
+        });
+        projectStepObj.on('click', 'li', function(){
+
+            var superiorOfThis= $('#my-project-struct');
+            if(!superiorOfThis.hasClass('my-project-nav-active'))
+            {
+                superiorOfThis.addClass('my-project-nav-active');
+            }
+            superiorOfThis.css({'border-left':'none'});
+        });
+    });
+</script>

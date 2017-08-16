@@ -1,0 +1,46 @@
+<div id="supplement">
+    <style>
+        @import "template/supplementTpl/tpl1.css";
+    </style>
+    <ul class="list">
+        <li ng-repeat="supplement in supplements">
+            <p class="header" ng-click="supplement.show=!supplement.show">
+                {{supplement.title}}
+                <i class="iconfont" ng-show="!supplement.show">&#xe677;</i>
+                <i class="iconfont" ng-show="supplement.show">&#xe679;</i>
+            </p>
+            <div class="detail" ng-show="supplement.show">
+                <supplement-tpl/>
+            </div>
+        </li>
+    </ul>
+    <div class="add-btn" ng-click="showDialog=true">
+        <i class="iconfont">&#xe641;</i>添加协议
+    </div>
+    <div class="add-wrap" ng-show="showDialog">
+        <div class="add-dialog">
+            <div class="add-header">
+                添加协议
+                <i class="iconfont"  ng-click="showDialog=false">&#xe628;</i>
+            </div>
+            <ul class="add-body" id="supplementValidation">
+                <li>
+                    <span class="label">标题:</span>
+                    <input class="add-title" type="text" ng-model="newSupplement.title" sougou-Debug data-validation-type="title">
+                </li>
+                <li>
+                    <span class="label">原因:</span>
+                    <input class="add-reason" type="text"  ng-model="newSupplement.reason" sougou-Debug  data-validation-type="reason">
+                </li>
+                <li>
+                    <span class="label">变更内容:</span>
+                    <textarea class="add-content" cols="30" rows="10"  ng-model="newSupplement.content"></textarea><!-- sougou-Debug data-validation-type="content"-->
+                </li>
+            </ul>
+            <div class="add-btn-wrap">
+                <span id="saveAdd" ng-click="addSupplement()">保存</span>
+                <span id="cancelAdd" ng-click="showDialog=false">取消</span>
+            </div>
+        </div>
+    </div>
+</div>

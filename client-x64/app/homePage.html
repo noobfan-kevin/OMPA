@@ -1,0 +1,220 @@
+<style>
+    @import "css/homePage.css";
+</style>
+<!--首页-start---------->
+    <!--首页--左侧--->
+    <div class="sitebar homePageInform">
+        <!--首页--左侧-通知-->
+        <div id="inform" style="">
+            <div class="informEntry">
+                <div>
+                    <span id="informPort">
+                        <i class="iconfont" style="color:#f4c600; font-size:30px;">&#xe60b;</i>
+                        <span class="informEntryTitle">通知</span>
+                    </span>
+                </div>
+                <span class="informEntryCount" style="display: none">默认</span>
+            </div>
+            <ul class="homePageInformLists">
+               <!-- <li class="homePageInformUnread">
+                    <p>关于2016年放年假的通知</p>
+                    <div>2015年03月15日</div>
+                </li>
+                <li class="homePageInformRead">
+                    <p>关于一年后xxx的增长问题的通知</p>
+                    <div>2015年03月15日</div>
+                </li>-->
+            </ul>
+            <div id="homePageNoNotice" style="margin-left:-58px; margin-top:-47px;">当前没有通知</div>
+        </div>
+
+    </div>
+    <!--首页--右侧-工作动态-->
+    <div class="homePageWorkNews">
+        <!---待办事项---->
+        <div class="homePageWorkToDo">
+            <div style="padding-left:16px;">
+                <i class="iconfont" style="color:#eb4f38; font-size:30px;">&#xe60d;</i>
+                <span class="informEntryTitle"style="color:#414141;font-size:18px;font-weight:bold; top:8px;">待办事项</span>
+                <!--<span id="homePageWorkToDoShow"></span>-->
+            </div>
+            <div style=" border-top:1px solid #e5e5e5; height:96px; line-height:78px;/* border-bottom:1px solid #e5e5e5; */">
+                <div style="height:88px;margin:5px 10px 10px 10px;/*border:1px dashed #e5e5e5;*/ border-radius: 4px;">
+                    <div id="homePageWorkToDo" class="homePageWorkToDoWrap">
+                        <div id="taskCount" class="homePageWorkWrap"  style="display:none">
+                            <div class="homePageWorkTitle">任务</div>
+                            <ul  class="homePageWorkLists">
+                                <li id="taskCreateWork">
+                                    <div class="homePageWorkName">待制卡</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="taskSendWork">
+                                    <div class="homePageWorkName">待发送</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="taskProductWork">
+                                    <div class="homePageWorkName">待制作</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="taskCheckWork">
+                                    <div class="homePageWorkName">待审核</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="contractCount" class="homePageWorkWrap"  style="display:none">
+                            <div class="homePageWorkTitle">合同</div>
+                            <ul  class="homePageWorkLists">
+                                <li id="contractSendWork">
+                                    <div class="homePageWorkName">待发送</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="contractPayWork">
+                                    <div class="homePageWorkName">待支付</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="contractSignWork">
+                                    <div class="homePageWorkName">待签约</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="contractAppointWork">
+                                    <div class="homePageWorkName">待指派</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                                <li id="contractSureWork">
+                                    <div class="homePageWorkName">待确认</div>
+                                    <div class="homePageWorkNumber"><span>222</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="homePageWorkNone"style="display:none;">当前没有待办事项</div>
+            </div>
+        </div>
+        <div style="padding-left:16px; position:relative;">
+            <i class="iconfont" style="color:#56abe4; font-size:30px;">&#xe60d;</i>
+            <span class="informEntryTitle" style="color:#414141;font-size:18px;font-weight:bold; top:8px;">工作动态提示</span>
+            <!--<span id="homePageWorkToDoShow"></span>-->
+        </div>
+        <!--<div class="homePageWorkNewsHead">
+           <i class="iconfont" style="font-size:30px; padding-right:8px; color:#56abe4;">&#xe62d;</i>
+           <span class="homePageWorkNewsTitle" style="">工作动态提示</span>
+           &lt;!&ndash;<span class="homePageWorkNewsCount" style="">跟新<span id="homePageWorkNewsUpdate">12</span>条动态</span>&ndash;&gt;
+        </div>-->
+        <input id="WorkNewsDownload" type="file" style="width:0;height:0;opacity:0;">
+        <!--当前项目-->
+        <!--<div class="homePageProjectWrap" style="position:relative;">
+            <label for="homePageCurrentPro" style=" font-weight:normal; margin-left:20px;">当前项目：</label>
+            <input style="width:calc(100% - 114px); display:inline-block;" id="homePageCurrentPro" type="text" value="project001" class="form-control" data-toggle="dropdown" readonly>
+            <ul  id="homePageProSelect" class="dropdown-menu">
+                <li data-value="0">张三</li>
+                <li data-value="1">李四</li>
+            </ul>
+        </div>-->
+        <div id="homePageScroll" style="height:calc(100% - 181px); overflow-y: auto; border-top:1px solid #e5e5e5;">
+            <div id="homePageScrollWrap">
+                <ul class="homePageWorkNewsLists">
+                    <!--<li>
+                        <img src="images/defaultAvatar.jpg" alt="" style="float:left;">
+                        <div class="homePageItemNew">
+                            <div class="homePageItemNewTitle">
+                                <span class="WorkNewSenderName">平台助手</span>
+                                &lt;!&ndash;<span class="WorkNewOperation">发送了帮助文档</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewContent">
+                                <a href="javascript:;" class="WorkNewDoc" data-src="avatar/1468997056974.jpg">关于平台的使用说明书.jpg</a>
+                                &lt;!&ndash;<p>修改task1(1.0)任务卡:</p>
+                                <p>类型设置为外部任务;</p>
+                                <p>等级设置为B;</p>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewdate">
+                                <span class="WorkNewDayTime">2016-07-04 09:38:28</span>
+                                &lt;!&ndash;<span class="WorkNewHourTime">09:38:28</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewTalk"></div>
+                        </div>
+                    </li>-->
+                    <!--<li>
+                        <img src="images/defaultAvatar.jpg" alt="" style="float:left;">
+                        <div class="homePageItemNew">
+                            <div class="homePageItemNewTitle">
+                                <span class="WorkNewSenderName">平台助手</span>
+                                &lt;!&ndash;<span class="WorkNewOperation">发送了帮助文档</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewContent">
+                                <a href="javascript:;" class="WorkNewDoc">关于平台的使用说明书.doc</a>
+                                <p>修改task1(1.0)任务卡:</p>
+                                <p>类型设置为外部任务;</p>
+                                <p>等级设置为B;</p>
+                            </div>
+                            <div class="homePageItemNewdate">
+                                <span class="WorkNewDayTime">2016-07-04 09:38:28</span>
+                                &lt;!&ndash;<span class="WorkNewHourTime">09:38:28</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewTalk"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/defaultAvatar.jpg" alt="" style="float:left;">
+                        <div class="homePageItemNew">
+                            <div class="homePageItemNewTitle">
+                                <span class="WorkNewSenderName">平台助手</span>
+                                &lt;!&ndash;<span class="WorkNewOperation">发送了帮助文档</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewContent">
+                                <a href="javascript:;" class="WorkNewDoc">关于平台的使用说明书.doc</a>
+                                <p>修改task1(1.0)任务卡:</p>
+                                <p>类型设置为外部任务;</p>
+                                <p>等级设置为B;</p>
+                            </div>
+                            <div class="homePageItemNewdate">
+                                <span class="WorkNewDayTime">2016-07-04 09:38:28</span>
+                                &lt;!&ndash;<span class="WorkNewHourTime">09:38:28</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewTalk"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/defaultAvatar.jpg" alt="" style="float:left;">
+                        <div class="homePageItemNew">
+                            <div class="homePageItemNewTitle">
+                                <span class="WorkNewSenderName">平台助手</span>
+                                &lt;!&ndash;<span class="WorkNewOperation">发送了帮助文档</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewContent">
+                                <a href="javascript:;" class="WorkNewDoc">关于平台的使用说明书.doc</a>
+                                <p>修改task1(1.0)任务卡:</p>
+                                <p>类型设置为外部任务;</p>
+                                <p>等级设置为B;</p>
+                            </div>
+                            <div class="homePageItemNewdate">
+                                <span class="WorkNewDayTime">2016-07-04 09:38:28</span>
+                                &lt;!&ndash;<span class="WorkNewHourTime">09:38:28</span>&ndash;&gt;
+                            </div>
+                            <div class="homePageItemNewTalk"></div>
+                        </div>
+                    </li>-->
+                </ul>
+                <div style="text-align:right; margin-bottom:10px;"><span class="homePageWorkMore" >更多...</span></div>
+            </div>
+            <div class="homePageWorkNoOne">当前没有工作动态</div>
+
+        </div>
+
+        <!--<div style="margin-left:20px;">
+            <lable for="WorkNewsFilter" id="WorkNewsFilterFlag" style="cursor: default;">
+                <i  id="WorkNewsFilter" class="iconfont WorkNewOnlyUnread" style="font-size:12px;">&#xe64c;</i>
+                &lt;!&ndash;<i class="iconfont" class="iconfont WorkNewOnlyAll">&#xe64b;</i>&ndash;&gt;
+                <span class="WorkNewsFilterText">仅显示未读</span>
+            </lable>
+        </div>-->
+    </div>
+
+<!--首页-end--------->
+<script>
+    $(function(){
+        homePage.init();
+    });
+
+</script>

@@ -1,0 +1,34 @@
+#noticeInfo{
+    -webkit-user-select:auto;
+    position: relative;
+    padding-bottom: 10px;
+}
+#noticeInfo{padding:0px;margin:10px;position: absolute; top: 0; bottom: 0; left: 0; right: 0;font-family:"Microsoft YaHei"; border: 1px solid #ccc;background: #fff;}
+#notice-view-title{ position: relative; height: 50px;box-sizing: border-box;padding-left: 22px;font-size: 16px;
+    font-weight: bold;border-bottom: 1px solid #f1f1f1;color: #f0a453;}
+#notice-view-title p { padding: 3px 3px 3px 30px;margin-top:12px;display: inline-block;background: white; }
+#notice-view-title span{ position: absolute; right: 28px;top:12px; font-size: 14px;color: rgb(51,182,214)}
+#notice-view-title span:hover{cursor: pointer;}
+#noticeTitle{display: block;word-break: break-all;}
+.notices {  height: calc(100% - 136px);}
+.notices div:nth-child(1){position: relative;width: 130px;}
+.notices div:nth-child(2)  p{padding-bottom: 10px}
+.notices div:nth-child(1) img{position: absolute;left: 44px; top: 20px;}
+.notices div:nth-child(1) h4{position:absolute;left:66px;top:30px;color:rgb(73,178,73)}
+.notices div:nth-child(1) p{ position: absolute;left:58px;top:58px; font-size: 10px;}
+#contentsUp{height: 100%;overflow-y:auto;overflow-x: hidden;}
+#contents{text-indent: 2em;padding-top: 10px;}
+
+.fujian p span{color:rgb(93,168,240); }
+.fujian p:hover,.noticeFoot div p:hover{cursor: pointer;text-decoration: underline;color: rgb(93,168,240);}
+#noticeInfoFoot{position: absolute;bottom: 0px;width: 100%;padding: 0px;height: 86px;}
+.noticeFoot{padding-left: 14%;}
+.noticeFoot div p{display:inline-block;color:rgb(93,168,240);padding-top: 12px;width: 60%;text-overflow: ellipsis;  white-space: nowrap;
+    overflow: hidden; }
+.noticeFoot div:nth-child(1)  span,.noticeFoot div:nth-child(2) span{ color:rgb(216,216,216);text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 12px;
+    display: inline-block;
+    padding-left: 18%;
+}

@@ -1,0 +1,45 @@
+<div class="uploader-contain" ng-controller="payUploadCtrl">
+    <style>
+        @import url(css/certificatesUploaderStyle.css);
+    </style>
+    <div class="uploader-div">
+        <div class="uploader-check" id="voucherValidation">
+            <div class="uploader-head">
+                <span>支付</span>第{{contract.paidStep}}阶段
+                <i class="iconfont" ng-click="closePayVoucher()">&#xe628;</i>
+            </div>
+            <div class="uploader-info">
+                <span>付款方式：</span>
+                <span style="position: relative">
+                    <input type="text" ng-model="newPay.payType" sougou-debug data-validation-type="payType"/>
+                </span>
+                <span>付款时间：</span>
+                <input type="text" time-picker id="payTimePicker" class="data-selector form-control" style="display: inline-block"/>
+                <span>付款金额：</span>
+                <span style="position: relative">
+                    <input type="text" ng-model="newPay.money" sougou-debug data-validation-type="money"/>
+                </span>
+            </div>
+            <div class="uploader-btn">
+                <input id="certificates-file" type="file"  voucher-uploader accept="image/jpeg,image/png"/>
+                <button id="certificates-btn"><i class="iconfont">&#xe66b;</i>上传支付凭证</button>
+                <span>（支持png和jpg格式的图片）</span>
+            </div>
+            <div class="uploader-images">
+                <ul>
+                    <li class="certificates" ng-repeat="voucher in vouchers">
+                        <img ng-src="{{voucher.src}}">
+                        <div class="img-hover-div" ng-click="delete()">
+                            <i class="iconfont">&#xe63d;</i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="uploader-control">
+                <button class="uploader-btn-cancel" ng-click="closePayVoucher()">取消</button>
+                <button class="uploader-btn-save" ng-click="save()" ng-show="isEnableSave">保存</button>
+                <button class="uploader-btn-save-disabled" ng-hide="isEnableSave">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

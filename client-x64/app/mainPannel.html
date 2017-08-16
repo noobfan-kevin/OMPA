@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>面板</title>
+    <script src="libs/jquery-1.10.2.min.js"></script>
+    <script src="js/mainPannelChat.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="../node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+    <script src="js/global.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/mainPannel.css">
+    <script src="js/RecentlyUser.js"></script>
+    <script src="js/global.js"></script>
+    <script language="javascript">
+        var childWindow=null;
+        var groupWindow=null;
+        var DUSetWindow= null;
+        var PersonalInfoSetWndow= null;
+        var projectWindow= null;
+        var userList = null,
+                userListSortArr= null;
+        var briefPersonInfo = null;
+        var briefGroupInfo= null;
+        var oneTaskIntegralWindow = null;
+        var unReadMes = [];
+        var showClass= "#linkmanLayer";
+        var disconnectTime = null; //滚动时间
+        var project_level=0;
+        var project_id=0;
+        var isShowWindow=true,userInfo=null;
+        $(function(){
+            init();
+            getUsers();
+//            userAll(userInfo.configinfo.server_url);
+            $("#li_add_group").remove();
+        });
+
+        function talkWindow(contain) {
+            PannelChat.mainPannelChatFn().openChildWindow(contain);
+            var key = "_unRead_" + project_id;
+            if(localStorage.getItem(key)){
+                localStorage.removeItem(key);
+            }
+        }
+        //打开群聊窗口
+        function groupTalkWindow(groupinfo)
+        {
+            PannelChat.mainPannelChatFn().openGroupWindow(groupinfo);
+        }
+        function setGroupWindow(){
+            PannelChat.mainPannelChatFn().cleanGuiWindow("groupWindow");
+        }
+
+        function init() {
+            //用户信息
+            userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            //console.debug(userInfo.mypwd);
+//            updatefile.init();
+            $.ajaxSetup({
+                beforeSend: function (xhr, setting) {  //设置Header
+                    xhr.setRequestHeader('sid', localStorage.getItem('sid') ||0 );
+                },
+                cache: false,
+                crossDomain: true
+            });
+            // console.debug(userInfo);
+//            SystemTray.init();
+            PannelChat.init(userInfo);
+            PannelChat.emit().connectEmitMess(userInfo.id,userInfo.chinese_name);
+            //界面上用户信息更新---面板上方头像
+            $('.header .avatar').attr('src', userInfo.configinfo.server_url + '/' + userInfo.image);
+            //面板上方昵称
+            $('#username').html(userInfo.chinese_name.replace(/ /g,'&nbsp;')).attr('title',userInfo.chinese_name.replace(/ /g,'&nbsp;'));
+//            set.addListener();
+            if(userInfo.level===0)
+            {
+                $('.chat-block').hide();
+                return;
+            }
+//            project.addListener();
+//            if(userInfo.projects.length===0)
+//            {
+//                $('.projectDiv').show();
+//                $('.chat-block').hide();
+//                $('.no-data').show();
+//                $('#project-bar').hide();
+//                if(userInfo.level===1)
+//                {
+//                    $('#newproject').show();
+//                }
+//                else
+//                {
+//                    $('#newproject').hide();
+//                }
+//            }
+//            else
+//            {
+//                project.writeProject();
+//            }
+            if(!briefPersonInfo)
+            {
+                briefPersonInfo= require('nw.gui').Window.open('singlePersonal.html', {
+                    width: 350,
+                    height: 240,
+                    resizable: false,
+                    toolbar: true,
+                    frame: true
+                });
+                briefPersonInfo.setAlwaysOnTop(true);
+                briefPersonInfo.setShowInTaskbar(false);
+                briefPersonInfo.hide();
+            }
+
+            //群组信息面板
+            if(!briefGroupInfo)
+            {
+                briefGroupInfo= require('nw.gui').Window.open('groupInformation.html', {
+                    width: 350,
+                    height: 230,
+                    resizable: false,
+                    toolbar: true,
+                    frame: true
+                });
+                briefGroupInfo.setAlwaysOnTop(true);
+                briefGroupInfo.setShowInTaskbar(false);
+                briefGroupInfo.hide();
+            }
+            $(window).on('dragover', function (e) {
+                e.preventDefault();
+                e.originalEvent.dataTransfer.dropEffect = 'none';
+            });
+            $(window).on('drop', function (e) {
+                e.preventDefault();
+            });
+            $(document).on('dragstart', 'a', function (e) {
+                e.preventDefault();
+            });
+            $(document).on('dragstart', 'img', function (e) {
+                e.preventDefault();
+            });
+            /*if(userInfo.mypwd==="123456"){
+                // console.debug(userInfo.mypwd);
+                updatepwd();
+            }*/
+        }
+        function updatepwd() {
+            // aa86b7
+            var div2=document.createElement("div");
+            div2.style.cssText="position: absolute;top: 20px;left: 0px;width: 100%;height: 90px;";
+            document.body.appendChild(div2);
+            var div = document.createElement("div");
+            div.style.cssText = "position:absolute;top:110px;left:0px;background-color:#aa86b7;width:100%;height:600px;z-index:100;text-align:center;padding-top:20px;";
+            document.body.appendChild(div);
+            var divtitle = document.createElement("div");
+            divtitle.innerHTML = "初始密码修改";
+            div.appendChild(divtitle);
+            var table = document.createElement("table");
+            table.style.cssText = "width:100%;margin-top:20px;";
+            div.appendChild(table);
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.style.cssText = "width:50%;text-align:right;";
+            td.innerHTML = "请输入新密码(16位)：";
+            tr.appendChild(td);
+            var td2 = document.createElement("td");
+            td2.style.cssText = "width:50%;text-align:left;";
+            td2.innerHTML = "<input type=\"password\" id=\"newpwd1\" style=\"width:80%\" maxlength=\"16\">";
+            tr.appendChild(td2);
+            table.appendChild(tr);
+
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");//tr.style.cssText="margin-top:20px;";
+            td.style.cssText = "width:50%;text-align:right;padding-top:20px;";
+            td.innerHTML = "请再输入新密码(16位)：";
+            tr.appendChild(td);
+            var td2 = document.createElement("td");
+            td2.style.cssText = "width:50%;text-align:left;padding-top:20px;";
+            td2.innerHTML = "<input type=\"password\" id=\"newpwd2\" style=\"width:80%\" maxlength=\"16\">";
+            tr.appendChild(td2);
+            table.appendChild(tr);
+            var button = document.createElement("button");
+            button.style.cssText = "border:0px;background-color:#00a0e9;color:#FFFFFF;margin-top:20px;";
+            button.innerHTML = "确定";
+            div.appendChild(button);//divAlert('获取用户信息失败');
+            button.onclick = function () {
+                //alert(document.getElementById("newpwd1").value);
+                //alert(document.getElementById("newpwd2").value);
+                if(document.getElementById("newpwd1").value===""){
+                    alert2('请输入新密码');
+                    document.getElementById("newpwd1").focus();
+                    return;
+                }
+                if(document.getElementById("newpwd1").value.replace(/\s/g,'')===""){
+                    alert2('新密码不能都是空格');
+                    document.getElementById("newpwd1").focus();
+                    return;
+                }
+                if(document.getElementById("newpwd2").value===""){
+                    alert2('请再次新密码');
+                    document.getElementById("newpwd2").focus();
+                    return;
+                }
+                if(document.getElementById("newpwd1").value==="123456"){
+                    alert2('新密码不能是初始密码');
+                    document.getElementById("newpwd1").focus();
+                    return;
+                }
+                if(document.getElementById("newpwd1").value!==document.getElementById("newpwd2").value){
+                    alert2('两次密码输入不一致');
+                    return;
+                }
+                $.ajax({
+                    type: 'put',
+                    url: userInfo.configinfo.server_url+ '/api/user/'+ userInfo.id,
+                    data: "password="+document.getElementById("newpwd1").value,
+                    success: function(data){
+                        if(data.ok)
+                        {
+                            document.body.removeChild(div);
+                            document.body.removeChild(div2);
+                        }
+                        else
+                        {
+                            alert2('修改信息失败');
+                        }
+                    },
+                    error: function(data){
+                        alert2('修改信息失败');
+                    }
+                });
+            };
+            function alert2(msg,time) {
+
+                var html = $('<div id="error_2"><span style="background-color:#FF0000;">' + msg + '</span></div>');
+                if(document.getElementById("error_2")!==null){
+                    document.getElementById("error_2").parentNode.removeChild(document.getElementById("error_2"));
+                }
+                div.appendChild(html[0]);
+                setTimeout(function () {
+                    html.remove();
+                    //console.debug(html[0]);
+                }, time || 1000);
+            }
+        }
+        //面板的入口，初始列表
+        function getUsers(fn) {
+            //获得在线好友
+            PannelChat.getUsers(fn || function (data) {
+                        PannelChat.setUserListOrder(data);
+                        PannelChat.emit().getFriend();
+                        setTimeout(function () {
+                            PannelChat.getRecentlyList();
+                            PannelChat.emit().getNoReadMess();
+                        }, 800);
+                        PannelChat.getCloseTime();
+//                        PannelChat.addUserFlag(project_id);
+                        PannelChat.notification.checkSignFlag();
+                    });
+            //添加项目成员时的双击事件
+            $("#linkmanLayer").unbind().on("dblclick", "div.chat_item", function () {
+                var $user = $(this);
+                if(!$user.parent().hasClass("chat_member_group")) {
+                    readMess_flag($(this));
+                    readMess_flag($("#" + $(this).attr("id") + "_Recently"));
+                    talkWindow(this);
+                }
+            });
+            $("#linklasterLayer").unbind().on("dblclick", "div.chat_item", function () {
+                var id = $(this).attr("id").slice(0,-9),
+                        $user = $("#"+id);
+                if(!$user.hasClass("chat_member_group")) {
+                    readMess_flag($user);
+                    readMess_flag($(this));
+                    talkWindow($user.parent().html());
+                }
+            });
+
+        }
+
+
+        function update(){
+            UpdateUserInfo();
+            document.getElementById("username").innerHTML = userInfo.chinese_name;
+            getUsers(function(){
+                PannelChat.emit().getFriend();
+            });
+        }
+        function UpdateUserInfo() {
+            //获取用户信息
+            $.ajax({
+                method: 'get',
+                url: userInfo.configinfo.server_url + "/api/user/" + userInfo.id,
+                success: function (data) {
+                    userInfo.image = data.image;
+                    userInfo.chinese_name = data.name;
+                    //用户信息回存
+                    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                },
+                error: function () {
+                    divAlert('获取用户信息失败');
+                }
+            });
+        }
+
+        //获得用户所在的群
+        function getUserGroupInfo(callback){
+            $.ajax({
+                type : 'get',
+                url : userInfo.configinfo.server_url+"/api/group/"+userInfo.id,
+                success : function(data) {
+                    if(data.ok&&data.list) {
+                        if (data.list.length) {//大于1
+
+                            $.each(data.list, function (index, val) {
+                                if (val) {
+                                    addGroup(val.name, val._id, JSON.stringify(val));
+                                }
+                            });
+                        }
+                        if (callback)
+                            callback();
+                        //fillBlankChatGroup();
+                    }
+                },
+                error:function(data){
+                    console.log("获取群消息失败");
+                }
+            });
+        }
+
+        //标记消息为已读
+        function readMess_flag($this) {
+            var id = $this.attr("id"),
+                    $users = $("[name='" + id + "']");
+
+
+            $.each($users,function(index,val){
+                console.log(val)
+                var $obj = $(val);
+                saveCloseTime(JSON.stringify([$obj.attr("id")]), userInfo.configinfo.server_url, userInfo.id);
+                /*if ($obj.children("div.avatar").hasClass("newmsg")) {
+                    $obj.children("div.avatar").removeClass("newmsg");
+
+                }*/
+                var new_tip = $obj.children("div.info").children('div.new-tip');
+                new_tip.hide();
+                new_tip.text('');
+
+            });
+            PannelChat.notification.chatRemoveSignFlag();
+        }
+        function updateModule(oneModule)
+        {
+            switch(oneModule)
+            {
+                case('inform'):
+                {
+                    notice.update();
+                    break;
+                }
+                case('currenttask'):
+                case('historytask'):
+                case('audittask'):
+                {
+                    task.updateTaskList();
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="pannel">
+        <!--个人资料-->
+        <div class="header">
+            <div class="info">
+                <div class="infoLeft">
+                    <div class="avatarBk">
+                        <img class="avatar" alt="头像" src="images/avatar.jpg">
+                    </div>
+                </div>
+                <div class="infoMiddle">
+                    <div class="profile">
+                        <p class="userName" id="username"></p>
+                        <p class="userScore"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--选项卡-->
+        <div class="pantab-block">
+            <div class="tab_item tab-selected">
+                <i class="iconfont tab-selected" title="最近聊天" id="nav_chatLog">&#xe66a;</i>
+            </div>
+            <div class="tab_item ">
+                <i class="iconfont" title="联系人" id="nav_personalChat">&#xe691;</i>
+            </div>
+            <div class="tab_item">
+                <i class="iconfont" title="群组" id="nav_groupChat">&#xe692;</i>
+            </div>
+        </div>
+        <!--搜索-->
+        <div class="search_bar">
+            <input type="text" class="searchtxt" placeholder="查找联系人"/>
+            <i class="iconfont searchbtn">&#xe671;</i>
+        </div>
+
+        <!--联系人-->
+        <div class="chat-block" id="linkmanLayer" style="display: none">
+           <!-- <ul>
+                <li>
+                    <div class="chatListGroup">
+                    <i class="iconfont">&#xe681;</i>
+                    <span>管理员</span>
+                </div>
+                </li>
+                <li>
+                    <div class="chatListGroup">
+                        <i class="iconfont">&#xe681;</i>
+                        <span>材质组</span>
+                    </div>
+                    <ul class="chatList">
+                        <li>
+                            <div class="chat_item desaturate">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar newmsg">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span class="nickname">邓超</span>
+                                </div>
+                                <div class="e-message">
+                                    周导，服装已经统计完了。
+                                </div>
+                                <div class="new-tip">1</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item user-online">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item user-online">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar newmsg">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="chatListGroup">
+                        <i class="iconfont">&#xe681;</i>
+                        <span>动画组</span>
+                    </div>
+                    <ul class="chatList">
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="chat_item">
+                                <div class="ext">2015-12-15</div>
+                                <div class="avatar">
+                                    <div class="avatarBk">
+                                        <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                                    </div>
+                                </div>
+                                <div class="info"><span class="nickname">王丽娜</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="chatListGroup">
+                        <i class="iconfont">&#xe681;</i>
+                        <span>后期组</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="chatListGroup">
+                        <i class="iconfont">&#xe681;</i>
+                        <span>特效组</span>
+                    </div>
+                </li>
+            </ul>-->
+        </div>
+        <!--群组聊天-->
+        <div class="chat-block" id="linkgroupLayer" style="display: none;">
+            <ul class="chatSiteBar linkgroupSiteBar">
+                <!--<li>
+                    <div class="chat_item chatListGroup desaturate">
+                        <div class="avatar">
+                            <div class="avatarBk newmsg">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">曾听人说，回忆是一座桥，却是通向寂寞的牢。</span>
+                            <div class="ext">2015-12-15</div>
+                            <div class="e-message">
+                                周导，服装已经统计完了。
+                            </div>
+                            <div class="new-tip">1</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                            <div class="e-message">
+                                周导，服装已经统计完了。
+                            </div>
+                            <div class="new-tip">1</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                            <div class="e-message">
+                                周导，服装已经统计完了。
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                            <div class="e-message">
+                                周导，服装已经统计完了。
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                            <div class="e-message">
+                                周导，服装已经统计完了。
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="nickname">灯光三组</span>
+                            <div class="ext">2015-12-15</div>
+
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+        <!--最近聊天-->
+        <div class="chat-block" id="linklasterLayer">
+            <ul class="linkgroupSiteBar">
+            </ul>
+            <!--<ul>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="info"><span class="nickname">曾听人说，回忆是一座桥，却是通向寂寞的牢。</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="info"><span class="nickname">王丽娜</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info"><span class="nickname">动画一组</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info"><span class="nickname">灯光三组</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png">
+                            </div>
+                        </div>
+                        <div class="info"><span class="nickname">后期二组</span></div>
+                    </div>
+                </li>
+            </ul>-->
+        </div>
+        <!--设置-->
+        <div class="footer">
+            <div class="set-block">
+                <div class="seticon" style="display: none" id="addGroup">
+                    <i class="iconfont" title="添加">&#xe641;</i>
+                </div>
+                <!--<div class="aboutico">
+                    <i class="iconfont" title="添加">&#xe62d;</i>
+                    <a href="#">关于我们</a>
+                </div>-->
+            </div>
+        </div>
+        <!--&lt;!&ndash; 添加&ndash;&gt;-->
+        <!--<div class="add">
+            <div class="avatar" id="addGroup">
+                <span><i class="iconfont">&#xe62f;</i></span>
+                <span>新建群组</span>
+            </div>
+        </div>-->
+    </div>
+    <!--关闭界面-->
+    <div class="close_emtry">
+        <i class="iconfont" onclick="PannelChat.mainPannelChatFn().minimizeWindow()">&#xe629;</i>
+        <i class="iconfont" onclick="PannelChat.mainPannelChatFn().closeWindow();">&#xe628;</i>
+    </div>
+    <script src="libs/jquery.js"></script>
+    <!--<script src="libs/callboard.js"></script>-->
+    <!--<script type="text/javascript">
+
+        $(function(){
+
+            //弹出二级菜单
+            $(".tab_item").mouseover(function(){
+                $(this).find(".add_popup_icon").show();
+            });
+            $(".tab_item").mouseleave(function(){
+                $(this).find(".add_popup_icon").hide();
+            });
+
+            //点击某一个项目名称，项目列表向上收缩
+            $(".projectLayer span").click(function(){
+                $(".projectLayer").hide();
+                $(".projectDiv").show().children("div:last-child").hide();
+                $(".pantab-block").show();
+                $("#linklasterLayer").show();
+            });
+            //鼠标点击左侧倒三角按钮，则出现项目列表下拉框
+            $("#project-bar i:first").click(function(){
+                $(".pantab-block").hide();
+                $("#linklasterLayer").hide();
+                $(this).parent().next().show();
+                $(this).html("&#xe692;");
+            })
+            $(".projectDiv").mouseleave(function(event){
+                $(this).children("div:last").hide();
+                $(this).children("div:first").find("i:first").html("&#xe63b;");
+                $(".pantab-block").show();
+                $("#linklasterLayer").show();
+            })
+
+            //新建群
+            $("#addGroup").click(function(){
+                $(this).parent().prev().children().first().before($('<li><div class="chat_item group-box"><div class="avatar"><div class="avatarBk">'
+                        +'<img class="avatar" src="images/dafaultgroup.png" alt="avatar.png"><input name="uploadfile" type="file" id="uploadfile" class="fileInput"></div>'
+                        +'</div><input type="text" class="form-control textctl" id="name" placeholder="请输入名称" maxlength="10"/><div class="attrbtn">'
+                        +'<i class="iconfont">&#xe659;</i><i class="iconfont deleteGroup">&#xe61a;</i></div></div></li>'));
+            });
+
+            //删除群
+            $("#linkgroupLayer").on('click',".deleteGroup",function(){
+                $(this).parents("li").remove();
+            });
+        });
+
+    </script>-->
+    <script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="js/callboard.js"></script>-->
+    <script type="text/javascript">
+        function clickChange(){
+            document.getElementById("nav_personalChat").parentNode.parentNode.parentNode.parentNode.childNodes[1].style.color="";
+            document.getElementById("nav_personalChat").style.color="";
+            document.getElementById("nav_groupChat").style.color="";
+            document.getElementById("nav_chatLog").style.color="";
+            this.style.color="#FFFFFF";
+            $(".pantab-block").show();
+            $('#linkmanLayer').hide();
+            $('#informLayer').hide();
+            $("#currenttaskLayer").hide();
+            $('#linkgroupLayer').hide();
+            $('#linklasterLayer').hide();
+            $('#historytaskLayer').hide();
+            $('#copendingtaskLayer').hide();
+            $('#completetaskLayer').hide();
+        }
+        $(function(){
+            $('#callboard ul').hide();
+            //填充空白聊天分组
+            //fillBlankChatGroup();
+            var gui = require('nw.gui');
+
+            //弹出二级菜单
+//            $(".tab_item").mouseover(function(){
+//                $(this).find(".add_popup_icon").show();
+//            });
+//            $(".tab_item").mouseleave(function(){
+//                $(this).find(".add_popup_icon").hide();
+//            });
+
+            $(window).resize(function(){
+                //fillBlankChatGroup();
+            });
+
+            //个人聊天选项卡
+            $('#nav_personalChat').click(function(){
+                $('#addGroup').hide();
+                $('.new-group').parents("li").remove();
+                $('.tab_item').removeClass('tab-selected');
+                $('.tab_item').children().removeClass('tab-selected');
+                $(this).addClass('tab-selected');
+                $(this).parent().addClass('tab-selected');
+                clickChange.call(this);
+                $('#linkmanLayer').show();
+            });
+            //群组聊天选项卡
+            $('#nav_groupChat').click(function(){
+                $('#addGroup').show();
+
+                var $childLi = $(".chatSiteBar.linkgroupSiteBar").children("li");
+                $.each($childLi,function(index,val){
+                    var child = $(this).children("div");
+                    if(child.length == 2){
+                        child.eq(0).remove();
+                        child.eq(1).show();
+                    }
+                });
+                PannelChat.cleanGroupEdit();
+                $('.tab_item').removeClass('tab-selected');
+                $('.tab_item').children().removeClass('tab-selected');
+                $(this).addClass('tab-selected');
+                $(this).parent().addClass('tab-selected');
+                clickChange.call(this);
+                $('#linkgroupLayer').show();
+            });
+            //最近聊天选项卡
+            $('#nav_chatLog').click(function(){
+                $('#addGroup').hide();
+                $('.new-group').parents("li").remove();
+                $('.tab_item').removeClass('tab-selected');
+                $('.tab_item').children().removeClass('tab-selected');
+                $(this).addClass('tab-selected');
+                $(this).parent().addClass('tab-selected');
+                clickChange.call(this);
+                $('#linklasterLayer').show();
+            });
+
+        });
+
+
+        var timeout = null,
+                html = null;
+
+        function divAlert(msg, time)
+        {
+            cleardivAlert();
+            html = $('<div class="error" style="top: 50%;left: 78px;"><span>'+ msg +'</span></div>');
+            $('.panel').after(html);
+            timeout = setTimeout(function() {
+                html.remove();
+            },time);
+            html.on('click', function(){
+                $(this).remove();
+            });
+        }
+        function cleardivAlert(){
+            if(timeout){
+                if(html) {
+                    html.remove();
+                }
+                clearTimeout(timeout);
+            }
+        }
+    </script>
+</body>
+</html>

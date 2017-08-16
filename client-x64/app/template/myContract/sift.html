@@ -1,0 +1,26 @@
+<div id="myContractSift" ng-class="{true:'my-contract-sift my-contract-sift-active', false:'my-contract-sift'}[isShow]" >
+    <div id="test1" class="sift-btn" ng-click="togglePanel()">
+        <i class="iconfont" ng-show="useSift">&#xe674;</i>
+        <i class="iconfont" ng-hide="useSift" style="color: #666;">&#xe669;</i>
+        <span ng-show="useSift">已筛选</span>
+        <span ng-hide="useSift">未筛选</span>
+        <span class="caret user_down_flag" style="margin-top:-4px;"></span>
+        <!--<i class="iconfont">&#xe67b;</i>-->
+    </div>
+
+    <div id="test2">
+        <ul class="sift-list">
+            <div style="position:relative; z-index:10; margin-bottom:4px;">
+                <span style="margin-right:36px; font-size:12px; padding-left:15px; font-weight:bold;">合同状态</span>
+                <span id="myContractSift-filter" ng-click="sureFilter()" style="margin-right:10px; color:#b9b9b9;">确定</span>
+            </div>
+            <li ng-repeat="item in items" ng-click="toggleItem()" ng-if="item.show">
+                <i class="iconfont" ng-show="item.checked">&#xe64b;</i>
+                <i class="iconfont" ng-hide="item.checked">&#xe64c;</i>
+                {{item.name}}
+            </li>
+
+        </ul>
+
+    </div>
+</div>

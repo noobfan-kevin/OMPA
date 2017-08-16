@@ -1,0 +1,702 @@
+/*公共部分*/
+.publicDB_main{
+    color: #333;
+    cursor: default;
+}
+.publicDB_main i{
+    font-style: normal;
+}
+.publicDB_main a{
+    text-decoration: none!important;
+}
+.publicDB_main .clearfix:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+.publicDB_main .fr{
+    float: right;
+}
+.publicDB_main .selectHidden{
+    display: none;
+}
+/*主体结构*/
+.publicDB_main{
+    width: 100%;
+    height: 100%;
+}
+.publicDB_main .catalogPageNav{
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .rContent{
+    height: 100%;
+}
+.publicDB_main .homePage,.publicDB_main .nodeManage,.publicDB_main .fileManage,.publicDB_main .nodeDetails{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+/*主页*/
+.publicDB_main .homePage .searchBox{
+    width: 100%;
+    height: 152px;
+    background: url("../images/backgroundColor.png") repeat-x;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .homePage .searchArea{
+    width: 650px;
+    height: 44px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: auto;
+}
+.publicDB_main .homePage .searchBar{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+.publicDB_main .homePage .searchBtn{
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor: default;
+}
+.publicDB_main .latestContent{
+    width: 100%;
+    padding-top: 152px;
+    background: #fff;
+}
+.publicDB_main .latestContent .fileStream{
+    width: 25%;
+    height: 100%;
+    padding: 16px 10px;
+}
+.publicDB_main .latestContent .file{
+    margin-bottom: 10px;
+    border: 2px solid #d5d5d5;
+}
+.publicDB_main .latestContent .fileName{
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+.publicDB_main .latestContent .fileThumbnail{
+    width: 100%;
+}
+.publicDB_main .latestContent .fileShow{
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .latestContent .shadow{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.publicDB_main .shadow span{
+    color: #fff;
+    position: absolute;
+}
+.publicDB_main .shadow .type{
+    width: 32px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #fff;
+    border-radius: 1px;
+    left: 8px;
+    top: 8px;
+}
+.publicDB_main .shadow .size{
+    left: 8px;
+    bottom: 8px;
+}
+.publicDB_main .shadow .icon{
+    width: 20px;
+    right: 8px;
+    bottom: 8px;
+}
+.publicDB_main .icon .iconfont{
+    font-size: 20px;
+    display: inline-block;
+    padding-top: 2px;
+}
+.publicDB_main .icon .edit{
+    font-size: 18px;
+    padding-left: 1px;
+}
+/*文件分类*/
+.publicDB_main .catalogPage{
+    height: 100%;
+    overflow-y: auto;
+}
+.publicDB_main .toolbar{
+    width: 100%;
+    height: 41px;
+    border-bottom: 1px solid #bebebe;
+}
+.publicDB_main .catalogPage .searchArea{
+    width: 203px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    top: 5px;
+}
+.publicDB_main .catalogPage .searchBar{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+.publicDB_main .catalogPage .searchBtn{
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: default;
+}
+.publicDB_main .catalogPage .uploadFileBtn{
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+    background: #f0d14d;
+    margin: 5px 10px 0 0;
+    cursor: default;
+    display: none;
+}
+.publicDB_main .allSelectedItem{
+    width: 100%;
+    padding: 5px 15px;
+}
+.publicDB_main .oneSelectedItem{
+    font-size: 12px;
+    height: 20px;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #d5d5d5;
+    background: #fff;
+    line-height: 20px;
+    padding: 0 10px 0 3px;
+    margin-right: 5px;
+    position: relative;
+    left: 0;
+    top: 0;
+    cursor: default;
+}
+.publicDB_main .oneSelectedItem .iconfont{
+    font-size: 10px;
+    color: #e60012;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.publicDB_main .allOptions{
+    border: 1px solid #d5d5d5;
+    margin: 0 15px;
+    padding: 0 6px;
+}
+.publicDB_main .optionItem{
+    border-top: 1px dashed #d5d5d5;
+    line-height: 40px;
+}
+.publicDB_main .optionName{
+    width: 75px;
+    color: #999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+}
+.publicDB_main .oneIndexKey{
+    padding-left: 75px;
+}
+.publicDB_main .oneOption{
+    padding-right: 14px;
+}
+.publicDB_main .optionChecked{
+    padding-left: 5px;
+}
+.publicDB_main .checked{
+    color: #f0d14d;
+}
+.publicDB_main li.removeLine{
+    border-top: none;
+}
+.publicDB_main .filesList{
+    height: 55%;
+    padding: 20px;
+}
+.publicDB_main .oneFile{
+    width: 178px;
+    padding: 4px;
+}
+.publicDB_main .marginBox{
+    border: 2px solid #d5d5d5;
+}
+.publicDB_main .fileContent{
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .markedPicture{
+    width: 166px;
+    height: 119px;
+}
+.publicDB_main .filesCount{
+    min-width: 24px;
+    min-height: 28px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    padding: 4px;
+    background: url("../images/jiaobiao.png") no-repeat center transparent;
+    background-size: 100%;
+}
+.publicDB_main .fileShadow{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.publicDB_main .fileShadow span{
+    width: 20px;
+    position: absolute;
+    right: 6px;
+    top: 8px;
+}
+.publicDB_main .fileShadow .type{
+    color: #fff;
+    width: 32px;
+    height: 20px;
+    text-align: center;
+    line-height: 16px;
+    border: 1px solid #fff;
+    border-radius: 1px;
+    left: 8px;
+    top: 8px;
+}
+.publicDB_main .fileShadow .size{
+    color: #fff;
+    left: 8px;
+    bottom: 8px;
+    top: auto;
+}
+.publicDB_main .fileShadow i{
+    font-size: 20px;
+    color: #fff;
+}
+.publicDB_main .fileTitle{
+    width: 100%;
+    padding-top: 3%;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*节点管理*/
+.publicDB_main .nodeContent{
+    height: 100%;
+    border: 1px solid #d5d5d5;
+    background: #fff;
+}
+.publicDB_main .header{
+    color: #22ac38;
+    height: 44px;
+    line-height: 43px;
+    padding-left: 20px;
+    border-bottom: 1px solid #d5d5d5;
+}
+.publicDB_main .addIcon{
+    font-size: 21px;
+}
+.publicDB_main .goBack{
+    line-height: 31px;
+    cursor: default;
+}
+.publicDB_main .return{
+    font-size: 14px;
+    padding-left: 10px;
+}
+.publicDB_main .nodeInfo{
+    padding: 36px 118px;
+    margin-bottom: 10px;
+    color: #333;
+    background: #fff;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .feature{
+    padding-bottom: 28px;
+}
+.publicDB_main .nodeInfo span{
+    line-height: 30px;
+}
+.publicDB_main .nodeIndex .iconfont{
+    font-size: 12px;
+}
+.publicDB_main .nodeInfo .nodeIndex span{
+    line-height: 25px;
+}
+.publicDB_main .nodeThumbnail img{
+    width: 170px;
+    max-height: 120px;
+    display: none;
+}
+.publicDB_main .uploadThumbnail{
+    width: 172px;
+    height: 122px;
+    color: #d5d5d5;
+    text-align: center;
+    line-height: 119px;
+    border: 1px solid #d5d5d5;
+}
+.publicDB_main .thumbnailPicture{
+    width: 100%;
+    max-height: 122px;
+}
+.publicDB_main .lessWord{
+    text-indent: 1em;
+    display: inline-block;
+}
+.publicDB_main .moreWord{
+    text-indent: -1em;
+    display: inline-block;
+}
+.publicDB_main .nodeName .nodeNameInput{
+    width: 438px;
+    height: 30px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    padding-left: 9px;
+}
+/*.publicDB_main .nodeIndex >ul{
+    width: 100%;
+}*/
+.publicDB_main .nodeIndex >span{
+    position: absolute;
+}
+.publicDB_main .nodeIndex li{
+    min-height: 25px;
+    margin-bottom: 5px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .indexName{
+    width: 75px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    margin-left: 60px;
+    text-align: center;
+}
+.publicDB_main .uploadFile{
+    width: 438px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.publicDB_main .uploadFile span{
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.publicDB_main .nodeIndexInfo .colon{
+    position: absolute;
+    margin-left: 138px;
+}
+.publicDB_main .indexOption{
+    padding-left: 150px;
+    padding-right: 20px;
+}
+.publicDB_main .inputInfo{
+    width: 64px;
+    height: 25px;
+    text-align: center;
+    margin-right: 6px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+}
+.publicDB_main .cancel{
+    color: #f27f88;
+    position: absolute;
+    right: 6px;
+    top: 2px;
+    display: none;
+}
+.publicDB_main .uploadFile .cancel{
+    position: absolute;
+    right: -16px;
+    top: 1px;
+    display: none;
+}
+.publicDB_main .add{
+    padding-left: 5px;
+    line-height: 25px;
+    color: #30b144;
+}
+.publicDB_main .nodeIndex .deleteIndex{
+    position: absolute;
+    right: 0;
+    bottom: 9px;
+    color: #e60012;
+}
+.publicDB_main .nodeIndex .addIndex{
+    width: 75px;
+    height: 25px;
+    border: 1px solid #30b144;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 23px;
+    margin-left: 60px;
+}
+.publicDB_main .nodeIndex .indexTitle{
+    width: 75px;
+    height: 25px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 23px;
+    position: absolute;
+    margin-left: 60px;
+    margin-bottom: 5px;
+}
+.publicDB_main .nodeIndex .addIndex a{
+    color: #5cb85c;
+}
+.publicDB_main .functionBtn{
+    padding-right: 14px;
+}
+.publicDB_main .saveBtn{
+    color: #2dc3e8;
+    line-height: 43px;
+    padding-right: 16px;
+}
+.publicDB_main .cancelBtn{
+    color: #f0d14d;
+    line-height: 43px;
+    padding-right: 16px;
+}
+/*文件管理*/
+.publicDB_main .allIndexOption{
+    margin-left: 140px;
+}
+.publicDB_main .oneIndexOption{
+    padding-left: 5px;
+}
+.publicDB_main .keyWordInfo{
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 5px;
+    padding-left: 6px;
+}
+.publicDB_main .keyWord span{
+    position: absolute;
+}
+.publicDB_main .keyWord ul{
+    margin-left: 60px;
+}
+.publicDB_main .keyWord .iconfont{
+    font-size: 12px;
+}
+.publicDB_main .nodeFile i{
+    line-height: 30px;
+}
+.publicDB_main .downloadBtn{
+    color: #22ac38;
+    line-height: 43px;
+    padding-right: 16px;
+}
+/*节点详情*/
+.publicDB_main .nodeDetails .nodeContentInfo{
+    width: 100%;
+    min-height: 30px;
+    border: 1px solid #d5d5d5;
+    background: #f2f2f2;
+    border-radius: 3px;
+    padding-left: 9px;
+    margin-left: 60px;
+    display: inline-block;
+}
+.publicDB_main .nodeDetails .position{
+    position: absolute;
+}
+.publicDB_main .nodeDetails .allIndex{
+    width: 100%;
+    border: 1px solid #d5d5d5;
+    background: #f2f2f2;
+    border-radius: 3px;
+    margin-left: 60px;
+}
+.publicDB_main .nodeDetails .feature{
+    padding-bottom: 10px;
+}
+.publicDB_main .nodeDetails .indexName {
+    margin-left: 5px;
+}
+.publicDB_main .nodeDetails .allIndexOption{
+    margin-left: 85px;
+}
+.publicDB_main .editBtn{
+    color: #2dc3e8;
+    line-height: 43px;
+    padding-right: 16px;
+}
+.publicDB_main .deleteBtn{
+    color: #e60012;
+    line-height: 43px;
+    padding-right: 16px;
+}
+/*文件详情*/
+.publicDB_main .fileDetails{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: #fff;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+.publicDB_main .filePicture{
+    width: 380px;
+    height: 260px;
+    text-align: center;
+    line-height: 259px;
+    border: 1px solid #d5d5d5;
+}
+.publicDB_main .baseInfo{
+    width: 264px;
+    padding-left: 32px;
+    padding-top: 5px;
+}
+.publicDB_main .baseInfo .nodeContentInfo{
+    width: 172px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.publicDB_main .fileInfo{
+    width: 746px;
+    padding: 35px 46px;
+    color: #333;
+    background: #fff;
+    position: relative;
+    left: 0;
+    margin: 0 auto;
+    top: 0;
+}
+.publicDB_main .filePictureShow{
+    width: 100%;
+    max-height: 260px;
+}
+/*树结构*/
+.publicDB_main #publicDBTree{
+    padding-left: 20px;
+    display: none;
+}
+.publicDB_main .ztree *{
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    cursor: default;
+}
+.publicDB_main .ztree a{
+    color: #fff;
+}
+.publicDB_main .addFolder{
+    font-size: 14px;
+    color: #30b144;
+    position: relative;
+    left: 0;
+    bottom: 2px;
+}
+.publicDB_main .addRoot{
+    position: absolute;
+    left: 66px;
+    top: 12px;
+    display: none;
+}
+.publicDB_main .ztree li{
+    padding-top: 10px;
+}
+.publicDB_main .ztree li ul{
+    padding-left: 15px;
+}
+.publicDB_main .ztree a:hover{
+    background: #d0e2ff;
+    color: #333;
+}
+.publicDB_main .ztree li span{
+    line-height: 14px;
+}
+.publicDB_main .ztree li span.button.noline_open {
+    background: url("../images/openFolder.png") no-repeat 5px 5px;
+}
+.publicDB_main .ztree li span.button.noline_close {
+    background: url("../images/closeFolder.png") no-repeat 5px 5px;
+}
+.publicDB_main #publicDBTree li .selectedNode{
+    background: rgba(241,163,37,0.3)!important;
+    color: #fff;
+    border-radius: 3px;
+}
+/*进度条样式*/
+.load-bar {
+    width: 100%;
+    height: 1px;
+    border-radius: 30px;
+    background: #fff;
+    position: relative;
+    top: -1px;
+}
+.load-bar-inner{
+    height: 99%;
+    border-radius: inherit;
+    position: relative;
+}
+.load-bar-inner.complete{
+    background: #00ee3e;
+}
+.load-bar-inner.proceed{
+    background: #00b7ee;
+}

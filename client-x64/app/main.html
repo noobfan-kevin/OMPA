@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="datatables/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="datatables/css/dataTables.jqueryui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="css/mianPage.css">
+    <!-- 只有全局的CSS样式放在这里，局部的样式定义不要往这里放 -->
+
+    
+    <script src="libs/jquery.js"></script>
+    <script src="libs/jquery.ztree.core-3.5.js"></script>
+    <script src="libs/jquery.ztree.exedit-3.5.js"></script>
+    <script src="libs/jquery.ztree.excheck-3.5.js"></script>
+    <script src="libs/angular.js"></script>
+    <script src="libs/angular-ui-router.js"></script>
+    <script async="async" src="js/GUIAPI.js"></script>
+    <script src="js/global.js"></script>
+    <!-- 文件上传 -->
+    <script src="js/fileUpload.js"></script>
+    <!-- 文件下载 -->
+    <script src="js/fileDownloader.js"></script>
+    <!-- 用户个人信息修改、查看 -->
+    <script src="js/userInfo.js" async="async"></script>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="datatables/js/jquery.dataTables.js"></script>
+    <script src="bootstrap/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+    <script src="bootstrap/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../socket.io/node_modules/socket.io-client/socket.io.js"></script>
+    <script src="js/ztree.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/department.js"></script>
+    <script src="js/role.js"></script>
+    <script src="js/projectDataBase.js"></script>
+    <script src="js/fundManagment.js"></script>
+    <script src="js/project.js"></script>
+    <script src="js/simpleTable.js"></script>
+    <script src="js/assetManagemnet.js"></script>
+    <script src="js/simpleTable.js"></script>
+    <script src="js/assetManagemnet.js"></script>
+    <script src="js/shotManagement.js"></script>
+    <script src="js/asset.js"></script>
+    <script src="js/shot.js"></script>
+    <script src="js/publicDataBase.js"></script>
+    <script src="js/homePage.js"></script>
+    <script src="js/noticeList.js"></script>
+    <script src="js/notice.create.js"></script>
+    <!-- 编辑器配置 -->
+    <script src="libs/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器插件 -->
+    <script src="libs/ueditor/ueditor.all.js"></script>
+    <script src="js/schema.js"></script>
+    <script src="js/taskBasicInfo.js"></script>
+    <script src="js/myCreateTask.js"></script>
+    <script src="js/operationLog.js"></script>
+    <script src="js/progressReview.js"></script>
+    <script src="js/operationTaskLog.js"></script>
+    <script src="js/progressList.js"></script>
+   <script src="js/mySendTask.js"></script>
+    <script src="js/myProductTask.js"></script>
+    <script src="js/myCheckTask.js"></script>
+    <script src="js/contractView.js"></script>
+    <script src="js/contractEdit.js"></script>
+    <script src="js/myContractList.js"></script>
+    <script src="js/contractManagement.js"></script>
+    <script src="js/contractNew.js"></script>
+    <script src="js/taskUnderAorS.js"></script>
+    <!-- 我的合同 -->
+    <script src="libs/jspdf.min.js"></script>
+    <script src="libs/html2canvas.js"></script>
+    <script src="js/FuncForContract.js"></script>
+    <!--图表插件-->
+    <script src="libs/Chart.js"></script>
+    <!--图表插件-->
+    <script src="js/socket.js"></script>
+
+    <!-- 统计 -->
+    <script src="js/statistics.js"></script>
+
+</head>
+<body>
+<div class="page" style="">
+    <!-- Header
+       ================================================== -->
+    <header class="header">
+        <!-- begin #person -->
+        <div class="user fl">
+            <div class="user-avatar fl">
+                <a href="javascript:"><img class="user-info-image" src="images/defaultAvatar.jpg" alt="默认头像"></a>
+            </div>
+            <div id="user-info" class="fl">
+                <p id="user-info-show-btn" title="点击修改个人信息"><i class="iconfont">&#xe620;</i><span class="user-info" data-user-info="name">周星星</span></p>
+                <p id="credits-detail-show-btn" title="点击显示个人积分明细"><i class="iconfont">&#xe61e;</i><span class="user-info" data-user-info="points"></span></p>
+            </div>
+        </div>
+        <!-- end #person -->
+
+        <!-- begin #nav -->
+        <ul id="nav" class="fl">
+            <li  class="current" data-page="homePage" id="homePage"><a class="nav-item" href="#/homePage" draggable="false"><i class="iconfont homeicon">&#xe61a;</i><span  class="noticeUnread" title="你还有未查看的通知哦！">&#12288;</span></a></li>
+            <li data-page="MyProjects" id="myProject" ><a class="nav-item" href="#/myProject" draggable="false" >我的项目</a></li>
+            <li data-page="myTask" id="myTask"><a class="nav-item" href="#/myTask" draggable="false">我的任务<span class="myTaskUnreadFlag" title="你还有未查看的任务哦！">&#12288;</span></a></li>
+            <li data-page="myContract" id="myContract"><a class="nav-item" href="#/myContractList" draggable="false">我的合同<span class="myContractUnreadFlag" title="你还有未查看的合同哦！">&#12288;</span></a></li>
+            <li data-page="system" id="system"><a class="nav-item" href="#/system" draggable="false">系统</a></li>
+            <li data-page="publicDataBase"><a class="nav-item" href="#/publicDataBase" draggable="false">公共数据</a></li>
+            <!--<li><a class="nav-item" href="javascript:" draggable="false"><i class="iconfont">&#xe61d;</i></a></li>-->
+        </ul>
+        <!-- end #nav -->
+
+        <!-- begin #close -->
+        <div class="windowclose rg" >
+            <a href="#" onclick="GUIAPI.minWindow()"  draggable="false"><i class="iconfont">&#xe629;</i></a>
+            <a href="#" onclick="GUIAPI.toggleWindow()"  draggable="false"><i class="iconfont" id="RestoreAndMax">&#xe62a;</i></a>
+            <a href="#" onclick="GUIAPI.closeWindow()" class="closebtn" draggable="false"><i class="iconfont">&#xe628;</i></a>
+        </div>
+        <!-- end #close -->
+        <div ></div>
+
+        <!-- 用户个人信息修改 START -->
+        <div id="user-info-panel-mask">
+            <div class="user-info-mask"></div>
+            <div id="user-info-panel">
+                <div class="user-info-panel-title">
+                    <h2>我的资料</h2>
+                <span id="user-panel-close">
+                    <i class="iconfont">&#xe628;</i>
+                </span>
+                </div>
+                <!-- 头像 -->
+                <div class="user-avatar fl">
+                    <a href="#" class="user-image-box" >
+                        <span class="user-avatar-mask">点击修改头像</span>
+                        <img  class="user-info-image" src="images/defaultAvatar.jpg" alt="默认头像">
+                    </a>
+                    <input type="file" id="userImage" accept="image/*" style="visibility: hidden;position: absolute;">
+                </div>
+                <!-- 主要信息 -->
+                <form id="user-info-commit">
+                    <ul id="user-info-detail">
+                        <li>
+                            <label>登录账号:</label>
+                            <input type="text" data-user-info="username" disabled>
+                        </li>
+<!--                        <li>
+                            <label>所属部门:</label>
+                            <input type="text" data-user-info="username" disabled>
+                        </li>-->
+                        <li>
+                            <label><span>* </span>登录密码:</label>
+                            <input type="password" class="user-info-hide-input user-info-password"  data-user-info="password" placeholder="**********" disabled>
+                            <input type="text"  class="user-info-show-input user-info-password" data-validation-type="password"
+                                   data-user-info="password" autocomplete="off" name="password" placeholder="**********">
+                        </li>
+                        <li>
+                            <label><span>* </span>姓名:</label>
+                            <input type="text" class="user-info-hide-input"  data-user-info="name" disabled>
+                            <input type="text"  class="user-info-show-input"  data-user-info="name" name="name"data-validation-type="username">
+                        </li>
+                        <li>
+                            <label>电话:</label>
+                            <input type="text" class="user-info-hide-input"  data-user-info="phone" disabled>
+                            <input type="text"  class="user-info-show-input" data-user-info="phone"  name="phone"data-validation-type="phone">
+                        </li>
+                        <li>
+                            <label>邮箱:</label>
+                            <input type="text" class="user-info-hide-input"  data-user-info="email" disabled>
+                            <input type="text" class="user-info-show-input"  data-user-info="email" name="email" data-validation-type="email">
+                        </li>
+                        <li class="login-btn-wrap">
+                            <span id="user-info-editable-btn" class="login-btn">编辑</span>
+                            <span id="user-info-cancel" class="login-btn btn-cancel" style="display: none">取消</span>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <!-- 用户个人信息修改 END -->
+
+        <!-- 个人积分明细  start-->
+        <div id="creditsDetailBox" class="taskSendBackBox" style="display:none;">
+            <div class="creditsDetailContent">
+                <div class="creditsDetailTitle">
+                    <span style="float:left; font-size:16px; padding-left:10px;">个人积分明细</span>
+                    <i id="creditsDetailBoxClose" class="iconfont">&#xe628;</i>
+                </div>
+                <div id="creditsDetailHasScore">
+                    <table class="creditsDetailLists">
+                        <thead>
+                            <tr style="width:100%;">
+                                <th style="width:40%">名称</th>
+                                <th style="width:20%">积分</th>
+                                <th style="width:40%">时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td>任务海贼王01 进程1</td>
+                                <td>100</td>
+                                <td>2016-07-05 10:07:38</td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                    <div class="creditsDetailPageBox" style="border:1px solid #ccc; border-top:none;">
+                        <div class="creditsDetailPageCount">
+                            共<span id="creditsDetailAllPAge">52</span>条
+                        </div>
+                        <div class="creditsDetailPageSkip" style="">
+                            <span id="creditsDetailFirstPage"><i class="iconfont">&#xe6a1;</i></span>
+                            <span id="creditsDetailPrevPage"><i class="iconfont">&#xe682;</i></span>
+                            <div id="creditsDetailPageWrap" class="creditsDetailPageWrap">
+                                <div style="position:relative; width:100%;">
+                                    <span id="creditsDetailNowPage" class="creditsDetailNowPage">0/0</span>
+                                    <ul id="creditsDetailPageLists">
+                                        <!--<li>1</li>-->
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            <span id="creditsDetailAfterPage"><i class="iconfont">&#xe681;</i></span>
+                            <span id="creditsDetailLastPage"><i class="iconfont">&#xe6a0;</i></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="creditsDetailNotScore">您目前还没有积分</div>
+            </div>
+        </div>
+        <!-- 个人积分明细  end-->
+
+        <div class="extEntryContainer">
+            <a href="#" id="chatEntry" draggable="false" title="联系人">
+                <i class="iconfont extEntry">&#xe66a;</i>
+                <i class="iconfont extEntryPressed" style="display:none;">&#xe618;</i>
+            </a>
+        </div>
+
+    </header>
+    <!-- Header End-->
+
+    <!-- Container
+         =======================================================  -->
+    <div id="container" class="containers cf">
+        <!-- begin #sitebar -->
+<!--        <div class="sitebar">
+            <ul id="aside-nav">
+                <li class="current"><a class="asidenav-item" href="#userManage"><i class="iconfont">&#xe610;</i>用户管理</a></li>
+                <li><a class="asidenav-item" href="#signatory"><i class="iconfont">&#xe60f;</i>签约方统计</a></li>
+                <li><a class="asidenav-item" href="#departmentManage"><i class="iconfont">&#xe611;</i>部门管理</a></li>
+                <li><a class="asidenav-item" href="#roleManage"><i class="iconfont">&#xe617;</i>角色管理</a></li>
+            </ul>
+        </div>
+        <!-- end sitebar -->
+
+        <!-- begin #content -->
+        <div class="content">
+<!--            <div class="selectdiv">
+            </div>
+            <div class="tablelist"></div>-->
+        </div>-->
+        <!-- end #content -->
+    </div>
+    <!-- Container End-->
+
+    <!-- 全局下载弹出框 -->
+    <div id="downloader-loadPage-container">
+
+    </div>
+    <div class="turn-DataBase-contain" style="display: none;">
+        <div class="turn-DataBase-div">
+            <div class="turn-DataBase-check">
+                <div class="turn-DataBase-check-head">
+                    <span>项目数据库位置选择</span>
+                    <i id="closeWindow" class="iconfont">&#xe628;</i>
+                </div>
+                <div class="turn-DataBase-check-body">
+                    <ul id="turn-DataBase-tree" class="ztree">
+
+                    </ul>
+                </div>
+                <div class="turn-DataBase-check-footer">
+                    <button id="TDC-btn-cancel">取消</button>
+                    <button id="TDC-btn-sure">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        //请求权限 判断是否显示系统
+        /*$.ajax({
+            type: 'get',
+            data: {userId:localStorage.getItem('userId')},
+            url: '/api/project/getCurUserProjectAuthority/',
+            success: function (data) {
+                if(data.message=='ok'){
+                    if(data.data.manageSystem){
+                        $('#system').show();
+                    }else{
+                        $('#system').hide();
+                    }
+                }
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });*/
+        var bDebug= JSON.parse(localStorage.getItem('bDebug'));
+        // 设置大小
+        GUIAPI.setWindow({
+            width: 920,
+            height: (bDebug)? 720: 680,
+            center: true,
+            resizable: true
+        });
+
+        GUIAPI.initTray();
+
+        /* 点击主导航，切换页面 */
+        var $navItems = $('li','#nav');
+        $navItems.click(function() {
+            $navItems.removeClass('current');
+            $(this).addClass('current');
+            localStorage.setItem('curMenu', $(this).attr('data-page'));
+            $('#container').loadPage(this.dataset.page);
+            noticeCreate.deleteAllFilesForNoticeCreate();
+
+        });
+        /*点击扩展按钮*/
+        $('.extEntry').on('mousedown', function(){
+            $(this).hide();
+            $(this).siblings('.extEntryPressed').show();
+        }).on('mouseup', function(){
+            $(this).show();
+            $(this).siblings('.extEntryPressed').hide();
+        }).on('mouseleave', function(){
+            $(this).show();
+            $(this).siblings('.extEntryPressed').hide();
+        });
+        // 载入默认页
+        $('#container').loadPage('homePage');
+        $('#downloader-loadPage-container').loadPage('downloader.html');
+        taskBasicInfo.countAllOfMyTaskUnread();//刷新任务小红点
+        socketCommon.init();//接收未读任务socket初始化
+        //显示隐藏一级标签（我的合同，系统，公共数据库）
+
+        //禁止图片拖拽
+        for(i in document.images)document.images[i].ondragstart= function(){
+            return false
+        };
+        var header = $('.header').eq(0)[0];
+        GUIAPI.setMoveWindowByDrag( header );  // 设置拖拽上方标题栏实现窗口移动
+        GUIAPI.setMaximizeWindowToggle(header);// 双击header全屏状态切换
+
+        window.keyCode = null;
+        //记录键值
+        $(document).on('keydown',function(event){
+            window.keyCode = event.keyCode;
+        });
+        $(document).on('keyup',function(event){
+            window.keyCode = null;
+        });
+        //--------积分明细-start-------------------------------------
+        //列表显示
+        $('#credits-detail-show-btn').click(function() {
+            $('#creditsDetailBox').fadeIn();
+            $('.creditsDetailContent').slideDown(200,'linear');
+            //初始化积分列表
+            creditsDetail.init();
+        });
+        //列表隐藏
+        $('#creditsDetailBoxClose').on('click',function(){
+            $('#creditsDetailBox').fadeOut();
+            $('.creditsDetailContent').slideUp(200,'linear');
+        });
+        var creditsDetail={
+            nowPage:1,
+            init:creditsDetailInit
+        }
+        function refreshCreditsDetailList(page){
+            var userId=localStorage.getItem('userId');
+            //请求 某一页的数据
+            $.ajax({
+                url: '/api/user/getUserPoints',
+                type: 'post',
+                data:{
+                    offset:page,
+                    userId:userId
+                },
+                success: function (data){
+                    console.log('CreditsDetailList',data);
+                    if(data.count==0){
+                        $('#creditsDetailHasScore').hide();
+                        $('#creditsDetailNotScore').show();
+                    }else{
+                        $('#creditsDetailHasScore').show();
+                        $('#creditsDetailNotScore').hide();
+                        $('#creditsDetailAllPAge').html(data.count);
+                        $('#creditsDetailNowPage').html(page+1+'/'+data.page);
+                        creditsDetail.allPage=data.page;
+                        //可选页
+                        var str='';
+                        for(var i=0; i<data.page;i++){
+                            str+='<li>'+(i+1)+'</li>'
+                        }
+                        $('#creditsDetailPageLists').html(str);
+                        //渲染tbody
+                        var str2='';
+                        for(var i=0; i<data.list.length; i++){
+                            str2+='<tr>\
+                                     <td>'+data.list[i].taskVersionName+'('+data.list[i].version+')'+'_'+data.list[i].progressName+'</td>\
+                                     <td>'+data.list[i].score+'</td>\
+                                     <td>'+data.list[i].createdAt+'</td>\
+                                   </tr>';
+                        }
+                        $('#creditsDetailHasScore tbody').html(str2);
+
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+        function creditsDetailInit(){
+            //刷新第一页 获取总页数
+            refreshCreditsDetailList(creditsDetail.nowPage-1);
+            //点首页
+            $('#creditsDetailFirstPage').on('click',function(){
+                if(creditsDetail.nowPage==1){
+                    return;
+                }else{
+                    creditsDetail.nowPage=1;
+                    //刷新这一页
+                    refreshCreditsDetailList(creditsDetail.nowPage-1);
+                }
+            });
+            //点尾页
+            $('#creditsDetailLastPage').on('click',function(){
+                if(creditsDetail.nowPage==creditsDetail.allPage){
+                    return;
+                }else{
+                    creditsDetail.nowPage=creditsDetail.allPage;
+                    //刷新这一页
+                    refreshCreditsDetailList(creditsDetail.nowPage-1);
+                }
+            });
+            //点上一页
+            $('#creditsDetailPrevPage').on('click',function(){
+                if(creditsDetail.nowPage==1){
+                    return;
+                }else{
+                    creditsDetail.nowPage-=1;
+                    //刷新这一页
+                    refreshCreditsDetailList(creditsDetail.nowPage-1);
+                }
+            });
+            //点下一页
+            $('#creditsDetailAfterPage').on('click',function(){
+                if(creditsDetail.nowPage==creditsDetail.allPage){
+                    return;
+                }else{
+                    creditsDetail.nowPage+=1;
+                    //刷新这一页
+                    refreshCreditsDetailList(creditsDetail.nowPage-1);
+                }
+            });
+            $('#creditsDetailBox')[0].onclick=function(e){
+                var $target = $(e.target); //jq目标
+                if(e.target.tagName=='LI'){
+                    //选择某一页
+                    var page=parseInt($target.html());
+                    //$('#creditsDetailNowPage').html(page+'/'+creditsDetail.allPage);
+                    //$(this).parent().hide();
+                    $('#creditsDetailPageLists').hide();
+                    if(creditsDetail.nowPage==page){
+                        return;
+                    }else{
+                        creditsDetail.nowPage=page;
+                        //刷新这一页
+                        refreshCreditsDetailList(creditsDetail.nowPage-1);
+                    }
+                }else if($target.hasClass('creditsDetailPageWrap')||$target.hasClass('creditsDetailNowPage')){
+                    //点击出现 可选择的页码
+                    $('#creditsDetailPageLists').show();
+                }else{ //点其他地方 ul消失
+                    $('#creditsDetailPageLists').hide();
+                }
+
+            };
+
+        }
+        //--------积分明细-end-------------------------------------
+        //打开聊天窗口
+        $('#chatEntry').on('click', function(){
+            var chatListWindow = require('nw.gui').Window.open(`mainPannel.html`, {
+                title: "日志明细",
+                position: 'center',
+                width: 960,
+                height: 700,
+                toolbar: true,
+                resizable: true,
+                frame: true
+            });
+        });
+
+        FUNC.getCurUserUnreadInfo();
+        console.log('sssssssss',FUNC.statusList);
+
+        //用于刷新后取消session内项目ID值，弹出移动文件到项目数据库页面树刷新依据
+        sessionStorage.setItem('projectId','');
+    });
+</script>
+</body>
+</html>

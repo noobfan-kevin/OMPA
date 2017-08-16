@@ -1,0 +1,119 @@
+/* 初始化 */
+#taskCard-edit-wrap * {cursor: default}
+#taskCard-edit-wrap li {list-style: none}
+
+#taskCard-edit-wrap { position: absolute; top: 0; bottom: 0; left: 0; right: 0;padding: 9px 0; font-family:"Microsoft YaHei";
+    border: 1px solid #ccc; margin: 10px; background: #fff;}
+.newTaskOfAsset #taskCard-edit-wrap { height:calc(100% - 36px);}
+.newTaskOfShot #taskCard-edit-wrap { height:calc(100% - 36px);}
+
+#taskCard-edit-wrap .taskCard-edit-title p { padding-left: 37px; margin: 0; line-height: 28px; font-size:16px; margin-bottom: 9px;
+    color:#11cd6e;font-weight:bold}
+#taskCard-edit-wrap .taskCard-edit-title .iconfont { position: absolute; margin-left: -26px;font-size:18px;font-weight: 400}
+#taskCard-edit-wrap .taskCard-view-title p {
+    position: relative; padding-left: 37px; margin: 0; line-height: 28px; font-size:16px; margin-bottom: 9px;
+    font-weight:bold}
+#taskCard-edit-wrap .taskCard-view-title{color:#F0A453;}
+#taskCard-edit-wrap .title-edit-task,
+#taskCard-edit-wrap .title-new-task-version,
+#taskCard-edit-wrap .title-new-task{color:#11cd6e;}
+
+#taskCard-edit-wrap .taskCard-view-title .iconfont { position: absolute; margin-left: -26px;font-size:18px;font-weight: 400}
+#taskCard-edit-wrap .task-area { position: absolute; top: 38px; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column}
+
+/* 任务版本 */
+#taskCard-edit-wrap .task-area-version {display:flex;min-height: 30px; line-height: 30px;background: #eeeeee;font-size: 12px}
+#taskCard-edit-wrap .task-area-version span { width: 36px;text-align: right}
+#taskCard-edit-wrap .task-area-version-add {height: 30px; width: 30px; text-align: center;background: #eeeeee;font-size:16px;font-weight: 600}
+#taskCard-edit-wrap .task-area-version-add:hover { background: #d7d7d7;}
+#taskCard-edit-wrap .task-version-input { width: 100%;background: url('img/selectArrow.png') no-repeat; background-position-x:right;
+    background-position-y:-30px;outline: none; border: 0; padding: 0 1px;}
+#taskCard-edit-wrap .task-version-input::-webkit-calendar-picker-indicator {opacity:0;}
+
+#taskCard-edit-wrap .task-version-input-edit { display: none; background:none;}
+#taskCard-edit-wrap .task-area-version-edit .task-area-version-add{ display: none;}
+#taskCard-edit-wrap .task-area-version-edit .task-version-input-view{ display: none;}
+#taskCard-edit-wrap .task-area-version-edit .task-version-input-edit{ display: block;}
+
+/* 任务状态布局 */
+#taskCard-edit-wrap .task-status-wrap { width: 100%; padding: 20px;box-sizing:border-box ;}
+
+/* 任务tab */
+#taskCard-edit-wrap .task-item-tab { border-bottom:1px solid #f1f1f1; overflow: hidden; margin-bottom: -2px;}
+#taskCard-edit-wrap .task-item-tab li { float: left;font-size:12px; border-bottom: 3px solid transparent; padding: 10px 16px;cursor:default}
+#taskCard-edit-wrap li.task-item-tab-active { border-color: #11cd6e;}
+#taskCard-edit-wrap .task-status-wrap { width: 100%; padding: 20px;box-sizing:border-box }
+
+
+
+
+
+/* 下载进度条 */
+#taskCard-edit-wrap .fileProgressInfo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    max-height: 234px;
+    margin-top: -117px;
+    margin-left: -250px;
+    padding: 6px 50px 20px 25px;
+    border: 1px solid #585858;
+    -webkit-box-shadow: 0 3px 1px rgba(0, 0, 0, .1);
+    background-color: #212121;
+    color: #B1B1B1;
+    z-index: 9999;
+    border-radius: 3px;
+    overflow-y: auto;
+    display: none;
+}
+
+#taskCard-edit-wrap .fileProgressInfo::after { content: ''; z-index: -1; top: 0; left: 0; position: fixed; width: 100vw;
+    height: 100vh; background: #000000; opacity: .4; }
+
+#taskCard-edit-wrap .fileItem > i {
+    position: absolute;
+    top: 5px;
+    right: -30px;
+    font-size: 20px;
+}
+
+#taskCard-edit-wrap .progressBar {
+    height: 35px;
+    width: 442px;
+    border-top: 1px solid #cdefd3;
+    border-left: 1px solid #cdefd3;
+    background: #808080 url("../images/bg.png");
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+#taskCard-edit-wrap .progressbar_forward {
+    height: 100%;
+    width: 90%;
+    background-color: #02910F;
+    opacity: 0.6;
+}
+
+#taskCard-edit-wrap span.pause {
+    background: url("../images/stc.png") -5px 0px;
+}
+
+#taskCard-edit-wrap span.close {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    font-size:20px;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*-----------------start--------------------hk60----------need-----------------------------*/
+#progress-review-page{
+   display: flex;
+    flex: 1;
+}
+/*-----------------end------------------hk60----------need---------------------------------*/

@@ -1,0 +1,54 @@
+<style>
+    @import url(css/operationLogStyle.css);
+</style>
+<div class="operationLogApp" ng-app="operationLogApp" ng-controller="OperationLog">
+    <div class="operationLog-header">
+        <span class="operation-position">{{curPosition}}/操作记录</span>
+    </div>
+    <div class="operation-search">
+        <div id="operation-search" class="pull-left">
+            <input placeholder="请输入关键字" ng-change="logKeyWords()" ng-model="keyWords">
+            <div id="operation-search-btn">
+                <span class="glyphicon glyphicon-search"></span>
+            </div>
+        </div>
+    </div>
+    <div class="operation-table">
+        <table>
+            <thead>
+            <tr>
+                <th class="log-person">操作人</th>
+                <th class="log-time">操作时间</th>
+                <th >操作内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="log in opeartionlogs">
+                <td class="log-person">{{log.person}}</td>
+                <td class="log-time">{{log.time}}</td>
+                <td class="log-detail"><p ng-repeat="detail in log.detail">{{detail}}</p></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="operation-table-foot">
+            <span>共<label class="total-page">{{operationLogs}}</label>条</span>
+            <div class="operation-table-btn">
+                <button class="last-page" ng-click="changePage('last')"><i class="iconfont">&#xe6a1;</i></button>
+                <button class="next-page" ng-click="changePage('next')"><i class="iconfont">&#xe681;</i></button>
+                <div class="cur-page-div" ng-click="showPageChoose()">
+                    <ul class="curLog-page-choose"  ng-show="choosePage">
+                        <li  ng-click="changePage(page.offset)" ng-repeat="page in operationPageList">{{page.page}}</li>
+                    </ul>
+                    <button class="cur-page">{{operationCurPage}}/{{operationPages}}</button>
+                </div>
+                <button class="prev-page " ng-click="changePage('prev')"><i class="iconfont">&#xe682;</i></button>
+                <button class="first-page" ng-click="changePage('first')"><i class="iconfont">&#xe6a0;</i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        angular.bootstrap($('.operationLogApp'), ['operationLogApp']);
+    });
+</script>

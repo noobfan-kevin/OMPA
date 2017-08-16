@@ -1,0 +1,67 @@
+<style>
+    @import "css/taskCard.css";
+    @import url(css/noticeList.css);
+    @import url(css/taskCard.statusbar.css);
+</style>
+
+<!-- begin #sitebar -->
+<div class="sitebar">
+    <ul id="aside-nav">
+        <li id="notice" data-page="noticeList.html" class="current"><a class="asidenav-item" href="#" draggable="false"><i class="iconfont">&#xe632;</i>通知列表<span class="unRead" id="myCreateTaskUnRead">未读</span></a></li>
+    </ul>
+</div>
+<!-- end sitebar -->
+
+<!-- begin #content -->
+<div id="notice-content" class="content" >
+    <div id="noticeList">
+        <div class="row" id="user_warnMesageInfo" style="padding: 0;margin: 0">
+            <nav class="navbar navbar-default" style="min-height: 42px;height: 42px;margin-bottom: 5px;">
+                <div class="container-fluid" style="padding: 0;height: 42px">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left: 1%">
+                        <ul class="nav navbar-nav" style="display: none">
+                            <div class="form-group myTask_filter_box" style="margin-top: 10%" id="myNotice_filter_box">
+                                <div id="taskType_filter" class="myCreateTask_dropdown myTaskTypeList_filter" >
+                                    <div style="font-weight: bold;font-size: 12px">任务卡状态</div>
+                                    <ul id="myNoticeType_filter">
+                                        <li   data-value=1><i class="iconfont">&#xe64c;</i>未派发</li>
+                                        <li   data-value=2><i class="iconfont">&#xe64c;</i>制作中</li>
+                                        <li   data-value=3><i class="iconfont">&#xe64c;</i>审核中</li>
+                                        <li   data-value=4><i class="iconfont">&#xe64c;</i>审核完成</li>
+                                        <li   data-value=5><i class="iconfont">&#xe64c;</i>已完成</li>
+                                    </ul>
+                                    <span id="myNotice_filter_sure" class="myTask_filter_sure">确定</span>
+
+                                </div>
+                                <div id="myNotice_filter"  class="clearFix myTaskList_filter"><i class="iconfont">&#xe669;</i><span>未筛选</span><span class="caret user_down_flag" style="margin-top: 14%"></span></div>
+                            </div>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" style="margin-top: 0.5%;margin-right: 0">
+                            <!-- Button trigger modal -->
+                            <button type="button" style="width: 80px;height: 30px;margin-right: 6px;font-size: 12px;font-family: '微软雅黑'; " class="btn btn-success form-control btn-group-xs"  id='createNotice' style="margin-top: 12%" >
+                                +新建通知
+                            </button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="row" id="tableList">
+            <div class="col-xs-12" id="tablefather">
+                <table id="myNoticeList" class="display" cellspacing="0" width="100%"  >
+
+                </table>
+            </div>
+            <div id="task-notask" style="display: none;text-align:center;margin-top: 30%;"><b id="showInfo" style="display: inline-block; font-size: 20px;color: #aaa;">当前没有通知</b></div>
+            <div id="task-nosearch" style="display: none;text-align:center;margin-top: 30%;"><b id="searchshowInfo" style="display: inline-block; font-size: 20px;color: #aaa;">没有符合条件的通知</b></div>
+        </div>
+    </div>
+</div>
+<!-- end #content -->
+
+<script>
+    $(document).ready(function(){
+        noticeLists.init();
+    });
+
+</script>

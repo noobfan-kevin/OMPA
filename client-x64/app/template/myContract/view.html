@@ -1,0 +1,45 @@
+<div id="myContractView">
+
+    <div class="view-header">
+        <span class="view-title"><i class="iconfont">&#xe665;</i>查看合同</span>
+        <span class="contract-preview" ng-click="showPreview()">预览合同</span>
+        <span class="back-btn" ng-click="goBack()">返回</span>
+    </div>
+    <!-- 状态条 -->
+    <div class="view-status-bar">
+        <div  class="contract-status progress-status-1" ng-class="{'编写':'contract-status progress-status-1','签约':'contract-status progress-status-2','执行':'contract-status progress-status-3',
+        '支付':'contract-status progress-status-4','完成':'contract-status progress-status-5'}[barStatus]">
+            <div class="contract-status-big-bar"></div>
+
+            <div class="contract-status-cell-outer"> <div class="contract-status-cell-inner">编写</div></div>
+            <div class="contract-status-cell-outer"> <div class="contract-status-cell-inner">签约</div> </div>
+            <div class="contract-status-cell-outer"> <div class="contract-status-cell-inner">执行</div> </div>
+            <div class="contract-status-cell-outer"> <div class="contract-status-cell-inner">支付</div> </div>
+            <div class="contract-status-cell-outer">  <div class="contract-status-cell-inner">完成</div> </div>
+            <div class="contract-status-tiny-bar"> <div class="contract-status-tiny-bar-inner"></div> </div>
+        </div>
+    </div>
+
+    <!-- 切换标签 -->
+    <div class="view-tab-label">
+        <view-tab></view-tab>
+    </div>
+    <hr style="height: 1px; background-color:#f1f1f1;border: 0;margin-top: -1px;">
+    <div ui-view></div>
+    <div id="contract-preview-wrap" ng-show="preview">
+        <div id="contractPreview">
+            <div id="contract-preview-header">
+                <span class="nav-title">预览合同</span>
+                <span class="contract-preview-close iconfont" ng-click="closePreview()">&#xe628;</span>
+                <span class="contract-download" ng-click="download()">
+                    <i class="iconfont">&#xe66c;</i>
+                    下载
+                </span>
+            </div>
+            <contract-preview></contract-preview>
+        </div>
+    </div>
+    <div id="contract-download-hidden">
+        <contract-preview></contract-preview>
+    </div>
+</div>

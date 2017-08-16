@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<style>
+    @import "css/downloader.pannel.css";
+</style>
+<div id="downloaderWrap" style="display: block">
+
+    <div id="downloaderHeader">
+        <h3 id='downloader-title' class="">
+            下载(3)
+        </h3>
+        <div class="downloader-header-btn-wrap">
+            <span  id="downloader-min" class="downloader-min iconfont">&#xe629;</span>
+            <span id="downloader-close" class="downloader-close iconfont">&#xe628;</span>
+        </div>
+    </div>
+    <div id="downloader-list-header">
+        <ul class="list-item">
+            <li class="name">文件名</li>
+            <li class="size">大小</li>
+            <li class="status">状态</li>
+            <li class="option">操作</li>
+        </ul>
+    </div>
+    <div id="downloader-list">
+        <div class="list-item">
+            <ul>
+                <li class="name">
+                    <span class="fileIcon"></span>
+                    软件项目结构描述文档软件项目结构描述文档软件项目结构描述文档.pdf
+                </li>
+                <li class="size">234K</li>
+                <li class="status status-pending">
+                    <span class="status-warn iconfont" title="下载已取消">&#xe60a;</span>
+                    <span class="status-success iconfont" title="下载成功">&#xe63e;</span>
+                    <span class="status-error iconfont" title="下载出错">&#xe63d;</span>
+                    <span class="status-downloading">下载中…</span>
+                    <span class="status-pending">等待…</span>
+                </li>
+                <li class="option option-folder">
+                    <span class="option-cancel iconfont" title="取消">&#xe628;</span>
+                    <span class="option-resume iconfont" title="重新下载">&#xe68f;</span>
+                    <span class="option-folder iconfont" title="打开文件夹">&#xe672;</span>
+                </li>
+            </ul>
+            <span class="progress-bar"></span>
+        </div>
+       </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        fileDownloader.init({useQueue:true,threads:2});
+    });
+</script>
+

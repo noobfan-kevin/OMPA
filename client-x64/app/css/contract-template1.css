@@ -1,0 +1,37 @@
+
+/* 样式重置 */
+#contract-tpl1 {font-size: 12mm;font-family: '黑体'}
+#contract-tpl1 * { margin: 0; padding: 0;}
+#contract-tpl1 ul {list-style:none}
+
+#contract-tpl1 { width: 658mm; margin: 50px 35px 40px 35px;}
+
+/* 标题 */
+#contract-tpl1 .contract-tpl-title { font-size: 22mm; text-align: center;}
+#contract-tpl1 .contract-tpl-serial-wrap { text-align: right;}
+
+/* 编号 */
+#contract-tpl1 {}
+
+/* 表格 */
+#contract-tpl1 th {font-weight: 400}
+#contract-tpl1 .contract-tpl-underline { border-bottom: 1mm solid #000; padding:0 1em;}
+#contract-tpl1 .contract-tpl1-th-bold {font-weight: bold}
+#contract-tpl1 .contract-tpl1-table { width:100%;border: 1mm solid #000; margin:0 auto;}
+#contract-tpl1 th { width: 54mm;}
+#contract-tpl1 table {width: 100%;border: 1mm solid #cccccc;border-collapse: collapse;}
+#contract-tpl1 td ,
+#contract-tpl1 th { border: 1mm solid #000; padding:0 8mm;}
+
+#contract-tpl1 .contract-tpl-signatory th,
+ .contract-tpl-signatory td { line-height: 28mm;text-align: left;white-space: nowrap}
+
+#contract-tpl1 .contract-tpl-item ,
+#contract-tpl1 .contract-tpl-sign { margin-top: 1mm;}
+#contract-tpl1 .contract-tpl-item th { text-align: center;}
+#contract-tpl1 .contract-tpl-item td { line-height: 20mm;}
+
+#contract-tpl1 .contract-tpl-name-wrap { line-height: 20mm;}
+#contract-tpl1 .contract-tpl-date-wrap { line-height: 46mm;}
+
+#contract-tpl1 .contract-tpl-root-wrap { text-align: right;}

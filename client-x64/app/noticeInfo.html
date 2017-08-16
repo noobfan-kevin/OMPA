@@ -1,0 +1,52 @@
+<style>
+    @import "css/noticeInfo.css";
+</style>
+<div id="noticeInfo" class="container-fluid row">
+    <div id="notice-view-title">
+        <svg width="30" height="30" style="margin:12px 0 0 2px ;position:absolute;">
+            <g transform="translate(2, 18) scale(1, -1) scale(0.018, 0.018)">
+                <path fill="#f0a453"
+                      d="M462.054983 492.549388c-75.077929 0-135.958508-60.881602-135.958508-135.960555s60.880579-135.961578 135.958508-135.961578c75.080999 0 135.962601 60.881602 135.962601 135.961578S537.135982 492.549388 462.054983 492.549388zM510.185166 812c-281.785781 0-510.164189-228.405013-510.164189-510.164189s228.378407-510.165212 510.164189-510.165212c281.786805 0 510.165212 228.405013 510.165212 510.165212S791.971971 812 510.185166 812zM712.057897 27.349273l-140.046616 139.996474c-32.435737-18.910699-69.701478-30.516014-109.956298-30.516014-121.365138 0-219.758076 98.398054-219.758076 219.759099 0 121.363092 98.392938 219.759099 219.758076 219.759099 121.363092 0 219.762169-98.396008 219.762169-219.759099 0-47.230698-15.19405-90.724281-40.554648-126.543068l136.759757-136.786363L712.057897 27.349273z"
+                      fill="#737383"></path>
+            </g>
+        </svg>
+        <p>查看通知</p>
+        <span id="backToNoticeList">返回</span>
+    </div>
+    <div class="row notices">
+        <div class="col-xs-2 col-md-2 col-lg-2">
+          <img src="images/calendar.png">
+           <h4></h4>
+            <p></p>
+        </div>
+        <div class="col-xs-9 col-md-9 col-lg-9 noticeContent" style="display: none;height: calc(100% - 86px);">
+                <h3 style="font-weight: bold" id="noticeTitle"></h3>
+                <p>发送人：<span id="sendName"></span></p>
+                <div style="border-bottom: 1px solid #ebebeb;"></div>
+                <div id="contentsUp">
+                <p id="contents">
+                </p>
+
+                <div class="fujian">
+                    <h5 id="fujianWenZi">附件：</h5>
+                </div>
+                </div>
+        </div>
+        <div class="col-sx-1 col-md-1 col-lg-1">
+            <input id="downFileHide" type="file" style="width:0;height:0;opacity:0;">
+        </div>
+    </div>
+    <div class="row" id="noticeInfoFoot">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+           <div class="noticeFoot">
+               <div><p></p><span></span></div>
+               <div><p></p><span></span></div>
+           </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        noticeLists.noticeInit();
+    });
+</script>

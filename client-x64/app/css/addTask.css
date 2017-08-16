@@ -1,0 +1,508 @@
+/*-------------------------基本信息----start--------------------------------------------------*/
+.addTask,.checkTask{
+    width:680px;
+    padding-top:20px;
+    background-color: #fff;
+}
+.checkTask{ position: relative; /*min-height:calc(100% - 20px);*/ }
+.addTask{ margin:0 auto;}
+.addTask li{
+    display:block !important;
+}
+
+.task-name{
+    width:110px;
+    padding:4px 0 0 0;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+}
+.checkTaskRow{
+    margin-bottom:14px !important;
+}
+.task-name-value{
+    text-align:left;
+    padding-left:10px;
+}
+.task-name-value2{
+    padding:4px 10px;
+    width:600px;
+    font-weight:normal;
+    text-align:left;
+
+}
+.task-name-two{
+    width:110px;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+    margin-left: -14px;
+    float: left;
+    padding-top: 5px;
+}
+.task-name-three{
+    width:110px;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+    margin-left: -14px;
+    float: left;
+    padding: 5px 0 0 0;
+}
+.task-input-one{
+    background-color:#fff !important;
+    width:542px !important;
+    padding-left:12px;
+    padding-right:46px;
+}
+.task-input-two{
+    background-color:#fff !important;
+    width: 213px !important;
+    margin-left: -1px;
+}
+.task-input-three{
+    background-color:#fff !important;
+    width: 168px !important;
+    margin-right:15px;
+}
+.task-input-three2{
+    background-color:#fff !important;
+    width: 104px !important;
+    margin-right:15px;
+}
+.task-input-four{
+    width: 130px !important;
+    margin-right:40px;
+    margin-left:0
+}
+.addTask input{
+    margin-bottom:14px;
+    height:30px;
+}
+.newTaskBtn{
+    position: absolute;
+    min-width:70px;
+    padding:0 10px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    border-radius: 5px;
+    color:#fff;
+    bottom:30px;
+    /*top:300px;*/
+    cursor: default;
+    -webkit-user-select:none;
+
+}
+#newTaskSave{
+    right:130px;
+    background-color: #2ec3e9;
+}
+#checkTaskEdit{
+    right:230px;
+    background-color: #2ec3e9;
+}
+#checkTaskDelete{
+    right:30px;
+    background-color: #ff4431;
+}
+
+#checkTaskComplete{
+    right:130px;
+    background-color: #5ed0c7;
+}
+#checkTaskComplete:hover{
+    background-color: #15968c;
+}
+#checkTaskEdit:hover{background-color: #02aed9;}
+#checkTaskDelete:hover{background-color:#cf1704;}
+
+#newTaskSave:hover{background-color: #02aed9;}
+#newTaskCancel{
+    right:30px;
+    background-color: #f0d14d;
+}
+#newTaskCancel:hover{background-color:#ecad17;}
+.newTaskSelect{
+    max-height: 156px;
+    overflow-y: auto;
+    margin-top: -14px;
+    width: 168px;
+}
+.newTaskSelect li{
+    /*padding-left:11px;*/
+    padding:2px 0px 2px 11px;
+    /*hieght:20px;
+    line-height:20px;*/
+}
+.newTaskSelect li:hover{
+    background-color: #ffebc4;
+}
+
+.clearFix{ content:''; display:block; clear:both;}
+#checkTaskChecker li{
+    float:left;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+#checkTaskChecker img{
+    width:38px;
+    height:38px;
+    border-radius: 50%;
+    border:1px solid #d8eaf2;
+    display:block;
+    margin-bottom: 12px;
+    margin-left:calc((100% - 38px)/2);
+
+}
+#checkTaskChecker strong{ font-weight:normal;}
+.table-condensed tbody td{ padding:1px !important;}
+
+.task-back-btn {
+    top:-6px;
+    right:-16px;
+    margin-right: 30px;
+    line-height: 40px;
+    font-size: 22px !important;
+    color: rgba(234,128,16,0.8);
+}
+#taskVersion li{
+    height:30px;
+    line-height:30px;
+    padding-left:12px;
+    font-size:12px;
+}
+#taskVersion li:hover{ background-color:#ffebc4; }
+/*---------------------------后加的样式-----------------*/
+.task-check-box{
+    width:100%;
+    margin-bottom:20px;
+}
+/*-------------------------基本信息----end--------------------------------------------------*/
+/*-------------------------进程列表----start--------------------------------------------------*/
+.task-progress-noProgress{
+    display:none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #aaaaaa;
+    position: absolute;
+    top: 38%;
+    left: 42%;
+}
+.task-progress-wrap{
+    padding:10px 0 0 10px;
+}
+.task-progress-add-btn{
+    margin:0 34px;
+    height:38px;
+    line-height:38px;
+    border:1px dashed #cccccc;
+    font-size:18px;
+    color:#acacac;
+    text-align:center;
+    margin-bottom:10px;
+}
+.task-progress-add-btn:hover{
+    color:#797878;
+    border:1px dashed #acacac;
+}
+.task-progress-table{
+    table-layout:inherit;
+    border:1px solid #aaa;
+    margin-bottom:10px;
+    text-align:center;
+    width:calc(100% - 10px);
+    border-collapse: collapse;
+}
+.task-progress-table th{
+    vertical-align: middle;
+    text-align:center;
+    border-right:1px solid #cccccc;
+    font-weight:normal;
+    border-bottom:1px solid #cccccc;
+    white-space:nowrap;
+    /*padding:0 25px;*/
+    height:22px;
+    background-color: #f2f2f2;
+}
+.task-progress-table tr:nth-child(2) th{
+    border-top:1px solid #ccc;
+}
+.task-progress-table tbody td{
+    border-right:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
+    vertical-align: middle;
+    text-align:center;
+    white-space:nowrap;
+    /*padding:0 10px;*/
+    height:34px;
+}
+.task-progress-table tbody tr:hover{
+    background-color: #ffebc4;
+}
+#task-progress-new{
+    background-color: #fff;
+}
+.task-progress-table td div{
+    margin:0 auto;
+}
+.task-progress-table input{
+    width: 90% !important;
+    height: 80%;
+    border: 1px solid #CFCBCB;
+    border-radius: 6px;
+    margin:0 auto;
+}
+.task-progress-edit{ display:none;}
+.warningMas{
+    display:none;
+    font-size:10px;
+    margin-left:5px;
+    padding:0 3px;
+    color:#fff;
+    background-color:#ff5c5c;
+    border-radius:10px;
+}
+#task-progress-list-wrap{
+    /*overflow-x: auto;*/
+    width:100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.task-progress-timeinput{
+    width:98% !important;
+    height:80%;
+    padding:0;
+    background-color: #fff !important;
+}
+.task-progress-edit{
+    position: relative;
+}
+.task-progress-new{
+    position:relative;
+}
+.taskBasicInfoBox{
+    width:100%;
+    height:100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-user-select:auto;
+}
+.taskSendBackBox{
+    position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(100,100,100,0.2);
+}
+.taskSendBackWrap{
+    border-radius:4px;
+    box-shadow: 2px 4px 8px 1px #aaa;
+    width:300px; height:240px;
+    background-color:#fff;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top:-120px;
+}
+.task-progress-edit-btn:hover{ color:#333;}
+.task-progress-delete-btn:hover{ color:#333;}
+.task-progress-save-btn:hover{ color:#333;}
+.task-progress-cancel-btn:hover{ color:#333;}
+.task-progress-new-save-btn:hover{ color:#333;}
+.task-progress-new-cancel-btn:hover{ color:#333;}
+/*-------------------------进程列表----end--------------------------------------------------*/
+/*------------------------------发送人所填信息----start-------------------------------------*/
+.taskSenderEditInput{
+    width:168px !important;
+    height:30px;
+    border-radius:4px;
+    padding-left: 10px;
+    background-color: #fff !important;
+}
+.taskSenderEditText{
+    width: 110px;margin-bottom: 0;text-align: right;font-weight: normal;margin-left: -14px;float: left;padding-top: 5px;
+}
+.taskSenderEditSelect{
+    max-height: 156px;
+    overflow-y: auto;
+    margin-top: 0;
+    margin-left: 96px;
+    width: 168px;
+
+}
+.taskSenderEditSelect li{
+    padding-left:10px;
+}
+.taskSenderEditSelect li:hover{ background-color: #ffebc4;}
+
+.taskLevelBox{
+    display:flex; width:440px;  border-right:1px solid #fff; border-radius:6px; overflow: hidden;
+}
+.taskLevelBox li{flex:1; width:48px; height:14px; line-height:14px; text-align:center; font-size:12px; color:#fff; background:#dfdfdf; border-right:1px solid #fff;}
+#taskLevelEditSelect li:hover{ background-color: #f3cea0;}
+#taskLevelEditSelect li.active{
+    background-color:#f5951c;
+}
+#taskLevelCheckSelect li{
+    border-right:1px solid #d9d9d9;
+    font-weight: bold;
+}
+.taskSenderCheckText{
+    width:30%; text-align:right;
+}
+.taskSenderBtnBoxWrap,.taskSendBtnEdit{
+    width:500px;
+    position: absolute;
+    bottom:30px;
+    right:0;
+}
+#taskSendBackToNotSend{
+    background-color: #f04f56; float:right;
+}
+#taskSendBackToNotSend:hover{
+    background-color: #ef1822;
+}
+
+.taskSendBackReason{
+    width:260px;
+    height:130px;
+    resize: none;
+    padding:10px;
+    vertical-align: top;
+    position:absolute;
+    top:40px;
+    left:20px;
+    right:20px;
+    bottom:70px;
+    border:1px solid #ccc;
+}
+#taskSenderSave{ background-color:#2ec3e9; }
+#taskSenderSave:hover{background-color:#02aed9;}
+#taskSenderCancel{ background-color:#f0d14d;}
+#taskSenderCancel:hover{background-color:#ecad17;}
+
+.taskSendBtn{
+    float:right;
+    margin-right:30px;
+    min-width:70px;
+    padding:0 10px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    border-radius: 5px;
+    color:#fff;
+    /*top:300px;*/
+    cursor: default;
+    -webkit-user-select:none;
+}
+#taskAddToContract{ background-color: #5e6ed0; }
+#taskAddToContract:hover{ background-color: #4757bc;}
+#taskSenderEdit{  background-color: #2ec3e9; }
+#taskSenderEdit:hover{background-color: #1ba9cd;}
+#taskSend{ background-color: #5ed0c7; }
+#taskSend:hover{background-color: #3cb6ac;}
+#taskSendBack{ background-color: #f0d14d; }
+#taskSendBack:hover{background-color: #ecad17;}
+
+#taskSenderEditProductorSelect{
+    max-height:172px;
+    overflow-y: auto;
+}
+.taskSendBackBtn{
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    bottom: 20px;
+}
+#taskSendBackSave{
+    right:110px;
+    background-color:#2ec3e9;
+}
+#taskSendBackSave:hover{ background-color:#02aed9; }
+#taskSendBackCancel{
+    right:20px;
+    background-color:#f0d14d;
+}
+#taskSendBackCancel:hover{background-color:#ecad17;}
+#taskProgressSubmitBtn{
+    right:30px;
+    background-color:#2ec3e9;
+}
+#taskProgressSubmitBtn:hover{ background-color:#02aed9; }
+
+#taskSendBackCheck{ position:absolute; left:120px; top:0;}
+.taskSendBackCheckBtn{color:#ecad17; -webkit-user-select: none;}
+.taskSendBackCheckBtn:hover{color:#d69705;}
+#taskSendBackCheck:hover .taskSendBackCheckBox{ display:block;}
+.taskSendBackCheckBox{
+    width:200px;
+    height:200px;
+    position:absolute;
+    left:32px;
+    top:-12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-shadow: 2px 4px 8px 1px #aaa;
+}
+.taskSendBackReasonDirect{
+    width:0;
+    height:0;
+    border:none;
+
+}
+#taskSendBackReasonBox{
+    word-wrap: break-word;
+    height:150px;
+    overflow-y: auto;
+    margin:10px;
+    border:1px solid #ccc;
+    padding:5px;
+}
+
+/*------------------------------发送人所填信息----end-------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

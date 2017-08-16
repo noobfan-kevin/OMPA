@@ -1,0 +1,151 @@
+<style>
+    @import url(css/positionMap.css);
+    @import url(libs/metroStyle/metroStyle.css);
+/*    @import url(css/ztreeNStyle.css);
+    @import url(css/zTreeStyle.css);*/
+    @import url(css/statstics.css);
+
+    /* 覆盖样式 */
+    #statsAppElement li span.chk { position: relative; top: 2px;height:13px!important;}
+    #statsAppElement li span.switch { position: relative; top: -1px;}
+
+</style>
+<div id="statsAppElement"  ng-controller="statsCtrl">
+    <div class="position-map">
+        <a>海贼王</a>
+        <a>统计</a>
+    </div>
+    <div id="stats-head">
+        <button class="add-stats-btn" ng-click="showDialog()">+ 新建统计项</button>
+    </div>
+    <div id="project-stats-wrap">
+        <div id="stats-view">
+            <table id="stats-table">
+                <thead>
+                <tr>
+                    <td rowspan="2" width="20%">记录</td>
+                    <td colspan="2">任务</td>
+                    <td colspan="4">合同</td>
+                    <td rowspan="2">操作</td>
+                </tr>
+                <tr>
+                    <td>创建量</td>
+                    <td>完成量</td>
+                    <td>创建量</td>
+                    <td>已签</td>
+                    <td>完成</td>
+                    <td>支出总额</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{defaultStats.name}}</td>
+                    <td>{{defaultStats.totalTask}}</td>
+                    <td>{{defaultStats.doneTask}}</td>
+                    <td>{{defaultStats.totalContract}}</td>
+                    <td>{{defaultStats.signedContract}}</td>
+                    <td>{{defaultStats.doneContract}}</td>
+                    <td>{{defaultStats.paidMoney}}</td>
+                    <td style="background: #dadada;">
+
+                    </td>
+                </tr>
+                <tr ng-repeat-start="stats in statsList" toggle-stats open="stats.open" open-height="200" tree-id="stats.id" tree-Nodes="zNodes" char-data="stats"  index="$index">
+                    <td>{{stats.name}}</td>
+                    <td>{{stats.totalTask}}</td>
+                    <td>{{stats.doneTask}}</td>
+                    <td>{{stats.totalContract}}</td>
+                    <td>{{stats.signedContract}}</td>
+                    <td>{{stats.doneContract}}</td>
+                    <td>{{stats.paidMoney}}</td>
+                    <td>
+                        <i class="stats-item-edit iconfont" style="color: #48ceb8;" ng-click="editStats(stats)">&#xe69a;</i>
+                        <i class="stats-item-delete iconfont" style="color: #ef9f4b;" ng-click="deleteStats(stats.id, $index)">&#xe626;</i>
+                    </td>
+                </tr>
+                <tr class="item-content" ng-repeat-end style="height:0">
+                    <td colspan="8" style="height:0">
+                        <div class="stats-detail-box" style="height:0">
+                            <div class="lft-area">
+                                <div class="date-wrap">
+                                    <i class="iconfont" style="color:#56abe4">&#xe67e;</i>
+                                    <span>{{stats.startTime | date:'yyyy-MM-dd'}}</span>
+                                    <span class="date-divider">--</span>
+                                    <span>{{stats.endTime | date:'yyyy-MM-dd'}}</span>
+                                </div>
+                                <ul class="ztree"></ul>
+                            </div>
+                            <div class="char-wrap">
+                                <canvas id="myChart" width="470" height="180"></canvas>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 新建 -->
+        <div id="stats-new" ng-show="showNewDialog" ng-init="false">
+            <div class="header-title" ng-hide="isEdit">
+                新建统计项
+                <i class="iconfont close-btn" ng-click="closeDialog()">&#xe628;</i>
+            </div>
+            <div class="header-title" ng-show="isEdit">
+                编辑
+                <i class="iconfont close-btn" ng-click="closeDialog()">&#xe628;</i>
+            </div>
+            <div class="new-content">
+                <form>
+                    <ul>
+                        <li>
+                            <div class="form-group">
+                                <label>名称:</label>
+                                <input id="newName" class="form-control" type="text" ng-model="newStats.name" style="width: 320px;">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-group">
+                                <label>时间段:</label>
+                                <input id="newStartTime" type="text" class="data-selector form-control"  ng-model="newStats.startTime" readonly>
+                            </div>
+                            <span class="split">-</span>
+                            <div class="form-group">
+                                <input id="newEndTime"  type="text" class="data-selector form-control" ng-model="newStats.endTime"  readonly>
+                            </div>
+                        <li>
+                            <label>节点:</label>
+                            <div class="tree-wrap">
+                                <ul bind-ztree id="zTreeNew" class="ztree" z-nodes="zNodes" select-nodes="newStats.nodes"></ul>
+                            </div>
+                        </li>
+                        <li style="height: 36px;margin-top:15px">
+                            <div class="button-wrap">
+                                <button id="add-save-btn" style="background: #2ec3e9" ng-click="saveStats()">确定</button>
+                                <button id="add-cancel-btn"  style="background: #f0d14d" ng-click="closeDialog()">取消</button>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="stats-mask" ng-show="showNewDialog" ng-init="false"></div>
+    </div>
+</div>
+
+<script>
+$(function() {
+
+    angular.bootstrap($('#statsAppElement'), ['statsApp']);
+
+    /* 时间插件初始化 */
+    $('.datetimepicker').remove();
+    $(".data-selector").datetimepicker({
+        format: "yyyy-mm-dd",
+        minView: "month",
+        autoclose: true,
+        todayBtn: true,
+        language: 'zh-CN'
+    });
+})
+</script>

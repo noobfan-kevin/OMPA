@@ -1,0 +1,164 @@
+<script>
+    $('#newProjectBox').find('style').remove();
+</script>
+<style>
+    @import url(css/positionMap.css);
+    @import url(css/projectDataBase.css);
+</style>
+<div class="position-map">
+    <a></a>
+    <a>项目数据</a>
+</div>
+<div class="projectDB_main">
+    <div class="projectDB_content clearfix">
+        <div class="projectDB_aside_l">
+            <ul class="ztree" id="projectDBTree"></ul>
+        </div>
+        <div class="projectDB_aside_r">
+            <div class="folder_function clearfix">
+                <a href="javascript:;" class="addFolder">新建文件夹</a>
+                <a href="javascript:;" class="upLoadFile">上传</a>
+                <a href="javascript:;" class="downLoadFile">下载</a>
+                <div id="fileSearch" class="fileSearch">
+                    <input placeholder="请输入关键字" id="searchInput">
+                    <i class="glyphicon glyphicon-search" id="searchBtn"></i>
+                </div>
+                <input type="file" multiple="multiple" id="upLoadFile" style="display: none" />
+                <input type="file" id="downLoadFile" style="display: none" />
+            </div>
+            <div class="folder_information clearfix">
+                <div class="folder_content">
+                    <ul class="fileList clearfix"></ul>
+                    <div class="fileControl">
+                        <div class="fileInfoClose" id="fileInfoBtn">
+                            <img src="images/open.png" alt="展开">
+                        </div>
+                    </div>
+                </div>
+                <div class="file_details" style="display: none">
+                    <div style="display: none">
+                        <div class="imgBox">
+                            <span>点击上传缩略图</span>
+                            <img src="" id="fileMarked" />
+                            <p>无缩略图</p>
+                            <input type="file" id="upLoadFileImg" style="display: none" />
+                        </div>
+                        <div class="file_content">
+                            <ul class="file_show">
+                                <li>
+                                    <span>文件名称 ：</span>
+                                    <span class="file_name"></span>
+                                </li>
+                                <li>
+                                    <span>文件类型 ：</span>
+                                    <span class="file_type"></span>
+                                </li>
+                                <li>
+                                    <span>文件大小 ：</span>
+                                    <span class="file_size"></span>
+                                </li>
+                                <li>
+                                    <span>文件标签 ：</span>
+                                    <span class="file_title"></span>
+                                </li>
+                                <li>
+                                    <span class="file_creator_title">创建者 ：</span>
+                                    <span class="file_creator"></span>
+                                </li>
+                                <li>
+                                    <span>创建时间 ：</span>
+                                    <span class="file_createTime"></span>
+                                </li>
+                                <li class="file_describe_title clearfix">
+                                    <span>文件描述 ：</span>
+                                    <p class="file_describe"></p>
+                                </li>
+                                <li class="clearfix">
+                                    <a href="javascript:;" class="editBtn" id="editBtn">编辑</a>
+                                </li>
+                            </ul>
+                            <ul class="file_edit" style="display: none">
+                                <li class="clearfix">
+                                    <span>文件类型 ：</span>
+                                    <select title="选择类型" class="file_type_select">
+
+                                    </select>
+                                    <i class="iconfont manageBtn" title="文件类型管理">&#xe60e;</i>
+                                </li>
+                                <li class="clearfix">
+                                    <span>文件标签 ：</span>
+                                    <input type="text" title="关键字" class="file_title_input" />
+                                </li>
+                                <li class="file_describe_title clearfix">
+                                    <span>文件描述 ：</span>
+                                    <textarea class="file_describe_textarea" title="描述信息"></textarea>
+                                </li>
+                                <li class="clearfix">
+                                    <a href="javascript:;" class="editBtn" id="cancelBtn">取消</a>
+                                    <a href="javascript:;" class="editBtn" id="saveBtn">保存</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="noInfo">无预览</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="contextMenu" style="display: none;">
+        <li id="copy" class="disClick">复制</li>
+        <li id="cut" class="disClick">剪切</li>
+        <li id="paste" class="disClick">粘贴</li>
+        <li id="delete" class="disClick">删除</li>
+        <li id="reNaming" class="disClick">重命名</li>
+    </ul>
+    <div class="assetType-contain" style="display: none;">
+        <div class="asset-type-div">
+            <div class="asset-type-set">
+                <div class="asset-type-set-head">
+                    <span>类型设置</span>
+                    <i class="iconfont icon-close">&#xe628;</i>
+                </div>
+                <div class="asset-types">
+                    <span>类型名称</span>
+                    <div class="asset-type-list">
+                        <ul id="asset-type-list">
+
+                        </ul>
+                        <div class="asset-type-new" style="display: none;">
+                            <input id="asset-type-new" autofocus="autofocus"  maxlength="10" placeholder="请输入类型名称" />
+                            <i class="iconfont m-icon-save">&#xe640;</i><i class="iconfont m-icon-cancel">&#xe628;</i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="asset-type-foot">
+                    <button id="asset-type-new-btn" class="asset-type-new-btn">+新建类型</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyShadow" style="display: none">
+        <div class="copyInfo">
+            <p>复制中，请稍后...</p>
+            <img src="images/loading.gif" />
+            <span></span>
+        </div>
+    </div>
+</div>
+<script>
+    $(window).resize(function(){
+        if($('#fileInfoBtn').hasClass('fileInfoOpen')){
+            $('.folder_content').css('width', $('.projectDB_main').width() * 78 / 100 - 314);
+            $('.file_details').css('width', 312);
+        }
+    });
+    $(document).ready(function(){
+        /*if(parseInt(document.documentElement.clientWidth)>920){
+            $('.folder_content').css('width',$('.projectDB_main').width()*78/100 - 330);
+            $('.file_details').css('width',312);
+        }*/
+        $('.position-map').find('a').get(0).innerHTML = localStorage.getItem('projectName');
+        projectDataBase.init();
+    })
+</script>

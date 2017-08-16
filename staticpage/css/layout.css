@@ -1,0 +1,128 @@
+.page{
+    min-width: 920px;
+    overflow: hidden;
+    box-shadow: 0 0 3px #074554;
+}
+/* header style
+    ----------------------------------------------------*/
+header{
+    position: relative;
+    height:55px;
+    min-height: 55px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #2dc3e8;
+}
+/* .user */
+.user{
+    padding-top: 7px;
+    margin-right: 40px;
+    color:#fff;
+}
+.user-avatar{
+    margin: 0 9px;
+}
+.user-avatar img{
+    border-radius: 50%;
+    border: 1px solid #fff;
+    height: 40px;
+    width: 40px;
+}
+/* #nav */
+#nav li {
+    float: left;
+}
+#nav li a.nav-item {
+    display: inline-block;
+    padding: 0 13px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 55px;
+    font-size: 16px;
+}
+#nav li.current,#nav li:hover {
+    background-color: #02aed9;
+}
+.homeicon{
+    font-size: 20px;
+    line-height: 52px;
+}
+
+/* container style
+    --------------------------------------------------*/
+.container{
+    position: absolute;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    padding-left: 150px;
+}
+.sitebar{
+    position: absolute;
+    left:0;
+    top:0;
+    width:150px;
+    height: 100%;
+    background-color: #273240;
+}
+.content{
+    position: relative;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+/* #aside-nav */
+#aside-nav li {
+    width:100%;
+}
+#aside-nav li a.asidenav-item{
+    width:100%;
+    display: inline-block;
+    padding: 0 0 0 20px;
+    color: #b8babd;
+    text-decoration: none;
+    line-height: 40px;
+    font-size: 14px;
+}
+.asidenav-item i{
+    margin-right:15px;
+}
+#aside-nav li.current,#aside-nav li:hover {
+    background-color: rgba(0,0,0,.1);
+}
+#aside-nav li.current a{
+    border-left: 3px solid #2dc3e8;
+    color:#fff;
+}
+
+/* content style */
+.selectdiv {
+    min-height: 41px;
+    padding: 10px 20px;
+    background-color: #f3f3f3;
+    position: relative;
+    z-index: 100;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    -o-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* windowclose */
+.windowclose a {
+    width: 26px;
+    display: inline-block;
+    height: 35px;
+    text-align: center;
+}
+.windowclose a:hover{
+    background-color: #02aed9;
+}
+.windowclose i{
+    font-size: 12px;
+}
+.closebtn:hover{
+    background-color: #E80921 !important;
+}
+/* usermanage style */
+
+

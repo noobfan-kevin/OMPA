@@ -1,0 +1,27 @@
+
+    <style>
+        @import url(css/myProjectsStyle.css);
+        @import url(css/zTreeStyle.css);
+    </style>
+
+    <!-- 项目列表页 -->
+    <div id="my-projects" class="container-fluid row" style="display: none;"></div>
+
+    <!-- 项目信息页 -->
+    <div id="my-project-details" class="container-fluid row" style="display: none;"></div>
+
+    <!-- 新建项目页 -->
+    <div id="newProjectBox" style="display: none;"></div>
+
+
+    <script>
+        $(function(){
+            window.loadProjectList = function() {
+                var myProjectsObj= $('#my-projects');
+                myProjectsObj.loadPage('projectList');
+                myProjectsObj.show().siblings('div').text('').hide();
+            };
+
+            loadProjectList();
+        });
+    </script>

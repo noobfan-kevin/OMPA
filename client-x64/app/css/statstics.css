@@ -1,0 +1,45 @@
+
+#project-stats-wrap { position: absolute; top: 71px; bottom: 0; left: 0; right: 0; padding: 30px 16px 16px 10px;
+    background: #f2f2f2;overflow: auto;}
+#stats-view { padding: 12px 14px; background: #ffffff; border: 1px solid #ccc;}
+
+/* 新建统计 */
+#stats-head { position: relative; height: 40px;border-bottom: 1px solid #ccc; box-shadow:0 1px 2px #ADADAD; background: #f2f2f2;}
+#stats-head button {border: none; float: right; margin-right: 25px; border-radius: 4px; background: rgba(92,184,92,0.8);
+    color: white; height: 30px; font-size: 13px; margin-top: 5px;}
+#stats-head button:hover {rgba(92,184,92,1)}
+
+/* 列表 */
+#stats-view table { width: 100%; border-spacing: 0;border-collapse: collapse;font-size:12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif;table-layout:fixed}
+#stats-view table td { text-align: center;border: 1px solid #ccc; height: 28px;cursor: default}
+#stats-view thead {font-size:14px;font-weight: 600; color: #666666; background: #f5f5f5;}
+#stats-view .iconfont { display: inline-block; width: 24px; height: 18px;font-size:12px;transition: .3s}
+#stats-view .stats-item-edit:hover,
+#stats-view .stats-item-delete:hover {transform: scale(1.3);transform-origin:center center;cursor: default}
+
+#stats-view .item-content { height: 0;}
+#stats-view .item-content .stats-detail-box {overflow: hidden;}
+#stats-view .item-content .lft-area { float: left; padding: 6px;height: 100%; width: 210px;}
+#stats-view .item-content .date-wrap { height: 22px; line-height: 22px; text-align: center; margin-bottom: 5px;}
+#stats-view .item-content .ztree {height: 156px; width: 200px; overflow: auto;}
+
+#stats-view tbody tr:hover { background: #f0fcff;}
+/* 新建 */
+.stats-mask { position: fixed; z-index: 998; top: 0; bottom: 0; left: 0; right: 0; background: #000000;opacity: .6}
+#stats-new { position: fixed; z-index: 999; top: 50%; left: 50%;transform: translate(-50%, -50%); width: 570px;
+    height: 430px;background: #ffffff;box-shadow: 1px 1px 3px #000;border-radius: 3px}
+#stats-new .header-title{ position: relative; height: 42px; line-height: 42px; text-indent: 1em; background: #f2f1f1;
+    font-weight: bold}
+#stats-new .close-btn { position: absolute; top: 50%; right: 1em;transform: translateY(-50%); text-align: center}
+#stats-new .close-btn:hover {font-weight: bold;cursor: default}
+
+#stats-new .new-content { padding:30px 90px 40px 150px;}
+#stats-new li { position: relative;list-style: none;}
+#stats-new label { position: absolute; width: 100px; text-align: right; margin-left: -110px; height: 34px; line-height: 34px;}
+#stats-new input { height: 32px; line-height: 32px; border:1px solid #cccccc;outline:none; padding:5px 10px;}
+#stats-new .form-group { display: inline-block;}
+#stats-new .data-selector { width: 150px;}
+#stats-new .split { display: inline-block; width: 10px; text-align: center; line-height: 34px;}
+#stats-new .tree-wrap { height: 160px; overflow-y: auto;}
+#stats-new .button-wrap { float: right;}
+#stats-new button { float: left; margin-left: 22px;height: 36px; width: 70px; border: none; border-radius: 4px; color: white;}

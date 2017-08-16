@@ -1,0 +1,10 @@
+<div id="my-contract-list-wrap">
+    <div class="my-contract-header">
+        <my-contract-sift/>
+        <div style="font-size:20px;font-weight:700;color: #aaaaaa;position:absolute;top:45%;left:42%" ng-show="!contracts.length && useSift">没有符合条件的合同</div>
+        <div style="font-size:20px;font-weight:700;color: #aaaaaa;position:absolute;top:45%;left:42%" ng-show="!contracts.length && !useSift">当前没有合同</div>
+    </div>
+    <div class="my-contract-body">
+        <my-contract-list/>
+    </div>
+</div>

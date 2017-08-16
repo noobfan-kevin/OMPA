@@ -1,0 +1,180 @@
+<style>
+    @import url(css/taskCard.statusbar.css);    /*任务卡样式*/
+    @import url(css/addTaskInProject.css);
+    @import url(css/taskCard.css);
+</style>
+<div id="taskCard-edit-wrap" style="display:none;">
+    <div  id="taskStatus" class="taskCard-edit-title" data-value="new">
+        <p class="title-new-task"><span class="iconfont">&#xe662;</span>新建任务</p>
+        <p class="title-new-task-version"><span class="iconfont">&#xe662;</span>新建任务版本</p>
+    </div>
+    <div class="task-area">
+        <div class="task-area-version task-area-version-edit">
+            <span style="margin-right:10px;">版本</span>
+            <input id="taskVersionSelected" placeholder="请输入版本号！" type="text"  class="task-version-input task-version-input-edit">
+        </div>
+        <!-- 任务状态条 -->
+        <div class="task-status-wrap">
+            <div class="task-status progress-status-1">
+                <div class="task-status-big-bar"></div>
+
+                <div class="task-status-cell-outer"> <div class="task-status-cell-inner">制卡</div></div>
+                <div class="task-status-cell-outer"> <div class="task-status-cell-inner">发送</div> </div>
+                <div class="task-status-cell-outer"> <div class="task-status-cell-inner">制作</div> </div>
+                <div class="task-status-cell-outer"> <div class="task-status-cell-inner">审核</div> </div>
+                <div class="task-status-cell-outer">  <div class="task-status-cell-inner">完成</div> </div>
+
+                <div class="task-status-tiny-bar"> <div class="task-status-tiny-bar-inner"></div> </div>
+            </div>
+        </div>
+        <!-- 任务项目选项卡 -->
+        <ul class="task-item-tab">
+            <li class="task-item-tab-active">基本信息</li>
+        </ul>
+        <!-- 任务项 -->
+        <ul class="task-item-content">
+            <!-- 基本信息 -->
+            <li>
+                <div class="addTask" id="new-task-wrap">
+                    <form class="form-inline newVersionShow">
+                        <div class="form-horizontal newVersionShow" style="display:none;">
+                            <div class="form-group checkTaskRow">
+                                <label  class="col-sm-2 task-name">名称：</label>
+                                <label id="checkTaskName" class="col-sm-2 task-name task-name-value2"></label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal newVersionHidden" >
+                            <div class="form-group">
+                                <label for="newTaskName" class="col-sm-2 task-name"><span style="color:red;">*</span>名称：</label>
+                                <div class="col-sm-6" style="padding:0">
+                                    <input id="newTaskName"  type="text"  class="form-control task-input-one">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group" style="position: relative">
+                                <label for="newTaskChecker" class="col-sm-2 task-name"><span style="color:red;">*</span>审核人：</label>
+                                <div class="col-sm-6" style="padding:0">
+                                    <input id="newTaskChecker" data-content="members" data-toggle="modal" data-target="#my-project-add-chooseBody" data-backdrop="static" data-value="[]" type="text"  class="form-control task-input-one"  readonly >
+                                </div>
+                                <span id="task-checker-choose"   style="cursor:default;position: absolute; top:7px; left:614px; color:#5699c3; font-size:12px;">选择</span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="position: relative">
+                            <label for="newTaskStartTime" class="task-name-two"><span style="color:red;">*</span>开始时间：</label>
+                            <input id="newTaskStartTime" type="text" class="form-control task-input-two form_datetime" readonly>
+                            <span><i class="glyphicon glyphicon-calendar"style="right:27px; top:-4px; color:#666;"></i></span>
+                        </div>
+                        <div class="form-group" style="position: relative">
+                            <label for="newTaskEndTime" class="task-name-two"><span style="color:red;">*</span>预计时间：</label>
+                            <input id="newTaskEndTime" type="text" class="form-control task-input-two form_datetime" readonly>
+                            <span><i class="glyphicon glyphicon-calendar"style="right:27px; top:-4px; color:#666;" ></i></span>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="newTaskNeedDay" class="col-sm-2 task-name"><span style="color:red;">*</span>工作日：</label>
+                                <div class="col-sm-6" style="padding:0">
+                                    <input id="newTaskNeedDay" class="form-control task-input-four">
+                                </div>
+                                <label style="font-weight:normal; line-height:30px;">天</label>
+                            </div>
+                        </div>
+
+                        <!--&lt;!&ndash;新建版本&ndash;&gt;-->
+                        <!--<div class="form-horizontal newVersionShow" style="display:none;">-->
+                            <!--<div class="form-group checkTaskRow">-->
+                                <!--<label  class="col-sm-2 task-name">类别：</label>-->
+                                <!--<label id="checkTaskType" class="col-sm-2 task-name-value2"><span>资产</span>><span>猴子</span>><span>模型</span></label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group has-feedback newVersionHidden" >
+                            <label for="newTaskType" class="task-name-two"><span style="color:red;">*</span>类别：</label>
+                            <input id="newTaskType" data-value="2" value="资产" type="text" class="form-control task-input-three" data-toggle="dropdown" readonly>
+                            <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+                            <ul  id="newTaskTypeSelect" class="dropdown-menu newTaskSelect" style="margin-left: 96px;">
+                                <li data-value="2">资产</li>
+                                <li data-value="1">镜头</li>
+                            </ul>
+                        </div>
+                        <div class="form-group has-feedback newVersionHidden">
+                            <input id="newTaskResource" type="text" class="form-control task-input-three" data-toggle="dropdown" readonly>
+                            <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+                            <ul  id="newTaskResourceSelect" class="dropdown-menu newTaskSelect" >
+                                <!--<li data-value="xxx">孙悟空（角色）</li>-->
+                            </ul>
+                        </div>
+                        <div class="form-group has-feedback newVersionHidden">
+                            <input id="newTaskStep" type="text" class="form-control task-input-three" data-toggle="dropdown" readonly>
+                            <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+                            <ul  id="newTaskStepSelect" class="dropdown-menu newTaskSelect">
+                                <!--<li data-value="xxx">基础效果设计</li>-->
+                            </ul>
+                        </div>
+                        <span class="newTaskBtn" id="newTaskSave">保存</span>
+                        <span class="newTaskBtn" id="newTaskCancel">取消</span>
+                    </form>
+                </div>
+                <div class="modal " id="my-project-add-chooseBody" tabindex="-1" role="dialog" style="font-size: 14px; display:none;" >
+                    <div class="modal-dialog" role="document"  >
+                        <div class="modal-content" style="margin-left: 50px;height: 100%; width:60%;">
+                            <div class="modal-header"  style="margin-bottom:40px; height:35px; line-height:35px; background-color:#eee;">
+                                <button type="button" class="close " id='closeProCreate' style="margin-top:-13px; opacity: 1;" data-dismiss="modal" aria-label="Close">
+                                    &nbsp;<span class="iconfont" style=" font-size: 0.5em;color: grey">&#xe628;</span></button>
+                                <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                                    &nbsp;</button>
+                                <h4 class="modal-title" id="my-project-add-chooseClose" style="margin-top:-5px;font-size:12px; font-weight:normal;"><b>选择</b></h4>
+                            </div>
+                            <div class="modal-body" id="my-project-add-chooseContent" style="padding:0;position: relative;">
+                                <h5 class="my-project-add-choose-title">项目下可选</h5>
+                                <div style="border-top:1px solid #e3e2e2; border-bottom:1px solid #e3e2e2; margin:0 30px;">
+                                    <div class="clearfix">
+                                        <div class="my-project-add-chooseBox" style="width:300px; height:283px;">
+                                            <ul id="my-project-add-chooseList">
+                                                <!--√-->
+                                                <!--<li data-value="张三的id" class="my-project-add-choose-people"><i style="color:#999;" data-value="张三的id"  class="iconfont">&#xe64b;</i><span>张三</span></li>
+                                                <li data-value="李四的id" class="my-project-add-choose-people"><i class="iconfont">&#xe64c;</i><span>李四</span></li>
+                                           --> </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:100%; padding-bottom:12px;">
+                                    <div style="height:34px; line-height:34px; color:#11cd6e; padding-left:50px;"><i style="font-size:18px; " class="iconfont">&#xe620;</i>已选用户</div>
+                                    <ul id="my-project-add-haveChoose" style="height:30px;" class="my-project-add-haveChoose clearfix">
+                                        <!--<li data-value="xxxxxxx"><span>张三</span><i class="iconfont">&#xe63d;</i></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="margin:0 30px; padding-top: 6px;padding-bottom: 6px">
+                                <button type="button" class="btn btn-default dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseSave" >保存</button>
+                                <button type="button" class="btn btn-primary dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseCancelSave"  >取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <script>
+            $(function() {
+                // 默认加载
+                var index = $('.task-item-tab-active', '.task-item-tab').index();
+                $('.task-item-content>li').removeClass('active').eq(index).addClass('active');
+
+                // 点击切换
+                $('li','.task-item-tab').click(function() {
+                    $('li','.task-item-tab').removeClass('task-item-tab-active');
+                    $(this).addClass('task-item-tab-active');
+                    $('.task-item-content>li').removeClass('active').eq($(this).index()).addClass('active');
+                });
+
+                //延时缓解难看内容闪现
+                setTimeout(function(){
+                    $('#taskCard-edit-wrap').show();
+                }, 20);
+
+            });
+            /*-----------------------------基本信息-----------start------------------------------------------*/
+            taskBasicInfo.init();
+            /*-----------------------------基本信息-----------end------------------------------------------*/
+        </script>
+    </div>
+</div>

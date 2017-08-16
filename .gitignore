@@ -1,0 +1,9 @@
+.idea
+/node_modules
+server/logs/*
+server/uploads
+*.log
+client-x64/record
+client-x64/userinfo
+client-x64/app/chat_config
+.svn

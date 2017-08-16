@@ -1,0 +1,161 @@
+.operationLogApp{
+    height: 100%;
+    background: #f1f1f1;
+    cursor: default;
+    padding-bottom: 68px;
+    font-family: "Microsoft YaHei UI";
+}
+.operationLog-header{
+    height: 30px;
+    background:rgb(2,174,217);
+}
+.operation-position{
+    font-size: 14px;
+    line-height: 30px;
+    color: white;
+    margin-left: 10px;
+}
+
+.operation-search{
+    height: 39px;
+    border-bottom: 1px solid #ccc;
+    box-shadow:0 0 1px 1px #aaa;
+}
+#operation-search {
+    display: inline-block; padding-top: 4px; vertical-align: middle; }
+
+#operation-search input { height: 30px; width: 140px; margin-left: 20px;
+    border-radius: 4px; border: 1px solid #ccc; padding-left: 6px;font:12px 微软雅黑 }
+
+#operation-search-btn { position: relative; left: -32px; top: 1px; display: inline-block; height: 26px; width: 26px;
+    text-align: center; cursor: pointer;}
+
+#operation-search-btn span { line-height: 26px; }
+
+/*===============================table========================*/
+.log-person,.log-time{
+    width: 150px!important;
+}
+.log-detail{
+    text-align: left!important;
+    padding-left: 10px;}
+.operation-table,.contract-log-table{
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    height:inherit;
+}
+
+.operation-table table,.contract-log-table table{
+    width: 100%;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-collapse: collapse;
+}
+.operation-table table tbody,.contract-log-table table tbody{
+    background: white;
+}
+.operation-table table th,.operation-table table td,.contract-log-table th,.contract-log-table td{
+    text-align: center;
+    border: 1px solid #ccc!important;
+}
+.operation-table table th,.contract-log-table table th{
+    height: 42px;
+    font-size: 14px;
+    font-weight: normal;
+    background: #f1f1f1;
+}
+.operation-table table td,.contract-log-table table td{
+    height: 32px;
+    font-size: 12px;
+}
+
+.operation-table-btn{
+
+}
+.operation-table-btn{}
+#operation-table-foot,#contract-table-foot,#operation-Task-foot{
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    height: 50px;
+    background: white;
+    border: 1px solid #ccc;
+    border-top:none;
+}
+#operation-table-foot span,#operation-Task-foot span,#contract-table-foot span{
+    float: left;
+    margin-left: 10px;
+    margin-top: 14px;
+}
+#operation-table-foot button,#operation-Task-foot button,#contract-table-foot button{
+    float: right;
+    margin-right: 6px;
+    margin-top: 7px;
+    color:#666;
+}
+#operation-table-foot button:hover{color:#000;}
+#operation-Task-foot button:hover{color:#000;}
+
+#operation-table-foot span:after,
+#operation-table-foot button:after{clear: both;}
+#operation-Task-foot span:after,
+#operation-Task-foot button:after{clear: both}
+#contract-table-foot span:after,
+#contract-table-foot button:after{clear: both}
+
+.operation-table-btn button,.operation-Task-btn button,.contract-table-btn button{
+    border: 1px solid #ccc;
+    background: white;
+    margin-right: 10px;
+    height: 34px;
+    border-radius: 2px;
+    color: #666;
+}
+.operation-table-btn button i,.operation-Task-btn button i,.contract-table-btn button i{
+    line-height: 25px;}
+.cur-page,.curTask-page{
+    width:50px;}
+.first-page,.last-page,.prev-page,.next-page,.prevTask-page {
+    width: 42px;
+    text-align: center;
+}
+.curLog-page-choose,.curTask-page-choose,.contract-page-choose{
+    position: absolute;
+    width: 50px;
+    max-height: 102px;
+    height: auto;
+    overflow-y:auto!important;
+    border: 1px solid #ccc;
+    background: white;
+    bottom: 44px;
+    right: 102px;
+    border-radius: 4px;
+}
+.contract-page-choose{
+    right: 85px!important;
+    padding: 0!important;
+}
+.contract-page-choose li{
+    height: 20px!important;
+}
+.contract-page-choose li:hover{
+    background: #ffebc4;
+}
+.curLog-page-choose li:hover{
+    background: #ffebc4;
+}
+.curTask-page-choose li:hover{
+    background: #ffebc4;
+}
+.curTask-page-choose{
+    right: 116px!important;
+}
+#operationTask_log .operation-table{
+    height:auto!important;
+    background: #f1f1f1!important;
+}
+
+

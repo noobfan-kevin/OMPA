@@ -1,0 +1,258 @@
+html {
+    -webkit-font-smoothing: antialiased; /*字体边缘平滑*/
+}
+
+body {
+    background: #f2f2f2;
+    color: #666;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering*/
+    -webkit-text-size-adjust: 100%; /*禁用Webkit内核浏览器的文字大小调整功能*/
+    -webkit-user-select: none;
+}
+
+::-webkit-scrollbar/*整体部分*/
+{
+    width: 9px;
+    height:9px;
+}
+
+::-webkit-scrollbar-track/*滑动轨道*/
+{
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.1);
+    border-radius: 0px;
+    background: rgba(114,102,128,.1);
+
+}
+
+::-webkit-scrollbar-thumb/*滑块*/
+{
+    border-radius: 5px;
+
+    background: #c9c9c9;
+}
+
+::-webkit-scrollbar-thumb:hover/*滑块效果*/
+{
+    border-radius: 5px;
+
+    background: #939393;
+}
+/*边角样式*/
+::-webkit-scrollbar-corner{
+    background: transparent;
+}
+
+button{
+    cursor: default;
+}
+
+.page{
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+    border: 1px solid rgb(167, 167, 167);
+    box-shadow: 0 0 3px 3px rgb(137, 136, 136);
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*  1. Clearing
+--------------------------------------------------------------------- */
+p{
+    line-height: 20px;
+    margin-bottom: 0;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+
+/*  2. Float
+--------------------------------------------------------------------- */
+.fl{
+    float:left !important;
+}
+.rg{
+    float:right !important;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+/* header style
+    ----------------------------------------------------*/
+header{
+    position: relative;
+    height:55px;
+    min-height: 55px;
+    width: 100%;
+    background-color: #2dc3e8;
+    font-family: 'Microsoft Yahei','微软雅黑', sans-serif;
+}
+.header a
+{
+    text-decoration:none;
+    cursor: default;
+}
+/* .user */
+.user{
+    padding-top: 7px;
+    margin-right: 20px;
+    color:#fff;
+}
+.user-avatar{
+    margin: 0 9px;
+}
+.user-avatar img{
+    border-radius: 50%;
+    border: 1px solid #fff;
+    height: 40px;
+    width: 40px;
+}
+/* #nav */
+ul#nav li {
+    float: left;
+    margin-right: 1px;
+}
+ul#nav li a.nav-item {
+    position:relative;
+    display: inline-block;
+    padding: 0 13px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 55px;
+    font-size: 17px;
+}
+ul#nav li:hover {
+    background-color: #2cadc7;
+}
+ul#nav li.current {
+    background-color: #02aed9;
+}
+.homeicon{
+    font-size: 20px;
+    line-height: 52px;
+}
+
+/* container style
+    --------------------------------------------------*/
+.containers{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 55px;
+    bottom: 0px;
+    padding-left: 150px;
+    overflow: auto;
+}
+.sitebar{
+    position: absolute;
+    left:0;
+    top:0;
+    width:150px;
+    height: 100%;
+    background-color: #273240;
+    font-family: 'Microsoft Yahei','微软雅黑', sans-serif;
+}
+.content{
+    position: absolute;
+    top: 0;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+/* #aside-nav */
+ul#aside-nav li {
+    width:100%;
+}
+ul#aside-nav li a.asidenav-item{
+    width:100%;
+    display: inline-block;
+    padding: 0 0 0 20px;
+    color: #b8babd;
+    text-decoration: none;
+    line-height: 45px;
+    font-size: 15px;
+    cursor: default;
+    position: relative;
+}
+.myTaskUnreadFlag,.myContractUnreadFlag,.noticeUnread{
+    display:none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 10px;
+    right: 4px;
+}
+.unRead{
+    display:none;
+    color: #fff;
+    border-radius: 30%;
+    padding: 0 4px 0 3px;
+    background-color: red !important;
+    margin-left: 4px;
+    height: 18px;
+    line-height: 17px;
+    font-size: 12px;
+    max-width: 34px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 14px;
+    left: 106px;
+}
+.asidenav-item i{
+    margin-right: 10px;
+}
+ul#aside-nav li.current,ul#aside-nav li:hover {
+    background-color: rgba(0,0,0,.1);
+}
+ul#aside-nav li.current a{
+    border-left: 3px solid #2dc3e8;
+    color:#fff;
+}
+
+/* content style */
+.selectdiv {
+    min-height: 41px;
+    padding: 10px 20px;
+    background-color: #f3f3f3;
+    position: relative;
+    z-index: 100;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    -o-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* windowclose */
+.windowclose a {
+    width: 26px;
+    display: inline-block;
+    height: 25px;
+    text-align: center;
+}
+.windowclose a:hover{
+    background-color: #02aed9;
+}
+.windowclose i{
+    font-size: 12px;
+}
+.closebtn:hover{
+    background-color: #E80921 !important;
+}
+/* usermanage style */
+
+

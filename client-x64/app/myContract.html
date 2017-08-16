@@ -1,0 +1,46 @@
+<style>
+    @import "css/myContract.css";
+    @import "css/contract-template1.css";
+    @import "css/view-voucher.css";
+</style>
+<div id="myContractApp" ng-controller="myContractListCtrl">
+    <div class="sitebar">
+        <ul id="aside-nav">
+            <li id="mySendContract" class="current" ng-click="filterType='send'">
+                <a class="asidenav-item" href="#/myContractList" draggable="false">
+                    <i class="iconfont">&#xe65c;</i>
+                    由我发送<span class="unRead" id="sentByMeContractUnRead">未读</span></a>
+                <i class="red-dot-num" ng-show="senderDot">{{senderDot}}</i>
+            </li>
+            <li id="myPayContract" ng-click="filterType='pay'">
+                <a class="asidenav-item" href="#/myContractList" draggable="false"><i class="iconfont">&#xe656;</i>由我支付<span class="unRead" id="paidByMeContractUnRead">未读</span></a>
+                <i class="red-dot-num" ng-show="payDot">{{payDot}}</i>
+            </li>
+            <li id="mySignContract" ng-click="filterType='sign'">
+                <a class="asidenav-item" href="#/myContractList" draggable="false"><i class="iconfont">&#xe635;</i>由我签约<span class="unRead" id="signedByMeContractUnRead">未读</span></a>
+                <i class="red-dot-num" ng-show="signDot">{{signDot}}</i>
+            </li>
+        </ul>
+    </div>
+    <div id="myContract-content" class="content">
+        <section ui-view></section>
+    </div>
+</div>
+<script>
+$(function() {
+
+    var $asideNavItems = $('li','#aside-nav');  //侧边导航列表
+    $asideNavItems.off('click').click(function() {
+        $asideNavItems.removeClass('current');
+        $(this).addClass('current');
+    });
+
+    angular.bootstrap($('#myContractApp'),['myContract']);
+
+    $('#aside-nav').on('mouseover','.unRead',function(){
+        var that=$(this);
+        that.attr('title',that.html());
+    });
+
+});
+</script>

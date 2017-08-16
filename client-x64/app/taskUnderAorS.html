@@ -1,0 +1,44 @@
+<!--管理资产或者镜头下任务卡的弹出页面-->
+<style>
+    @import url(css/taskUnderAorSStyle.css);
+    @import url(css/ztreeNStyle.css);
+</style>
+<div class="taskUnderAorS" style="display: block">
+    <div class="taskUnderAorS-contain">
+        <div class="taskUnderAorS-div">
+            <div class="taskUnderAorS-head">
+                <span>任务卡调整页面</span>
+                <i class="iconfont TAS-cancel-X">&#xe628;</i>
+            </div>
+            <div class="taskUnderAorS-body">
+                <div class="TAS-B-left">
+                    选择任务卡所在节点：
+                    <ul id="TAS-B-left" class="ztree">
+
+                    </ul>
+                </div>
+                <div class="TAS-B-middle">
+                    选中节点下任务卡：
+                    <ul id="TAS-B-middle">
+                        当前步骤下无任务卡
+                    </ul>
+                </div>
+                <div class="TAS-B-right">
+                    选择任务卡目标节点：
+                    <ul id="TAS-B-right" class="ztree">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="taskUnderAorS-foot">
+                <button class="TAS-cancel">取消</button>
+                <button class="TAS-sure">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        TUAS.init();
+    })
+</script>

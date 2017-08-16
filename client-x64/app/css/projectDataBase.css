@@ -1,0 +1,539 @@
+.clearfix:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+.projectDB_main input,.projectDB_main textarea{
+    outline: none;
+}
+.projectDB_main{
+    padding: 10px;
+    padding-bottom: 40px;
+    height: 100%;
+    background: #f1f1f1;
+    font-family: "Microsoft YaHei";
+    cursor: default;
+}
+.projectDB_content{
+    border: 1px solid #dedede;
+    background: #fff;
+    height: inherit;
+}
+.projectDB_aside_l{
+    width: 22%;
+    height: 100%;
+    background: #edf0f5;
+    float: left;
+    overflow: auto;
+    padding: 8px 0;
+}
+.projectDB_aside_r{
+    width: 78%;
+    height: 100%;
+    float: left;
+}
+/*操作按钮栏*/
+.projectDB_main .folder_function{
+    width: 100%;
+    height: 10%;
+    border-bottom: 1px solid #dedede;
+    position: relative;
+}
+.projectDB_main .folder_function a{
+    width: 50px;
+    height: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+    display: inline-block;
+    background: #6ab0ff;
+    border-radius: 4px;
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+    margin-left: 10px;
+    cursor: default;
+}
+.projectDB_main .folder_function a:hover{background:#00b7ee}
+.projectDB_main .folder_function a:first-child:hover{background: #4cae4c}
+.projectDB_main .folder_function .addFolder{
+    width: 80px;
+    background: #5cb85c;
+}
+.projectDB_main .folder_function .upLoadFile{
+    left: 90px;
+}
+.projectDB_main .folder_function .downLoadFile{
+    left: 150px;
+}
+/*搜索*/
+.projectDB_main .fileSearch{
+    width: 120px;
+    height: 30px;
+    float: right;
+    margin-right: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -15px;
+}
+.projectDB_main .fileSearch input{
+    width: 120px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 20px;
+    border: 1px solid #dedede;
+    line-height: 30px;
+    border-radius: 4px;
+}
+.projectDB_main .fileSearch i{
+    left: 102px;
+    top: -22px;
+    cursor: default;
+}
+/*文件信息*/
+.projectDB_main .folder_information{
+    width: 100%;
+    height: 90%;
+}
+/*文件夹内容*/
+.projectDB_main .folder_content{
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+.projectDB_main .fileControl{
+    width: 20px;
+    height: 64px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -32px;
+}
+.projectDB_main .fileInfoOpen{
+    width: 2px;
+    height: 64px;
+    background: #6ab0ff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    line-height: 64px;
+    border-radius: 2px;
+    cursor: default;
+    overflow: hidden;
+}
+.projectDB_main .fileInfoClose{
+    width: 2px;
+    height: 64px;
+    background: #6ab0ff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    line-height: 64px;
+    border-radius: 2px;
+    cursor: default;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+.projectDB_main .fileList{
+    text-align: center;
+}
+.projectDB_main .fileList li{
+    width: 78px;
+    height: 80px;
+    padding-top: 8px;
+    float: left;
+    margin-left: 3%;
+    margin-top: 4%;
+    border: 1px solid transparent;
+}
+.projectDB_main .fileList .upload_file{
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.projectDB_main .cancel_upload{
+    position: absolute;
+    font-size: 16px!important;
+    top: -8px;
+    right: 4px;
+    color: red;
+}
+.projectDB_main .file_uploading{
+    height: 6px;
+    width: 100%;
+    background: #ddd;
+    padding-top: 2px;
+}
+.projectDB_main .file_uploading_line{
+    height: 2px;
+    background: rgb(17,205,110);
+    width: 100%;
+}
+.projectDB_main .fileList li:hover{
+    background: #f3f8ff;
+    border: 1px solid #b4c9f0;
+}
+.projectDB_main .fileList li.checked{
+    background: #d0e2ff;
+    border: 1px solid #6994e2;
+}
+.projectDB_main .fileList img{
+    width: 40px;
+    height: 46px;
+}
+.projectDB_main .fileList p{
+    padding-top:3px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.projectDB_main .fileList input{
+    width: 78px;
+    height: 20px;
+    font-size: 12px;
+    margin-left: -2px;
+    margin-top: 3px;
+    line-height: 20px;
+}
+/*文件详情*/
+.projectDB_main .file_details{
+    width: 0;
+    height: 100%;
+    float: right;
+    padding: 10px;
+    position: relative;
+    left: 0;
+    top: 0;
+    border-left: 1px solid #dedede;
+    overflow-y: auto;
+}
+.projectDB_main .noInfo{
+    font-size: 30px;
+    color: #ddd;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -46px;
+    margin-top: -14px;
+}
+.projectDB_main .file_details .imgBox{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 196px;
+    overflow: hidden;
+}
+.projectDB_main .imgBox span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 196px;
+    text-align: center;
+    font-size: 18px;
+    background: rgba(24, 24, 24, 0.6);
+    color: #fff;
+    font-weight: 100;
+    letter-spacing: 0;
+    left: 0;
+    top: 196px;
+    transition: .2s linear;
+}
+.projectDB_main .imgBox img{
+    width: 100%;
+    height: 100%;
+}
+.projectDB_main .imgBox p{
+    font-size: 30px;
+    color: #ddd;
+    text-align: center;
+    line-height: 196px;
+}
+.projectDB_main .file_content li{
+    padding-top: 3%;
+}
+.projectDB_main .file_content .file_name{
+    word-break: break-all;
+}
+/*文件信息显示状态*/
+.projectDB_main .file_creator_title{
+    display: inline-block;
+    text-indent: 1em;
+}
+.projectDB_main .file_describe_title{
+    min-height: 80px;
+}
+.projectDB_main .file_describe_title span{
+    float: left;
+}
+.projectDB_main .file_describe_title .file_describe{
+    width: 73%;
+    float: left;
+    padding-left: 3px;
+    word-break: break-all;
+}
+.projectDB_main li .editBtn{
+    width: 70px;
+    height: 35px;
+    background: #2ec3e9;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    border-radius: 4px;
+    float: right;
+    cursor: default;
+}
+/*文件信息编辑状态*/
+.projectDB_main .file_edit span,.projectDB_main .file_edit input,.projectDB_main .file_edit select{
+    float: left;
+}
+.projectDB_main .file_edit .iconfont{
+    color: #f9e27f;
+    margin-left: 10px;
+}
+.projectDB_main .file_title_input{
+    width: 161px;
+}
+.projectDB_main .file_type_select{
+    min-width: 100px;
+}
+.projectDB_main textarea{
+    height: 88px;
+    resize: none;
+}
+.projectDB_main li #saveBtn,.projectDB_main li #cancelBtn{
+    cursor: default;
+}
+.projectDB_main li #cancelBtn{
+    background: #f0d14d;
+    margin-left: 20px;
+}
+/*树结构*/
+.projectDB_aside_l .ztree *{
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+.projectDB_aside_l .ztree li{
+    padding-top: 10px;
+}
+.projectDB_aside_l .ztree li ul{
+    padding-left: 15px;
+}
+.projectDB_aside_l .ztree li a{
+    text-decoration: none;
+}
+.projectDB_aside_l .ztree a:hover{
+    background: #d0e2ff;
+}
+.projectDB_main .projectDB_aside_l .ztree li .selectedNode{
+    background: rgba(241,163,37,0.3)!important;
+    border-radius: 3px;
+}
+.projectDB_aside_l .ztree li span.button.ico_docu{
+    background-position: -111px -2px;
+}
+.projectDB_aside_l .ztree li span.button.noline_open {
+    background-position: -8px -82px;
+}
+.projectDB_aside_l .ztree li span.button.noline_close {
+    background-position: 8px -82px;
+}
+.projectDB_main .ztree li span.button.ico_docu{
+    vertical-align: middle;
+}
+/*右键菜单*/
+.projectDB_main .contextMenu{
+    width: 80px;
+    height: 160px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 3px -1.5px #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 32px;
+}
+.projectDB_main .contextMenu li{
+    color: #999;
+    padding-left: 10px;
+}
+.projectDB_main .contextMenu li:hover{
+    background: #6994e2;
+}
+/*文件类型管理*/
+.projectDB_main .assetType-contain{
+    z-index:1100;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.projectDB_main .asset-type-div{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+.projectDB_main .asset-type-set{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    height: 386px;
+    width: 330px;
+    margin: auto auto;
+    border: 1px solid rgba(100,100,100,0.6);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.projectDB_main .asset-type-set-head{
+    height:46px;
+    width: 100%;
+    background: #f1f1f1;
+    border-bottom:1px solid #ddd;
+}
+.projectDB_main .asset-type-set-head span{
+    font-size: 18px;
+    margin-left: 16px;
+    line-height: 46px;
+    font-weight: bold;
+}
+.projectDB_main .asset-type-set-head i{
+    float: right;
+    margin-right: 20px;
+    line-height: 46px;
+}
+.projectDB_main .asset-type-set-head i:after{
+    clear: both;
+}
+.projectDB_main .asset-type-set-head i:hover{
+    color: red;
+}
+.projectDB_main .asset-types{
+    margin:30px 50px;
+}
+.projectDB_main .asset-types .asset-type-list{
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 200px;
+    height: auto;
+}
+.projectDB_main .asset-list{
+    height: 30px;
+    margin-bottom: 4px;
+    position: relative;
+}
+.projectDB_main .asset-list span{
+    padding-left: 14px;
+    line-height: 30px;
+}
+.projectDB_main .asset-list:hover{
+    background: rgb(255,241,202);
+}
+.projectDB_main .asset-list i{
+    font-size: 18px;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.projectDB_main .asset-del{
+    margin-right: 6px;
+}
+.projectDB_main .asset-del:hover{
+    color: red;
+}
+.projectDB_main .asset-edit{
+    margin-right: 26px;
+}
+.projectDB_main .asset-edit:hover{
+    color:green;
+}
+.projectDB_main .asset-type-edit{
+    margin-bottom: 4px;
+}
+.projectDB_main .asset-type-new i,.asset-type-edit i{
+    line-height: 30px;
+    float: right;
+    position: relative;
+    top: -30px;
+    margin-right: 6px;
+}
+.projectDB_main #asset-type-new,#asset-type-edit{
+    width: 100%;
+    height: 30px;
+    padding-right: 48px;
+    padding-left: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+.projectDB_main #asset-type-new-btn{
+    position: absolute;
+    right: 34px;
+    bottom: 34px;
+    background:rgba(92,184,92,0.8);
+    width: 80px;
+    height: 30px;
+    border: 1px solid rgb(92,184,92);
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+}
+.projectDB_main #asset-type-new-btn:hover{
+    background:rgba(92,184,92,1);
+}
+/*复制过程中的遮罩层*/
+.projectDB_main .copyShadow{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index:1100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+}
+.projectDB_main .copyInfo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    height: 120px;
+    width: 330px;
+    margin: auto auto;
+    border: 1px solid rgba(100,100,100,0.6);
+    border-radius: 6px;
+    text-align: center;
+    line-height: 86px;
+    font-size: 18px;
+}
+.projectDB_main .copyInfo p{
+    padding-top: 10px;
+}
+.projectDB_main .copyInfo img{
+    width: 122px;
+    padding-right: 20px;
+}

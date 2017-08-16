@@ -1,0 +1,275 @@
+<style>
+    @import url(css/userStyle.css);
+</style>
+   <div class="userCreate">
+       <div class="row" id="user_warnMesageInfo" style="padding: 0;margin: 0">
+           <nav class="navbar navbar-default" style="min-height: 42px;height: 42px;margin-bottom: 5px;">
+               <div class="container-fluid" style="padding: 0;height: 40px">
+                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left: 1%">
+                       <ul class="nav navbar-nav">
+                           <div class="form-group" style="margin-top: 10%" id="user_filter_box">
+                               <div id="dapart_filter" class="user_dropdown" >
+                                   <div>部门</div>
+                                   <ul id="department_filter">
+                                       <!--<li onclick="userCommon.DRFilter.DRFilterChange()"   data-value="id_nfdfjdjfkod2387248935i9045" onclick="userCommon.DRFilter.DRFilterChange()" ><i class="iconfont" >&#xe64c;</i>财务部</li>-->
+                                   </ul>
+                                   <!--<li role="separator" class="divider"></li>
+                                   <li><a href="#"><input type="checkbox" checked="checked" value="25456456456">技术研发部</a></li>
+                                   <li role="separator" class="divider"></li>-->
+                                   <p style="border-top:1px solid #ccc; margin:7px 0;"></p>
+                                   <div>角色</div>
+                                   <!--<li><a href="#"><input type="checkbox" value="技术研发部">技术研发部</a></li>-->
+                                   <ul id="role_filter">
+
+                                   </ul>
+                                   <p style="border-top:1px solid #ccc; margin:7px 0;"></p>
+                                   <div>用户类型</div>
+                                   <!--<li><a href="#"><input type="checkbox" value="技术研发部">技术研发部</a></li>-->
+                                   <ul id="userType_filter">
+                                       <li data-checked="" data-value=0 onclick="userCommon.DRFilter.DRFilterChange(this)"><i class="iconfont">&#xe64c;</i>内部个人</li>
+                                       <li data-checked="" data-value=1 onclick="userCommon.DRFilter.DRFilterChange(this)"><i class="iconfont">&#xe64c;</i>外部个人</li>
+                                       <li data-checked="" data-value=2 onclick="userCommon.DRFilter.DRFilterChange(this)"><i class="iconfont">&#xe64c;</i>外部企业</li>
+                                   </ul>
+                                   <span id="dapart_filter_sure">确定</span>
+
+                               </div>
+                               <div id="user_filter"  class="clearFix"><i class="iconfont">&#xe669;</i><span>未筛选</span><span class="caret user_down_flag"></span></div>
+                           </div>
+                       </ul>
+                       <form class="navbar-form navbar-left" role="search" style="padding-left: 1%">
+                           <div class="form-group has-feedback">
+                               <input id="username-search" type="text" class="form-control" placeholder="用户名称" style="width: 120px;height: 28px;font-size: 12px;margin-top: -2%" onKeypress="javascript:if(event.keyCode == 32||event.keyCode == 39)event.returnValue = false;">
+                               <span class="glyphicon glyphicon-search form-control-feedback" style="line-height: 30px;margin-top: -2%"></span>
+                           </div>
+                       </form>
+                       <ul class="nav navbar-nav navbar-right" style="margin-top: 0.5%;margin-right: 0">
+                           <!-- Button trigger modal -->
+                           <button type="button" style="width: 80px;height: 30px;margin-right: 6px;font-size: 12px;font-family: '微软雅黑'; " class="btn btn-success form-control btn-group-xs"  id='createUserAllInfo'data-toggle="modal" data-target="#createUserInfo" data-backdrop="static" style="margin-top: 12%" >
+                               +新建用户
+                           </button>
+                       </ul>
+                   </div><!-- /.navbar-collapse -->
+               </div><!-- /.container-fluid -->
+           </nav>
+       </div>
+       <div class="row" id="tableList">
+           <div class="col-xs-12" id="tablefather">
+              <table id="userList" class="display" cellspacing="0" width="100%"  >
+
+              </table>
+           </div>
+           <div id="user-nouser" style="display: none;text-align:center;margin-top: 30%;"><b id="showInfo" style="display: inline-block; font-size: 20px;color: #aaa;">当前没有用户</b></div>
+           <div id="user-nosearch" style="display: none;text-align:center;margin-top: 30%;"><b id="searchshowInfo" style="display: inline-block; font-size: 20px;color: #aaa;">没有符合条件的用户</b></div>
+       </div>
+   <!-- 新建/编辑用户Modal -->
+   <div class="modal " id="createUserInfo" tabindex="-1" role="dialog" style="font-size: 14px" >
+       <div class="modal-dialog" role="document"  >
+           <div class="modal-content" style="margin-left: 50px;height: 100%">
+               <div class="modal-header"  >
+                   <button type="button" class="close " id='closeCreate' style="opacity: 1;" data-dismiss="modal" aria-label="Close">
+                       &nbsp;<span class="iconfont" style="font-size: 0.5em;color: grey">&#xe628;</span></button>
+                   <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                   &nbsp;</button>
+                   <h4 class="modal-title" id="createUserModal"><b>新建用户</b></h4>
+               </div>
+               <div class="modal-body" id="userCreateBody">
+                   <!--<div class="userImg" style="visibility: hidden">-->
+                       <!--<figure>-->
+                           <!--<img src="images/defaultAvatar.jpg" alt="默认头像" >-->
+                           <!--<figcaption style="color: grey;font-size: 12px;margin-left: 3%">修改头像</figcaption>-->
+                       <!--</figure>-->
+                   <!--</div>-->
+                   <form class="form-horizontal" style="padding-left: 15px;">
+                       <div class="form-group">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>登录账号:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="userAccount"  placeholder="请输入账号">
+                               <p id="updateShowInfo"></p>
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>登录密码:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" style="width: 80%"  id="password"  placeholder="请输入密码">
+                               <a id="passwordQuit">取消</a>
+                               <p id="user_defaultpassword">123456</p>
+                               <a id="user_passwordUpdate">修改密码</a>
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>姓<span style="visibility: hidden">占位</span>名:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="userName"  placeholder="请输入用户姓名">
+                           </div>
+                       </div>
+                       <div class="form-group has-feedback">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>所属部门:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="userDepartment"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  placeholder="请选择用户所在部门" readonly>
+                               <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="margin-top: -2%;right:27px"></span>
+                               <ul  id="dropDeparment" class="dropdown-menu"  aria-labelledby="userDepartment" >
+
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="form-group has-feedback">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>用户类型:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="userBelongType"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  placeholder="请选择用户类型" readonly>
+                               <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="margin-top: -2%;right:27px"></span>
+                               <ul  id="dropUserType" class="dropdown-menu"  aria-labelledby="userDepartment" >
+                                   <li ><a href="#" onclick="userCommon.getUserType(this)" data-value="0">内部个人</a></li>
+                                   <li ><a href="#" onclick="userCommon.getUserType(this)" data-value="1">外部个人</a></li>
+                                   <li ><a href="#" onclick="userCommon.getUserType(this)" data-value="2">外部企业</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="form-group has-feedback">
+                           <label  class="col-sm-2 control-label"><span style="color:red">*</span>分配角色:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="userRole"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择用户角色" readonly>
+                               <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="margin-top: -2%;right:27px"></span>
+                               <ul id="dropRole"  class="dropdown-menu" aria-labelledby="userRole" >
+
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="userHas">
+                       <div class="form-group">
+                           <label  class="col-sm-2 control-label">电<span style="visibility: hidden">占位</span>话:</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <label  class="col-sm-2 control-label">邮<span style="visibility: hidden">占位</span>箱:</label>
+                           <div class="col-sm-9">
+                               <input type="email" class="form-control" id="email" placeholder="请输入邮箱">
+                           </div>
+                       </div>
+                       </div>
+
+                   <!-- 新建签约方-->
+                   <div class="" id="companyInfo" style="display: none">
+                       <div class="form-inline">
+                           <div class="form-group" style="margin-left: 3.5%">
+                               <label for="companyClass" ><span style="visibility: hidden">dd&nbsp;</span>等<span style="visibility: hidden">占位</span>级:</label>
+                               <input type="text" class="form-control" id="companyClass" placeholder="请输入等级">
+                           </div>
+                           <div class="form-group" >
+                               <label for="companyType">类<span style="visibility: hidden">占</span>&nbsp;&nbsp;型:</label>
+                               <input type="text" class="form-control" id="companyType" placeholder="请输入类型">
+                           </div>
+                           <div class="form-group"style="margin-left: 3.5%">
+                               <label for="companyName"><span style="color:red">*</span>签约方名称:</label>
+                               <input type="text" class="form-control" id="companyName"  placeholder="请输入名称">
+                           </div>
+                           <div class="form-group" >
+                               <label for="companyCode">编<span style="visibility: hidden">占</span>&nbsp;&nbsp;码:</label>
+                               <input type="text" class="form-control" id="companyCode" placeholder="请输入编码">
+                           </div>
+                           <div class="form-group"style="margin-left: 3.5%">
+                               <label for="companyEmail"><span style="visibility: hidden">dd&nbsp;</span><span style="color:red">*</span>邮<span style="visibility: hidden">w&nbsp;&nbsp;&nbsp;&nbsp;</span>箱:</label>
+                               <input type="email" class="form-control" id="companyEmail" placeholder="请输入邮箱">
+                           </div>
+                           <div class="form-group">
+                               <label for="companyPhone" ><span style="color:red">*</span>电<span style="visibility: hidden">1</span>&nbsp;&nbsp;话:</label>
+                               <input type="text" class="form-control" id="companyPhone" placeholder="请输入电话">
+                           </div>
+                       </div>
+                       <div id="userOuter" class="form-horizontal">
+                           <div class="form-group" style="margin-top: 3%;margin-bottom: 1%">
+                               <label  class="col-sm-2 control-label" style="margin-left: 5.8%;"><span style="color:red">*</span>公&nbsp;司&nbsp;地&nbsp;址:</label>
+                               <div class="col-sm-9" style="margin-left: 18.5%;margin-top: -4%;margin-bottom: 0.5%;">
+                                   <input style="margin-left:2.3%;width: 86%" type="text" class="form-control" id="companyAddress" placeholder="请输入公司地址">
+                               </div>
+                           </div>
+                       </div>
+                       <div id="userSingle" class="form-horizontal" style="display: none">
+                           <div class="form-group" style="margin-top: 3%;margin-bottom: 1%">
+                               <label  class="col-sm-2 control-label" style="margin-left: 5.8%;"><span style="color:red">*</span>身&nbsp;份&nbsp;证&nbsp;号:</label>
+                               <div class="col-sm-9" style="margin-left: 18.5%;margin-top: -4%;margin-bottom: 0.5%;">
+                                   <input style="margin-left:2.3%;width: 86%" type="text" class="form-control" id="userCardId" placeholder="请输入身份证号">
+                               </div>
+                           </div>
+                       </div>
+                       <div class="form-inline">
+                           <div class="form-group" style="margin-left: 3.5%">
+                               <label for="companyAccountName"><span style="color:red">*</span>开户人名称:</label>
+                               <input type="text" class="form-control" id="companyAccountName"  placeholder="请输入开户人名称" >
+                           </div>
+                           <div class="form-group" >
+                               <label for="companyBank">开&nbsp;户&nbsp;行:</label>
+                               <input type="text" class="form-control" id="companyBank"  placeholder="请输入开户行">
+                           </div>
+                       </div>
+                       <div class="form-horizontal">
+                           <div class="form-group" style="margin-top: 3%;margin-bottom: 1%">
+                               <label  class="col-sm-2 control-label" style="margin-left: 5.8%;">开户行地址:</label>
+                               <div class="col-sm-9" style="margin-left: 18.5%;margin-top: -4%;margin-bottom: 0.5%;">
+                                   <input type="text" style="margin-left:2%;width: 86%"  class="form-control" id="companyBankAddress"  placeholder="请输入开户行地址">
+                               </div>
+                           </div>
+                       </div>
+                       <div class="form-horizontal">
+                           <div class="form-group" style="margin-top: 4%;margin-bottom: 1%">
+                                <label  class="col-sm-2 control-label" style="margin-left: 5.8%;"><span style="color:red">*</span>账<span style="visibility: hidden">占</span>户:</label>
+                               <div class="col-sm-9" style="margin-left: 18.5%;margin-top: -4%;margin-bottom: 0.5%;">
+                                   <input type="text" style="margin-left:2%;width: 86%"  class="form-control" id="companyAccount"  placeholder="请输入银行账号">
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                 </form>
+               </div>
+               <div class="modal-footer" style="padding-top: 6px;padding-bottom: 6px">
+                   <button type="button" class="btn btn-default dismiss" id="save" >保存</button>
+                   <button type="button" class="btn btn-primary dismiss" id="quitSave"  >取消</button>
+           </div>
+           </div>
+       </div>
+   </div>
+       <!--用户查看-->
+       <div class="modal " id="userLook" tabindex="-1" role="dialog">
+           <div class="modal-dialog" role="document" >
+               <div class="modal-content"  >
+                   <div class="modal-header">
+                       <button type="button" class="close" id="updatesDelete" style="opacity: 1;" data-dismiss="modal" aria-label="Close" >
+                          &nbsp;<span class="iconfont" style="font-size: 0.6em;color: grey">&#xe628;</span></button>
+                       <button type="button" class="close"  style="opacity: 1;display: none "data-dismiss="modal" aria-label="Close"><<span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                           &nbsp;</button>
+                       <h4 class="modal-title" ><b id="updateUserModal"></b></h4>
+                   </div>
+                   <div class="modal-body" id="updateUser">
+                       <button type="button" class="close" id="userDelete" style="opacity: 1;color: grey;margin-top: -2%"  onclick="departmentObj.showAskModel('是否删除用户？',true,userCommon.userCallback)">
+                           <h5>删除</h5></button><span></span><span></span><span></span>
+                       <button type="button"  class="close" id="userUpdate" style="opacity: 1; margin-top:-2%;margin-right: 2%;color: grey" data-dismiss="modal" aria-label="Close" onclick="userCommon.updateUser()"><h5>编辑</h5></button>
+                       <div class="userImg">
+                           <figure>
+                               <img src="" alt="默认头像" >
+                           </figure>
+                       </div>
+                       <ul class="list-unstyled" id="innerList" >
+
+                       </ul>
+                       <!-- 签约方信息-->
+                       <div class="companyLook" >
+
+                   </div>
+               </div>
+           </div>
+       </div>
+</div>
+   </div>
+<!--<script src="js/createUser.js"></script>-->
+<script>
+    window.onresize=function(){
+        var height=window.innerHeight;
+        $('#user-nouser').css({'margin-top':height*0.35});
+        $('#user-nosearch').css({'margin-top':height*0.35});
+    };
+    
+    $(document).ready(function(){
+        userCommon.init();
+    });
+</script>

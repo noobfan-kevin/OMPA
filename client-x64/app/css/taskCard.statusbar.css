@@ -1,0 +1,43 @@
+.task-status { position: relative; display: flex; flex-direction: row; justify-content: space-between }
+
+.task-status-cell-outer { position: relative; height: 46px; width: 46px; border-radius: 100%; background: #cfcfcf; }
+.task-status-cell-inner { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 32px;
+    width: 32px; border-radius: 100%;text-align: center;  font: 12px/32px "Microsoft YaHei"; background: #999; color: #fff; }
+
+.task-status-big-bar, .task-status-tiny-bar { position: absolute; top: 50%; transform: translateY(-50%); }
+.task-status-big-bar { left: 10px; right: 10px; height: 16px; background: #cfcfcf; }
+.task-status-tiny-bar { left: 23px; right: 23px; height: 4px; background: #999999; }
+
+/* 进度 ==> 为task-status添加对应class即可 */
+.task-status-tiny-bar-inner { height: 100%; width:0; background: #20a038;transition: 1.6s ease-out}
+/* 制卡 */
+.progress-status-1 .task-status-cell-outer:nth-child(2)  .task-status-cell-inner {background: #20a038;}
+.progress-status-1 .task-status-tiny-bar-inner { width: 12.5%;}
+/* 发送 */
+.progress-status-2 .task-status-cell-outer:nth-child(2)  .task-status-cell-inner {background: #20a038;}
+.progress-status-2 .task-status-cell-outer:nth-child(3)  .task-status-cell-inner {background: #20a038;}
+.progress-status-2 .task-status-tiny-bar-inner { width: 37.5%;}
+/* 制作 */
+.progress-status-3 .task-status-cell-outer:nth-child(2)  .task-status-cell-inner {background: #20a038;}
+.progress-status-3 .task-status-cell-outer:nth-child(3)  .task-status-cell-inner {background: #20a038;}
+.progress-status-3 .task-status-cell-outer:nth-child(4)  .task-status-cell-inner {background: #20a038;}
+.progress-status-3 .task-status-tiny-bar-inner { width: 62.5%;}
+/* 制作 */
+.progress-status-4 .task-status-cell-outer:nth-child(2)  .task-status-cell-inner {background: #20a038;}
+.progress-status-4 .task-status-cell-outer:nth-child(3)  .task-status-cell-inner {background: #20a038;}
+.progress-status-4 .task-status-cell-outer:nth-child(4)  .task-status-cell-inner {background: #20a038;}
+.progress-status-4 .task-status-cell-outer:nth-child(5)  .task-status-cell-inner {background: #20a038;}
+.progress-status-4 .task-status-tiny-bar-inner { width: 87.5%;}
+/* 完成 */
+.progress-status-5 .task-status-cell-outer .task-status-cell-inner {background: #20a038;}
+.progress-status-5 .task-status-tiny-bar-inner { width: 100%;}
+
+
+/* 任务内容项目 */
+#taskCard-edit-wrap .task-item-content {flex-grow: 1;/*height:calc(100vh - 270px  - 23px);*/
+    padding-top: 2px; display: flex;}
+/* 资产内项目 */
+.newTaskOfAsset #taskCard-edit-wrap .task-item-content {flex-grow: 1;/*height:calc(100vh - 270px  - 58px);*/
+    padding-top: 2px;}
+#taskCard-edit-wrap .task-item-content>li { position: relative;display: none; overflow-y: auto;}
+#taskCard-edit-wrap .task-item-content>li.active { display: flex;flex:1}

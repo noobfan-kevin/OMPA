@@ -1,0 +1,85 @@
+/*------------------------init start---------------------------*/
+.department-body{padding: 10px;height: 100%;background: #f1f1f1;font-family: "Microsoft YaHei UI";cursor: default;}
+.container{padding-right: 10px;}
+.container-fluid,.row,.col-sm-4,.col-md-4
+,.col-lg-4,.col-sm-8,.col-md-8,.col-lg-8,
+.col-md-12,.col-lg-12{margin: 0;padding:0;}
+/*------------------------init end---------------------------*/
+.department{border: 1px solid #aaaaaa;background: white;
+height: inherit;}
+.department-container{height: inherit;position: relative;}
+.department-structure{height:inherit;}
+.department-structure .department-header i{color: rgb(17,205,110);line-height: 46px;
+    font-size: 17px;margin-right: 10px;cursor: default;}
+.department-structure .department-header i:hover{color:#00A000;}
+.department-details{
+    border-left: 1px solid #ddd;
+    height: inherit;}
+.department-tree{
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    overflow-y: auto;
+    overflow-x: auto;}
+.department-header{}
+#department-del-btn{display: none;}
+#department-edit-btn,#department-del-btn{ margin-left: 0;margin-right:16px;font-size: 14px; font-weight: normal;color:#888;cursor: default;}
+#department-edit-btn:hover,#department-del-btn:hover{color: #666;}
+.department-header span{line-height: 50px;font-size: 18px;font-weight: bold;margin-left: 20px;}
+/*-----------------------------department-detail start----------------------------*/
+.department-detail{min-height: 40px;height:auto;
+}
+.department-detail input[type="text"]{height: 30px; width: 30%;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #ccc; }
+.department-textarea{margin-top: -32px;margin-left: 94px;width:inherit;padding-right: 14px;}
+.department-textarea textarea{width: 100%;resize: none;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #ccc;}
+.department-textarea label{line-height: 26px!important;color: black;}
+.department-detail select{width: 30%;display: inline-block;height: 30px;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #ccc;}
+.department-detail label{color: black;}
+.department-detail label,.department-detail span{line-height: 40px;font-weight: normal;}
+.department-detail span{margin-left: 20px;color: rgb(100,100,100);}
+.department-check{}
+.department-edit,.department-new{display: none;}
+/*-----------------------------department-detail end----------------------------*/
+/*-----------------------------department-footer start----------------------------*/
+.department-edit-save,.department-edit-cancel,.department-new-save,.department-new-cancel{height: 36px;width: 70px;color: white;
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.department-edit-save,.department-new-save{background: rgba(46,195,233,0.8);border:1px solid rgba(46,195,233,0.8);
+    position: fixed;right: 126px;bottom: 50px;}
+.department-edit-save:hover,.department-new-save:hover{background: rgba(46,195,233,1);border:1px solid rgba(46,195,233,1);}
+.department-edit-cancel,.department-new-cancel{background: rgba(240,209,77,0.8);border:1px solid rgba(240,209,77,0.8);
+    position: fixed;right: 36px;bottom: 50px;}
+.department-edit-cancel:hover,.department-new-cancel:hover{background: rgba(240,209,77,1);border:1px solid rgba(240,209,77,1);}
+/*-----------------------------department-footer end----------------------------*/
+/*------------------------------ztree start---------------------------------*/
+#departmentTree li{}
+#departmentTree ul{}
+#departmentTree li a{line-height: 26px!important;height: 26px!important;}
+#departmentTree li a:hover{text-decoration: none!important;}
+#departmentTree li span{line-height: 30px!important;font-size: 14px!important;height: 30px!important;
+color:rgba(0,0,0,0.7)}
+#departmentTree li .node_name:hover{text-decoration: none;}
+#departmentTree li a.curSelectedNode{background: white!important;border: none!important;}
+#departmentTree li span.button.noline_open{opacity: 0.4;
+    background-position: -10px -76px !important;}
+#departmentTree li span.button.noline_close{opacity: 0.4;
+    background-position: 6px -76px !important;}
+
+.department-tree-span-active{background: rgba(241,163,37,0.3)!important;}
+.department-tree-span{position: absolute; width: 100%; height: 30px; left: 0;right: 0;}
+.department-tree-span i{font-size: 12px!important; display:inline-block; height: 30px;line-height: 30px;
+    background:rgb(27,147,76);text-align: center;color:white;}
+.department-tree-span i:hover{cursor:default;}
+.department-tree-span .department-icon{display: none;}
+.department-icon-add{width: 30px;border-right: 1px solid rgba(0,0,0,0.1);}
+.department-icon-del{width: 20px;}
+/*-------------------------------ztree end-------------------------------------------*/
+
+#department-ask{position: absolute;top: 30%;}
+#department-ask .modal-body{}

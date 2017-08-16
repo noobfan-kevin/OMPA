@@ -1,0 +1,230 @@
+<div id="my-project-headerBar" class="col-md-12 col-lg-12 col-sm-12">
+    <div id="my-project-search" class="pull-left">
+        <input placeholder="项目名称">
+        <div id="my-project-search-btn">
+            <span class="glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+    <div id="my-project-newProject" class="pull-right">
+        <button id="my-project-new">+新建项目</button>
+    </div>
+</div>
+<!-- 项目列表 -->
+<div id="my-project-list">
+    <ul class="my-project-container"></ul>
+</div>
+
+<script>
+    /*======================= 项目列表 ============== START ======================= */
+
+    $(function() {
+        /*================================请求项目权限==start================================*/
+        var userId=localStorage.getItem('userId');
+        $.ajax({
+            type: 'get',
+            data: {userId:userId},
+            url: '/api/project/getCurUserProjectAuthority/',
+            success: function (data) {
+                console.log('项目外权限---',data);
+                if(data.message=='ok'){
+                    if(data.data.manageAllProjects){ //新建
+                        projectCommon.authority.manageAllProjects=true;
+                        $('#my-project-newProject').show();
+                    }else{
+                        $('#my-project-newProject').hide();
+                    }
+
+                }
+                getAllProjects();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+        /*================================请求项目权限===end================================*/
+        //请求当前人操作合同或者任务卡的权限
+
+        /*
+         * 从后端获取所有项目数据并渲染
+         * */
+
+        function getAllProjects() {
+            $.ajax({
+                url:'/api/project',
+                data:{userId:localStorage.getItem('userId')},
+                success: function(data) {
+                    if(data.ok){
+                        renderProjectList(data.list);
+                    }else{
+                        console.error('获取项目数据失败！');
+                    }
+                },
+                fail: function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+        /* 输入即搜索 */
+        $('#my-project-search>input').on('input propertychange', function(ev) {
+//                if(ev.keyCode !== 13) return;
+            querySearch();
+        });
+
+        $('#my-project-search-btn').on('click', function() {
+            $('#my-project-search>input').trigger('focus');
+            querySearch();
+        });
+
+
+        /*
+         * 查询ajax发送
+         * */
+        function querySearch() {
+            //没有管理和查看项目的权限
+            /*if((!projectCommon.authority.manageAllProjects)&&(!projectCommon.authority.seeAllProjects)){
+                return false;
+            }*/
+
+            var val = $('input', '#my-project-search').val().trim();
+            if(!val)
+            {
+                getAllProjects();
+                return;
+            }
+
+            var queryWhere = {
+                name: {
+                    $like:'%25'+ val +'%25'
+                }
+            };
+            $.ajax({
+                url:'/api/project?where=' + JSON.stringify(queryWhere),
+                success: function(data) {
+                    if(data.ok){
+                        renderProjectList(data.list);
+                        if(data.list.length ==0 ) {
+                            $('.my-project-container').html('<li style="font-size:20px;font-weight:700;color: #aaaaaa;position:absolute;top:45%;left:42%">没有符合条件的项目</li>');
+                            return ;
+                        }
+
+                    }else{
+                        console.error('获取项目数据失败！');
+                    }
+                },
+                fail: function(err){
+                    console.log(err);
+                }
+            })
+
+        }
+
+        /*
+         * 渲染项目列表到页面
+         * @Param {Array} list 项目列表数据
+         * */
+        function renderProjectList(list) {
+
+            var projectContainerObj= $('.my-project-container');
+            if(list.length ==0 ) {
+                projectContainerObj.html('<li style="font-size:20px;font-weight:700;color: #aaaaaa;position:absolute;top:45%;left:45%">当前没有项目</li>');
+                return ;
+            }
+
+            var temp = ''
+                    , statusStr= '';
+            list.forEach(function(data) {
+                var tempData = data;
+
+                // 取负责人
+                data.leader = '';
+                tempData['Users'].forEach(function(val) {
+                    if( val['ProjectMember']['role'] == 1 ){
+                        data.leader = val['name']; return false;
+                    }
+                });
+                tempData = null;
+
+                statusStr = data.status == 2 ? 'project-status-finished' : '';
+                data.projectImg = data.projectImg ? configInfo.server_url +　'/' +　data.projectImg : "";
+                data.schedule = data.schedule ? data.schedule : 0;
+
+                temp += '<li class="my-project-item ' + statusStr +'" data-project-id='+ data.id +'>' +
+                        '<div class="project-item-profile">' +
+                        '<img src="'+ data.projectImg +'" alt="">' +
+                        '<p class="project-item-progress">'+ data.schedule + "%" +'</p>' +
+                        '</div>' +
+                        '<div class="project-item-info">' +
+                        '<h3 class="project-item-name" title="' + data.name +'">' + data.name +'</h3>' +
+                        '<div class="project-item-person">' +
+                        '负责人:<span>'+ data.leader +'</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="project-item-mask">' +
+                        '<span class="project-item-status">已关闭</span>' +
+                        '</div>' +
+                        '</li>'
+            });
+
+            projectContainerObj.html(temp);
+
+        }
+
+        $('#my-project-list').on('click','.my-project-item', function() {
+            localStorage.setItem('projectName',$(this).find('h3').text());
+            localStorage.setItem('projectId',this.dataset.projectId);
+            projectCommon.getProAuthoritysAndLoadProjectPage(localStorage.getItem('projectId'),function(){
+                var myProjectDetailsObj= $('#my-project-details');
+                myProjectDetailsObj.loadPage('myProjectDetails');
+                myProjectDetailsObj.show().siblings('div').text('').hide();
+            }); //获取项目权限及改项目下的可见标签
+            /*var myProjectDetailsObj= $('#my-project-details');
+            myProjectDetailsObj.loadPage('myProjectDetails');
+            myProjectDetailsObj.show().siblings('div').text('').hide();*/
+
+        });
+
+
+
+
+
+
+
+    /*================================新建项目显示===================================*/
+
+    $('#my-project-new').on('click',function(){
+        console.log('manege',projectCommon.authority.manageAllProjects);
+        if(projectCommon.authority.manageAllProjects==!true){
+            projectCommon.quoteUserWarning2('#my-project-new','104px','5px','你没有创建项目的权限！');
+            return false;
+        }else{
+            var newProject=$('#newProjectBox');
+            //清除之前加载的
+            $('.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu').remove();
+            $('#my-project-add').remove();
+            $('.modal').remove();
+            //加载新建页
+            newProject.loadPage('newProject');
+            newProject.show().siblings('div').text('').hide();
+            $('#my-project-add').css('margin-left','-140px');
+            //清空新建所有
+            projectCommon.playerRecord.length=0;
+            projectCommon.projectleader='';
+            projectCommon.projectInfo={};
+            projectCommon.imageFile=null;
+            $("input",'#my-project-add').val('');
+            $('#my-project-add-people').attr('data-value','[]');
+            $('#my-project-add-des').val('');
+            $('#add-project-thumbnail').attr('src','images/project-add.png');
+        }
+        
+
+    });
+
+
+    });
+    /*-------------------------------- 项目列表 ------------------- END ------------------------------ */
+
+
+</script>

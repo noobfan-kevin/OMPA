@@ -1,0 +1,35 @@
+<div id="supplement-tpl">
+    <div class="tpl-wrap">
+        <div class="tpl-content">
+            <h2>合同补充协议书</h2>
+            <p><b>甲方&nbsp;&nbsp;</b><span class="tpl-data">{{supplement.partA}}</span></p>
+            <p><b>乙方&nbsp;&nbsp;</b><span class="tpl-data">{{supplement.partB}}</span></p>
+            <p>鉴于:</p>
+            <p>
+                <span class="tpl-data-reason">{{supplement.reason}}</span>。甲乙双方本着互利互惠的原则，经友好协商，依据实际情况，在原合同，合同编号<span class="tpl-data-code">{{supplement.code}}</span>,
+                基础上变更合同条款部分内容，特订立以下补充协议。<br/>
+                一、协议内容变更部分为：<br/>
+            <p class="tpl-list" ng-repeat="content in supplement.contentList">
+                <span class="tpl-item-sign">{{$index + 1}}、 </span><span class="tpl-data-item">{{content}}</span>
+            </p>
+                二、本协议生效后,即成为原合同不可分割的组成部分，与原合同具有同等的法律效力。<br/>
+                除本协议中明确所作的修改条款之外，原合同的其余部分应完全继续有效。<br/>
+                本协议与与合同有相互冲突时，以本协议为准。<br/>
+                本协议一式两份，甲、乙双方各执一份，具有同等的法律效力，自双方签字盖章之日起生效。
+            </p>
+        </div>
+        <div class="tpl-part-wrap">
+            <div class="tpl-first-part">
+                <p><b>甲方（盖章）：</b>{{supplement.partA}}</p>
+                <p class="tpl-date"><b>日期：</b>{{supplement.dateA}}</p>
+            </div>
+            <div class="tpl-second-part">
+                <p><b>乙方（盖章）：</b>{{supplement.partB}}</p>
+                <p class="tpl-date"><b>日期：</b>{{supplement.dateB}}</p>
+            </div>
+        </div>
+        <div class="tpl-footer">
+            本合同共一页
+        </div>
+    </div>
+</div>

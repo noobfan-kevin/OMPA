@@ -1,0 +1,118 @@
+<style>
+    @import url(css/progressReviewStyle.css);
+</style>
+<div   class="taskCard-progress-review" ng-controller="progressReviewController">
+    <div class="progressReviewWarp">
+        <div class="progressReview-head">
+            <span>审核</span>
+            <i class="iconfont" ng-click="backToProgressPage()">&#xe636;</i>
+            <button id="addCheckResult" style="display:none" ng-click="showCheckStatus()">添加审核结果</button>
+        </div>
+        <div class="progressReview-body">
+            <div class="progressReview-body-contain">
+                <div class="progressReview-body-files">
+                    <div class="progress-file" ng-repeat=" file in files" ng-mousedown="rightBtnClick(file.fileName,file.name,file.size)">
+                        <i class="iconfont delete-file" ng-click="deleteReviewFile(file.fileId,file.senderId,file.reviewId)">&#xe63d;</i>
+                        <img ng-src="{{file.src}}" alt="name">
+                        <a ng-click="showDownloadInput(file.filePath,file.fileName)" title="{{file.fileName}}">{{file.fileName}}</a>
+                    </div>
+                    <div class="progress-file file-upload" ng-repeat="file in uploadFileObj" ng-show="file._show">
+                        <i class="iconfont cancel-upload" ng-click="cancelUploadFile(file.reviewId,file._xhr)">&#xe63d;</i>
+                        <img ng-src="{{defaultSrc}}" alt="name">
+                        <div class="file-uploading">
+                            <div class="file-uploading-line" style="{{file._width}}"></div>
+                        </div>
+                        <span title="{{file._name}}">{{file._name}}</span>
+                    </div>
+                    <div class="progress-file" >
+                        <input id="progress-file-uploadFile"  type="file">
+                        <i class="iconfont">&#xe64e;</i>
+                        <span>上传文件</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progressReview-body-comment">
+                <div class="body-comment-view">
+                    <div class="body-comment-view-contain" messages>
+                        <!--<div class="comment-views">-->
+                        <!--<div class="comment-views-img">-->
+                        <!--<img src="http://localhost:9527/thumbnail/1463030891938.jpg" alt="name">-->
+                        <!--</div>-->
+                        <!--<div class="comment-views-message">-->
+                        <!--<span>黄晓萌的文艺梦</span>-->
+                        <!--<label>上传了<a>林允儿.jpg</a></label>-->
+                        <!--<p>2015-12-12 12:00:00</p>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="comment-views" ng-repeat=" review in reviews">
+                            <div class="comment-views-img" ng-click="addUserName(review.senderName)" ng-show="!review.flag">
+                                <img ng-src="{{ review.senderImg }} ">
+                            </div>
+                            <div class="comment-views-message" ng-class="{true: 'message-before', false: 'message-after'}[!review.flag]" >
+                                <span>{{review.senderName}}</span>
+                                <label>{{review.content}}<a ng-click="showDownloadInput(review.filePath,review.fileName)">{{review.fileName}}</a></label>
+                                <p>{{review.time}}</p>
+                            </div>
+                            <div  class="comment-views-img" ng-show="review.flag">
+                                <img ng-src="{{review.senderImg}}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="body-comment-input">
+                    <textarea id="men-reviews" ng-model="reviewModel" placeholder="评论..."></textarea>
+                    <button ng-click="submitReviews()">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="progressType-contain" ng-show="checkReview">
+        <div class="progress-type-div">
+            <div class="progress-type-set">
+                <div class="progress-type-set-head">
+                    <span>审查结果</span>
+                    <i class="iconfont icon-close" ng-click="showCheckStatus()">&#xe628;</i>
+                </div>
+                <div class="progress-check">
+                    <div class="progress-check-list">
+                        <div>
+                            <i class="iconfont" ng-show="!getPass" ng-click="getCheckResult(true)" >&#xe68d;</i>
+                            <i class="iconfont" ng-show="getPass" ng-click="getCheckResult(true)"  style="color: #56abe4;">&#xe68e;</i>
+                            <span>审核通过</span>
+                        </div>
+                        <div>
+                            <i class="iconfont" ng-show="!noPass" ng-click="getCheckResult(false)">&#xe68d;</i>
+                            <i class="iconfont" ng-show="noPass" ng-click="getCheckResult(false)" style="color: #56abe4;">&#xe68e;</i>
+                            <span>审核不通过</span>
+                        </div>
+                        <!--<div ><i class="iconfont">&#xe68d;</i><span>{{}}</span></div>-->
+                    </div>
+                </div>
+                <div class="progress-check-foot">
+                    <button id="progress-check-save" class="progress-check-btn" ng-click="saveCheckResult()">保存</button>
+                    <button id="progress-check-quit" class="progress-check-btn" ng-click="showCheckStatus()">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <input id="myDownloadInput" type="file" nwsaveas="" nwworkingdir="C:\Windows"  style="width: 0;height: 0;" />
+    <div class="turnFileToBase">
+        <span>添加到项目数据</span>
+    </div>
+</div>
+<script>
+    angular.element(document).ready(function(){
+        var fromPage = localStorage.getItem('pageType');
+        var $appElement = $('.taskCard-progress-review');
+        console.log(fromPage,'=====');
+        if(fromPage != 'myContract'){
+            angular.bootstrap($('.taskCard-progress-review'), ['progressReview']);
+        }else{
+            // 创建新scope,重新编译当前appElement
+            $appElement.parent().append($appElement.injector().get('$compile')($appElement.parent())($appElement.scope().$new()))
+        }
+
+    })
+</script>

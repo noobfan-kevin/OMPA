@@ -1,0 +1,79 @@
+<style>
+    @import url(css/departmentStyle.css);
+    @import url(css/zTreeStyle.css);
+</style>
+
+<div class="department-body">
+    <div class="department container-fluid row">
+        <div class="department-container col-md-12 col-lg-12">
+            <div class="department-structure col-sm-4 col-md-4 col-lg-4">
+                <div class="department-header">
+                    <span>部门结构</span>
+                    <i id="department-add-btn" class="iconfont pull-right" >&#xe641;</i>
+                </div>
+                <div class="department-tree" id="department-tree">
+                    <div >
+                        <ul id="departmentTree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="department-details col-sm-8 col-md-8 col-lg-8">
+                <div class="department-check">
+                    <div class="department-header">
+                        <span>部门信息</span>
+                        <span  class="pull-right" id="department-del-btn">删除</span>
+                        <span  class="pull-right" id="department-edit-btn">编辑</span>
+                    </div>
+                    <div class="department-details-container" id="department-check-detail">
+
+                    </div>
+                </div>
+                <div class="department-edit">
+                    <div class="department-header">
+                        <span>部门信息</span>
+                    </div>
+                    <div class="department-details-container" id="department-edit-detail">
+
+                    </div>
+                    <div class="department-footer">
+                        <button class="department-edit-save">保存</button>
+                        <button class="department-edit-cancel">取消</button>
+                    </div>
+                </div>
+                <div class="department-new">
+                    <div class="department-header">
+                        <span>部门信息</span>
+                    </div>
+                    <div class="department-details-container" id="department-new-detail">
+                        <div class="department-detail">
+                            <span>部门名称：</span>
+                            <input id="department-new-name" maxlength="20" type="text" onKeypress="javascript:if(event.keyCode == 32||event.keyCode == 39)event.returnValue = false;">
+                        </div>
+                        <div class="department-detail">
+                            <span>父级部门：</span>
+                            <select id="department-new-parentId">
+
+                            </select>
+                        </div>
+                        <div class="department-detail">
+                            <span>部门描述：</span>
+                            <div class="department-textarea">
+                                <textarea id="department-new-desc" rows="10" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="department-footer">
+                        <button class="department-new-save">保存</button>
+                        <button class="department-new-cancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+   $(document).ready(function(){
+       departmentObj.InitAll();
+   });
+</script>

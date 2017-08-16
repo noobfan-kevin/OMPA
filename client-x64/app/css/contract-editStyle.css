@@ -1,0 +1,108 @@
+.zhanwei{
+    visibility: hidden;
+}
+.contracts-edit{
+    height: inherit;
+    width: inherit;
+    padding: 10px;
+    overflow-y: auto;
+    background: #F1F1F1;
+}
+.contracts-edit-contain{
+    height: auto;
+    width: inherit;
+    border: 1px solid #aaa;
+    background: white;
+}
+.contracts-edit-head{
+    border-bottom: 1px solid #aaa;
+    height: 40px;
+}
+.contracts-edit-head span{
+    color: rgb(91,195,117);
+    font-size: 16px;
+    line-height: 40px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.contracts-edit-head span i{
+    margin-right:6px;
+}
+.edit-contactInfo{
+    padding:0 40px 20px;
+}
+.edit-aboutContract,.edit-aboutMoney,.edit-aboutPartAB,.edit-aboutFinish{
+    width: inherit;
+    height:auto;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.edit-aboutContract div,.edit-aboutMoney div,.edit-aboutPartAB div{
+    width: 48%;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+.edit-aboutContract div span,
+.edit-aboutMoney div span,
+.edit-aboutPartAB div span{
+    font-family: "Microsoft YaHei UI";
+    color: #888;
+}
+.edit-aboutContract div input,
+.edit-aboutContract div select,
+.edit-aboutMoney div input,
+.edit-aboutMoney div select,
+.edit-aboutPartAB div input,
+.edit-aboutPartAB div select{
+    padding-left: 6px;
+    width: 61%;
+    height: 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.edit-aboutPartAB .one-lineTaken{
+    width: 100%!important;
+}
+.edit-aboutPartAB .one-lineTaken input{
+    width: 78%!important;
+    max-width: 1292px;
+}
+.edit-aboutPartAB .one-lineTaken button{
+    height: 28px;
+    border: 1px solid #ea644a;
+    background: #ea644a;
+    opacity: 0.8;
+    border-radius: 4px;
+    color: white;
+    width: 100px;
+}
+.edit-aboutPartAB .one-lineTaken button:hover{
+    opacity: 1;
+}
+.edit-aboutFinish{
+    border-bottom: none;
+}
+.edit-aboutFinish div button{
+    float: right;
+    height: 30px;
+    width: 60px;
+    color: white;
+}
+.edit-cancelBtn{
+    background: rgba(240,209,77,0.8);
+    margin-right: 40px;
+    border: none;
+    border-radius: 4px;
+}
+.edit-cancelBtn:hover{
+    background: rgba(240,209,77,1);
+}
+.edit-saveBtn{
+    background: rgba(44,173,232,0.8);
+    margin-right: 20px;
+    border: none;
+    border-radius: 4px;
+}
+.edit-saveBtn:hover{
+    background: rgba(44,173,232,1);
+}

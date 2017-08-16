@@ -1,0 +1,30 @@
+<!-- begin #sitebar -->
+<div class="sitebar">
+    <ul id="aside-nav">
+        <li class="current" data-page="user.html"><a class="asidenav-item" href="#userManage" draggable="false"><i class="iconfont">&#xe610;</i>用户管理</a></li>
+        <li data-page="department.html"><a class="asidenav-item" href="#departmentManage" draggable="false"><i class="iconfont">&#xe611;</i>部门管理</a></li>
+        <li data-page="role.html"><a class="asidenav-item" href="#roleManage" draggable="false"><i class="iconfont">&#xe617;</i>角色管理</a></li>
+        <!--<li class="current"><a class="asidenav-item" href="#signatory" draggable="false"><i class="iconfont">&#xe60f;</i>签约方统计</a></li> -->
+    </ul>
+</div>
+<!-- end sitebar -->
+
+<!-- begin #content -->
+<div id="system-content" class="content" >
+    <!--            <div class="selectdiv">
+                </div>
+                <div class="tablelist"></div>-->
+</div>
+<!-- end #content -->
+
+<script>
+
+    var $asideNavItems = $('li','#aside-nav');  //侧边导航列表
+    $asideNavItems.click(function() {
+        $asideNavItems.removeClass('current');
+        $(this).addClass('current');
+        $('#system-content').loadPage(this.dataset.page);
+
+    });
+    $('#system-content').loadPage('user.html')
+</script>

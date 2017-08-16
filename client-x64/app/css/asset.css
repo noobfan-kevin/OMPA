@@ -1,0 +1,191 @@
+/*-------------------------------------position---start--------------------------*/
+@import "positionMap.css";
+/*-------------------------------------position-----end------------------------*/
+#my-asset-add-tree .department-tree-span{display:none;}
+#my-asset-add-tree_1_ico.ico_open,#my-asset-add-tree_1_ico.ico_close{background-position: -34px -78px !important;}
+
+#my-project-add-tree_1_ico.ico_open,#my-project-add-tree_1_ico.ico_close{background-position: -34px -78px !important;}
+
+/*------------------------init start---------------------------*/
+.asset-body{padding: 10px;height: 100%;background: #f1f1f1;font-family: "Microsoft YaHei UI";cursor: default;}
+.container{padding-right: 10px;}
+.container-fluid,.row,.col-sm-4,.col-md-4
+,.col-lg-4,.col-sm-8,.col-md-8,.col-lg-8,
+.col-md-12,.col-lg-12{margin: 0;padding:0;}
+.col-sm-5,.col-sm-9{padding-left: 0;padding-right: 0}
+/*------------------------init end---------------------------*/
+.asset{border: 1px solid #dedede;background: white;
+    height: inherit;}
+.asset-container{height: inherit;position: relative;}
+.asset-structure{height:inherit;}
+.asset-structure .asset-header i{color: rgb(17,205,110);line-height: 36px;
+    font-size: 17px;margin-right: 10px;cursor: default;}
+.asset-structure .asset-header i:hover{color: #4cae4c;}
+.asset-details{
+    border-left: 1px solid #ddd;
+    height: inherit;}
+.asset-tree{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    overflow-x: auto;}
+.asset-header{border-bottom: 1px solid #dedede; height:40px;}
+
+#asset-edit-btn,#asset-del-btn{ margin-left: 0;margin-right:16px;font-size: 14px; font-weight: normal;color:#888;cursor: default;}
+#asset-edit-btn:hover,#asset-del-btn:hover{color: #666;}
+.asset-header span{line-height: 40px;font-size: 16px;font-weight: bold;margin-left: 20px;}
+/*-----------------------------asset-detail start----------------------------*/
+#asset-info{margin-top: 20px;margin-left: 10px}
+#asset-info .form-group{margin-bottom: 18px;}
+#asset-info .col-sm-3,.asset-new .col-sm-3,.asset-edit .col-sm-3{width: 130px;}
+#asset-info .col-sm-9{width: 350px;}
+
+.asset-check p{margin-top: 2%; color:#2c2c2c;}
+.asset-check li{ color:#2c2c2c;}
+.asset-check p{margin-top: 2%}
+.form-control[readonly]{background: white}
+.form-horizontal .has-feedback .form-control-feedback{right: 0px}
+.asset-check label{ font-weight:normal;}
+.asset-new ul{margin-top: 0;;font-size: 12px;width: 100%}
+.asset-new,.asset-edit{display: none;}
+.asset-new label,.asset-edit label,.asset-check label{ font-weight:normal;}
+.asset-new input{ height:32px; background: #fff;}
+.aeeset-member{margin-top: -21px; margin-left:-5px;width: 90%;display: block}
+.aeeset-member li{float: left;margin-left: 4%;margin-top: 9%}
+.asset-leader{height:auto;max-height: 200px;overflow-y:auto}
+.asset-leader li{margin-top: 1%;}
+.dropdown-menu{width: 100%}
+.asset-leader li a:hover,#dropNodeParent li a:hover,#editdropNodeParent li a:hover,#dropDeparment li a:hover{background: #ffebc4}
+
+/*-----------------------------asset-detail end----------------------------*/
+/*-----------------------------asset-footer start----------------------------*/
+.asset-edit-save,.asset-edit-cancel,.asset-new-save,.asset-new-cancel{height: 36px;width: 70px;color: white;
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.asset-edit-save,.asset-new-save{background: rgba(46,195,233,0.8);border:1px solid rgba(46,195,233,0.8);
+    position: fixed;right: 126px;bottom: 50px;}
+.asset-edit-save:hover,.asset-new-save:hover{background: rgba(46,195,233,1);border:1px solid rgba(46,195,233,1);}
+.asset-edit-cancel,.asset-new-cancel{background: rgba(240,209,77,0.8);border:1px solid rgba(240,209,77,0.8);
+    position: fixed;right: 36px;bottom: 50px;}
+.asset-edit-cancel:hover,.asset-new-cancel:hover{background: rgba(240,209,77,1);border:1px solid rgba(240,209,77,1);}
+/*-----------------------------asset-footer end----------------------------*/
+/*------------------------------ztree start---------------------------------*/
+#assetTree li{}
+#assetTree ul{}
+#assetTree li a{line-height: 26px!important;height: 26px!important;}
+#assetTree li a:hover{text-decoration: none!important;}
+#assetTree li span{line-height: 30px!important;font-size: 14px!important;height: 30px!important;
+    color:rgba(0,0,0,0.7)}
+#assetTree li .node_name:hover{text-decoration: none;}
+#assetTree li a.curSelectedNode{background: white!important;border: none!important;}
+#assetTree li span.button.noline_open{opacity: 0.4;
+    background-position: -10px -76px !important;}
+#assetTree li span.button.noline_close{opacity: 0.4;
+    background-position: 6px -76px !important;}
+
+.asset-tree-span-active{background: rgba(241,163,37,0.3)!important;}
+.asset-tree-span{position: absolute; width: 100%; height: 30px; left: 0;right: 0;}
+.asset-tree-span i{font-size: 12px!important; display:inline-block; height: 30px;line-height: 30px;
+    background:rgb(27,147,76);text-align: center;color:white;}
+.asset-tree-span i:hover{cursor:default;}
+.asset-tree-span .asset-icon{display: none;}
+.asset-icon-add{width: 30px;border-right: 1px solid rgba(0,0,0,0.1);}
+.asset-icon-del{width: 20px;}
+/*-------------------------------ztree end-------------------------------------------*/
+
+#asset-ask{position: absolute;top: 30%;}
+#asset-ask .modal-body{}
+/*-----------------------shot quote-------------------------------*/
+#shot-havaChoose{ height:111px; width:200px; position: relative; overflow-y: auto;}
+.shot-textarea{margin-top: 5px;padding-left: 0px}
+.shot-textarea textarea{width: 100%;resize: none;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #d1d1d1;}
+.shot-textarea label{line-height: 26px!important;color: black; padding:0 5px;font-size: 14px;}
+.shot-textarea i{ margin-left:7px; color:#11cd6e;}
+#shot-del-btn,#shot-edit-btn{
+    margin-left: 0;
+    margin-right: 16px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #888;
+    cursor: default;
+}
+
+/*----------------------chooose --member--start---------------------------------------*/
+.project-add-chooseSplit{
+    margin-left:1px;padding-bottom:1000px; margin-bottom:-980px; border-left:1px solid #ccc; height:100%; float:left;
+}
+.my-project-add-choose-title{
+    position: absolute;
+    height:28px;
+    line-height:28px;
+    top:-38px;
+    left:42px;
+    border-bottom:3px solid #6cc984;
+}
+#my-project-add-chooseList{  /*ul*/
+
+}
+.my-project-add-choose-people{ /*li*/
+    font-size:12px;
+    height:28px;
+    line-height:28px;
+    cursor:default;
+    white-space:nowrap;
+}
+.my-project-add-choose-people i{    /*li i*/
+    font-size:14px;
+    margin-right:5px;
+    color:#ccc;
+}
+.my-project-add-chooseBox{
+    /* padding-top: 7px; */
+    padding-left: 55px;
+    /* padding-bottom: 1000px; */
+    margin-bottom: 5px;
+    float: left;
+    max-height: 283px;
+    overflow-y: auto;
+    width: 249px;
+    margin-top: 4px;
+    /* margin-left: 20px; */
+}
+.my-project-add-chooseBox .active{
+    color:#999;
+}
+.my-project-add-haveChoose{
+    width:81%;
+    margin-left:75px;
+    color:#2c2c2c;
+    overflow-y: auto;
+    max-height:150px;
+}
+.my-project-add-haveChoose li{
+    float:left;
+    padding:0 8px;
+    margin-right: 8px;
+    height:30px ;
+    line-height:30px;
+    font-size:12px;
+    cursor:pointer;
+    position: relative;
+
+}
+.my-project-add-haveChoose li:hover{color:#999;}
+.my-project-add-haveChoose li i{
+    position: absolute;
+    top:0px;
+    right:-3px;
+    height: 1em;
+    line-height: 1em;
+    font-size:14px;
+    color:#F23614;
+    display:none;
+
+}
+.my-project-add-haveChoose li:hover i{
+    display:block;
+}
+/*----------------------chooose --member--end---------------------------------------*/

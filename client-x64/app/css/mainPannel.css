@@ -1,0 +1,859 @@
+/*
+*用户离线后，头像、名字、时间置灰样式
+*/
+body{
+    background: none;
+}
+.desaturate img,.desaturate  p,.desaturate span{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    color:#303030 !important;
+}
+.desaturate .newmsg:after{
+    filter: none;
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+}
+/*面板样式*/
+.pannel{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+}
+/*面板头部*/
+.header{
+    position: relative;
+    height: 102px;
+    background:#465362;
+}
+.header .info{
+    position: relative;
+    padding: 0px 10px;
+    height: 90px;
+    width: 100%;
+    color: #ffffff;
+    top: 20px;
+}
+/*
+*用户头像样式
+*/
+.header .infoLeft{
+    float: left;
+    height: 100%;
+}
+.header .avatarBk{
+    position: relative;
+    width: 56px;
+    height: 56px;
+    background-color: rgb(180,180,180);
+    border-radius: 50%;
+    background-size: 100% 100%;
+}
+.header .avatar{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 3px;
+    top: 3px;
+    border-radius: 50%;
+}
+/*
+* 用户姓名和积分样式
+*/
+.header .infoMiddle{
+    float: left;
+    padding-left: 8px;
+    height: 100%;
+    line-height: 4em; /* 56/16 */
+    margin-top: -8px;
+}
+.infoMiddle .profile{
+    font-size: 1.142857em; /* 16/14 */
+    max-width: 128px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.profile p:first-child{
+    margin: 0;
+}
+.profile p:last-child{
+    margin: -30px 0px;
+    position: absolute;
+    left: 84px;
+    font-size: 14px;
+}
+/*
+*在线、隐身状态样式
+*/
+/*
+#onlineState{
+    float: left;
+    margin: 8px 0px 0px 5px;
+}
+.curState{
+    width: 18px;
+    height: 18px;
+    margin: 4px 0 0 2px;
+}
+.stateSelect_icon{
+    float: left;
+    margin-top: 3px;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+}
+.onlineme{
+    background: url("../images/ptlogin.png") 0 0 no-repeat;
+}
+.hiddenme{
+    background: url("../images/ptlogin.png") -54px 0 no-repeat;
+}
+
+.stateSelect_text{
+    margin-left: 22px;
+}
+*/
+/*
+*天气样式
+*/
+/*
+.header .infoRight{
+    float: right;
+    width: 98px;
+    height: 100%;
+    margin-right: 25px;
+}
+.infoRight .temperature{
+    display: inline-block;
+    font-size: 33px;
+    margin: 0;
+}
+.infoRight .weather{
+    float: right;
+    height: 40px;
+    margin-top: 4px;
+}
+.infoRight .data{
+    float: right;
+    font-size: 10px;
+    margin: -4px 0 0 0;
+    white-space: nowrap;
+}
+*/
+/*中部内容区*/
+.contain{
+    height: 100%;
+    width:910px;
+    float:right;
+    background: rgba(255,255,255,0.1);
+    border:1px solid rgba(0,0,0,0.1);
+}
+/*中部内容区->搜索框*/
+.search_bar{
+    position: relative;
+    width: 98%;
+    margin: 42px auto;
+    height: 32px;
+    overflow: hidden;
+}
+.searchtxt{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border: #dddddd 1px solid;
+    border-radius: 4px;
+    color: #666;
+    padding: 0 56px 0 20px;
+    box-sizing: border-box;
+    font-size: 12px;
+    background-color: #fbfbfb;
+}
+.searchbtn{
+    position: absolute;
+    top: 0px;
+    font-size: 20px;
+    right: 10px;
+    color: #dddddd!important;
+}
+
+/*选项卡公共样式
+*/
+.tab_item{
+    float: left;
+    width: 33.33333333%;
+    position: relative;
+    text-align: center;
+    background:#465362;
+    height:30px;
+    z-index:1;
+}
+.tab-selected{
+    background-color: #ffffff;
+    color: #465362!important;
+    border-top-right-radius: 4px ;
+    border-top-left-radius: 4px ;
+}
+.tab_item.no_extra:after {
+    border-right: 0 !important;
+}
+/*
+* 显示项目标题样式 版本（v2.0）
+*/
+.projectDiv>.newmsg:after {
+    left: 4px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+}
+#project-bar{
+    position: relative;
+    width: 100%;
+    background-color: rgb(203,209,231);
+    height: 40px;
+    cursor: pointer;
+}
+#project-bar span{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 2.857142em; /* 40/14 */
+    color: rgb(20, 26, 130);
+    padding: 0 40px 0 30px;
+}
+#project-bar i:first-child{
+    position: absolute;
+    top: 0;
+    left: 7px;
+    color: #2F2C2C;
+    line-height: 36px;
+    font-size: 18px;
+}
+/*#project-bar i:first-child {*/
+    /*position: absolute;*/
+    /*top: 33px;*/
+    /*left: 30px;*/
+    /*width: 10px;*/
+    /*height: 10px;*/
+    /*content: '';*/
+    /*display: block;*/
+    /*background-image: url(../images/redpoint.png);*/
+    /*background-size: 100% 100%;*/
+/*}*/
+#project-bar i:last-child{
+    position: absolute;
+    top: 0;
+    right: 6px;
+    color: #fff;
+    line-height: 37px;
+    font-size: 34px;
+}
+/*中部内容区->内容切换标签*/
+.pantab-block i{
+    font-size: 22px;
+    line-height: 30px;
+    color: #ffffff;
+}
+.add_popup_icon{
+    float: left;
+    border: 1px solid #dcc8d8;
+    background: #dcc8d8;
+    box-shadow: 3px 4px 6px rgba(105, 59, 82,.4);
+    position: absolute;
+    width: 100%;
+}
+.pantab-block .tab_item:last-child .add_popup_icon{right: 0;}
+.add_popup_icon ul li{float:left;}
+.manpup_icon li,.taskpup_icon li{
+    width:33.33%;
+}
+.add_popup_icon:before{
+    position: absolute;
+    top: -12px;
+    border: 6px solid transparent;
+    content: " ";
+    border-bottom-color:#dcc8d8;
+}
+.taskpup_icon:before{left: 45%;}
+.manpup_icon:before{right: 45%;}
+/*.taskpup_icon ul li:first-child i{line-height: 34px;}*/
+/*
+* 底部设置样式
+*/
+.footer{
+    width:100%;
+    height: 46px;
+    position:absolute;
+    bottom: 0;
+    background: #465362;
+    line-height: 46px;
+}
+.set-block .tab_item{
+    height:36px;
+    background: #465362;
+}
+.set-block i{
+    font-size: 18px;
+    line-height: 30px;
+    color: #ffffff;
+}
+/*
+* 通知样式（v2.0）
+*/
+#informLayer,#linkgroupLayer{
+    bottom: 42px;
+}
+.seticon{
+    float: right;
+    margin-right: 10px;
+}
+.aboutico{
+    float: left;
+    margin-left: 10px;
+}
+.iteminform {
+    width: 84%;
+    overflow: hidden;
+}
+.iteminform ul{
+    display: none;
+}
+.inform-block{
+    width: 100%;
+    max-height: 30px;
+    background-color:rgba(110,140,200,.9);
+    position: absolute;
+    bottom: 35px;
+    margin-bottom: 1px;
+}
+.inform-block p,.iteminform p{
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    line-height: 38px;
+    color: #fff;
+    margin-bottom: 0;
+    text-align: left;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.icon-file i {
+    font-size: 10px;
+    vertical-align: top;
+}
+/******************************************************************************************************
+/*
+*项目列表样式（v2.0）
+*/
+.projectDiv>div:last-child{
+    top:150px;
+    cursor: pointer;
+}
+.projectLayer{
+    top:110px;
+    cursor: pointer;
+}
+.projectListGroup{
+    height: 93px;
+    line-height: 93px;
+    padding: 0 60px 0 30px;
+}
+.projectListGroup.newmsg:after {
+    top: 41px;
+    left: 10px;
+}
+.projectListGroup span{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 93px;
+    color: #fff;
+    font-size: 1.142827em; /* 16/14 */
+}
+.projectListGroup i{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    color: #fff;
+    line-height: 93px;
+    font-size: 34px;
+}
+/*
+*个人聊天列表样式（v2.0）
+*/
+.chat-block ul li:first-child{
+    margin-top: 0px;
+}
+/*#linkmanLayer ul li:before,#informLayer ul li:before{*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*left: 0;*/
+    /*width: 0;*/
+    /*height: 50px;*/
+    /*border-right: 5px solid rgba(255,255,255,0.4);*/
+/*}*/
+#linkmanLayer .chatListGroup i {
+    padding: 10px 0 10px 10px;
+    font-size: 12px;
+}
+#linkmanLayer .chatListGroup span{
+    font-size: 14px; /* 16/14 */
+}
+/*列表样式*/
+.chat-block {
+    width: 100%;
+    overflow: auto;
+    top: 184px;
+    position: absolute;
+    bottom: 93px;
+}
+.chat-block ul>li{
+    margin-bottom: 0px;
+    position: relative;
+}
+.chatListGroup{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px #e8e8e8 solid;
+}
+.chat_item {
+    overflow: hidden;
+    padding: 0 15px 0 30px;
+    cursor: pointer;
+    position: relative;
+    height: 60px;
+    border-bottom: 1px solid #ECECEC;
+
+}
+.chat_item:hover{
+    background-color: #e0f0ff;
+}
+.chat_item .ext {
+    float: right;
+    color: #666;
+    line-height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+.ext i {
+    font-size: 19px;
+    color: #fff;
+}
+.chat_item .avatar {
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+.chat_item .info{
+    overflow: hidden;
+    line-height: 50px;
+}
+.chat_item .info .nickname{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: bold;
+    width: 60%;
+}
+.chat_item .info input.nickname{
+    height: 34px;
+    width: 100%;
+    margin-top: 12px;
+    line-height: 34px!important;
+    font-weight: normal;
+}
+.ext span{
+    margin-right: 10px;
+}
+.avatarBk{
+    position: relative;
+    width: 43px;
+    height: 43px;
+    background-color: rgb(180,180,180);
+    border-radius: 50%;
+    background-size: 100% 100%;
+    margin: 9px auto;
+}
+img.avatar{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 1px;
+    top: 1px;
+    border-radius: 50%;
+}
+.addBk{
+    background-color: transparent !important;
+    border: 1px dashed #ffffff;
+}
+.addBk img.avatar{
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 7px;
+    top: 7px;
+    border-radius: 50%;
+}
+.e-message{
+    position: absolute;
+    bottom: -10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 55%;
+}
+/*新消息提示*/
+.new-tip{
+    display: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #f42525;
+    position: absolute;
+    right: 30px;
+    bottom: 6px;
+    color: #fff;
+    line-height: 18px;
+    text-align: center;
+    font-size: 12px;
+}
+/*
+*未读消息--小红点样式
+*/
+div.newmsg:after{
+    position: absolute;
+    top: 3px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    content: '';
+    display: block;
+    background-image: url(../images/redpoint.png);
+    background-size: 100% 100%;
+    opacity: 0;
+}
+/*
+*群组列表样式（v2.0）
+*/
+.group-box{
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+}
+.textctl{
+    width:93%;
+    height:30px;
+    margin:9px 5px 9px 0;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+}
+.attrbtn{
+    padding: 0;
+    width: 70px;
+    position: absolute;
+    right: -20px;
+    bottom: -14px;
+}
+.attrbtn i{
+    font-size: 1.5em;
+    color: #CACACA;
+    line-height: 45px;
+}
+.attrbtn i:first-child{
+    padding-right: 5px;
+}
+/*点击群组头像上传*/
+.fileInput{
+    height: 42px;
+    overflow: hidden;
+    width: 42px;
+    font-size: 1.46px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+/*
+*当前任务样式
+*/
+ul.taskSiteBar {
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom:0;
+}
+.taskListGroup{
+    height: 93px;
+}
+#currenttaskSiteBar .chat_item{
+    padding:0 20px !important;
+}
+.taskcount {
+    width: 100%;
+    position: absolute;
+    bottom: 36px;
+}
+.tasktitle{
+    height: 40px;
+    line-height: 40px;
+}
+.tasktitle span{
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+}
+.taskcheckicon{
+    width: 100%;
+    line-height: 38px;
+    font-size: 2.5em;
+    text-align: center;
+}
+.taskcard{
+    width: 33.33%;
+    float: left;
+    margin-top: 3px;
+}
+.taskchangecontent {
+    width: 66.67%;
+    float: left;
+}
+.accepttask{
+    width: 50%;
+    float: left;
+}
+.refusetask{
+    width: 50%;
+    float: left;
+}
+.taskcountdown{
+    height: 40px;
+    width: 100%;
+    margin-top: 7px;
+}
+.timeBox {
+    width: 33%;
+    float: left;
+    text-align: center;
+}
+.timeBox>div {
+    height: 40px;
+    line-height: 32px;
+    font-size: 30px;
+    color: rgb(91, 83, 128);
+    margin-right: 5px;
+}
+.timeBox_D {
+    background: url(../images/countdown.png) no-repeat 100% -26px;
+    height: 11px;
+}
+.timeBox_H{
+    background: url(../images/countdown.png) no-repeat 100% -15px;
+    height: 11px;
+}
+.timeBox_M{
+    background: url(../images/countdown.png) no-repeat 100% -4px;
+    height: 11px;
+}
+/*
+* 任务过期时间样式
+*/
+.overdue>div>div{
+    color: #94030e;
+}
+/*
+*历史任务列表样式
+*/
+#historytaskLayer .avatar i{
+    font-size: 2.5em;
+    line-height: 50px;
+}
+#historytaskLayer .ext p {
+    margin: 0;
+    color: rgba(0,0,0,1);
+    text-align: right;
+}
+#historytaskLayer .ext p:first-child{
+    line-height: 35px;
+    font-size: 0.928571em; /* 13/14 */
+}
+#historytaskLayer .ext p:last-child{
+    line-height: 0;
+    font-size: 1.428571em; /* 20/14 */
+}
+/*
+*任务进度条样式
+*/
+.taskprogress{
+    position: absolute;
+    bottom: -1px;
+    background-color: rgba(255,255,255,1);
+    height: 1px;
+    width: 100%;
+}
+.taskload{
+    position: absolute;
+    top: 0;
+    height: 1px;
+}
+.successtask{
+    background-color: rgba(170,224,4,1);
+}
+.proceedtask{
+    background-color: rgba(232,183,34,1);
+}
+.expiretask{
+    background-color: rgba(192,5,5,1);
+}
+/*
+*任务总量样式
+*/
+.task_item{
+    background-color: rgb(73, 85, 130);
+    height: auto;
+}
+.task_item:after{
+    height:42px;
+}
+.task_item p {
+    height: 33px;
+    line-height: 36px;
+    margin-bottom: 0;
+    font-size: 22px;
+    color: rgba(255,255,255,.6);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.task_item span {
+    display: block;
+    height: 24px;
+    color: rgba(255,255,255,.2);
+}
+
+/**************************************************************************************/
+/*
+*v1.0 未知样式
+*/
+/*
+ul.chatSiteBar>li:last-child{
+    margin-bottom: 1px;
+}
+.chatAvatar{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px 0 5px 0;
+}
+.chat_member_list .chat_item .ext,.chat_member_group .chat_item .ext{
+    margin-top: -3px;
+    display: none;
+}
+.chat_member_group .ext {
+    opacity: 1 !important;
+}
+.chat_file_list .chat_item .ext img{
+    margin-top: 15px;
+    margin-left: 10px;
+    display: none;
+}
+/*聊天窗口的成员姓名*/
+/*
+.name{
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    color: #fff;
+    margin-top:50px;
+    text-align: center;
+    font-size: 12px;
+}
+*/
+/*
+* 实现页面鼠标移上、移出、点击效果
+*/
+/*用户上线状态样式*/
+.user-online,.user-online .ext {
+    opacity: 1;
+    color:#ccc;
+}
+/*
+*底部弹出的项目列表（v1.0）
+*/
+/*
+.lasterproject{
+    position: absolute;
+    bottom: 36px;
+    background-color: rgba(170,157,178,1);
+    width: 150%;
+    text-align: left;
+    padding: 8px 18px;
+}
+.lasterproject li{
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.lasterproject li a,.lasterproject li a:hover{
+    color: rgba(70,70,70,1);
+}
+.taskhistoryListGroup .avatar{
+    height: 40px;
+    width: 30px;
+    background: url("../images/panneltask.png") no-repeat;
+    background-position: 50% -118px;
+}
+*/
+/*
+*无数据提示
+*/
+.no-data {
+    position: absolute;
+    top: 110px;
+    bottom: 36px;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.no-data p {
+    margin: 70px auto auto;
+    font-size: 25px;
+    color: #fff;
+    letter-spacing: 1pt;
+}
+/*新建群组*/
+
+

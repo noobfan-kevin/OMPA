@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哈哈哈</title>
+    <script src="JS/jquery-1.10.2.min.js"></script>
+    <script src="JS/jquery.scoped.js"></script>
+</head>
+<body>
+哈哈个哈哈
+<div>
+    <style scoped>
+        h1 { color: FireBrick;   }
+        p  { color: SaddleBrown; }
+    </style>
+    <h1>This is an H1 in a scoped div. Regardless of global styles the text should be "FireBrick".</h1>
+    <p>This is a paragraph in a scoped div. The text should be "SaddleBrown".</p>
+</div>
+
+<script>
+    $(function(){
+        $.scoped();
+    });
+</script>
+<p>This is another paragraph, that will unaffected by the scoped style and remain black.</p>
+</body>
+</html>

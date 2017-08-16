@@ -1,0 +1,182 @@
+.col-sm-9{padding-right: 0}
+.userCreate{
+    -webkit-user-select:auto;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+table.dataTable.display tbody tr.odd>.sorting_1,table.dataTable.display tbody tr.odd{background-color: #fff;}
+table.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1,table.dataTable.display tbody tr:hover{
+    background-color:#ffebc4;
+}
+.dataTables_wrapper{border: 1px solid #aaaaaa;margin-left: 1%;margin-right: 1%}
+.dataTables_scroll{border-bottom: 1px solid #aaaaaa;background:#f5f5f5}
+.dataTables_wrapper .dataTables_info{margin-bottom: 14px;padding-top: 14px;margin-left: 7px}
+#userList_paginate{padding-top: 6px;background: white; margin-right: 14px}
+#userList_paginate a{border: 1px solid #ccc; color:#666!important;}
+#userList_paginate a:hover{background: white;cursor: pointer;color: black!important;}
+#userList_paginate span>.current{background:white;border-color:#ccc;color: black!important;padding: 0 }
+#userList_wrapper{background: white}
+.display .dataTable .no-footer{border-bottom: 1px solid #aaaaaa;width: 100%;background: white}
+table.dataTable thead{width: 100%}
+table.dataTable thead th{border-bottom: 1px solid #dddddd;text-align: center}
+table.dataTable thead tr{height: 54px;}
+table.dataTable tbody tr{height: 45px;text-align: center}
+#userList tbody tr td:first-child:hover{cursor: pointer}
+.pageCountHide{display: none}
+#userdropdownMenu{padding: 7px 14px; margin-top:2px;}
+#dropDeparment,#dropRole,#dropUserType{margin-top: 0;margin-left: 4%;font-size: 12px;width: 87%;height: auto;max-height: 100px;overflow-y: auto}
+@media (min-width: 768px) {
+    .navbar-collapse {
+        width: auto;
+        border-top: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background-color: #EDEDED;
+    }
+    .navbar-collapse.collapse {
+        display: block !important;
+        height: 40px!important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+}
+.userImg{margin-left:-8%;}
+.userImg img{border-radius: 500px;width: 80px;height: 80px;margin-top: 0.5%}
+#password,#passwordSave,#passwordQuit{display: none }
+#passwordSave{position: absolute;left:60%;top:-20%}
+#passwordQuit{position: absolute;left: 82%;top:-6%;text-decoration: none}
+#user_passwordUpdate{position: absolute;left:20%;top:-7%;text-decoration: none}
+#passwordQuit,#user_passwordUpdate:hover{cursor: default}
+.form-inline>.form-group{margin-top: 1%;margin-bottom: 1%;margin-left: 1%;width: 50%}
+.form-inline>.form-group label{text-align: right;font-size: 12px;margin-left: -2%}
+.form-inline>.form-group input{margin-left: 1%;width:47.5%;height: 30px}
+.form-horizontal>.form-group{margin-top: 0.5%;}
+.form-horizontal>.form-group label{text-align: right;font-size: 12px}
+.form-horizontal>.form-group input,.userHas>.form-group input{width: 90%;height: 30px;margin-top: -2%}
+.form-control{font-size: 12px}
+.form-control:hover{cursor: default}
+.form-control[readonly]{background-color:white }
+.form-control::-moz-placeholder { color: #999;  opacity: 1;  font-size: 12px;  }
+.form-control:-ms-input-placeholder {  color: #999;  font-size: 12px;  }
+.form-control::-webkit-input-placeholder {  color: #999;  font-size: 12px;  }
+.userHas{font-size: 12px}
+.modal-header{background: #f5f5f5;}
+#companyInfo{margin-left: -5%;margin-top: -2%}
+#companyInfo >.form-horizontal>.form-group input{margin-left: 2%;width: 86%}
+#department li a{text-decoration: none;color: #333;}
+#department li:hover{ color: #262626;  text-decoration: none;  background-color: #ffebc4;}
+.dropdown-menu>li>a:hover{background-color: #ffebc4}
+.companyLook{margin-top: -20%;margin-bottom:10%;margin-left: 6%}
+.companyLook  ul{margin-left: 10%; }
+.companyLook  ul li{margin-top: 6%;font-size: 13px;color: #4a4a4a}
+.companyLook  ul li b,#innerList li b{color: grey;margin-right: 10px;text-align: justify;}
+#innerList{margin-top: -20%;margin-left: 18%;margin-bottom: 10%;font-size: 13px}
+#innerList li{margin-top: 6%;color: #4a4a4a}
+
+.form-horizontal .control-label{padding: 0px}
+.modal-content{width: 80%;height:90%;}
+.modal-header{padding-top: 6px;padding-bottom: 6px}
+.modal-body{padding-bottom: 10px;padding-left: 50px}
+.modal-footer{text-align: center}
+.btn-primary {  color: #fff;  background-color: #f0d14d;  border-color: #f0d14d;  opacity: 1;}
+.btn-primary:hover{ background-color: #f0d14d;  border-color: #f0d14d;}
+#save{color: #fff;  background-color: rgba(46,195,233,0.8);  border-color: rgba(46,195,233,0.8);  opacity: 1;cursor: default;}
+#save:hover{ background-color: rgba(46,195,233,1);  border-color: rgba(46,195,233,1);}
+#quitSave{color: #fff;  background-color: rgba(240,209,77,0.8);  border-color: rgba(240,209,77,0.8);  opacity: 1;cursor: default;}
+#quitSave:hover{ background-color: rgba(240,209,77,1);  border-color: rgba(240,209,77,1);}
+#innerList,.companyLook{display: none}
+
+#user_pageCount ul li>a:hover{background: #ffebc4;}
+/*筛选的button相关*/
+#user_filter_box{  position: relative;  -webkit-user-select:none;  }
+#user_filter{  width: 80px;  height: 28px;  font-size: 12px;  margin-top:-2px;  line-height:28px;  position: relative;  border: 1px solid #ccc;
+    z-index: 1001;
+    border-radius:4px;
+    background-color: #fff;
+    outline:none;
+    cursor:default;
+}
+#user_filter i{
+    padding-left:10px;
+    padding-right:2px;
+    float:left;
+    font-size:14px;
+    color:#666;
+}
+#user_filter span{
+    float:left;
+}
+.user_down_flag{
+    margin-top:11px;
+}
+
+/*筛选的button相关*/
+#dapart_filter{
+    display:none;
+    padding:15px;
+    font-family:"Microsoft YaHei";
+}
+#dapart_filter li{
+    font-size:12px;
+    height:24px;
+    line-height:24px;
+    cursor:default;
+    white-space:nowrap;
+}
+#dapart_filter li i{
+    font-size:14px;
+    margin-right:5px;
+}
+.btn-default:hover,.btn-default:active{
+    background-color: #fff;
+}
+
+/*内容*/
+
+#dapart_filter_sure{
+    position:absolute;
+    right:10px;
+    top:5px;
+    color:#b9b9b9;
+    font-size:12px;
+    cursor: pointer;
+}  /*确定*/
+#dapart_filter_sure:hover{
+    color:#666;
+}
+
+.user_dropdown{
+    position: absolute;
+    top: 100%;
+    left: -7px;
+    top:24px;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    margin: 2px 7px 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.user_dropdown div{
+    color:#666;
+    font-weight:bold;
+    font-size:12px;
+    padding-left:4px;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+
+::-webkit-scrollbar/*整体部分*/
+{
+    width: 4px!important;
+    height:4px!important;
+}

@@ -1,0 +1,309 @@
+
+.container-fluid, .row, .col-sm-4, .col-md-4, .col-lg-4, .col-sm-8, .col-md-8, .col-lg-8,
+.col-md-12, .col-lg-12 { margin: 0; padding: 0; }
+#my-project-add-tree  .department-tree-span,#my-project-add-departmentTree .department-tree-span{display: none;}
+
+body { height: 100%; }
+
+#my-projects {
+    margin-left: -150px; cursor: default;
+}
+
+#my-project-headerBar { height: 42px; outline: 1px solid rgb(231, 231, 231);background-color: rgb(237, 237, 237);}
+
+/* 项目列表 */
+.my-project-item { position: relative; float: left; box-sizing: border-box;height: 108px; width: 280px; border: 1px solid #ddd;margin: 0 10px; margin-top: 20px;
+    background: white; }
+#my-project-list { margin:0 auto;}
+
+.my-project-item:hover
+{
+    box-shadow: 0 0 3px 1px rgba(117, 117, 117, 0.5);
+}
+@media (min-width: 600px) {
+    #my-project-list { width: 600px;}
+}
+@media (min-width: 900px) {
+    #my-project-list { width: 900px;}
+}
+@media (min-width: 1200px) {
+    #my-project-list { width: 1200px;}
+}
+@media (min-width: 1500px) {
+    #my-project-list { width: 1500px;}
+}
+@media (min-width: 1800px) {
+    #my-project-list { width: 1800px;}
+}
+/* 项目列表 - 项目信息 */
+.project-item-profile { position: relative; float: left; height: 66px;width: 66px; margin-top: 20px; margin-left: 30px; text-align: center;
+    border-radius: 3px; overflow: hidden; }
+.project-item-profile img{ width: 66px; height: 66px}
+.project-item-progress { position: absolute; z-index: 3; height: 100%; width: 100%; top: 0; left: 0; line-height:66px; background:rgba(0, 0, 0, .5);
+    color: #ffffff;}
+.project-item-info { position: relative; display: inline-block; margin:36px 0 0 16px;font:12px 微软雅黑;}
+.project-item-info h3 {font-size:12px;font-weight: bold; margin: 0 0 6px; padding: 0; overflow: hidden;white-space: nowrap;max-width: 150px;text-overflow: ellipsis;}
+.project-item-mask { position: absolute; display: none;z-index: 2; left: 0; top: 0;  width: 100%; height: 100%;background:rgba(0, 0, 0, .8)}
+.project-item-status { float: right; margin-right: 30px;font:18px/106px 微软雅黑;height: 100%;color: #ffffff;}
+
+/* 项目列表 - 结束的项目 */
+.project-status-finished .project-item-progress {background:rgba(0, 0, 0, 0)}
+.project-status-finished .project-item-mask { display: block;}
+
+#my-project-search, #my-project-newProject {
+    display: inline-block; padding-top: 4px; vertical-align: middle; }
+#my-project-newProject{display:none;}
+#my-project-search input:focus{cursor: default;border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}
+
+#my-project-search input { height: 30px; width: 140px; margin-left: 20px;
+    border-radius: 4px; border: 1px solid #ccc; padding-left: 6px;font:12px 微软雅黑;cursor: default;}
+
+#my-project-search-btn { position: relative; left: -32px; top: 1px; display: inline-block; height: 26px; width: 26px;
+    text-align: center; cursor: default;}
+
+#my-project-search-btn span { line-height: 26px; }
+
+#my-project-newProject button { margin-right: 20px; height: 30px; border-radius: 4px;
+    border: 1px solid #ddd; background: #5cb85c; color: white; width: 80px;font:12px 微软雅黑;}
+#my-project-newProject button:hover{background-color:#449d44;}
+
+.my-project-nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background-color: #273240;
+    font-family: 'Microsoft Yahei', '微软雅黑', sans-serif; }
+
+.my-project-nav li { list-style: none; height: 40px; text-align: center; cursor:default}
+
+.my-project-nav li a {
+    text-decoration: none;
+    color: #b8babd;
+    font-size: 15px;
+    line-height: 40px;
+    cursor: default;
+}
+
+.my-project-nav li a i { margin-right: 16px; }
+
+.zhan-wei { visibility: hidden; }
+.my-project-nav li:hover {background-color: rgba(0,0,0,.1)}
+
+.my-project-nav-active {
+    border-left: 3px solid #2dc3e8;
+    color:#fff;
+    background-color: rgba(0,0,0,.1);
+}
+
+.my-project-nav-active a { color: white !important; }
+
+#my-project-info {
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    height: 100%;
+}
+.mu-project-baseInfo{height: inherit;}
+.baseInfo-header{height:40px; }
+.mu-project-baseInfo { height: inherit; }
+.baseInfo-header { height: 40px; }
+/*============================新建项目=====================================*/
+#my-project-add-tree_1_ico.ico_open,#my-project-add-tree_1_ico.ico_close{background-position: -34px -78px !important;}
+#my-project-add-departmentTree_1_ico.ico_open,#my-project-add-departmentTree_1_ico.ico_close{background-position: -34px -78px !important;}
+.my-project-add{
+    display:block;
+    margin:12px 10px 12px -140px;
+    border:1px solid #ccc;
+    background-color:#fff;
+}
+.my-project-add-title{
+    height:42px;
+    line-height:42px;
+    padding-left:28px;
+    border-bottom:1px solid #ccc;
+    color:#5bc375;
+}
+.my-project-add-content{
+    position: relative;
+    color:#666;
+    width:639px;
+    margin:10px auto;
+
+}
+.my-project-add-image{
+    width:64px;
+    height:64px;
+    out-line:none;
+    margin-left:3px;
+    margin-right:15px;
+    overflow: hidden;
+    /*background:url(../images/project-add.png ) #fff no-repeat 11px 11px;*/
+    margin-bottom:14px;
+    border-radius:3px;
+}
+.my-project-add-image img{
+    border:1px solid #cfcfcf;
+    border-radius:4px;
+    width:64px;
+    height:64px;
+    outline: none;
+    border:1px dashed #ccc;
+
+}
+.my-project-add-image-btn{
+    position: absolute;
+    width:64px;
+    height:64px;
+    overflow: hidden;
+    left:79px;
+    top:0px;
+    opacity:0;
+    background-color: #00A000;
+}
+.project-add-item-name{
+    font-weight:normal;
+}
+
+.project-add-item-oneT{
+    font-weight:normal;
+    padding:0;
+    margin-left:-17px;
+}
+.project-add-item-detail{
+    width:196px !important;
+    height:30px;
+}
+.project-add-item-one{
+    width:228px;
+    height:30px;
+    margin-left:-11px;
+}
+.project-add-item-bt10{
+    margin-bottom:10px !important;
+}
+.project-add-btn-father{
+    width:162px;
+    position: absolute;
+    right:55px;
+    bottom:39px;
+}
+.project-add-btn{
+    width:70px;
+    height:35px;
+    text-align:center;
+    line-height:35px;
+    font-size:14px;
+    color:#fff;
+    border-radius: 4px;
+    float:left;
+    cursor:default;
+
+}
+.my-project-add-treeBody{
+    overflow: auto;
+    max-height: 283px;
+    width: 323px;
+    float:left;
+    margin-top:4px;
+    margin-bottom: 5px;
+}
+.project-add-chooseSplit{
+    margin-left:1px;padding-bottom:1000px; margin-bottom:-980px; border-left:1px solid #ccc; height:100%; float:left;
+}
+.my-project-add-choose-title{
+    position: absolute;
+    height:28px;
+    line-height:28px;
+    top:-38px;
+    left:42px;
+    border-bottom:3px solid #6cc984;
+}
+#my-project-add-chooseList{  /*ul*/
+
+}
+.my-project-add-choose-people{ /*li*/
+    font-size:12px;
+    height:28px;
+    line-height:28px;
+    cursor:default;
+    white-space:nowrap;
+}
+.my-project-add-choose-people i{    /*li i*/
+    font-size:14px;
+    margin-right:5px;
+    color:#ccc;
+}
+.my-project-add-chooseBox{
+    /* padding-top: 7px; */
+    padding-left: 55px;
+    /* padding-bottom: 1000px; */
+    margin-bottom: 5px;
+    float: left;
+    max-height: 283px;
+    overflow-y: auto;
+    width: 249px;
+    margin-top: 4px;
+    /* margin-left: 20px; */
+}
+.my-project-add-chooseBox .active{
+    color:#999;
+}
+.my-project-add-haveChoose{
+    width:81%;
+    margin-left:75px;
+    color:#2c2c2c;
+    overflow-y: auto;
+    max-height:150px;
+}
+.my-project-add-haveChoose li{
+    float:left;
+    padding:0 8px;
+    margin-right: 8px;
+    height:30px ;
+    line-height:30px;
+    font-size:12px;
+    cursor:pointer;
+    position: relative;
+
+}
+.my-project-add-haveChoose li:hover{color:#999;}
+.my-project-add-haveChoose li i{
+    position: absolute;
+    top:2px;
+    right:-3px;
+    height: 1em;
+    line-height: 1em;
+    font-size:14px;
+    color:#F23614;
+    display:none;
+
+}
+.my-project-add-haveChoose li:hover i{
+    display:block;
+}
+
+/*----------------------------新建项目----------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

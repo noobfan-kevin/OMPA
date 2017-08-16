@@ -1,0 +1,136 @@
+<div id="contract-tpl1">
+    <div class="contract-tpl-wrap">
+        <h3 class="contract-tpl-title">制作合同</h3>
+        <div class="contract-tpl-serial-wrap">
+            <b>编号:</b><b class="contract-tpl-serial">{{contract.code}}</b>
+        </div>
+        <div class="contract-tpl1-table">
+            <table class="contract-tpl-signatory">
+                <tbody>
+                <tr>
+                    <th class="contract-tpl1-th-bold">甲方</th>
+                    <td>{{contract.partAName}}</td>
+                    <th>通讯地址</th>
+                    <td>{{contract.partALocation}}</td>
+                </tr>
+                <tr>
+                    <th>邮箱</th>
+                    <td>{{contract.partAEmail}}</td>
+                    <th>联系电话</th>
+                    <td>{{contract.partAPhone}}</td>
+                </tr>
+                <tr>
+                    <th class="contract-tpl1-th-bold">乙方</th>
+                    <td>{{contract.partBName}}</td>
+                    <th>通讯地址</th>
+                    <td>{{contract.partBLocation}}</td>
+                </tr>
+                <tr>
+                    <th>邮箱</th>
+                    <td>{{contract.partBEmail}}</td>
+                    <th>联系电话</th>
+                    <td>{{contract.partBPhone}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="contract-tpl-item">
+                <tbody>
+                <tr>
+                    <th>委托<br/>事项</th>
+                    <td>根据《中华人民共和国合同法》及相关法律、法规,经充分协商自愿进行场景制作合作，并达成如下协议，双方申明：
+                        双方都已理解并认可了本协议的所有内容，同意承担各自应承担的权利和义务，忠实的履行本协议。甲方委托乙方、
+                        乙方接受甲方委托制作如下 <span class="contract-tpl-underline">1</span> 个任务：<br/>
+                        1、<span>{{contract.taskCardName}}</span>（任务编号：<span>{{contract.taskCardCode}}</span>）<br/>
+                        <!--2、任务2名称（任务编号：xxxxxxxxxxxxxxxx）-->
+                    </td>
+                </tr>
+                <tr>
+                    <th>义<br/>务<br/>与<br/>责<br/>任</th>
+                    <td>
+                        1、甲方委托乙方制作的内容必须符合国家有关法律法规的要求，乙方不承担由此而引起的法律纠纷；<br/>
+                        2、甲方为乙方的工作准备必要的素材及条件，使乙方的工作可以在约定时间内的顺利进行；<br/>
+                        3、在制作过程当中，甲方应委派工作人员负责进行工作结点验收；<br/>
+                        4、乙方按照甲方提供的需求设定及标准进行制作；<br/>
+                        5、乙方不得将为甲方制作的合同所有内容以任何方式转让、出售、复制给任何单位和个人；<br/>
+                        5、乙方承诺在本协议规范的事项内的，只要是与甲方有关联的所有内容，乙方应尽保密的义务。<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>违<br/>约<br/>与<br/>解<br/>决</th>
+                    <td>
+                        发生下列情形时，甲方有权单方解除本合同，且不需要承担违约责任：<br/>
+                        1、乙方擅自停止履行委托事项，未能通过甲方的验收；<br/>
+                        2、不可抗力导致本合同履行不能；<br/>
+                        3、乙方违反其在本合同项下的保密任务，且给甲方造成重大损失；<br/>
+                        4、乙方违反本合同项下的禁止转让义务；<br/>
+                        5、乙方的违约行为导致合同不能履行或合同的履行没有意义；<br/>
+                        6、乙方未经甲方事先书面同意将委托事项的部分或全部转委托给第三方；<br/>
+                        7、法律、法规规定的其他情形。<br/>
+                        甲方在任何情况、任何理由和任何时间给予乙方3天右键通知后，可终止本合同。在此情形下，甲方仅需向乙方支付乙方
+                        已经提供的服务的费用，不需要向乙方支付任何其他费用。
+                    </td>
+                </tr>
+                <tr>
+                    <th>版权<br/>事宜</th>
+                    <td>
+                        乙方提交的并经甲方验收合格的项目成果的所有权、知识产权及其他权利归甲方所有。
+                    </td>
+                </tr>
+                <tr>
+                    <th>费<br/>用<br/>及<br/>付<br/>款</th>
+                    <td>
+                        1、本合同总价人民币<span class="contract-tpl-underline">{{contract.totalMoney}}</span>元,大写：<span class="contract-tpl-underline">{{contract.totalMoney | rmb}}</span>；<br/>
+                        2、合同签订后（五个工作日内），甲方支付乙方合同总价的20%首笔款项，合计人民币<span class="contract-tpl-underline">{{contract.totalMoney | installment:contract.payType:0}}</span>元；<br/>
+                        3、乙方完成<span>精模</span>环节经甲方确认验收通过并提交完成文件后（五个工作日）付给乙方合同总价的30%的
+                        二期款合计人民币<span class="contract-tpl-underline">{{contract.totalMoney | installment:contract.payType:1}}</span>元；<br/>
+                        4、乙方完成所有制作内容经甲方确认验收通过并提交完成文件后（五个工作日）付给乙方合同总价的50%的尾款合计人
+                        民币<span class="contract-tpl-underline">{{contract.totalMoney | installment:contract.payType:2}}</span>元；<br/>
+                        5、收款账户名称：<span class="contract-tpl-underline">{{contract.partBCountName}}</span>；收款账号：<span class="contract-tpl-underline">{{contract.partBCountNumber}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td>
+                        本协议一式两份，甲、乙双方各执一份，经甲、乙双方签字之日起生效。
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="contract-tpl-sign">
+                <tbody>
+                <tr>
+                    <td>
+                        <p class="contract-tpl-name-wrap">
+                            <b>甲方（盖章）：</b>
+                            <span>{{contract.partAName}}</span><br/>
+                        </p>
+                        <p class="contract-tpl-date-wrap">
+                            <b>签字：</b>
+                            <span> </span>
+                            <b>日期：</b>
+                            <span> 年 月 日</span>
+                        </p>
+                    </td>
+                    <td>
+                        <p class="contract-tpl-name-wrap">
+                            <b>乙方（盖章）：</b>
+                            <span>{{contract.partBName}}</span><br/>
+                        </p>
+                        <p class="contract-tpl-date-wrap">
+                            <b>签字：</b>
+                            <span> </span>
+                            <b>日期：</b>
+                            <span> 年 月 日</span>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="contract-tpl-root-wrap">
+            <span>本合同共一页</span>
+        </div>
+
+    </div>
+</div>
+

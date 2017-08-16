@@ -1,0 +1,709 @@
+<style>
+    @import url(css/zTreeStyle.css);
+    @import url(css/publicDataBase.css);
+</style>
+<div class="publicDB_main">
+    <div class="sitebar">
+        <ul id="aside-nav">
+            <li class="current homePageNav">
+                <a class="asidenav-item" href="javaScript:;" draggable="false">首页</a>
+            </li>
+            <li class="catalogPageNav">
+                <a class="asidenav-item" href="javaScript:;" draggable="false">分类</a>
+                <i class="iconfont addFolder addRoot" title="新建根节点">&#xe641;</i>
+            </li>
+        </ul>
+        <ul class="ztree" id="publicDBTree">
+
+        </ul>
+    </div>
+    <div class="rContent">
+        <div class="homePage">
+            <div class="searchBox">
+                <div class="searchArea">
+                    <input type="text" class="searchBar" placeholder="请输入关键字" />
+                    <i class="iconfont searchBtn">&#xe695;</i>
+                </div>
+            </div>
+            <ul class="latestContent clearfix">
+                <!--<li class="fl fileStream">
+                    <ul>
+                        <li class="file">
+                            <div class="fileShow">
+                                <img src="images/pgwslide/1.jpg" class="fileThumbnail">
+                                <div class="shadow">
+                                    <span class="type">PNG</span>
+                                    <span class="size">2.15MB</span>
+                                    <span class="icon">
+                                        <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                        <i class="iconfont delete" title="删除">&#xe698;</i>
+                                        <i class="iconfont download" title="下载">&#xe66c;</i>
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="fileName" title="文件素材">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/5.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/9.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="fl fileStream">
+                    <ul>
+                        <li class="file">
+                            <img src="images/pgwslide/2.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/6.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/10.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="fl fileStream">
+                    <ul>
+                        <li class="file">
+                            <img src="images/pgwslide/3.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/7.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/11.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="fl fileStream">
+                    <ul>
+                        <li class="file">
+                            <img src="images/pgwslide/6.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/8.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                        <li class="file">
+                            <img src="images/pgwslide/12.jpg" class="fileThumbnail">
+                            <span class="fileName">文件素材</span>
+                        </li>
+                    </ul>
+                </li>-->
+            </ul>
+        </div>
+        <div class="catalogPage" style="display: none;">
+            <div class="toolbar clearfix">
+                <div class="fl searchArea">
+                    <input type="text" class="searchBar" placeholder="请输入关键字" />
+                    <i class="iconfont searchBtn">&#xe695;</i>
+                </div>
+                <a href="javaScript:;" class="fr uploadFileBtn">上传文件</a>
+            </div>
+            <ul class="allSelectedItem clearfix">
+                <!--<li class="fl oneSelectedItem">
+                    <span class="optionName">文件大小 ：</span>
+                    <span class="optionChecked">特大</span>
+                    <i class="iconfont">&#xe628;</i>
+                </li>
+                <li class="fl oneSelectedItem">
+                    <span class="optionName">文件格式 ：</span>
+                    <span class="optionChecked">PNG</span>
+                    <i class="iconfont">&#xe628;</i>
+                </li>
+                <li class="fl oneSelectedItem">
+                    <span class="optionName">文件用途 ：</span>
+                    <span class="optionChecked">图像</span>
+                    <i class="iconfont">&#xe628;</i>
+                </li>
+                <li class="fl oneSelectedItem">
+                    <span class="optionName">文件尺寸 ：</span>
+                    <span class="optionChecked">1440*900</span>
+                    <i class="iconfont">&#xe628;</i>
+                </li>-->
+            </ul>
+            <ul class="allOptions" style="display: none;">
+                <!--<li class="optionItem removeLine">
+                    <span class="optionName">文件大小 ：</span>
+                    <span class="oneOption">小</span>
+                    <span class="oneOption">中</span>
+                    <span class="oneOption">大</span>
+                    <span class="oneOption">特大</span>
+                </li>
+                <li class="optionItem">
+                    <span class="optionName">文件大小 ：</span>
+                    <span class="oneOption">小</span>
+                    <span class="oneOption">中</span>
+                    <span class="oneOption">大</span>
+                    <span class="oneOption">特大</span>
+                </li>
+                <li class="optionItem">
+                    <span class="optionName">文件大小 ：</span>
+                    <span class="oneOption">小</span>
+                    <span class="oneOption">中</span>
+                    <span class="oneOption">大</span>
+                    <span class="oneOption">特大</span>
+                </li>
+                <li class="optionItem">
+                    <span class="optionName">文件大小 ：</span>
+                    <span class="oneOption">小</span>
+                    <span class="oneOption">中</span>
+                    <span class="oneOption">大</span>
+                    <span class="oneOption">特大</span>
+                </li>-->
+            </ul>
+            <ul class="clearfix filesList">
+                <!--<li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/5.jpg" class="markedPicture">
+                            <span class="filesCount">2</span>
+                            <div class="fileShadow">
+                                <span class="type">PNG</span>
+                                <span class="size">2.15MB</span>
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                    <i class="iconfont download" title="下载">&#xe66c;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/6.jpg" class="markedPicture">
+                            <span class="filesCount">22</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/7.jpg" class="markedPicture">
+                            <span class="filesCount">222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/8.jpg" class="markedPicture">
+                            <span class="filesCount">2222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/4.jpg" class="markedPicture">
+                            <span class="filesCount">222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/3.jpg" class="markedPicture">
+                            <span class="filesCount">222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/2.jpg" class="markedPicture">
+                            <span class="filesCount">222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>
+                <li class="fl oneFile">
+                    <div class="marginBox">
+                        <div class="fileContent">
+                            <img src="images/pgwslide/1.jpg" class="markedPicture">
+                            <span class="filesCount">222</span>
+                            <div class="fileShadow">
+                                <span>
+                                    <i class="iconfont edit" title="详情">&#xe69b;</i>
+                                    <i class="iconfont delete" title="删除">&#xe698;</i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="fileTitle">文件素材</span>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+        <div class="nodeManage" style="display: none;">
+            <div class="nodeContent">
+                <div class="header clearfix">
+                    <p class="fl goBack">
+                        <i class="iconfont addIcon">&#xe636;</i>
+                        <span class="return">返回</span>
+                    </p>
+                    <p class="functionBtn fr">
+                        <a href="javascript:;" class="saveBtn">保存</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                    </p>
+                </div>
+                <ul class="nodeInfo">
+                    <li class="nodeThumbnail feature clearfix">
+                        <span class="fl">缩略图 ：</span>
+                        <p class="fl uploadThumbnail">
+                            <img src="" class="thumbnailPicture" />
+                            <span>点击上传图片</span>
+                        </p>
+                        <input type="file" class="uploadThumbnailBtn" style="display: none" />
+                    </li>
+                    <li class="nodeName feature clearfix">
+                        <span class="fl lessWord">名称 ：</span>
+                        <input type="text" class="fl nodeNameInput" placeholder="请输入节点名称" />
+                    </li>
+                    <li class="nodeIndex feature clearfix">
+                        <span class="fl lessWord">索引 ：</span>
+                        <ul class="fl nodeAllIndex">
+                            <!--<li class="nodeIndexInfo clearfix">
+                                <span class="fl indexName">文件格式</span>
+                                <i class="fl colon"> ：</i>
+                                <ul class="fl indexOption">
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl">
+                                        <i class="iconfont add">&#xe641;</i>
+                                    </li>
+                                </ul>
+                                <i class="iconfont deleteIndex">&#xe628;</i>
+                            </li>
+                            <li class="nodeIndexInfo clearfix">
+                                <span class="fl indexName">文件大小</span>
+                                <i class="fl colon"> ：</i>
+                                <ul class="fl indexOption">
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl nodeIndexKey">
+                                        <input type="text" title="索引值" class="inputInfo">
+                                        <i class="iconfont cancel">&#xe699;</i>
+                                    </li>
+                                    <li class="fl">
+                                        <i class="iconfont add">&#xe641;</i>
+                                    </li>
+                                </ul>
+                                <i class="iconfont deleteIndex">&#xe628;</i>
+                            </li>
+                            <li class="nodeIndexInfo clearfix">
+                                <input type="text" class="fl indexTitle" title="" value="文件用途" />
+                                <i class="fl colon"> ：</i>
+                                <ul class="fl indexOption">
+                                    <li class="fl">
+                                        <i class="iconfont add">&#xe641;</i>
+                                    </li>
+                                </ul>
+                                <i class="iconfont deleteIndex">&#xe628;</i>
+                            </li>-->
+                            <li class="addIndex">
+                                <a href="javascript:;">+新建索引</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fileManage" style="display: none;">
+            <div class="nodeContent">
+                <div class="header clearfix">
+                    <p class="fl goBack">
+                        <i class="iconfont addIcon">&#xe636;</i>
+                        <span class="return">返回</span>
+                    </p>
+                    <p class="functionBtn fr">
+                        <a href="javascript:;" class="saveBtn">保存</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <input type="file" multiple="multiple" id="uploadFileBtn" style="display: none" />
+                    </p>
+                </div>
+                <ul class="nodeInfo">
+                    <li class="nodeThumbnail feature clearfix">
+                        <span class="fl">缩略图 ：</span>
+                        <p class="fl uploadThumbnail">
+                            <img src="" class="thumbnailPicture" />
+                            <span>点击上传图片</span>
+                        </p>
+                        <input type="file" class="uploadThumbnailBtn" style="display: none" />
+                    </li>
+                    <li class="nodeName feature clearfix">
+                        <span class="fl lessWord">名称 ：</span>
+                        <input type="text" class="fl nodeNameInput" placeholder="请输入节点名称" />
+                    </li>
+                    <li class="nodeFile feature clearfix">
+                        <span class="fl lessWord">文件 ：</span>
+                        <ul class="fl">
+                            <!--<li class="uploadFile">
+                                <span>是读后感是是读后感是大户经营好的手机用户的的手机号是读后感是大户经营好的手机用户的的手机号大户经营好的手机用户的的手机号</span>
+                                <div class="load-bar">
+                                    <div class="load-bar-inner" style="width:0"></div>
+                                </div>
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>-->
+                            <li class="uploadFile addFile">
+                                <i class="iconfont add addFileBtn">&#xe641;</i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="keyWord feature clearfix">
+                        <span class="fl">关键字 ：</span>
+                        <ul class="fl">
+                            <!--<li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>
+                            <li class="fl keyWordInfo">
+                                <input type="text" class="inputInfo" title="" />
+                                <i class="iconfont cancel">&#xe699;</i>
+                            </li>-->
+                            <li class="fl keyWordInfo addKeyWord">
+                                <i class="iconfont add addTitle">&#xe641;</i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nodeIndex feature">
+                        <span class="lessWord">索引 ：</span>
+                        <ul class="allIndex">
+                            <!--<li class="oneIndex clearfix">
+                                <span class="fl indexName">文件格式 ：</span>
+                                <div class="fl allIndexOption">
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                </div>
+                            </li>
+                            <li class="oneIndex clearfix">
+                                <span class="fl indexName">文件大小 ：</span>
+                                <div class="fl allIndexOption">
+                                    <span class="oneIndexOption">小</span>
+                                    <span class="oneIndexOption">中</span>
+                                    <span class="oneIndexOption">大</span>
+                                    <span class="oneIndexOption">特大</span>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nodeDetails" style="display: none;">
+            <div class="nodeContent">
+                <div class="header clearfix">
+                    <p class="fl goBack">
+                        <i class="iconfont addIcon">&#xe636;</i>
+                        <span class="return">返回</span>
+                    </p>
+                    <p class="functionBtn fr">
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="deleteBtn">删除</a>
+                    </p>
+                </div>
+                <ul class="nodeInfo">
+                    <li class="nodeThumbnail feature clearfix">
+                        <span class="fl">缩略图 ：</span>
+                        <p class="fl uploadThumbnail">
+                            <img src="" class="thumbnailPicture" />
+                            <span>无缩略图</span>
+                        </p>
+                        <input type="file" style="display: none" />
+                    </li>
+                    <li class="nodeName feature">
+                        <span class="position lessWord">名称 ：</span>
+                        <span class="nodeContentInfo"></span>
+                    </li>
+                    <li class="superiorName feature">
+                        <span class="position moreWord">上级节点 ：</span>
+                        <span class="nodeContentInfo"></span>
+                    </li>
+                    <li class="subordinateName feature">
+                        <span class="position moreWord">下级节点 ：</span>
+                        <span class="nodeContentInfo"></span>
+                    </li>
+                    <li class="nodeCreator feature">
+                        <span class="position ">创建者 ：</span>
+                        <span class="nodeContentInfo"></span>
+                    </li>
+                    <li class="nodeCreateTime feature">
+                        <span class="position moreWord">创建时间 ：</span>
+                        <span class="nodeContentInfo"></span>
+                    </li>
+                    <li class="nodeIndex feature">
+                        <span class="lessWord">索引 ：</span>
+                        <ul class="allIndex">
+                            <!--<li class="oneIndex clearfix">
+                                <span class="fl indexName">文件格式 ：</span>
+                                <div class="fl allIndexOption">
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                    <span class="oneIndexOption">PNG</span>
+                                </div>
+                            </li>
+                            <li class="oneIndex clearfix">
+                                <span class="fl indexName">文件大小 ：</span>
+                                <div class="fl allIndexOption">
+                                    <span class="oneIndexOption">小</span>
+                                    <span class="oneIndexOption">中</span>
+                                    <span class="oneIndexOption">大</span>
+                                    <span class="oneIndexOption">特大</span>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fileDetails" style="display: none;">
+            <div class="header clearfix">
+                <p class="fl goBack">
+                    <i class="iconfont addIcon">&#xe636;</i>
+                    <span class="return">返回</span>
+                </p>
+                <p class="functionBtn fr">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                    <a href="javascript:;" class="deleteBtn">删除</a>
+                    <a href="javascript:;" class="downloadBtn">下载</a>
+                </p>
+            </div>
+            <div class="fileInfo">
+                <div class="clearfix">
+                    <div class="fl filePicture feature">
+                        <img src="" class="filePictureShow" />
+                        <span>无缩略图</span>
+                    </div>
+                    <ul class="fl baseInfo">
+                        <li class="fileName feature clearfix">
+                            <span class="fl position lessWord">名称 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                        <li class="fileSize feature clearfix">
+                            <span class="fl position moreWord">文件大小 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                        <li class="fileType feature clearfix">
+                            <span class="fl position moreWord">文件类型 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                        <li class="category feature clearfix">
+                            <span class="fl position moreWord">所属节点 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                        <li class="nodeCreator feature clearfix">
+                            <span class="fl position ">创建者 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                        <li class="nodeCreateTime feature clearfix">
+                            <span class="fl position moreWord">创建时间 ：</span>
+                            <span class="fl nodeContentInfo"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nodeIndex feature">
+                    <span class="lessWord">索引 ：</span>
+                    <ul class="allIndex">
+                        <!--<li class="oneIndex clearfix">
+                            <span class="fl indexName">文件格式 ：</span>
+                            <div class="fl allIndexOption">
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                                <span class="oneIndexOption">PNG</span>
+                            </div>
+                        </li>
+                        <li class="oneIndex clearfix">
+                            <span class="fl indexName">文件大小 ：</span>
+                            <div class="fl allIndexOption">
+                                <span class="oneIndexOption">小</span>
+                                <span class="oneIndexOption">中</span>
+                                <span class="oneIndexOption">大</span>
+                                <span class="oneIndexOption">特大</span>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+                <div class="fileKeyWord">
+                    <span class="position">关键字 ：</span>
+                    <span class="nodeContentInfo"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        publicDataBase.init();
+    })
+</script>

@@ -1,0 +1,150 @@
+/*-------------------------基本信息--new--start--------------------------------------------------*/
+.addTask,.checkTask{
+    width:680px;
+    padding-top:30px;
+    background-color: #fff;
+}
+.addTask{ margin:0 auto;}
+.addTask li{
+    display:block !important;
+}
+
+.task-name{
+    width:110px;
+    padding:4px 0 0 0;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+}
+.checkTaskRow{
+    margin-bottom:14px !important;
+}
+.task-name-value{
+    text-align:left;
+    padding-left:10px;
+}
+.task-name-value2{
+    padding:4px 10px;
+    width:600px;
+    font-weight:normal;
+    text-align:left;
+
+}
+.task-name-two{
+    width:110px;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+    margin-left: -14px;
+    float: left;
+    padding-top: 5px;
+}
+.task-name-three{
+    width:110px;
+    margin-bottom: 0;
+    text-align: right;
+    font-weight:normal;
+    margin-left: -14px;
+    float: left;
+    padding: 5px 0 0 0;
+}
+.task-input-one{
+    background-color:#fff !important;
+    width:542px !important;
+    padding-left:12px;
+    padding-right:46px;
+}
+.task-input-two{
+    background-color:#fff !important;
+    width: 213px !important;
+    margin-left: -1px;
+}
+.task-input-three{
+    background-color:#fff !important;
+    width: 168px !important;
+    margin-right:15px;
+}
+.task-input-four{
+    width: 130px !important;
+    margin-right:40px;
+    margin-left:0
+}
+.addTask input{
+    margin-bottom:14px;
+    height:30px;
+}
+.newTaskBtn{
+    position: absolute;
+    width:70px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    border-radius: 5px;
+    color:#fff;
+    bottom:30px;
+    /*top:300px;*/
+    cursor: default;
+    -webkit-user-select:none;
+
+}
+#newTaskSave,#checkTaskDelete{
+    right:130px;
+    background-color: #2ec3e9;
+}
+#newTaskSave:hover{background-color: #02aed9;}
+#newTaskCancel{
+    right:30px;
+    background-color: #f0d14d;
+}
+#newTaskCancel:hover{background-color:#ecad17;}
+.newTaskSelect{
+    max-height: 156px;
+    overflow-y: auto;
+    margin-top: -14px;
+    width: 168px;
+}
+.newTaskSelect li{
+    padding:2px 0px 2px 11px;
+}
+.newTaskSelect li:hover{
+    background-color: #ffebc4;
+}
+.clearFix{ content:''; display:block; clear:both;}
+
+#taskVersion li{
+    height:30px;
+    line-height:30px;
+    padding-left:12px;
+    font-size:12px;
+}
+#taskVersion li:hover{ background-color:#ffebc4; }
+.task-check-box{
+    width:100%;
+    margin-bottom:20px;
+}
+.table-condensed tbody td{ padding:1px !important;}
+/*-------------------------基本信息--new--end--------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

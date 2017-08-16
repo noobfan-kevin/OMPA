@@ -1,0 +1,33 @@
+<div id="myContract-voucher">
+    <div class="pay-list-wrap">
+        <p class="header">交易详情</p>
+        <dl class="pay-list">
+            <dt>
+                <span class="pay-type">付款方式 </span>
+                <span class="pay-time">付款时间</span>
+                <span class="pay-money">付款金额</span>
+            </dt>
+            <dd ng-repeat="pay in payList">
+                <span class="pay-type">{{pay.payType}}</span>
+                <span class="pay-time">{{pay.paidTime}}</span>
+                <span class="pay-money">{{pay.money}}</span>
+            </dd>
+        </dl>
+    </div>
+    <div class="voucher-list" ng-repeat="voucher in voucherList">
+        <p class="header">{{voucher.name}}</p>
+        <div class="voucher-wrap">
+            <div class="voucher-pic" ng-repeat="image in voucher.images track by $index" ng-click="zoomViewer()">
+                <img ng-src="{{image}}"  alt="">
+            </div>
+        </div>
+    </div>
+    <div class="voucher-viewer" ng-show="showViewer">
+        <div class="viewer-body">
+            <div class="header">交易详情 <span class="iconfont" ng-click="showViewer=false">&#xe628;</span></div>
+            <div class="img-wrap">
+                <img ng-src="{{curImage}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>

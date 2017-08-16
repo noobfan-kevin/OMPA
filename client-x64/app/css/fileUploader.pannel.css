@@ -1,0 +1,213 @@
+#dialog-uploader {
+    position: fixed;
+    width: 633px;
+    top: auto;
+    bottom: 0px;
+    left: auto;
+    right: 30px;
+    visibility: visible;
+    z-index: 10001;
+    background: #ffffff;
+    margin-bottom: 2px;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 10px;
+    display: none;
+}
+
+.dialog-uploader-header {
+    color: #fff;
+    background: #2DC3E8;
+}
+
+.dialog-uploader-header h3 {
+    position: relative;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    text-indent: 1em;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+}
+
+.dialog-header-title {
+    display: block;
+    padding-top: 13px;
+    line-height: 16px;
+    margin-right: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#dialog-uploader .dialog-control {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 20px;
+}
+
+.select-text {
+    font-style: normal;
+    cursor: text;
+}
+
+#dialog-uploader .file-name {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 40%;
+    height: 40px;
+    white-space: nowrap;
+    text-indent: 35px;
+    text-overflow: ellipsis;
+}
+
+#dialog-uploader .file-size {
+    float: left;
+    width: 15%;
+    height: 40px;
+    text-indent: 10px;
+}
+
+#dialog-uploader .file-status {
+    position: relative;
+    float: left;
+    width: 25%;
+    height: 40px;
+}
+
+/* 上传状态 */
+#dialog-uploader .file-status span {
+    display: none;
+}
+
+#dialog-uploader .status-waiting .waiting,
+#dialog-uploader .status-prepare .prepare,
+#dialog-uploader .status-uploading .uploading,
+#dialog-uploader .status-error .error,
+#dialog-uploader .status-pause .pause,
+#dialog-uploader .status-cancel .cancel,
+#dialog-uploader .status-success .success {
+    display: block;
+}
+
+#dialog-uploader .file-list .success em, #dialog-uploader .file-list .error em {
+    position: absolute;
+    top: 14px;
+    left: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('img/uploader-operate-icon.png') -100px -100px no-repeat;
+}
+
+#dialog-uploader .status-success .success em {
+    background-position: 0 -81px;
+}
+
+#dialog-uploader .status-error .error em {
+    background-position: -22px -81px;
+}
+
+#dialog-uploader .file-operate {
+    float: left;
+    width: 20%;
+    height: 40px;
+}
+
+#dialog-uploader .uploader-list {
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 340px;
+}
+
+#dialog-uploader .uploader-list-header {
+    height: 40px;
+    line-height: 40px;
+}
+
+#dialog-uploader .uploader-container {
+    position: relative;
+    overflow: hidden;
+    color: #666;
+}
+
+#dialog-uploader .file-list {
+    position: relative;
+    height: 40px;
+    border-bottom: 1px solid #ebebeb;
+    line-height: 40px;
+}
+
+#dialog-uploader .file-list .process {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    background: #abd7fb;
+}
+
+#dialog-uploader .file-list .info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#dialog-uploader .file-name .name-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#dialog-uploader .file-icon {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: 16px;
+    height: 16px;
+}
+
+#dialog-uploader .file-operate em {
+    display: none;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: url('img/uploader-operate-icon.png') no-repeat;
+    cursor: pointer;
+}
+
+#dialog-uploader .file-icon {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: 16px;
+    height: 16px;
+    background: url('img/uploader-fileTypeIcon.png') no-repeat;
+}
+
+#dialog-uploader .file-operate .operate-pause {
+    display: block;
+    background-position: 0 0;
+}
+
+#dialog-uploader .file-operate .operate-continue {
+    background-position: 0 -17px;
+}
+
+#dialog-uploader .file-operate .operate-remove {
+    display: block;
+    background-position: 0 -33px;
+}
+
+#dialog-uploader .dialog-icon {
+    height: 20px;
+    width: 20px;
+    float: right;
+    cursor: pointer;
+    font: 14px/20px Arial;
+}

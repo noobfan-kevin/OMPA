@@ -1,0 +1,641 @@
+<script>
+    $('#newProjectBox').find('style').remove();
+</script>
+<style>
+    @import url(css/fundManagment.css);
+    @import url(css/positionMap.css);
+</style>
+<div class="position-map">
+    <a id="fundcurPositionName"></a>
+    <a>资金管理</a>
+</div>
+<!-- 新建/编辑用户Modal -->
+<div class="modal " id="createUserInfo" tabindex="-1" role="dialog" style="font-size: 14px" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="margin-left: 118px;margin-top:130px;">
+            <div class="modal-header"  >
+                <button type="button" class="close " id='closeCreate' style="opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style="font-size: 0.5em;color: grey;margin-right: 5px;">&#xe628;</span></button>
+                <button type="button" class="close dismiss"  style="opacity: 1; display: none" data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em;">&#xe629;</span>
+                    &nbsp;</button>
+                <h4 class="modal-title" id="createUserModal"><b>新建支出</b></h4>
+            </div>
+            <div class="modal-body" id="use CreateBody">
+                <!--<div class="userImg" style="visibility: hidden">-->
+                <!--<figure>-->
+                <!--<img src="images/defaultAvatar.jpg" alt="默认头像" >-->
+                <!--<figcaption style="color: grey;font-size: 12px;margin-left: 3%">修改头像</figcaption>-->
+                <!--</figure>-->
+                <!--</div>-->
+                <form class="form-horizontal" style="padding-left: -2px;">
+                    <div class="form-group selectArea">
+                        <label  class="col-sm-2 control-label" style="margin-top:7px;margin-left:5px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"><span style="color: red">*</span>类别 :</label>
+                        <div class="col-sm-9">
+                            <select class="select form-control" id='type' style="margin-top:5px;margin-left: 12px;width:175px;height:30px;border-radius: 4px;font-size: 14px;">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:3px;width: 75px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"><span style="color: red">*</span>使用人/物 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="username" placeholder="请输入名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:3px;width: 75px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"><span style="color: red">*</span>金额 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="money"  placeholder="请输入金额"><span style="font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"> 万( 元 )</span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label  class="col-sm-2 control-label" style="margin-top:10px;width: 75px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">备注 :</label>
+                        <div class="col-sm-9">
+                            <textarea  class="form-control" id="remark" style="height: 80px;width: 215px;margin-left: 10px;" placeholder="请输入备注"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-foot" style="padding-top: 10px;padding-bottom: 6px;margin-left: -135px;font-family: 'Microsoft Yahei', '微软雅黑';">
+                        <button type="button" class="btn btn-default dismiss" id="save" >保存</button>
+                        <button type="button" class="btn btn-primary dismiss" id="quitSave" >取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modalSet" id="createFundInfo" tabindex="-1" role="dialog" style="font-size: 14px;" >
+    <div class="modal-dialog set" role="document"  style="display: none">
+        <div class="modal-content" style="margin-left: 105px;margin-top:180px;width: 410px;height: 300px;">
+            <div class="modal-header"  >
+                <button type="button" class="close " id='CreateDetail' style="opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style="font-size: 0.5em;color: grey;margin-right: 5px;">&#xe628;</span></button>
+                <h4 class="modal-title" id="createFundModal"><b>设定</b></h4>
+            </div>
+            <div class="modal-body" id="fundCreateBody">
+                <!--<div class="userImg" style="visibility: hidden">-->
+                <!--<figure>-->
+                <!--<img src="images/defaultAvatar.jpg" alt="默认头像" >-->
+                <!--<figcaption style="color: grey;font-size: 12px;margin-left: 3%">修改头像</figcaption>-->
+                <!--</figure>-->
+                <!--</div>-->
+                <form class="form-horizontal" style="padding-left: -2px;">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top: 15px;margin-left:22px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">类别名称 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="typeName" style="margin-top: 10px;" placeholder="请输入类别">
+                        </div>
+                    </div>
+                    <div class="form-group selectArea">
+                        <label  class="col-sm-2 control-label" style="margin-top:7px;margin-left:22px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">父级类别 :</label>
+                        <div class="col-sm-9">
+                            <select id="fatherType"  class="select form-control" style="margin-top:5px;margin-left: 12px;width:175px;height:30px;border-radius: 4px;font-size: 14px;">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:8px;margin-left:22px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">金额设定 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="account" style="margin-top: 5px;" placeholder="请输入金额"><span style="font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"> 万( 元 )</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:-10px;width: 190px;margin-left:90px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;color:red;font-size: 12px;">注 : 不能大于父级类别的剩余金额</label>
+                    </div>
+                    <div class="modal-foot" style="margin-top:20px;padding-bottom: 6px;margin-left: -135px;font-family: 'Microsoft Yahei', '微软雅黑';">
+                        <button type="button" class="btn btn-default dismiss" id="save01" >保存</button>
+                        <button type="button" class="btn btn-primary dismiss" id="quitSave01" >取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog edit02" role="document"  >
+        <div class="modal-content" style="margin-left: 105px;margin-top:180px;width: 410px;height: 250px;">
+            <div class="modal-header"  >
+                <button type="button" class="close " id='CreateDetail02' style="opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style="font-size: 0.5em;color: grey;margin-right: 5px;">&#xe628;</span></button>
+                <h4 class="modal-title" id="createFundModal02"><b>修改</b></h4>
+            </div>
+            <div class="modal-body" id="fundCreateBody02">
+                <!--<div class="userImg" style="visibility: hidden">-->
+                <!--<figure>-->
+                <!--<img src="images/defaultAvatar.jpg" alt="默认头像" >-->
+                <!--<figcaption style="color: grey;font-size: 12px;margin-left: 3%">修改头像</figcaption>-->
+                <!--</figure>-->
+                <!--</div>-->
+                <form class="form-horizontal" style="padding-left: -2px;">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top: 15px;margin-left:22px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">类别名称 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="typeName02" style="margin-top: 10px;" placeholder="请输入类别">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:8px;margin-left:22px;width: 70px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;">金额设定 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="account02" style="margin-top: 5px;" placeholder="请输入金额"><span style="font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;font-size: 14px;"> 万( 元 )</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" style="margin-top:-10px;width: 190px;margin-left:90px;font-family: 'Microsoft Yahei', '微软雅黑';font-weight:300;color:red;font-size: 12px;">注 : 不能大于父级类别的剩余金额</label>
+                    </div>
+                    <div class="modal-foot" style="margin-top:20px;padding-bottom: 6px;margin-left: -135px;font-family: 'Microsoft Yahei', '微软雅黑';">
+                        <button type="button" class="btn btn-default dismiss" id="save02" >保存</button>
+                        <button type="button" class="btn btn-primary dismiss" id="quitSave02" >取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="detailList" tabindex="-1" role="dialog" style="font-size: 14px;" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="margin-left: 18px;margin-top:100px;width: 560px;height: 490px;">
+            <div class="modal-header"  >
+                <button type="button" class="close " id='Create' style="opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style="font-size: 0.5em;color: grey;margin-right: 5px;">&#xe628;</span></button>
+                <h4 class="modal-title" id="createDetailListModal" style="font-family: 'Microsoft Yahei', '微软雅黑';font-size: 16px;height: 31px;"><b style="line-height: 31px">明细表</b></h4>
+            </div>
+
+            <div class="modal-body" id="detailListBody" style="text-align: center;margin-top:-15px;width: 610px;margin-left:-40px;border-radius:3px;
+            -webkit-border-radius: 3px;-moz-border-radius: 3px;border-color:#0c0c0c;font-weight: 500;font-family: 'Microsoft Yahei', '微软雅黑'">
+                <!--style="border-radius:3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-color:#aaaaaa;margin-top: 50px;margin-left:-35px;width: 540px;font-weight: 500;font-family: 'Microsoft Yahei', '微软雅黑'"  border="1px solid #aaaaaa">-->
+                <div class="form-group add-detail-bt10">
+                    <input type="text" style="background-color:#fff;width: 90px;height: 30px;margin-top:10px;margin-left: 10px;margin-bottom:10px;padding:6px 8px;float:left;" placeholder="选择开始时间" class="form-control add-item-detail form_datetime" id="detail-add-startTime" data-content="startDate" readonly>
+                    <input type="text" style="background-color:#fff;width: 90px;height: 30px;margin-top:10px;margin-left: 10px;margin-bottom:10px;padding:6px 8px;float:left;" placeholder="选择结束时间" class="form-control add-item-detail form_datetime" id="detail-add-endTime" data-content="endDate" readonly>
+                </div>
+                <table id="dataList"  class="display" cellspacing="0" width="100%">
+                </table>
+                <div class="modal-foot" style="margin-top:20px;padding-bottom: 6px;margin-left: -135px;font-family: 'Microsoft Yahei', '微软黑';">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fund-body" style="padding-bottom: 40px">
+    <div class="asset container-fluid row">
+        <div class="asset-container col-md-12 col-lg-12">
+            <div class="asset-structure col-sm-4 col-md-4 col-lg-4">
+                <div class="asset-header">
+                    <span>资金类别</span>
+                    <button id="asset-add-btn" class="pull-right" style="border: none;background: #EDF0F5;color: #4cae4c;line-height: 36px;" data-toggle="modal" data-target="#createFundInfo" data-backdrop="static"><i class="iconfont">&#xe641;</i></button>
+                </div>
+                <div class="fund-tree" id="asset-tree">
+                    <div>
+                        <ul id="fundTree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="asset-details col-sm-8 col-md-8 col-lg-8">
+                <div class="asset-check">
+                    <div class="asset-header">
+                        <span>资金明细</span>
+                        <span  class="pull-right" id="asset-del-btn" style="display:none;">删除</span>
+                        <button  class="pull-right" id="asset-edit-btn"data-toggle="modal" data-target="#createUserInfo" data-backdrop="static">+ 新建支出</button>
+                    </div>
+                    <div class="asset-details-container" id="asset-check-detail">
+                        <div class="fund01">
+                            <div class="fileControl">
+                                <div class="fileInfoOpen" id="fileInfoBtn">
+                                    <img src="images/open.png" alt="展开">
+                                </div>
+                            </div>
+                            <canvas id="canvas" height="270px" width="270px"></canvas>
+                            <button class="middle-show" id="detail-list"data-toggle="modal" data-target="#detailList" data-backdrop="static" >明细表</button>
+                        </div>
+                        <div class="fund02">
+                            <div class="fund0201"></div>
+                            <div class="fund0202" style="padding-top: 15px;padding-left: 35px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    var projectId = localStorage.getItem('projectId');
+    var fundTree = new ZTreeObj('');
+    var fundTree2 = {};
+    var zNodes;
+    var myChartPie;
+    var pieData = [];
+    var flag;
+
+    $(document).ready(function(){
+        zNodes = fundManagment.getFundAllClass({
+            projectId: projectId
+        });
+        $('#fundcurPositionName').html(localStorage.getItem('projectName'));
+        var openModel = $('.fund-body');
+        openModel.on('click', '#fileInfoBtn', function (event) {
+            event.stopPropagation();
+            if ($(this).hasClass('fileInfoClose')) {
+                $(this).removeClass('fileInfoClose').addClass('fileInfoOpen').css({'width': 20 + 'px'});
+                openModel.find('.fund01').css('width', 58 + '%');
+                openModel.find('.fund02').css({
+                    'width': 42 + '%',
+                    'display': 'block'
+                });
+            } else {
+                $(this).removeClass('fileInfoOpen').addClass('fileInfoClose').css({'width': 20 + 'px'});
+                openModel.find('.fund01').css('width', 100 + '%');
+                openModel.find('.fund02').css({
+                    'width': 0,
+                    'display': 'none'
+                });
+            }
+        });
+        // aa();
+  /*      assetObj.init();
+        assetObj.initChoose();*/
+        fundManagment.initDataTable();
+        for(var i=0;i<zNodes.length;i++) {
+            pieData.push({value:zNodes[i].amount, id:zNodes[i].id});
+        }
+/*        if(pieData.length === 1){
+            var myPie = document.getElementById("canvas").getContext("2d");
+            myPie.beginPath();
+            myPie.arc(135, 135, 135, 0, Math.PI*2, true);
+            myPie.fillStyle = "blue";
+            myPie.fill();
+        }else{
+            pieData.sort(function(n1,n2){
+                return n1.value - n2.value;
+            });
+            var myPie = myChartPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+        }*/
+
+        pieData.sort(function(n1,n2){
+            return n1.value - n2.value;
+        });
+        var myPie = myChartPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+
+        for(var i=0;i<zNodes.length;i++) {
+            var html = $('<p><span class="fundName" style="display: inline-block;width: 85px;text-align: right" fId="'+zNodes[i].id+'">'+zNodes[i].name+'</span> : <span class="fundAmount">'+(zNodes[i].amount/1).toFixed(2)+'</span></p>');
+            $('.fund0202').append(html);
+        }
+        $('.fund0201').html(zNodes[0].name);
+    });
+    var initTree = function() {
+        var setting = {
+            view: {
+                selectedMulti: false,
+                showIcon: false,
+                showLine: false,
+                fontCss: function (treeId, treeNode) {
+                    return treeNode.level == 0 ? {color: '#00a0e9', 'font-weight': 'bold'} : {};
+                }
+            },
+            edit: {
+                enable: true,
+                showRenameBtn: true,
+                showRemoveBtn: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                beforeEditName: function(treeId, treeNode){
+                    fundManagment.curNode = treeNode;
+                    $('#account02').css({
+                        'borderColor':'#ccc',
+                        'color':'black'
+                    });
+                    $('.edit02').parent().show();
+                    $('.edit02').show().prev().hide();
+                    fundManagment.getFundInfo({
+                        fundId : treeNode.id,
+                        callback : function(data){
+                            $('#typeName02').val(data.name);
+                            $('#account02').val(data.amount);
+                            flag = false;
+                            $('#save02').attr('fundId',data.id);
+                        }
+                    });
+                    return false;
+                },
+                 beforeRemove: function(treeId, treeNode) {
+                    departmentObj.showAskModel('将删除该节点及其包含的所有子节点,是否继续?',true,function(ok) {
+                        if(ok){
+                            fundManagment.delete({
+                                id:treeNode.id,
+                                callback:function(data){
+                                    var id = treeNode.id;
+                                    if(data.ok){
+                                        fundTree2.removeNode(treeNode, false);
+                                        var fatherNode = treeNode.getParentNode();
+                                        var children = fatherNode.children;
+                                        var pieData;
+                                        if(children){
+                                            pieData = fundManagment.nodeToPieData(children);
+                                            pieData.sort(function (n1, n2) {
+                                                return n1.value - n2.value;
+                                            });
+                                            pieData.push({
+                                                value: fundManagment.getMaxCount(fatherNode).toFixed(2),
+                                                id: '',
+                                                color: '#ccc',
+                                                name: '未使用'
+                                            });
+                                        }else{
+                                            pieData = [{
+                                                value: (fatherNode.amount/1).toFixed(2),
+                                                id: fatherNode.id,
+                                                color: '#ccc',
+                                                name: '未使用'
+                                            }]
+                                        }
+                                        fundManagment.redrawPie(pieData);
+                                        fundManagment.updatePayList(pieData, fatherNode);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    return false;
+                },
+                onClick: function(event, treeId, treeNode) {
+                    var children = treeNode.children;
+                    var pieData;
+                    if(children){
+                        pieData = fundManagment.nodeToPieData(children);
+                        pieData.sort(function (n1, n2) {
+                            return n1.value - n2.value;
+                        });
+                        pieData.push({
+                            value: fundManagment.getMaxCount(treeNode).toFixed(2),
+                            id: '',
+                            color: '#ccc',
+                            name: '未使用'
+                        });
+                    }else{
+                        pieData = [{
+                            value: treeNode.amount.toFixed(2),
+                            id: treeNode.id,
+                            color: '#ccc',
+                            name: '未使用'
+                        }]
+                    }
+                    fundManagment.redrawPie(pieData);
+                    fundManagment.updatePayList(pieData, treeNode);
+
+                }
+            }
+        }
+        fundTree2 = $.fn.zTree.init($('#fundTree'), setting, zNodes);
+
+    }
+    initTree();
+
+    // function aa(){
+    //        console.log('00000');
+    //        var data={
+    //            name:'fsdfsfsfsfsf',
+    //            step:'778789',
+    //            percent:'67%',
+    //            startDate:'2013-09-09',
+    //            predictDate:'2013-12-12',
+    //            completeDate:'2013-12-31',
+    //            creatorId:localStorage.getItem('userId'),
+    //            //producerId:''
+    //            taskVersionId:'f82751a0-1bd1-11e6-a4a1-e55f92e4617e',
+    //            projectId:localStorage.getItem('projectId')
+    //        };
+    //  console.log('00000',data);
+    //   var taskVersionId='f82751a0-1bd1-11e6-a4a1-e55f92e4617e';
+    //        var data={userId:'6c5e0710-c66b-11e5-baf3-2fe5cd1b9a4e',taskVersionId:'f82751a0-1bd1-11e6-a4a1-e55f92e4617e',progressId:'1dccabd0-1bd7-11e6-875b-636b94782f6e',status:0};
+    //        $.ajax({
+    //            type: 'post',
+    //            async: true,
+    //            dataType:'json',
+    //            data:data,
+    //            url: '/api/progress/checkProgress',
+    //            success:function(data) {
+    //                console.log('aaaa'+JSON.stringify(data));
+    //            },
+    //            error:function(err){
+    //                console.log(err);
+    //            }
+    //        });
+    //    }
+
+    $('#quitSave,#quitSave01').click(function(){
+        $('.modal').modal('hide');
+    });
+    $('#quitSave02,#CreateDetail02').click(function(){
+        $('.modalSet').hide();
+        $('.modal-backdrop').hide();
+    });
+    $('#account02').off('input').on('input', function() {
+        fundManagment.isBeyond($(this),void 0,fundManagment.curNode);
+    });
+    $('#account').off('input').on('input', function() {
+        fundManagment.isBeyond($(this),fundManagment.getNodeById( $('#fatherType').val()));
+    });
+
+    $('#detail-add-startTime,#detail-add-endTime').on('change', function() {
+        console.log('==sshijian bianhua==');
+        fundManagment.page({
+            projectId: localStorage.getItem('projectId'),
+            page: fundManagment.curPage - 1,
+            startTime: $('#detail-add-startTime').val(),
+            endTime: $('#detail-add-endTime').val()
+        })
+    });
+
+    $('.fund-body').on('click','#asset-add-btn,#asset-edit-btn',function(){
+        $('.set').show().next().hide();
+        flag = true;
+        $('.select').html('');
+        var curId = fundTree2.getSelectedNodes()[0] && fundTree2.getSelectedNodes()[0].id;
+
+        if(!curId){
+            curId = $('.department-tree-span').eq(0).attr('id');
+        }
+        fundManagment.getFundAllClass({
+            projectId : projectId,
+            callback : function(data){
+                for(var i=0;i<data.length;i++) {
+                    var html = $('<option>' + data[i].name + '</option>');
+                    html.attr('fundId',data[i].id);
+                    html.attr({
+                        'fundId': data[i].id,
+                        'value': data[i].id
+                    });
+                    $('.form-control').not('#fatherType').val('');
+                    $('#account').css({
+                        'borderColor':'#ccc',
+                        'color':'black'
+                    });
+                    $('.select').append(html);
+                }
+                $('#fatherType').val(curId);
+                $('#type').val(curId);
+            }
+        });
+    })
+    $('#save01,#save02').on('click',function(){
+        var that = this;
+        var isLack, isBeyond;
+        if($(this).attr('id') === 'save01') {
+            if ($.trim($('#typeName').val()) === '') {
+                fundManagment.warnMessage('47%','25%','名称不能为空！');
+                return;
+            }
+            if ($.trim($('#account').val()) === '') {
+                fundManagment.warnMessage('47%','25%','金额不能为空！');
+                return;
+            }
+        }else{
+            if ($.trim($('#typeName02').val()) === '') {
+                fundManagment.warnMessage('47%','25%','名称不能为空！');
+                return;
+            }
+            if ($.trim($('#account02').val()) === '') {
+                fundManagment.warnMessage('47%','25%','金额不能为空！');
+                return;
+            }
+        }
+        if(flag) {
+            if($(this).attr('id') === 'save01'){
+                isBeyond = fundManagment.isBeyond($('#account'), fundManagment.getNodeById($('#fatherType').val()));
+            }else{
+                isBeyond = fundManagment.isBeyond($('#account02'), fundManagment.getNodeById($('.selectedNode').parent().parent().siblings('.department-tree-span')).attr('id'));
+            }
+            if( isBeyond) return;
+
+            fundManagment.addFund({
+                name: $('#typeName').val(),
+                fatherId: $('#fatherType').val(),
+                projectId: projectId,
+                amount: $('#account').val(),
+                callback: function (data) {
+                    var fatherNode = fundManagment.getNodeById( $('#fatherType').val());
+                    fundTree.addNode(data.name, data.parentId, 'fundTree', data.id, data.amount);
+                    var index = 0;
+                    for (var i = 0, len = pieData.length; i < len - 1; i++) {
+                        if (pieData[i].value >= data.amount) {
+                            pieData.push({
+                                value: data.amount,
+                                id: data.id,
+                                color: '#' + (~~(Math.random((1 << 24)))).toString(16)
+                            });
+                            pieData.sort(function (n1, n2) {
+                                return n1.value - n2.value;
+                            });
+                            index = i;
+                            break;
+                        }
+                    }
+//                    myChartPie.segments[pieData.length - 1].value = fundManagement.getMaxCount(myChartPie.getSelectedNodes()[0]);
+                    myChartPie.addData({value: data.amount}, index);
+//                    fundManagment.updatePayList(pieData, fatherNode);
+                    fundManagment.redrawPieByZTreeNode(fatherNode);
+                    $('#typeName').val('');
+                    $('#account').val('');
+                    $('.modal').modal('hide');
+                }
+            });
+        }
+        else{ // 编辑
+
+            var illegal = fundManagment.isBeyond($('#account02'),void 0,fundManagment.curNode) ||
+                    ( fundManagment.curNode.children ?
+                            fundManagment.isLack($('#account02'),fundManagment.curNode,void 0): false);
+            if(illegal) return;
+
+            fundManagment.changeFund({
+                name: $('#typeName02').val(),
+                id: $(that).attr('fundId'),
+                amount: $('#account02').val(),
+                callback:function(data){
+                    var id = data.result.id;
+                    $('span[fid=' + id +']', '.fund0202').html(data.result.name);
+                    $('span[fid=' + id +']', '.fund0202').next().html((data.result.amount/1).toFixed(2));
+                    fundTree.UpdateNode('fundTree',data.result.parentId,data.result.id,data.result.name, data.result.amount * 1);
+
+                    var curNode = fundManagment.getNodeById(id);
+ /*                   var children = curNode.children;
+
+                    pieData.forEach(function(pie, index) {
+                        if(pie.id == data.result.id){
+                            pie.name = data.result.name;
+                            pie.value = data.result.amount;
+                        }
+                    });
+
+                    pieData.sort(function (n1, n2) {
+                        return n1.value - n2.value;
+                    });
+                    fundManagment.curNode*/
+                    fundManagment.redrawPieByZTreeNode(curNode);
+
+
+                    $('#typeName02').val('');
+                    $('#account02').val('');
+                    $('.modalSet').hide();
+                    $('.modal-backdrop').hide();
+                }
+            });
+        }
+    });
+    $('#save').on('click',function(){
+ /*       fundManagment.addPay({
+            username:$('#username').val(),
+            type:$('#type').val(),
+            remark:$('#remark').val(),
+            money:$('#money').val()
+        });*/
+        fundManagment.createPay({
+            typeId:$('#type').val(),
+            projectId: localStorage.getItem('projectId'),
+            amount:$('#money').val(),
+            username:$('#username').val(),
+            remark:$('#remark').val()
+        })
+    });
+    $('#save02').on('click',function(){
+
+    })
+    $(".form_datetime").datetimepicker({
+        format: "yyyy-mm-dd",
+        minView: "month",
+        autoclose: true,
+        todayBtn: true,
+        language:'zh-CN'
+    });
+    document.getElementById('container').onscroll = function(){
+        $('.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu').css({'display':'none'});
+        $('#my-project-add-startTime').blur();
+        $('#my-project-add-endTime').blur();
+    }
+    $('.form_datetime').blur(function(){
+        if($('#detail-add-startTime').val()>$('#detail-add-endTime').val()){
+            fundManagment.warnMessage('20%','21%','项目开始时间不能大于结束时间！');
+        }
+    })
+
+    $('#detail-list').click(function() {
+        var page = 0;
+        fundManagment.page({
+            page: page,
+            projectId: localStorage.getItem('projectId'),
+            startTime: $('#detail-add-startTime').val(),
+            endTime: $('#detail-add-endTime').val()
+        })
+
+    });
+
+
+</script>

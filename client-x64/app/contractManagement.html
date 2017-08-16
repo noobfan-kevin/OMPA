@@ -1,0 +1,122 @@
+<style>
+    @import url(css/contractManagementStyle.css);
+</style>
+<div id="contract-management" ng-controller="contractManagementController" style="height: inherit;">
+    <div class="contracts-head"><span>{{projectName}}/合同管理</span></div>
+    <div class="contracts-list">
+        <div class="contracts-list-head">
+            <div class="list-head-dropBtn" ng-click="showFilter()">
+                <p class="iconfont" style="color:rgb(244,198,0);" ng-show="filterStatus">&#xe674;</p>
+                <p class="iconfont" ng-show="!filterStatus">&#xe669;</p>
+                <span  ng-show="filterStatus">已筛选</span>
+                <span ng-show="!filterStatus">未筛选</span>
+                <i class="iconfont">&#xe67b;</i>
+            </div>
+            <div class="contract-list-dropdown contract-list-filter" ng-show="contractFilter">
+                <div style="font-weight: bold;font-size: 12px">合同状态</div>
+                <ul>
+                    <li ng-click="contract_filter.unsend=!contract_filter.unsend" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.unsend">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.unsend">&#xe64b;</i>未发送</li>
+                    <li ng-click="contract_filter.sended=!contract_filter.sended" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.sended">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.sended">&#xe64b;</i>已发送</li>
+                    <li ng-click="contract_filter.backed=!contract_filter.backed" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.backed">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.backed">&#xe64b;</i>已退回</li>
+                    <li ng-click="contract_filter.going=!contract_filter.going" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.going">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.going">&#xe64b;</i>进行中</li>
+                    <li ng-click="contract_filter.unpaid=!contract_filter.unpaid" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.unpaid">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.unpaid">&#xe64b;</i>待支付</li>
+                    <li ng-click="contract_filter.finished=!contract_filter.finished" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.finished">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.finished">&#xe64b;</i>已完成</li>
+                    <li ng-click="contract_filter.paid=!contract_filter.paid" class="filter-li">
+                        <i class="iconfont" ng-show="!contract_filter.paid">&#xe64c;</i>
+                        <i class="iconfont" style="color: green;margin-right: 9px;" ng-show="contract_filter.paid">&#xe64b;</i>已支付</li>
+                </ul>
+                <span class="contract-filter-btn" ng-click="doFilter()">确定</span>
+            </div>
+            <div class="list-head-newContract">
+                <button id="new-contract" ng-click="newContract()">+新建合同</button>
+            </div>
+            <div class="list-head-setPartA">
+                <button ng-click="showPartA()">设置甲方信息</button>
+            </div>
+        </div>
+        <div class="contract-tableContain" style="display: none">
+            <table>
+                <thead class="contract-tableHead">
+                    <tr>
+                        <th>合同编码</th>
+                        <th>合同名称</th>
+                        <th>创建人</th>
+                        <th>支付人</th>
+                        <th>签约方</th>
+                        <th>开始日期</th>
+                        <th>结束日期</th>
+                        <th>支付进度</th>
+                        <th>完成进度</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody class="contract-tableBody">
+                    <tr class="one-contract" ng-class="{true:'needPay'}[whetherShowNeedPay(contract.taskJindu,contract.payJindu)]"  ng-repeat="contract in contractList">
+                        <td style="cursor:pointer" ng-click="checkContract(contract.id)">{{contract.contractCode}}</td>
+                        <td>{{contract.contractName}}</td>
+                        <td>{{contract.crater}}</td>
+                        <td>{{contract.payMan}}</td>
+                        <td>{{contract.partBName}}</td>
+                        <td>{{contract.taskCardStartTime}}</td>
+                        <td>{{contract.taskCardEndTime}}</td>
+                        <td>{{contract.payJindu}}</td>
+                        <td>{{contract.taskJindu}}</td>
+                        <td><span ng-class="{'1':'contractStatus-unsend','2':'contractStatus-sended','3':'contractStatus-returned','4':'contractStatus-doing',
+                '5':'contractStatus-unpaid','7':'contractStatus-paid','6':'contractStatus-finished'}[contract.contractStatus]">{{contract.statusName}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="contract-table-foot">
+                <span >共<label class="total-page">{{contractNum}}</label>条</span>
+                <div class="contract-table-btn">
+                    <button class="first-page" ng-click="turnToPage('F')"><i class="iconfont">&#xe6a1;</i></button>
+                    <button class="prev-page " ng-click="turnToPage('D')"><i class="iconfont">&#xe682;</i></button>
+                    <div class="cur-page-div">
+                        <ul class="cur-page-choose" ng-show="pageListShow">
+                            <li ng-click="tunPageTo(page)" ng-repeat="page in pageList">{{page}}</li>
+                        </ul>
+                        <button class="cur-page" ng-click="pageListShow=!pageListShow">{{currentPage}}/{{totalPage}}</button>
+                    </div>
+                    <button class="next-page" ng-click="turnToPage('A')"><i class="iconfont">&#xe681;</i></button>
+                    <button class="last-page" ng-click="turnToPage('L')"><i class="iconfont">&#xe6a0;</i></button>
+                </div>
+            </div>
+        </div>
+        <div class="noContract-page">
+            <span>当前没有合同</span>
+        </div>
+    </div>
+    <div class="checkPartA-contain" style="display: none;">
+        <div class="checkPartA-div">
+            <div class="checkPartA-check">
+                <div class="partA-head">
+                    <span>甲方信息设置</span>
+                    <i ng-click="cancelSetPartA()" class="iconfont">&#xe628;</i>
+                </div>
+                <div class="partA-body">
+                    <span>公司名称：</span><input id="partA-name" ng-model="partA.name" >
+                    <span>联系电话：</span><input id="partA-phone" ng-model="partA.phone" >
+                    <span>电子邮件：</span><input id="partA-email" ng-model="partA.email" >
+                    <span>通讯地址：</span><input id="partA-location" ng-model="partA.location" >
+                </div>
+                <div class="partA-foot">
+                    <button class="partA-foot-save" ng-click="saveSetPartA()">保存</button>
+                    <button class="partA-foot-cancel" ng-click="cancelSetPartA()">取消</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

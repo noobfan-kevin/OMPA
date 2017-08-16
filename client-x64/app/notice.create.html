@@ -1,0 +1,97 @@
+<style>
+    @import url(css/assetManagementStyle.css);
+    @import url(css/notice.create.css);
+    @import url(css/zTreeStyle.css);
+    @import url(css/ztreeNStyle.css);
+</style>
+<style>
+    #shotTree .department-tree-span{
+        display: none;
+    }
+</style>
+<div class="noticeNewWrap"  style="">
+    <div class="newAsset-body-title" style="height:52px; line-height:52px;">
+        <span style="font-size:16px; font-weight:bold;color:#5bc375;"><i class="iconfont">&#xe659;</i>新建通知</span>
+        <div class="newAsset-foot">
+            <div class="noticeNewSend">发送</div>
+            <div class="noticeNewCancel">取消</div>
+        </div>
+    </div>
+    <div class="newAsset-body" style="height:calc(100% - 68px); overflow-y: auto;">
+        <div class="newAsset-info" style="padding-left: 55px;">
+            <div class="newAsset-name">
+                <span><span class="zhanwei">占占占</span><span style="color:red;">*</span>标题：</span>
+                <input id="noticeNewName" type="text" style="width:calc(100% - 208px);">
+            </div>
+            <div class="newAsset-type" style="position: relative;">
+                <span><span class="zhanwei">占</span><span style="color:red;">*</span>接收部门：</span>
+                <span id="noticeNewDepartmentS" data-content="members" data-toggle="modal" data-target="#noticeNewDepSelect" data-backdrop="static" >选择</span>
+                <input data-value="[]" id="noticeNewDepartment" data-content="members" data-toggle="modal" data-target="#noticeNewDepSelect" data-backdrop="static" type="text"  style="width:calc(100% - 208px);" readonly>
+            </div>
+            <div class="newAsset-desc">
+                <span style="margin-left:46px;"><span class="zhanwei">占占占</span><span style="color:red; margin-left:-5px; margin-top:-5px;">*</span>内容：</span>
+                <textarea id="noticeNewContent" rows="10"></textarea>
+            </div>
+            <!--<div class="newAsset-type">
+                <span><span class="zhanwei">占占占</span>附件：</span>
+                <div style="display:inline-block;"   style="width:114px; height:30px;"></div>
+                <input id="noticeNewAttach" type="text"  style="width:114px; height:30px;">
+
+            </div>-->
+            <div class="clearfix" style="position: relative; padding-left:6px; margin-top:-3px;">
+                <!--<span class="pull-left" style="margin-top:22px;">项目图标：</span>-->
+                <div class="pull-left" style="margin-top:14px;"><span class="zhanwei">占占占</span>附件：</div>
+                <div  class="pull-left noticeNewAttach">
+                    <i class="iconfont" style="margin-right:5px;">&#xe66c;</i>上传附件
+                </div>
+                <input id="noticeNewAttach" style="opacity:0;" class="pull-left" type="file"  single />
+            </div>
+            <ul class="noticeNewAttachList">
+                <!--<li><div>关于外包项目的资料.doc<i class="iconfont noticeAttachDelete">&#xe63d;</i></div></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal " id="noticeNewDepSelect" tabindex="-1" role="dialog" style="font-size: 14px; display:none;" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="margin-left: 50px;height: 100%; width:80%;">
+            <div class="modal-header"  style="margin-bottom:10px; height:35px; line-height:35px; background-color:#eee;">
+                <button type="button" class="close " id='closeProCreate' style="margin-top:-13px; opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style=" font-size: 0.5em;color: grey">&#xe628;</span></button>
+                <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                    &nbsp;</button>
+                <h4 class="modal-title" id="noticeNewDepChooseClose" style="margin-top:-5px;font-size:12px; font-weight:normal;"><b>选择</b></h4>
+            </div>
+            <div class="modal-body" id="noticeNewDepChooseContent" style="padding:0;position: relative;">
+                <div style="max-height:350px;border-top:1px solid #e3e2e2; border-bottom:1px solid #e3e2e2; margin:0 30px;">
+                    <div class="shot-tree" id="asset-tree">
+                        <div >
+                            <ul id="noticeTree" class="ztree"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%; padding-bottom:12px;">
+                    <div style="height:34px; line-height:34px; color:#11cd6e; padding-left:30px;"><i style="font-size:18px; " class="iconfont">&#xe620;</i>已选部门</div>
+                    <ul id="noticeNewDepHaveChoose" class="clearfix">
+                        <!--<li data-value="xxxxxxx"><span>张三</span><i class="iconfont">&#xe63d;</i></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin:0 30px; padding-top: 6px;padding-bottom: 6px">
+                <button type="button" class="btn btn-default dismiss" data-dismiss="modal" aria-label="Close" id="noticeNewChooseSave" >保存</button>
+                <button type="button" class="btn btn-primary dismiss" data-dismiss="modal" aria-label="Close" id="noticeNewChooseCancelSave"  >取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var mtree = new ZTreeObj('default',true);
+    mtree.initAll($('#noticeTree'),'/api/department/getDepList',function(data){});
+    //mtree.getCheckedNodeList('noticeTree');
+    //mtree.setNoChecked('noticeTree','d6dfce10-4894-11e6-8b80-493b7fa153e1');
+</script>
+<script>
+    $(document).ready(function(){
+        noticeCreate.init();
+    });
+</script>

@@ -1,0 +1,213 @@
+<style>
+    @import url(css/ztreeNStyle.css);
+    @import url(css/assetManagementStyle.css);
+</style>
+    <div class="asset-contain" style="display: block;">
+        <div class="asset-header">
+            <span class="asset-position"></span>
+        </div>
+        <div id="asset-headerBar">
+            <div>
+                <button id="asset-setType" style="display: none">类型设置</button>
+                <button id="asset-new" style="display: none">+新建资产</button>
+                <button id="asset-task-new" data-type="2" style="display: none;">+新建任务</button>
+                <button id="asset-manageTask" style="display: none;" >管理任务卡</button>
+            </div>
+        </div>
+        <div id="asset-body" style="display: none;">
+            <div id="asset-table">
+                <table>
+                    <thead id="asset-table-head"></thead>
+                    <tbody id="asset-table-body"></tbody>
+                </table>
+            </div>
+            <div id="asset-table-foot">
+                <span >共<label class="total-page">0</label>条</span>
+                <div class="asset-table-btn">
+                    <button class="first-page"><i class="iconfont">&#xe6a1;</i></button>
+                    <button class="prev-page "><i class="iconfont">&#xe682;</i></button>
+                    <div class="cur-page-div">
+                        <ul class="cur-page-choose"></ul>
+                        <button class="cur-page" >1/1</button>
+                    </div>
+                    <button class="next-page"><i class="iconfont">&#xe681;</i></button>
+                    <button class="last-page"><i class="iconfont">&#xe6a0;</i></button>
+                </div>
+            </div>
+        </div>
+        <div class="no-data-page" style="display: none;">
+            <span class="no-data-page-span">当前没有资产</span>
+        </div>
+    </div>
+    <div class="newAsset-contain" style="display: none;" >
+        <div class="asset-header">
+            <span class="asset-position"></span>
+        </div>
+        <div class="newAsset-body">
+            <div class="newAsset-body-title">
+                <span ><i class="iconfont">&#xe667;</i>新建资产</span>
+            </div>
+            <div class="newAsset-info">
+                <div class="newAsset-name">
+                    <span><span class="zhanwei">占</span>资产名称：</span>
+                    <input id="newAsset-name" type="text" placeholder="资产名称">
+                </div>
+                <div class="newAsset-type">
+                    <span><span class="zhanwei">占</span>资产类型：</span>
+                    <select id="newAsset-type" name="资产类型" ></select>
+                </div>
+                <div class="newAsset-img">
+                    <span>资产缩略图：</span>
+                    <div class="newAsset-img-add">
+                        <span>点击添加<br/>缩略图</span>
+                        <img id="newAsset-img" src="" />
+                        <input id="newAsset-file" type="file">
+                    </div>
+                </div>
+                <div class="newAsset-desc">
+                    <span class="newAsset-desc-sapn"><span class="zhanwei">占</span>资产描述：</span>
+                    <textarea id="newAsset-desc" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="newAsset-foot">
+                <button id="newAsset-saveBtn">保存</button>
+                <button id="newAsset-cancelBtn">取消</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="checkAsset-contain" style="display: none;" >
+        <div class="asset-header">
+            <span class="asset-position"></span>
+        </div>
+        <div class="assetCheck-body">
+            <div class="assetCheck-body-title">
+                <span><i class="iconfont">&#xe667;</i>查看资产</span>
+                <i class="asset-check-close iconfont">&#xe636;</i>
+            </div>
+            <div class="asset-check-info">
+                <div class="asset-check-name">
+                    <span><span class="zhanwei">占</span>资产名称：</span>
+                    <span class="asset-name"></span>
+                </div>
+                <div class="asset-check-type">
+                    <span><span class="zhanwei">占</span>资产类型：</span>
+                    <span class="asset-type"></span>
+                </div>
+                <div class="asset-check-img">
+                    <span>资产缩略图：</span>
+                    <div><img class="asset-img" src="images/defaultAvatar.jpg"/></div>
+                </div>
+                <div class="asset-check-desc">
+                    <span><span class="zhanwei">占</span>资产描述：</span>
+                    <div class="asset-desc-div">
+                        <span class="asset-desc"></span>
+                    </div>
+                </div>
+                <div class="asset-check-task">
+                    <span>任务卡列表：</span>
+                    <div class="asset-task-div">
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                        <span>任务卡1</span>
+                    </div>
+                </div>
+            </div>
+            <div class="asset-check-foot">
+                <button class="asset-check-editBtn" style="display: none">编辑</button>
+                <button class="asset-check-delBtn" style="display: none">删除</button>
+            </div>
+        </div>
+    </div>
+    <div class="editAsset-contain" style="display: none;" >
+    <div class="asset-header">
+        <span class="asset-position"></span>
+    </div>
+    <div class="editAsset-body">
+        <div class="editAsset-body-title">
+            <span ><i class="iconfont">&#xe623;</i>编辑资产</span>
+        </div>
+        <div class="editAsset-info">
+            <div class="editAsset-name">
+                <span><span class="zhanwei">占</span>资产名称：</span>
+                <input id="editAsset-name" type="text" placeholder="资产名称">
+            </div>
+            <div class="editAsset-type">
+                <span><span class="zhanwei">占</span>资产类型：</span>
+                <select id="editAsset-type" name="资产类型" ></select>
+            </div>
+            <div class="editAsset-img">
+                <span>资产缩略图：</span>
+                <div class="editAsset-img-add">
+                    <span>点击添加<br/>缩略图</span>
+                    <img id="editAsset-img" src="" />
+                    <input id="editAsset-file" type="file">
+                </div>
+            </div>
+            <div class="editAsset-desc">
+                <span class="editAsset-desc-sapn"><span class="zhanwei">占</span>资产描述：</span>
+                <textarea id="editAsset-desc" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="editAsset-foot">
+            <button class="editAsset-saveBtn">保存</button>
+            <button class="editAsset-cancelBtn">取消</button>
+        </div>
+    </div>
+
+</div>
+    <div class="assetType-contain" style="display: none;">
+        <div class="asset-type-div">
+            <div class="asset-type-set">
+                <div class="asset-type-set-head">
+                    <span>类型设置</span>
+                    <i class="iconfont icon-close">&#xe628;</i>
+                </div>
+                <div class="asset-types">
+                    <span>类型名称</span>
+                    <div class="asset-type-list">
+                        <div id="asset-type-list">
+
+                        </div>
+                        <div class="asset-type-new" style="display: none;">
+                            <input id="asset-type-new" autofocus="autofocus"  maxlength="12"/>
+                            <i class="iconfont m-icon-save">&#xe640;</i><i class="iconfont m-icon-cancel">&#xe628;</i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="asset-type-foot">
+                    <button id="asset-type-new-btn" class="asset-type-new-btn">+新建类型</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="newTask-contain" style="display: none;">
+        <div class="asset-header">
+            <span class="asset-position"></span>
+        </div>
+        <div class="newTaskOfAsset">
+
+        </div>
+    </div>
+    <div class="taskUnderAsset" style="display: block">
+    </div>
+<script>
+    $(document).ready(function(){
+        assetManagement.init();
+//        $('.taskUnderAsset').loadPage('./taskUnderAorS');
+    });
+</script>

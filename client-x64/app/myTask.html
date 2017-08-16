@@ -1,0 +1,38 @@
+<style>
+    @import "css/taskCard.css";
+    @import url(css/taskCard.statusbar.css);
+</style>
+
+<!-- begin #sitebar -->
+<div class="sitebar">
+    <ul id="aside-nav">
+        <li id="myCreateTask" data-page="myCreateTask.html" class="current"><a class="asidenav-item" href="#createdyByMe" draggable="false"><i class="iconfont">&#xe65c;</i>由我制卡<span class="unRead" id="myCreateTaskUnRead">未读</span></a></li>
+        <li id="mySendTask" data-page="mySendTask.html" ><a class="asidenav-item" href="#sentByMe" draggable="false"><i class="iconfont">&#xe65e;</i>由我发送<span class="unRead" id="mySendTaskUnRead">未读</span></a></li>
+        <li id="myProductTask"  data-page="myProductTask.html"><a class="asidenav-item" href="#madeByMe" draggable="false"><i class="iconfont">&#xe65b;</i>由我制作<span class="unRead" id="myProductTaskUnRead">未读</span></a></li>
+        <li id="myCheckTask" data-page="myCheckTask.html"><a class="asidenav-item" href="#checkByMe" draggable="false"><i class="iconfont">&#xe65d;</i>由我审核<span class="unRead" id="myCheckTaskUnRead">未读</span></a></li>
+    </ul>
+</div>
+<!-- end sitebar -->
+
+<!-- begin #content -->
+<div id="myTask-content" class="content" >
+
+</div>
+<!-- end #content -->
+
+<script>
+
+    var $asideNavItems = $('li','#aside-nav');  //侧边导航列表
+    $asideNavItems.click(function() {
+        $asideNavItems.removeClass('current');
+        $(this).addClass('current');
+        localStorage.setItem('pageInit','true');
+        $('#myTask-content').loadPage(this.dataset.page);
+    });
+    $('#myTask-content').loadPage('myCreateTask.html');
+    $('#aside-nav').on('mouseover','.unRead',function(){
+        var that=$(this);
+        that.attr('title',that.html());
+    });
+    taskBasicInfo.countAllOfMyTaskUnread();//刷新任务小红点
+</script>

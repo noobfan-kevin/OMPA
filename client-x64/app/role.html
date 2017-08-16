@@ -1,0 +1,249 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/roleStyle.css"/>
+
+</head>
+    <div class="role">
+        <div class="role_header clearfix">
+            <div class="pull-right">
+                <button type="button" class="btn btn-success role_add_icon">+ 新建角色</button>
+            </div>
+        </div>
+        <div class="role_list">
+            <!--<div class="role_empty">
+                当前没有角色
+            </div>-->
+            <table  class="role_table role_table1">
+                <thead>
+                <!--<tr class="role_authority">
+                    <th rowspan="2">角色名称</th>
+                    <th colspan="6">权限</th>
+                    <th  rowspan="2">操作</th>
+                </tr>
+                <tr>
+                    <th>增删改查所有项目（包括项目中的项目节点）</th>
+                    <th>增删改查所有项目任务卡</th>
+                    <th>增删改查所有项目合同</th>
+                    <th>增删改查所有项目成员</th>
+                    <th>查看统计信息</th>
+                    <th>增删改查签约方</th>
+                </tr>-->
+                </thead>
+            </table>
+            <div class="role_table2_box">
+                <table class="role_table role_table2">
+                    <tbody>
+                    <!--角色例子-->
+                    <!--<tr>
+                        <td>
+                            <div class="role_edit">
+                                <input class="role_edit_text" type="text" value="管理员" />
+                            </div>
+                            <div class="role_sure">
+                                管理员
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe640;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe61e;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe61e;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe61e;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe61e;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="role_sure">
+                                <i class="iconfont role_save">&#xe61e;</i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_edit">
+                                <b>确定</b>
+                                <strong>取消</strong>
+                            </div>
+                            <div class="role_sure">
+                                <b>编辑</b>
+                                <strong>删除</strong>
+                            </div>
+                        </td>
+                    </tr>-->
+                    <!--添加角色-->
+                    <!--<tr class="role_add">
+                        <td>
+                            <div class="role_add_edit">
+                                <input class="role_add_text role_edit_text" type="text" placeholder="新建角色名:" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <input type="checkbox"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="role_add_edit">
+                                <b>确定</b>
+                                <strong>取消</strong>
+                            </div>
+                        </td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+<script>
+
+    $(document).ready(function() {
+        roleManage.init();
+    });
+
+</script>
+<script>
+
+    // 所有角色 （包含对应权限）
+    /*$.ajax({
+        method: 'get',
+        url: configInfo.server_url + '/api/role/',
+        success: function (data) {
+            console.log('所有角色： 'data);
+        },
+        fail: function (err) {
+            console.log(err);
+        }
+    });*/
+
+    // 新建角色权限
+  /*  $.ajax({
+        method:'post',
+        url:configInfo.server_url + '/api/role/',
+        data:{
+            role:JSON.stringify({
+                name:'我是测试员'
+            }),
+            Authorities:JSON.stringify([
+                "a1053704-e758-11e5-9294-75b772b271ac",
+                "a1053705-e758-11e5-9294-75b772b271ac"
+            ])
+        },
+        success: function(data) {
+            console.log(data);
+        },
+        fail: function(err) {
+            console.log(err);
+        }
+    });*/
+
+    // 更新角色权限
+/*    $.ajax({
+        method: 'put',
+        url: configInfo.server_url + '/api/role/',
+        data: {
+            roleId: '1ef721a0-e69b-11e5-b762-03e75ddc49e1',
+            Authorities: JSON.stringify([
+                "1ef65e51-e69b-11e5-b762-03e75ddc49e1",
+                "1ef65e54-e69b-11e5-b762-03e75ddc49e1",
+                '1ef65e55-e69b-11e5-b762-03e75ddc49e1'
+            ])
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        fail: function (err) {
+            console.log(err);
+        }
+    });*/
+        //删除
+    /*    $.ajax({
+     method: 'delete',
+     url: configInfo.server_url + '/api/role/',
+     data: {
+     roleId: '1ef721a0-e69b-11e5-b762-03e75ddc49e1',
+     Authorities: JSON.stringify([
+     "1ef65e51-e69b-11e5-b762-03e75ddc49e1",
+     "1ef65e54-e69b-11e5-b762-03e75ddc49e1",
+     '1ef65e55-e69b-11e5-b762-03e75ddc49e1'
+     ])
+     },
+     success: function (data) {
+     console.log(data);
+     },
+     fail: function (err) {
+     console.log(err);
+     }
+     });*/
+
+
+
+    // 所有权限列表
+    /*$.ajax({
+     method: 'get',
+     url: configInfo.server_url + '/api/role/getAllAuthorities',
+     success: function (data) {
+     console.log(data);
+     },
+     fail: function (err) {
+     console.log(err);
+     }
+     })*/
+</script>

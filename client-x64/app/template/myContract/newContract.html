@@ -1,0 +1,161 @@
+<style>
+    @import url(css/contractManagementStyle.css);
+</style>
+<div class="contracts-head"><span>{{projectNameN}}/合同管理/合同新建</span></div>
+<div class="contracts-new">
+    <div class="contracts-new-contain">
+        <div class="contracts-new-head"><span><i class="iconfont">&#xe607;</i>新建合同</span></div>
+        <div class="new-contactInfo">
+            <div class="new-aboutContract">
+                <div>
+                    <span class="zhanwei">站站</span><span>合同名称：</span>
+                    <input class="contract-name" ng-model="contractN.name" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>合同编号：</span>
+                    <input class="contract-code" ng-model="contractN.code" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站</span><span>关联任务卡：</span>
+                    <select ng-model="contractN.taskCard"  ng-options="option.name for option in taskCardOptions" ng-change="showTheOption()"></select>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>合同类型：</span>
+                    <input disabled="disabled" ng-model="contractN.type"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>开始时间：</span>
+                    <input disabled="disabled" ng-model="contractN.startTime"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>结束时间：</span>
+                    <input disabled="disabled" ng-model="contractN.endTime"/>
+                </div>
+            </div>
+            <div class="new-aboutMoney">
+                <div>
+                    <span class="zhanwei">站站站</span><span>总金额：</span>
+                    <input class="contract-money" ng-model="contractMoney.total" ng-change="getThreeStepsMoney()" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>支付方式：</span>
+                    <select>
+                        <option>2-3-5</option>
+                    </select>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>一期金额：</span>
+                    <input ng-model="contractMoney.first" disabled="disabled"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>二期金额：</span>
+                    <input ng-model="contractMoney.second" disabled="disabled"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>三期金额：</span>
+                    <input ng-model="contractMoney.third" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="new-aboutPartAB">
+                <div class="one-lineTaken">
+                    <span class="zhanwei">站站站站</span><span>甲方：</span>
+                    <input placeholder="请在列表界面添加甲方信息"  disabled="disabled" ng-model="partA.name"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>联系电话：</span>
+                    <input disabled="disabled" ng-model="partA.phone"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>电子邮件：</span>
+                    <input disabled="disabled" ng-model="partA.email"/>
+                </div>
+                <div class="one-lineTaken">
+                    <span class="zhanwei">站站</span><span>通讯地址：</span>
+                    <input disabled="disabled" ng-model="partA.location"/>
+                </div>
+                <div class="one-lineTaken">
+                    <span>点击选择乙方：</span>
+                    <button ng-click="showPartB()">选择乙方</button>
+                </div>
+                <div >
+                    <span class="zhanwei">站站站站</span><span>乙方：</span>
+                    <input disabled="disabled" ng-model="partB.companyName"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>联系电话：</span>
+                    <input disabled="disabled" ng-model="partB.phone"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>电子邮件：</span>
+                    <input disabled="disabled" ng-model="partB.email"/>
+                </div>
+                <div class="one-lineTaken" ng-show="userType_show">
+                    <span class="zhanwei">站站</span><span>通讯地址：</span>
+                    <input disabled="disabled" ng-model="partB.address"/>
+                </div>
+                <div class="one-lineTaken" ng-show="!userType_show">
+                    <span class="zhanwei">站站</span><span>身份证号：</span>
+                    <input disabled="disabled" ng-model="partB.userCardId"/>
+                </div>
+                <div>
+                    <span>收款账户名称：</span>
+                    <input disabled="disabled" ng-model="partB.accountName"/>
+                </div>
+                <div>
+                    <span class="zhanwei">站站</span><span>收款账号：</span>
+                    <input disabled="disabled" ng-model="partB.account"/>
+                </div>
+            </div>
+            <div class="new-aboutFinish">
+                <div>
+                    <button class="new-cancelBtn" ng-click="cancelNewContract()">取消</button>
+                    <button class="new-saveBtn" ng-click="saveNewContract()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="checkPartB-contain" style="display: none;">
+    <div class="checkPartB-div">
+        <div class="checkPartB-check">
+            <div class="partB-head">
+                <span>选择乙方</span>
+                <i ng-click="cancelCheckPartB()" class="iconfont">&#xe628;</i>
+            </div>
+            <div class="search-area">
+                <input ng-model="searchInput" ng-change="searchInputFunc()">
+                <span ng-show="searchSpan" ng-click="transportClick($event)"><i class="iconfont">&#xe695;</i>搜索</span>
+            </div>
+            <div class="partB-company">
+                <div>
+                    <i class="iconfont" ng-click="showPartBList('company')">&#xe67a;</i>
+                    <span>外部公司</span>
+                </div>
+                <ul class="partB-company-lists" ng-show="company_show">
+                    <li class="partB-list" ng-repeat="company in companys">
+                        <i class="iconfont" ng-click="checkThisAsPartB($event,company)">&#xe63f;</i>
+                        <img ng-src="{{company.src}}" />
+                        <span>{{company.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="partB-person">
+                <div>
+                    <i class="iconfont" ng-click="showPartBList('person')">&#xe67a;</i>
+                    <span>外部个人</span>
+                </div>
+                <ul class="partB-person-lists" ng-show="person_show">
+                    <li class="partB-list" ng-repeat="person in persons">
+                        <i class="iconfont" ng-click="checkThisAsPartB($event,person)">&#xe63f;</i>
+                        <img ng-src="{{person.src}}" />
+                        <span>{{person.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="partB-foot">
+                <button class="partB-save" ng-click="saveCheckPartB()">确定</button>
+                <button class="partB-cancel" ng-click="cancelCheckPartB()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

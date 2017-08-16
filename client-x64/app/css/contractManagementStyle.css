@@ -1,0 +1,846 @@
+.contractManagement-contain *{cursor: default;font-family: "Microsoft YaHei UI"}
+.zhanwei{
+    visibility: hidden;
+}
+.needPay{
+    background: rgb(232, 184, 223)!important;
+}
+.one-contract{background: white;}
+.one-contract:hover{
+    background: rgb(255,235,196);
+}
+.contracts-head{
+    height: 30px;
+    background: rgb(2,174,217);
+}
+.contracts-head span{
+    font-size: 12px;
+    line-height: 30px;
+    color: white;
+    margin-left: 10px;
+}
+.contractManagement-contain{
+    height: 100%;width: 100%;
+}
+.active-li{
+    background: rgba(240,209,77,0.4);
+}
+.active-li i{margin-right: 10px!important;}
+
+
+/*====================================筛选部分=======================================*/
+.contract-list-dropdown{
+    position: absolute;
+    left: 3px;
+    top: 32px;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    margin: 2px 7px 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.contract-list-filter{
+    padding:15px;
+    font-family:"Microsoft YaHei";
+}
+.contract-list-filter li{
+    font-size:12px;
+    height:24px;
+    line-height:24px;
+    cursor:default;
+    white-space:nowrap;
+}
+.contract-list-filter li i{
+    font-size:14px;
+    margin-right:5px;
+}
+
+.contract-filter-btn{
+    position:absolute;
+    right:10px;
+    top:14px;
+    color:#b9b9b9;
+    font-size:12px;
+    cursor: pointer;
+}
+.contract-filter-btn:hover{
+    color:#666;
+}
+
+
+
+/*===================================合同新建============start=========================*/
+.contracts-new{
+    height: inherit;
+    width: inherit;
+    padding: 10px;
+    overflow-y: auto;
+    background: #F1F1F1;
+}
+.contracts-new-contain{
+    height: auto;
+    width: inherit;
+    border: 1px solid #aaa;
+    background: white;
+}
+.contracts-new-head{
+    border-bottom: 1px solid #aaa;
+    height: 40px;
+}
+.contracts-new-head span{
+    color: rgb(91,195,117);
+    font-size: 16px;
+    line-height: 40px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.contracts-new-head span i{
+    margin-right:6px;
+}
+.new-contactInfo{
+    padding:0 40px 20px;
+}
+.new-aboutContract,.new-aboutMoney,.new-aboutPartAB,.new-aboutFinish{
+    width: inherit;
+    height:auto;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.new-aboutContract div,.new-aboutMoney div,.new-aboutPartAB div{
+    width: 48%;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+.new-aboutContract div span,
+.new-aboutMoney div span,
+.new-aboutPartAB div span{
+    font-family: "Microsoft YaHei UI";
+    color: #888;
+}
+.new-aboutContract div input,
+.new-aboutContract div select,
+.new-aboutMoney div input,
+.new-aboutMoney div select,
+.new-aboutPartAB div input,
+.new-aboutPartAB div select{
+    padding-left: 6px;
+    width: 61%;
+    height: 28px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.one-lineTaken{
+    width: 100%!important;
+}
+.one-lineTaken input{
+    width: 78%!important;
+    max-width: 1292px;
+}
+.one-lineTaken button{
+    height: 28px;
+    border: 1px solid #ea644a;
+    background: #ea644a;
+    opacity: 0.8;
+    border-radius: 4px;
+    color: white;
+    width: 100px;
+}
+.one-lineTaken button:hover{
+    opacity: 1;
+}
+.new-aboutFinish{
+    border-bottom: none;
+}
+.new-aboutFinish div button{
+    float: right;
+    height: 30px;
+    width: 60px;
+    color: white;
+}
+.new-cancelBtn{
+    background: rgba(240,209,77,0.8);
+    margin-right: 40px;
+    border: none;
+    border-radius: 4px;
+}
+.new-cancelBtn:hover{
+    background: rgba(240,209,77,1);
+}
+.new-saveBtn{
+    background: rgba(44,173,232,0.8);
+    margin-right: 20px;
+    border: none;
+    border-radius: 4px;
+}
+.new-saveBtn:hover{
+    background: rgba(44,173,232,1);
+}
+
+/*===================================合同新建============end=========================*/
+/*===================================甲方弹出层============start=========================*/
+.checkPartA-contain{z-index:1100; height: 100%;width: 100%; position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+}
+.checkPartA-div{position: relative;width: auto;height: 100%;background: rgba(0,0,0,0.3);}
+.checkPartA-check{ position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: white;height: 386px;width: 330px;margin: auto auto;
+    border: 1px solid rgba(100,100,100,0.6);border-radius: 6px;overflow: hidden;}
+.partA-head{
+    height: 40px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+}
+.partA-head span{
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: bold;
+}
+.partA-head i{
+    float: right;
+    font-size: 16px;
+    line-height: 40px;
+}
+.partA-head i:hover{
+    color: red;
+}
+.partA-body{
+    padding: 20px;
+    width: 100%;
+    height: auto;
+}
+.partA-body span{
+    display: block;
+}
+.partA-body input{
+    padding-left: 4px;
+    width: 100%;
+    margin: 6px 0;
+}
+.partA-foot{
+    padding-left: 174px;
+}
+.partA-foot button{
+    border: none;
+    height: 30px;
+    width: 60px;
+    border-radius: 4px;
+    color: white;
+    margin-right: 10px;
+}
+.partA-foot-save{  background: rgba(46,195,233,0.8);}
+.partA-foot-save:hover{background: rgba(46,195,233,1);}
+.partA-foot-cancel{  background: rgba(240,209,77,0.8);}
+.partA-foot-cancel:hover{  background: rgba(240,209,77,1);}
+/*===================================甲方弹出层=============end==========================*/
+/*===================================选择乙方弹出层============start=========================*/
+.checkPartB-contain{z-index:1100; height: 100%;width: 100%; position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+}
+.checkPartB-div{position: relative;width: auto;height: 100%;background: rgba(0,0,0,0.3);}
+.checkPartB-check{ position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: white;height: 430px;width: 330px;margin: auto auto;
+    border: 1px solid rgba(100,100,100,0.6);border-radius: 6px;overflow: hidden;}
+.partB-head{
+    height: 34px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+}
+.partB-head span{
+    font-size: 16px;
+    line-height: 34px;
+    font-weight: bold;
+}
+.partB-head i{
+    float: right;
+    font-size: 16px;
+    line-height: 34px;
+}
+.partB-head i:hover{
+    color: red;
+}
+.search-area{
+    height: 48px;
+    width: inherit;
+    padding: 10px 30px;
+    position: relative;
+}
+.search-area input{
+    width: 100%;
+    border: 1px solid #ddd;
+    height: 28px;
+    border-radius: 4px;
+}
+.search-area span{
+    position: absolute;
+    top: 15px;
+    color: #ddd;
+    font-size: 12px;
+    left: 146px;
+}
+.search-area span i{
+    margin-right: 8px;
+    font-size: 12px;
+}
+.partB-company,.partB-person{
+    height:auto;
+}
+.partB-company div,.partB-person div{
+    background: #f1f1f1;
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 10px;
+}
+.partB-company div i,.partB-person div i{
+    font-size: 12px;
+    line-height: 30px;
+}
+.partB-company div span,.partB-person div span{
+    font-size: 14px;
+    line-height: 30px;
+}
+.partB-company ul,.partB-person ul{
+    height: auto;
+    max-height:234px;
+    overflow-y: auto;
+}
+.partB-company ul li{
+    height:38px;
+}
+.partB-list i{
+    margin-left: 14px;
+    font-size:14px;
+    line-height: 38px;
+}
+.partB-list img{
+    margin-left: 10px;
+    line-height: 38px;
+    height: 28px;
+    width: 28px;
+    border-radius: 14px;
+}
+.partB-list span{
+    margin-left: 10px;
+    line-height: 38px;
+}
+.partB-foot{
+    position: absolute;
+    bottom: 6px;
+    right: 20px;
+}
+.partB-foot button{
+    height: 28px;
+    width: 50px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+.partB-save{
+    margin-right: 10px;
+    background: rgba(46,195,233,0.8);
+}
+.partB-cancel{
+    background: rgba(240,209,77,0.8);
+}
+/*===================================选择乙方弹出层=============end==========================*/
+.contracts-list{
+    height:inherit;
+    width: inherit;
+    padding-bottom: 40px;
+}
+.contracts-list-head{
+    height:40px;
+    width: inherit;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    padding-top: 5px;
+    padding-left: 10px;
+    position: relative;
+}
+.list-head-dropBtn{
+    width: 80px;
+    height: 30px;
+    line-height: 26px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    padding: 2px 4px;
+}
+
+.list-head-dropBtn p,.list-head-dropBtn span{
+    display: inline-block;
+    font-size: 12px;
+    line-height: 26px;
+}
+.list-head-dropBtn i{
+    display: inline-block;
+    font-size: 10px;
+    line-height:26px;
+}
+.list-head-dropList{
+    width: 100px;
+    text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+    margin-top: -2px;
+    position: absolute;
+    z-index: 1;
+}
+.list-head-dropList ul li{
+    font-size: 14px;
+    line-height: 26px;
+    font-family: "Microsoft YaHei UI";
+    color: #666;
+}
+.list-head-dropList ul li:hover{
+    background: rgba(240,209,77,0.4);
+}
+.list-head-dropList ul li i{
+    line-height: 26px;
+    font-size: 14px;
+    margin-right: 6px;
+    color: #666;
+}
+.list-head-newContract{
+    float: right;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.list-head-newContract button{
+    border:none;
+    border-radius: 4px;
+    background: rgba(92,184,92,0.8);
+    color: white;
+    height: 30px;
+    width: 84px;
+    font-size: 13px;
+}
+.list-head-newContract button:hover{
+    background: rgba(92,184,92,1);
+}
+.list-head-setPartA{
+    position: absolute;
+    top: 6px;
+    left: 98px;
+}
+.list-head-setPartA button{
+    height: 28px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(92,184,92,0.8);
+    color: white;
+    font-size: 13px;
+}
+.list-head-setPartA button:hover{
+    background: rgba(92,184,92,1);
+}
+
+.contract-tableContain{
+    padding: 10px;
+    background: #f1f1f1;
+    height: inherit;
+    overflow-y: auto;
+}
+.contract-tableContain table{
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.contract-tableHead{
+
+}
+.contract-tableHead tr{
+    height:50px;
+}
+.contract-tableHead tr th{
+    font-size: 12px;
+    height: 12px;
+    text-align: center;
+    border: 1px solid #ccc!important;
+    background: #f1f1f1;
+    width:10%;
+}
+.contract-tableBody{
+
+}
+.contract-tableBody tr{
+    height: 40px;
+}
+.contract-tableBody tr td{
+    font-size: 12px;
+    height: 12px;
+    text-align: center;
+    border: 1px solid #ccc!important;
+    width: 10%;
+}
+ .contract-tableBody tr td span{
+    font-size: 14px;
+    padding: 4px 6px;
+    border: none;
+    border-radius: 4px;
+     color: white;
+}
+
+#contract-table-foot{
+    margin: -1px auto 0;
+    text-align: center;
+    height: 50px;
+    background: white;
+    border: 1px solid #ccc;
+}
+#contract-table-foot button{
+    margin-top: 6px;
+}
+#contract-table-foot span{
+    font-size: 13px;
+    color: #999;
+    float: left;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.contract-table-btn button{
+    background: white;
+    border: 1px solid #ccc;
+    height: 35px;
+    border-radius: 2px;
+    color: #666;
+}
+.contract-table-btn button:hover{ color:#000;}
+.contract-table-btn button i{line-height: 19px;color: #666;}
+.contract-table-btn button i:hover{color: #000;}
+.prev-page,.next-page{width: 42px;text-align: center;}
+.first-page,.last-page{
+    width: 42px;
+}
+.contract-table-btn{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;}
+.contract-table-btn:after{clear: both;}
+.cur-page-div{display: inline-block;position: relative;}
+.cur-page-choose{
+    position: absolute;
+    width: 50px;
+    max-height: 102px;
+    height: auto;
+    overflow-y:auto;
+    border: 1px solid #ccc;
+    background: white;
+    bottom: 36px!important;
+    right: 0px!important;
+    border-radius: 4px;
+}
+.cur-page-choose li{
+
+}
+.cur-page-choose li:hover{background:#ffebc4; }
+.cur-page{
+    min-width: 50px;
+    width: auto;
+    font-size: 13px;
+    line-height: 1px;
+}
+.cur-page:active{
+    outline: 0;
+}
+/*==========================没数据显示页面=================================*/
+.noContract-page{position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,0.1);}
+.noContract-page span{ position: absolute;
+    top: 0; left: 0; bottom: 114px; right: 0;
+    margin: auto auto;line-height:40px;height: 40px;width: 332px;
+    font-size: 20px;color:#aaa;
+}
+/*==========================没数据显示页面=================================*/
+/*==========================合同状态=================================*/
+.contractStatus-unsend{background: rgb(236,106,106)}
+.contractStatus-sended{background: rgb(174,234,151)}
+.contractStatus-returned{background: rgb(217,76,76)}
+.contractStatus-doing{background: rgb(126,191,253)}
+.contractStatus-unpaid{background: rgb(241,185,64)}
+.contractStatus-paid{background: rgb(113,213,74)}
+.contractStatus-finished{background: rgb(184,184,184)}
+/*==========================合同状态=================================*/
+
+/*===========================合同查看==================================*/
+.contracts-check{
+    height: inherit;
+    width: inherit;
+    padding: 10px;
+    background:#f1f1f1;
+}
+.contracts-check-contain{
+    height: inherit;
+    width: inherit;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 16px;
+}
+.contract-check-head{
+    height:30px;
+}
+.contract-check-head span{
+    color: #f0a453;
+    font-size: 15px;
+    font-weight: bold;
+}
+.contract-check-head a{
+    float: right;
+    font-size: 12px;
+    text-decoration: none;
+    margin-right: 12px;
+}
+.contract-check-head span i{
+    font-weight: normal;
+    margin-right: 8px;
+}
+.contract-check-head button{
+    border: 1px solid rgba(46,195,233,0.2);
+    background: white;
+    color: rgb(46,195,233);
+    font-size: 12px;
+    height: 23px;
+    margin-left: 10px;
+    width: 80px;
+    outline: none;
+}
+.contract-check-head button:hover{
+    background: rgba(46,195,233,0.2);
+}
+.contract-check-status{
+    height: 70px;
+    position: relative;
+}
+.big-line{
+    height: 14px;
+    width:calc(100% - 21px);
+    background: #ddd;
+    position: absolute;
+    top: 30px;
+    left:10px;
+    z-index: 1;
+}
+.small-line{
+    height: 6px;
+    width: calc(100% - 37px);
+    background: #999;
+    position: absolute;
+    top: 34px;
+    z-index: 4;
+    left: 20px;
+    right: 10px;
+}
+.green-line{
+    height: 6px;
+    width: 13%;
+    max-width: calc(100% - 37px);
+    background: rgb(32,160,56);
+    position: absolute;
+    top: 34px;
+    left: 20px;
+    right: 10px;
+    z-index: 4;
+}
+.first-div{
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background: #ddd;
+    z-index: 3;
+    position: absolute;
+    top: 16px;
+    left: 8px;
+}
+.first-span{
+    height: 32px;
+    width: 32px;
+    display: block;
+    line-height: 32px;
+    padding-left: 5px;
+    border-radius: 100%;
+    background: rgb(32,160,56);
+    color: white;
+    position: absolute;
+    left: 14px;
+    z-index: 10;
+    top: 22px;
+    font-size: 12px;
+}
+.second-div{
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background: #ddd;
+    z-index: 3;
+    position: absolute;
+    top: 16px;
+    left: 22%;
+}
+.second-span{
+    height: 32px;
+    width: 32px;
+    display: block;
+    line-height: 32px;
+    padding-left: 5px;
+    border-radius: 100%;
+    background: #999;
+    color: white;
+    position: absolute;
+    left: calc( 22% + 7px );
+    z-index: 10;
+    top: 22px;
+    font-size: 12px;
+}
+.third-div{ height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background: #ddd;
+    z-index: 3;
+    position: absolute;
+    top: 16px;
+    left: 47%;}
+.third-span{
+    height: 32px;
+    width: 32px;
+    display: block;
+    line-height: 32px;
+    padding-left: 5px;
+    border-radius: 100%;
+    background: #999;
+    color: white;
+    position: absolute;
+    left: calc( 47% + 7px );;
+    z-index: 10;
+    top: 22px;
+    font-size: 12px;
+}
+.fourth-div{ height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background: #ddd;
+    z-index: 3;
+    position: absolute;
+    top: 16px;
+    left: 72%;}
+.fourth-span{
+    height: 32px;
+    width: 32px;
+    display: block;
+    line-height: 32px;
+    padding-left: 5px;
+    border-radius: 100%;
+    background: #999;
+    color: white;
+    position: absolute;
+    left: calc( 72% + 7px );;
+    z-index: 10;
+    top: 22px;
+    font-size: 12px;
+}
+.fifth-div{ height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background: #ddd;
+    z-index: 3;
+    position: absolute;
+    top: 16px;
+    right: 10px;}
+.fifth-span{
+    height: 32px;
+    width: 32px;
+    display: block;
+    line-height: 32px;
+    padding-left: 5px;
+    border-radius: 100%;
+    background: #999;
+    color: white;
+    position: absolute;
+    z-index: 10;
+    top: 22px;
+    font-size: 12px;
+    right: 16px;
+}
+
+/*==========================================================================*/
+.detail-tags span{
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+    padding: 0 6px 4px;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+.detail-activeTag{
+    border-bottom: 3px solid rgb(108,201,132)!important;
+}
+.detail-body{
+    border-top: 1px solid #f1f1f1;
+    margin-top: 6px;
+    padding: 20px;
+}
+.contract-body div{
+    margin-bottom: 8px;
+}
+
+.info-box{
+    display: inline-block;
+    margin-right: 14px;
+}
+.chart-box{
+    display: inline-block;
+    margin-right: 88px;
+    position: relative;
+}
+.chart-box span{
+    position: absolute;
+}
+.chart-box h2{
+    position: absolute;
+    left: 118px;
+    top: 18px;
+}
+#chart-finishedPercent,#chart-paidPercent{
+    margin-left: 94px;
+}
+.contract-body-control-box{
+    text-align: right;
+}
+.contract-body-control-box button{
+    border: none;
+    height: 34px;
+    width: 60px;
+    margin-right: 30px;
+    border-radius: 4px;
+    opacity: 0.8;
+    color: white;
+}
+.contract-body-control-box button:hover{
+    opacity: 1;
+}
+.control-send{
+background: rgb(108,201,132);
+}
+.control-edit{
+    background: rgb(46,195,233);
+}
+.control-delete{
+    background: rgb(241,79,79);
+}
+
+
+
+
+
+

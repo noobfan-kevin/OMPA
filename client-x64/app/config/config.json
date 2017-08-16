@@ -1,0 +1,8 @@
+{
+    "chat_url":"http://localhost:9527",
+    "server_url":"http://localhost:9527",
+
+    "weather_city_url":"http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",
+    "chat_record_path":"default",
+    "static_path": "app/"
+}

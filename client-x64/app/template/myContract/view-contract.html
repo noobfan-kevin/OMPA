@@ -1,0 +1,84 @@
+<!-- 合同正文 -->
+<div class="view-main">
+    <div class="contract-detail">
+        <ul>
+            <li class="contract-item item-col-1">
+                <span class="contract-item-label">合同名称：</span>
+                {{contract.name}}
+            </li>
+            <li class="contract-item item-col-1">
+                <span class="contract-item-label">合同编号：</span>
+                {{contract.code}}
+            </li>
+            <li class="contract-item item-col-1">
+                <span class="contract-item-label">组织结构：</span>
+                {{contract.connectTask}}
+                <a href="javascript:" id="contract-taskVersion" ng-click="goTask(contract.taskCardVersionId)" data-task-version-id="{{contract.taskCardVersionId}}">{{contract.taskCardName}} (v{{contract.taskCardCode}})</a>
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">创建人：</span>
+                {{contract.creator}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">负责人：</span>
+                {{contract.contractLeader.name}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">签约方：</span>
+                {{contract.partBName}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">总金额：</span>
+                {{contract.totalMoney | number}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">支付人：</span>
+                {{contract.paidMan}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">支付方式：</span>
+                {{contract.payType}}({{contract.paidStep - 1 | payStepMap}})
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">开始时间：</span>
+                {{contract.startTime}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">结束时间：</span>
+                {{contract.endTime}}
+            </li>
+            <li class="contract-item item-col-3">
+                <span class="contract-item-label">签约时间：</span>
+                {{contract.signTime}}
+            </li>
+        </ul>
+    </div>
+    <div class="task-info">
+        <div class="chart-box">
+            <span>任务完成进度：</span>
+            <h2>{{contract.finishedPercent}}%</h2>
+            <canvas id="chart-finishedPercent" width="120" height="120"/>
+        </div>
+        <div class="chart-box">
+            <span>支付进度：</span>
+            <h2>{{contract.paidPercent}}%</h2>
+            <canvas id="chart-paidPercent" width="120" height="120"/>
+        </div>
+    </div>
+    <!-- 合同正文 按钮 -->
+    <div class="view-main-btn">
+        <span class="control-send" ng-if="btns.send" ng-click="setStatus(2)">发送</span>
+        <span class="control-edit" onclick="location.href='#/contractEdit'" ng-if="btns.edit">编辑</span>
+        <span class="control-delete" ng-if="btns.delete" ng-click="deleteContract()">删除</span>
+        <span class="control-send" ng-if="btns.assign" ng-click="setStatus(5)">指派</span>
+        <span class="control-send" ng-click="payVoucher()" ng-if="btns.pay">支付</span>
+        <!--<span class="control-send">完成</span>-->
+        <span class="control-send" ng-if="btns.accept" ng-click="setStatus(4)">接受</span>
+        <span class="control-send" ng-if="btns.back" ng-click="setStatus(3)">退回</span>
+        <span class="control-delete" ng-if="btns.invalidate" ng-click="setStatus(8)">作废</span>
+    </div>
+    <voucher-upload ng-show="showVoucherUpload"></voucher-upload>
+    <div class="invalidate-label" ng-show="contract.status == 8">
+        <img src="./images/invalidate-label.gif" alt="合同已作废">
+    </div>
+</div>

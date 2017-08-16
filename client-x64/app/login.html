@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+    <script src="libs/jquery.js"></script>
+    <script src="js/GUIAPI.js"></script>
+    <script src="js/global.js"></script>
+    <script async="async" src="js/localInfo.js"></script>
+</head>
+<body>
+<div id="main" style="position:absolute;border-radius:2px;top:1px;bottom: 1px;left:1px; right: 1px; border:1px solid rgb(190, 190, 190);box-shadow:0 0 2px 12px rgb(139, 139, 139)">
+    <ul class="login-box">
+        <li class="border"><h2>用户登录</h2>
+            <span>
+            <i class="iconfont" onclick="GUIAPI.minWindow()" onmouseover="this.style.backgroundColor='#58b2ff'"
+               onmouseout="this.style.backgroundColor='#f5f5f5'"style="position: absolute; height:20px;width:26px;
+               display:inline-block;text-align:center;padding-top:6px;padding-bottom:3px;right:38px;top:4px;cursor: default">&#xe629;</i>
+            <i class="iconfont" onclick="GUIAPI.closeWindow()" onmouseover="this.style.backgroundColor='#E80921'"
+               onmouseout="this.style.backgroundColor='#f5f5f5'"style="position: absolute;height:20px;width:26px;
+               display:inline-block;text-align:center;right: 10px;top:4px;padding-top:5px;padding-bottom:3px;cursor: default">&#xe628;</i>
+            </span>
+        </li>
+        <li class="name">账号：<input type="text" id="user" onmouseover="this.style.borderColor='#00AAAA'"
+                                   onmouseout="this.style.borderColor='#DDDDDD'"></li>
+        <li class="number">密码：<input type="password" id="password" onmouseover="this.style.borderColor='#00AAAA'"
+                                     onmouseout="this.style.borderColor='#DDDDDD'"></li>
+        <li id="checkbox"><input type="checkbox" value="" id="remember">记住密码</li>
+        <li class="login-btn-wrap">
+            <button class="login-btn">登录</button>
+        </li>
+    </ul>
+</div>
+<script>
+
+var LocalInfo;//存放在userinfo文件中的本地信息
+
+var bLoginBtnClicked= false;
+$(function() {
+
+    localStorage.clear();
+
+    //等待读取本地存储信息完毕
+    waitForLocalInfo();
+
+    function waitForLocalInfo(){
+        if(LocalInfo== void 0)
+        {
+            setTimeout(waitForLocalInfo, 100);
+        }
+        else {
+
+            var bDebug= JSON.parse(localStorage.getItem('bDebug'));
+
+            GUIAPI.setWindow({
+                width: 347,
+                height: (bDebug)? 380: 340,
+                center: true,
+                resizable: false
+            });
+
+            // 窗口拖拽
+            GUIAPI.setMoveWindowByDrag($('h2:eq(0)', '.login-box')[0]);
+
+            //用户名%密码添加
+            document.getElementById("user").value= (LocalInfo.name!== void 0)? LocalInfo.name: "";
+            if(LocalInfo.password!== void 0&&LocalInfo.password!== "")
+            {
+                document.getElementById("password").value= LocalInfo.password;
+                document.getElementById("remember").checked = 'checked';
+            }
+
+
+            //登录事件
+            $('.login-btn').click(logIn);
+            $(document).keydown(function (ev) {
+                if (ev.keyCode != 13) return;
+                logIn();
+            });
+        }
+    }
+
+    function logIn() {
+
+        if(bLoginBtnClicked)
+        {
+            return;
+        }
+
+        bLoginBtnClicked= true;
+
+        var userName = $('#user').val();
+        var passWord = $('#password').val();
+        changeLoginStatus('登录中...','#999');
+        $.ajax({
+            url: '/api/user/login',
+            method: 'post',
+            data: {
+                username: userName,
+                password: passWord
+            },
+            success: function (data) {
+
+                bLoginBtnClicked= false;
+
+                if (data.ok) {
+                    console.log(data);
+                    var userinfo={
+                        id:data.value.id,
+                        user_name:data.value.username,
+                        chinese_name:data.value.name,
+                        image: data.value.image,
+                        configinfo: configInfo,
+                        myname:userName,
+                        mypwd:passWord
+                    };
+                    LocalInfo.name = userName;
+                    LocalInfo.password= (document.getElementById("remember").checked)? passWord: '';
+                    LocalInfoManager.writeUserInfoFile();
+                    localStorage.setItem('userId',data.value.id);   // 记录登陆用户id到localStorage
+                    localStorage.setItem('userName',data.value.name);
+                    localStorage.setItem('userInfo',JSON.stringify(userinfo));   // 记录登陆用户id到localStorage
+                    window.location.href = 'main.html';
+                } else {
+                    showMessage('error', '账号或密码不正确！');
+                    changeLoginStatus('登录','#58b2ff');
+                }
+            },
+            error: function (err) {
+                bLoginBtnClicked= false;
+                showMessage('error', '服务器连接失败！');
+                changeLoginStatus('登录','#58b2ff');
+            }
+
+        })
+
+    }
+
+    function changeLoginStatus(str,color) {
+
+        $('.login-btn').html(str).css({background: color})
+
+    }
+
+    function showMessage(type, msg, delay) {
+
+        delay = parseInt(delay) || 3000;
+
+        var
+                bgColor = {
+                    'error': '#FFFFFF',
+                    'fail': '#FFFFFF',
+                    'warn': '#FFFFFF',
+                    'success': '#43B143'
+                }
+                , cssText
+                , $msgBox = $('#messageBox');
+
+
+        if (!$msgBox[0]) {
+
+            cssText = "position: fixed; left: 50%;transform: translate(-50%,10px); margin-left:2px; margin-top:52px; font:12px/1.2em '微软雅黑';" +
+                    "border-radius: 5px;max-width:300px;opacity: 1; color:red;background:" + bgColor[type];
+            $msgBox = $('<div id= "messageBox" style="' + cssText + '"><div>');
+            $msgBox.appendTo($('body'));
+
+        }
+
+        $msgBox.html(msg).fadeIn(10);
+
+        clearTimeout(window.msgBoxTimer);
+        window.msgBoxTimer = setTimeout(function () {
+            $msgBox.fadeOut(800)
+        }, delay)
+    }
+
+
+});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#supplement-tpl {font-family: 'Microsoft Yahei', '微软雅黑', sans-serif; width: 696px; margin: 0 auto; padding-bottom: 50px;}
+#supplement-tpl *{ margin: 0; padding: 0;cursor: default; font-size: 12px;line-height: 24px;}
+
+#supplement-tpl .tpl-wrap {padding:34px 74px 0 78px;}
+#supplement-tpl h2 { text-align: center;font-size:22px; margin-bottom: 66px;}
+#supplement-tpl .tpl-data-reason { display: inline-block; text-align: center;border-bottom: 1px solid #000000;min-width: 250px;}
+#supplement-tpl .tpl-data-code {border-bottom: 1px solid #000000;}
+#supplement-tpl .tpl-data-item { display: inline-block; margin-left: 14px; width: 100%;box-sizing: border-box;/*border-bottom: 1px solid #000000;*/text-decoration: underline}
+#supplement-tpl .tpl-list { position: relative; display: inline-block; width: 100%;}
+#supplement-tpl .tpl-item-sign { position: absolute;}
+#supplement-tpl .tpl-part-wrap { padding-top: 22px;overflow: hidden;}
+#supplement-tpl .tpl-first-part,
+#supplement-tpl .tpl-second-part { width: 50%; float: left;}
+#supplement-tpl .tpl-date { padding: 40px 0 27px 0;}
+#supplement-tpl .tpl-footer { text-align: right;}

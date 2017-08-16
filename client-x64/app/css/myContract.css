@@ -1,0 +1,285 @@
+/* @createBy Zhanglc */
+#myContract-content { background: #f1f1f1;}
+.my-contract-header { height: 42px; padding: 7px 10px 5px 10px; background: rgb(237, 237, 237); border-bottom: 1px solid rgb(231, 231, 231);}
+.my-contract-body { padding:8px 10px;}
+
+/* 筛选 */
+.my-contract-sift { position: relative; height: 30px;font-size:12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif}
+.my-contract-sift * { margin: 0; padding: 0;cursor: default}
+.my-contract-sift ul {list-style: none; background: #fff;}
+.my-contract-sift .sift-btn .iconfont {font-size:14px;color: #f4c600;}
+.my-contract-sift .sift-btn .iconfont:last-child { font-size: 12px; color: #000000;}
+.my-contract-sift .sift-list .iconfont {font-size:14px;color: #787878; margin-left: 16px; margin-right: 4px;}
+.my-contract-sift .sift-list li .iconfont:first-child { color: green;}
+
+.my-contract-sift .sift-btn { position: absolute; z-index: 2; height: 28px; line-height: 28px; width: 80px; border: 1px solid #ccc;text-align: center;
+    border-radius: 4px 4px 4px 4px; background: #fff;}
+
+.my-contract-sift .sift-list { position: absolute; top: 27px; z-index: 1 ; display: none; margin-top: -1px; padding: 6px 0;
+    border: 1px solid #ddd; border-radius: 0 4px 4px 4px;}
+.my-contract-sift .sift-list li {
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    cursor: default;
+    white-space: nowrap;
+}
+
+
+.my-contract-sift-active .sift-btn{ border-bottom-color: #fff;border-radius: 4px 4px 0 0}
+.my-contract-sift-active .sift-list { display: block;}
+
+/* 列表 */
+#myContractList { font-size: 12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif ;color: #666666;}
+#myContractList * { margin: 0; padding: 0;cursor: default}
+
+#myContractList table { width: 100%;border-collapse: collapse; border: 1px solid #dcdcdc; background: #fff;}
+#myContractList thead { background: #f2f2f2;font-size:14px}
+#myContractList thead tr { height: 54px;}
+#myContractList tbody tr { height: 44px;}
+#myContractList tbody tr:hover{
+    background: rgb(255,235,196);
+}
+#myContractList td ,
+#myContractList th{ border: 1px solid #dcdcdc; text-align: center;}
+#myContractList tbody td span { display: inline-block; height: 26px; line-height: 26px; width: 55px;border-radius: 4px; color: #ffffff;}
+#myContractList .status-nosend { background: #ec6a6a;}
+#myContractList .status-send { background: #afea97;}
+#myContractList .status-back ,
+#myContractList .status-invalidate
+{ background: #d94c4c;}
+#myContractList .status-underway { background: #7ebffd;}
+#myContractList .status-paying { background: #f1b940;}
+#myContractList .status-pay { background: #71d54a;}
+#myContractList .status-complete { background: #b8b8b8;}
+#myContractList .new-dot-container { position: relative;}
+#myContractList .new-dot {  width: 10px; height: 10px; background-color: red; border-radius: 50%; position: absolute; top: 3px; right: 3%;}
+#myContractApp ul#aside-nav li { position: relative;}
+#myContractApp .red-dot-num {
+    color: #fff;
+    border-radius: 30%;
+    padding: 0 4px 0 3px;
+    background-color: red !important;
+    margin-left: 4px;
+    height: 18px;
+    line-height: 17px;
+    font-size: 12px;
+    max-width: 34px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 14px;
+    right: 18px;}
+/* footer */
+#myContractList .my-contract-list-footer {height: 48px; padding:5px 6px; border: 1px solid #dcdcdc; border-top: 0; background: #fff;}
+#myContractList .page-info { float: left; color: #9f9f9f; line-height: 30px;}
+#myContractList .page-ctrl { float: right; position: relative;}
+#myContractList .page-ctrl span {text-align: center;border-radius: 2px; display: inline-block; line-height: 34px; border: 1px solid #ccc;font-size: 14px; color: #666666; padding: 0 10px;}
+[ng-cloak] { display: none;}
+#myContractList .page-ctrl span:hover{color:#000000;}
+#myContractList .page-ctrl span i{
+    line-height:1px;
+}
+#myContractSift-filter:hover{ color:#666 !important;}
+
+.MC-first-page,.MC-last-page{
+    width: 42px;
+}
+.MC-prev-page,.MC-next-page{
+    width: 42px;
+}
+.MC-cur-page{
+    width: 50px;
+}
+.MC-cur-page-choose{
+    position: absolute;
+    width: 50px;
+    max-height: 102px;
+    height: auto;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background: white;
+    bottom: 36px!important;
+    right: 108px!important;
+    border-radius: 4px;
+}
+.MC-cur-page-choose li{
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+}
+.MC-cur-page-choose li:hover{
+    background: #ffebc4;
+}
+/* ==================================  查看 ============ START ================================ */
+
+/* 样式重置 */
+#myContractView {font-size:12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif; padding: 10px;  background: #fff;}
+#myContractView * { margin: 0; padding: 0;cursor: default}
+#myContractView ul {list-style: none}
+
+/* header */
+#myContractView .view-header { margin-bottom: 15px;}
+#myContractView .view-title {font-size: 16px; color: #ea8010;}
+#myContractView .view-title .iconfont{ margin:0 10px 0 4px;}
+#myContractView .contract-preview { display: inline-block; width: 78px; height: 22px; line-height: 22px; text-align: center;
+    border: 1px solid #daf4fb; color: #59ccec; margin-left: 10px;}
+#myContractView .contract-preview:hover { background: #daf4fb;}
+#myContractView .back-btn { float: right; color: #4fa9c5; height: 26px; line-height: 26px;}
+
+/* tab 标签 */
+#myContractView .view-tab-label { margin-top: 9px; overflow: hidden;}
+#myContractView .view-tab-label li { float: left; padding: 6px 4px;  margin:0 20px;border-bottom: 3px solid transparent;}
+#myContractView .view-tab-label li.active { border-bottom-color: #6cc984;}
+
+/* 合同详情 */
+#myContractView  ul { overflow: hidden; padding:10px 0;}
+#myContractView .contract-item { position: relative; float: left; height: 34px; line-height: 34px;box-sizing: border-box;
+    padding-left: 100px; color: #2c2c2c;}
+#myContractView li.item-col-1 { width: 100%;}
+#myContractView li.item-col-3 { width: 33.33%;}
+#myContractView .contract-item-label { position: absolute; width: 100px; text-align: right; left: 0; color: #808080;}
+
+#myContractView .task-info {overflow: hidden;}
+
+/* 按钮 */
+#myContractView .view-main-btn { padding: 34px 50px; text-align: right;}
+#myContractView .view-main-btn span { display: inline-block; margin-left: 22px; width: 70px; height: 36px; line-height: 36px;
+    text-align: center;border-radius: 5px; color: #fff; opacity: .8;}
+#myContractView .view-main-btn span:hover { opacity: 1;}
+#myContractView .view-main-btn .control-send { background: #6cc984;}
+#myContractView .view-main-btn .control-edit { background: #2ec3e9;}
+#myContractView .view-main-btn .control-delete { background: #f14f4f;}
+.view-main { position: relative;}
+.view-main .invalidate-label { position: absolute; top: 10%; right: 26%}
+
+/* 饼图 */
+#myContractView .chart-box{
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin-left: 100px;
+}
+
+#myContractView .chart-box canvas { position: absolute;}
+
+#myContractView .chart-box span{
+    position: absolute;
+    width: 120px;
+    margin-left: -120px;
+    text-align: right;
+}
+#myContractView .chart-box h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f1b940;
+}
+
+#myContractView .chart-box:last-child h2 { color: #7ebffd;}
+
+/* 状态条 */
+.contract-status { position: relative; display: flex; flex-direction: row; justify-content: space-between }
+
+.contract-status-cell-outer { position: relative; height: 46px; width: 46px; border-radius: 100%; background: #cfcfcf; }
+.contract-status-cell-inner { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 32px;
+    width: 32px; border-radius: 100%;text-align: center;  font: 12px/32px "Microsoft YaHei"; background: #999; color: #fff; }
+
+.contract-status-big-bar, .contract-status-tiny-bar { position: absolute; top: 50%; transform: translateY(-50%); }
+.contract-status-big-bar { left: 10px; right: 10px; height: 16px; background: #cfcfcf; }
+.contract-status-tiny-bar { left: 23px; right: 23px; height: 4px; background: #999999; }
+
+/* 进度 ==> 为contract-status添加对应class即可 */
+.contract-status-tiny-bar-inner { height: 100%; width:0; background: #20a038;transition: 1.6s ease-out}
+/* 制卡 */
+.progress-status-1 .contract-status-cell-outer:nth-child(2)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-1 .contract-status-tiny-bar-inner { width: 12.5%;}
+/* 发送 */
+.progress-status-2 .contract-status-cell-outer:nth-child(2)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-2 .contract-status-cell-outer:nth-child(3)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-2 .contract-status-tiny-bar-inner { width: 37.5%;}
+/* 制作 */
+.progress-status-3 .contract-status-cell-outer:nth-child(2)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-3 .contract-status-cell-outer:nth-child(3)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-3 .contract-status-cell-outer:nth-child(4)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-3 .contract-status-tiny-bar-inner { width: 62.5%;}
+/* 制作 */
+.progress-status-4 .contract-status-cell-outer:nth-child(2)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-4 .contract-status-cell-outer:nth-child(3)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-4 .contract-status-cell-outer:nth-child(4)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-4 .contract-status-cell-outer:nth-child(5)  .contract-status-cell-inner {background: #20a038;}
+.progress-status-4 .contract-status-tiny-bar-inner { width: 87.5%;}
+/* 完成 */
+.progress-status-5 .contract-status-cell-outer .contract-status-cell-inner {background: #20a038;}
+.progress-status-5 .contract-status-tiny-bar-inner { width: 100%;}
+
+/* 预览查看到的 */
+#contract-preview-wrap { position: fixed; z-index: 10; top: 0; right: 0; left: 0; bottom: 0}
+#contract-preview-wrap::before {content:''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;;background: #000000; opacity: .6;}
+#contractPreview { position: absolute; z-index: 2; width: 828px;height: 100%; overflow-y: auto; background: #ffffff; left: 50%;
+transform: translateX(-50%)}
+
+#contractPreview #contract-tpl1 {transform: scale(.3);transform-origin: left top; margin-bottom: -2260px;}
+#contract-preview-header {font-size:12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif; height: 40px; line-height: 40px;
+    background: #eeeeee;}
+#contract-preview-header .nav-title { margin-left: 26px;}
+#contract-preview-header .contract-preview-close { float: right; margin-right: 16px;font-size:16px;}
+#contract-preview-header .contract-preview-close:hover {font-weight: bold}
+#contract-preview-header .contract-download { position: absolute; left: 35px; top: 60px;height: 30px; line-height: 30px;
+    width: 74px;background: #5cb85c; color: #ffffff;border-radius: 4px; border: 1px solid transparent;}
+#contract-preview-header .contract-download:hover { border-color: #735449;}
+#contract-preview-header .contract-download .iconfont { margin-left: 12px; margin-right: 5px;}
+
+/* 隐藏的 */
+#contract-download-hidden {width: 0;overflow: hidden; position: fixed; left: 0; top: 0; z-index: 100;}
+#contract-download-hidden #contract-tpl1 { margin: 0;}
+
+
+
+/*====================================== 补充协议 ============= START =================================*/
+
+/* 样式重置 */
+#supplement * { margin: 0; padding: 0;font-size:12px;font-family: 'Microsoft Yahei', '微软雅黑', sans-serif;cursor: default}
+#supplement ul {list-style: none}
+/* header bar */
+#supplement .header { height: 38px; line-height: 36px; border: 1px solid #ddd; text-indent: 16px; margin-top: -1px;}
+#supplement .header .iconfont { float: right; margin-right: 16px; color: #cccccc;}
+
+/* 添加按钮 */
+#supplement .add-btn { height: 64px; line-height: 64px; width: 584px; text-align: center; border: 2px dotted #d4d4d4;
+    margin:0 auto;font-size: 14px; color: #c6c6c6;}
+
+/* 添加 */
+#supplement .add-wrap { position: fixed; z-index: 20; top: 0; left: 0; width: 100vw; height: 100vh;}
+#supplement .add-wrap:before {content: ""; display: block; width: 100%; height: 100%; background: #000000; opacity: .6;}
+
+/* 添加 -对话框 */
+#supplement .add-dialog { position: absolute; top: 30%; left: 50%; width: 590px;transform: translate(-50%, -30%);
+    border: 1px solid #e4e4e4; background: #ffffff; padding-bottom: 32px;;}
+#supplement .add-header { text-indent: 22px;; height: 36px; line-height: 36px; background: #eeeeee; color: #666666;}
+#supplement .add-header .iconfont { float: right; margin-right: 16px;}
+#supplement .add-header .iconfont:hover {font-weight: bold}
+
+/* 添加 - 主体 */
+#supplement .add-body { padding-top: 38px;width: 444px; margin-left: 105px;overflow: visible}
+#supplement .add-body li { position: relative;margin: 0 auto; margin-bottom: 14px;}
+#supplement .label { position: absolute; text-align: right; width: 60px; margin-left: -72px;  margin-top: 5px;color: #666666;}
+#supplement .add-title,
+#supplement .add-reason { width: 100%; display: block;height: 28px; line-height: 28px;box-sizing: border-box; padding:0 5px;}
+#supplement .add-content { width: 100%; height: 150px;resize: none; padding: 5px;}
+#supplement .add-body input,
+#supplement .add-body textarea { border:1px solid #cfcfcf;}
+/* 添加 - 按钮 */
+#supplement .add-btn-wrap { height: 36px; float: right; margin-right: 38px;}
+#supplement .add-btn-wrap span { display: inline-block; height: 36px; line-height: 36px;border-radius: 4px;
+    color: #ffffff; width: 70px; text-align: center; margin-right: 22px;}
+#supplement #saveAdd { background: #2ec3e9;}
+#supplement #cancelAdd { background: #f0d14d;}
+
+#supplement .detail #supplement-tpl {}
+
+/*-------------------------------------- 补充协议 -------------- END ----------------------------------*/

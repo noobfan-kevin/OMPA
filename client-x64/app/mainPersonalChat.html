@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人聊天窗口</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/personal-contain.css">
+    <script src="libs/jquery.js"></script>
+    <script src="libs/jquery.qqFace.js"></script>
+    <script src="js/fileope.js"></script>
+    <script src="js/chatHistory.js"></script>
+    <script src="js/chat.js"></script>
+    <script type="text/javascript" src="js/mainPersonalChat.js"></script>
+</head>
+<body>
+<div class="viewContain">
+    <!--右面面板-->
+    <div class="right_Contain">
+        <!--群成员、群文件、聊天记录-->
+        <div class="chat_tab_box" id="myTab">
+            <div class="tab_item no_extra">聊天记录</div>
+        </div>
+        <!--聊天记录-->
+        <div class="chat-block chat_history_list" id="history_list">
+            <!--历史聊天记录-->
+            <ul class="chatSiteBar">
+                <!--<li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont selectIcon">&#xe64b;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><span>看看有没有问题，到时在联系。看看有没有问题，到时在联系。看看有没有问题，到时在联系。看看有没有问题，到时在联系。看看有没有问题，到时在联系。看看有没有问题，到时在联系。</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont selectIcon">&#xe64b;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><img src="images/Pluto.jpg" alt="Pluto.jpg"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont">&#xe64b;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><span>看看有没有问题，到时在联系。</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont">&#xe64b;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><span>看看有没有问题，到时在联系。</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont">&#xe64b;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><span>看看有没有问题，到时在联系。</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatRecord">
+                        <div class="icon-file">
+                            <i class="iconfont">&#xe64c;</i>
+                        </div>
+                        <div class="avatar">
+                            <div class="avatarBk">
+                                <img class="avatar" src="images/avatar.jpg" alt="avatar.png"/>
+                            </div>
+                        </div>
+                        <div class="chatinfo">
+                            <span class="chat_name">王丽娜</span>
+                            <span class="chat_date">2015.7.25</span>
+                            <div class="chat_text"><span>看看有没有问题，到时在联系。</span></div>
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+            <!--分页-->
+            <div class="add historyfy">
+                <!--<i class="iconfont allselect" id="record__All" title="全选">&#xe64c;</i>-->
+                <!--备注id = remark__chat-->
+                <!--<i id="remarkTaskBtn" class="iconfont" title="备注" >&#xe650;</i>-->
+                <i class="iconfont" style="font-size: 16px" onclick="helpHand.changeRecordDate(1)">&#xe684;</i>
+                <i class="iconfont" style="font-size: 16px;margin-left: 20px" onclick="helpHand.changeRecordDate(-1)">&#xe683;</i>
+            </div>
+            <div class="add historyfy remarkicon" style="display:none;">
+                <span  title="返回">返回</span>
+                <span  title="确定">确定</span>
+            </div>
+        </div>
+        <!--备注到任务-->
+        <div class="chat-block" id="remarkTask">
+            <!--<ul>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="info">
+                            <span class="nickname">SC00-SJG</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup current_chat_item">
+                        <div class="info">
+                            <span class="nickname">SC00-YH</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="info">
+                            <span class="nickname">SC01-SJG</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="info">
+                            <span class="nickname">SC00-SS</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chat_item chatListGroup">
+                        <div class="info">
+                            <span class="nickname">SC02-SJG</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>-->
+        </div>
+    </div>
+    <!--左面面板-->
+    <div class="left_Contain">
+        <!--联系人列表-->
+        <div class="box_hd">
+            <!--图标-->
+            <span><i class="iconfont">&#xe684;</i></span>
+            <div class="hd_warp">
+                <div class="hd_warp_list" id="talkusers">
+                    <!--<div class="hd_member setopacity">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画一组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk newmsg">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画二组动画二组动画二组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画三组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画四组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画五组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画六组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画七组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画八组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画九组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十一组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十二组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十三组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十四组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十五组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十六组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>
+                    <div class="hd_member">
+                        <div class="avatarBk">
+                            <img src="images/avatar.jpg" class="avatar">
+                        </div>
+                        <p>动画十六组</p>
+                        <div class="close_avatar"><i class="iconfont">&#xe63d;</i></div>
+                    </div>-->
+                </div>
+            </div>
+            <span><i class="iconfont">&#xe683;</i></span>
+        </div>
+        <!--聊天内容-->
+        <div class="box_bd" id="talk_content">
+            <!--<div class="chat_content_group me">
+                <div class="avatarBk">
+                    <img src="images/avatar.jpg" class="avatar">
+                    <span>李磊</span>
+                </div>
+                <h3 class="chat_content">你可以帮我上传2015年的工作计划吗？</h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">明明是个富二代，我却自己上班挣钱，明明可以开豪车，我却每天挤公交，明明可以靠脸吃饭，而我自己努力着，这就是我和明明的区别。</h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_img">
+                    <img src="images/Pluto.jpg" alt="Pluto.jpg"/></h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">
+                    论烹饪，我自幼泡得一手好方便面；
+                    论绘画，我画起小王八来无比熟练；
+                    论声乐，我唱生日快乐歌从不忘词；
+                    论运动，我捡球递水的速度人人称赞；
+                    这年头像我这样的全才，那些有眼无珠的妹子们，你们上哪儿去找啊！！！
+                </h3>
+            </div>
+            <div class="chat_content_group me">
+                <div class="avatarBk">
+                    <img src="images/avatar.jpg" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">可伸缩元素能够随着框的缩小或扩大而缩写或放大只要框中有多余的空间，可伸缩元素就会扩展来填充这些空间。</h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">你可以帮我上传2015年的工作计划吗？</h3>
+            </div>-->
+            <!--<div class="chat_content_group me">-->
+                <!--<div class="avatarBk">-->
+                    <!--<img src="images/avatar.jpg" class="avatar">-->
+                    <!--<span>王丽娜</span>-->
+                <!--</div>-->
+                <!--<h3 class="chat_content">-->
+                    <!--<div class="chatpl">-->
+                        <!--<div class="upload-fileico">-->
+                        <!--</div>-->
+                        <!--<div class="upload-fileinfo">-->
+                            <!--<span class="filename">2014-2015年度夏季降水量总比对分析表夏季降水量总比对分析表</span>-->
+                            <!--<div class="wrapper">-->
+                                <!--<div class="load-bar">-->
+                                    <!--<div class="load-bar-inner" style="width:28%"><span id="counter">28%</span></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="fileaction">-->
+                                <!--<span>取消</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<p class="chat_time">2015.10.13 10:00AM</p>-->
+                <!--</h3>-->
+            <!--</div>-->
+            <!--<div class="chat_content_group me">
+                <div class="avatarBk">
+                    <img src="images/avatar.jpg" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">
+                    <div class="chatpl">
+                        <div class="upload-fileico">
+                        </div>
+                        <div class="upload-fileinfo">
+                            <span class="filename">2014-2015年度夏季降水量总比对分析表夏季降水量总比对分析表</span>
+                            <div class="fileaction">
+                                <span>已发送</span>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">
+                    <div class="chatpl">
+                        <div class="upload-fileico"></div>
+                        <div class="upload-fileinfo">
+                            <span class="filename">2014-2015年度夏季降水量总比对分析表夏季降水量总比对分析表</span>
+                            <div class="wrapper">
+                                <div class="load-bar">
+                                    <div class="load-bar-inner" style="width:0">
+                                        <span id="counter">0%</span>
+                                        <span>12.34M</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fileaction">
+                                <a href="#">另存为</a>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_content">
+                    <div class="chatpl">
+                        <div class="upload-fileico"></div>
+                        <div class="upload-fileinfo">
+                            <span class="filename">2014-2015年度夏季降水量总比对分析表夏季降水量总比对分析表</span>
+                            <div class="fileaction">
+                                <a href="#">打开</a>
+                                <a href="#">打开目录</a>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span>王丽娜</span>
+                </div>
+                <h3 class="chat_img">
+                    <div id="myCarousel" class="carousel slide">
+                        &lt;!&ndash; 轮播（Carousel）指标 &ndash;&gt;
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                        &lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="images/carouselImg/chat1.jpg" alt="First slide">
+                            </div>
+                            <div class="item">
+                                <img src="images/carouselImg/chat2.jpg" alt="Second slide">
+                            </div>
+                            <div class="item">
+                                <img src="images/carouselImg/chat3.jpg" alt="Third slide">
+                            </div>
+                        </div>
+                        &lt;!&ndash; 轮播（Carousel）导航 &ndash;&gt;
+                        <a class="carousel-control left" href="#myCarousel"
+                           data-slide="prev">
+                            <i class="iconfont">&#xe61e;</i>
+                        </a>
+                        <a class="carousel-control right" href="#myCarousel"
+                           data-slide="next">
+                            <i class="iconfont">&#xe61f;</i>
+                        </a>
+                    </div>
+                    <p class="chat_time">2015.10.13 09:12AM</p>
+                </h3>
+            </div>
+            <div class="chat_content_group you">
+                <div class="avatarBk">
+                    <img src="images/avatar1.png" class="avatar">
+                    <span class="name">王丽娜</span>
+                </div>
+                <h3 class="chat_img">
+                    <div class="carousel slide">
+                        &lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="images/Pluto.jpg" alt="Pluto.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="chat_time">2015.10.13 09:12AM</p>
+                </h3>
+            </div>-->
+        </div>
+        <!--输入框-->
+        <div class="box_ft">
+            <div class="chat_toolbar">
+                <div class="appendfeature">
+                    <section><i class="iconfont" id="addemotion" >&#xe690;</i></section>
+                    <section><i class="iconfont" title="文件" id="imagecon">&#xe694;</i></section>
+                    <section><i class="iconfont" title="截屏" onclick="fileope.cutImage()">&#xe696;</i></section>
+                    <input id="imageupload" class="file" style="position: absolute; top: 0px;left: 30px;width: 22px;height: 22px;z-index:10;display:none" type="file" onchange="fileope.upload(this)" multiple=true/>
+                    <!--<section><i class="iconfont" id="displayhistory">&#xe694;</i></section>-->
+                </div>
+                <div id="chackTextarea-area" class="chat_textarea" contenteditable="true"></div>
+                <div class="btn_face" id="add_face_btn">
+                    <a class="btn_text" href="#">
+                        发送(S)
+                        <!--<img src="images/send_chat_btn.png" alt="send_chat_btn.png">-->
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--按钮-->
+        <div class="fixbtn" id="cutbtn">
+            <i class="iconfont"></i>
+        </div>
+    </div>
+</div>
+<!--关闭界面-->
+<div class="close_emtry">
+    <i id="mix_div" class="iconfont">&#xe629;</i>
+    <i id="closs_div" class="iconfont">&#xe628;</i>
+</div>
+<!--<script src="libs/jquery.js"></script>-->
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/autoTextArea.js"></script>
+<!--<script src="libs/jquery.qqFace.js"></script>-->
+<script>
+    /*$(function(){
+        //显示隐藏右侧面板
+        $("#cutbtn").click(function(){
+            if($(".right_Contain").is(":hidden")) {
+                $(this).attr("src","images/recordstretch.png");
+                $(".right_Contain").show();
+                $(".left_Contain").addClass("left_Contain_1").removeClass("left_Contain");
+                $(".hd_member").css("margin","0 11px");
+            }
+            else {
+                $(this).attr("src","images/recordshrink.png");
+                $(".right_Contain").hide();
+                $(".left_Contain_1").addClass("left_Contain").removeClass("left_Contain_1");
+                $(".hd_member").css("margin","0 13px");
+            }
+        });
+
+        //关闭头像
+        $(".hd_member").hover(function(){
+            $(this).find(".close_avatar").show();
+        },function(){
+            $(this).find(".close_avatar").hide();
+        });
+
+        $(".viewContain").on('click', function(){
+            $(".extrapupicon").hide();
+            $("#facebox").hide();
+        });
+
+        $("#addemotion").qqFace({
+            id : 'facebox', //表情盒子的ID
+            assign:'chackTextarea-area', //给那个控件赋值
+            path:'images/face/'	//表情存放的路径
+        });
+
+        //将聊天备注到任务卡
+        $("#remarkTaskBtn").on('click',function(){
+            $("#remarkTask").toggleClass("open");
+            if($("#remarkTask").hasClass("open"))
+                $(".historyfy").eq(0).hide().next().show();
+            else
+                $(".historyfy").eq(1).hide().prev().show();
+        })
+    });*/
+    //注意：调用代码一定是放textarea后面。
+    $("#chackTextarea-area").autoTextarea({maxHeight:86});
+
+</script>
+</body>
+</html>

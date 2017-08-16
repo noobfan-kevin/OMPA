@@ -1,0 +1,25 @@
+*{cursor: default;}
+.ztree li a{height: 30px!important;}
+.ztree li a:hover{text-decoration: none!important;}
+.ztree li span{line-height: 24px!important;font-size: 14px!important;height: 24px!important;
+    color:rgba(0,0,0,0.7)}
+.ztree li .node_name:hover{text-decoration: none;}
+.ztree li span.button{margin-right: 4px!important;}
+.ztree li span.button.noline_open{opacity: 0.4;
+    background-position: -10px -76px !important;}
+.ztree li span.button.noline_close{opacity: 0.4;
+    background-position: 6px -76px !important;}
+.ztree li span.button.root_open,.ztree li span.button.center_open,.ztree li span.button.bottom_open{height: 20px;
+    background-position: -92px 4px !important;}
+.ztree li span.button.root_close,.ztree li span.button.center_close,.ztree li span.button.bottom_close{
+    background-position: -74px 4px !important;}
+#testTree_1_ico.ico_open,#testTree_1_ico.ico_close{}
+.ztree li span.button.ico_open,.ztree li span.button.ico_close,
+.ztree li span.button.ico_docu{background-position: -58px -78px !important;}
+#testTree_1_ico.ico_open,#testTree_1_ico.ico_close{background-position: -34px -78px !important;}
+.selectedNode span{color: rgb(244,198,0)!important;}
+.department-tree-span-active{background: rgba(241,163,37,0.3)!important;}
+.department-tree-span{position: absolute; width: 100%; height: 30px; left: 0;right: 0;}
+.department-tree-span i{font-size: 12px!important; display:none; height: 30px;line-height: 30px;
+    background:rgb(27,147,76);text-align: center;color:white;}
+.department-tree-span i:hover{cursor:default;}

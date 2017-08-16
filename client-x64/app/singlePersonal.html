@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>查看好友信息</title>
+    <link rel="stylesheet" type="text/css" href="./css/singlepersonal.css"/>
+    <script type="text/javascript" src="libs/jquery/dist/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="top">
+        <span class="integral fl_right">积分</span><span class="number fl_right" id="points"></span>
+    </div>
+    <div class="middle">
+        <div class="head fl_left"><img class="head_img" id="image" src="images/avatar1.png" alt=""/></div>
+        <a href="#" class="fl_left" id="name"></a>
+        <span class="position fl_left" id="position"></span>
+    </div>
+    <div class="bottom">
+        <div class="address"><h4 class="fl_left">地址：</h4><span class="fl_left" id="address"></span></div>
+        <div class="e-m"><h4 class="fl_left">邮箱：</h4><span class="fl_left" id="email"></span></div>
+        <div class="phone"><h4 class="fl_left">电话：</h4><span class="fl_left" id="phone"></span></div>
+    </div>
+</div>
+<script>
+    var userInfo= JSON.parse(localStorage.getItem('userInfo'));
+    var curUserId= null;
+	var mouse_over=false;
+    function setUserId(oneUserId)
+    {
+        curUserId= oneUserId;
+        $.ajax({
+            method: 'get',
+            url: userInfo.configinfo.server_url+ "/api/user/"+ oneUserId,
+            success: function(data){
+				//console.debug(data);
+                $('#name').text(getName(data.name));
+                $('#position').text(getName(data.occupationName));
+                $('#address').text(getName(data.address));
+                $('#email').text(getName(data.email));
+                $('#phone').text(getName(data.phone));
+                $('#image').attr('src', userInfo.configinfo.server_url+ '/'+ data.image);
+                if($('#name').html().length>14){
+                    $('#name').css({'lineHeight':18+'px'});
+                }else{
+                    $('#name').css({'lineHeight':30+'px'});
+                }
+                $.ajax({
+                    method: 'get',
+                    url: userInfo.configinfo.server_url + '/api/credit/total'+'?where={"userId":"'+oneUserId + '"}',
+                    success:function(data1){
+                        var total = (data1.total / 100).toFixed(2).replace(/\.00/,' ');
+                        $('#points').attr('title', total).text(total);
+                    }
+                });
+            },
+            error: function(){
+                console.log("获取好友信息（id:"+ oneUserId+ ")失败");
+            }
+        });
+		document.body.onmouseover=function(){
+			mouse_over=true;
+		};
+		document.body.onmouseout=function(){
+			if(mouse_over)
+			{
+				var gui = require('nw.gui');
+				gui.Window.get().hide();
+			}
+			else
+			{
+				mouse_over=false;
+			}
+		};
+    }
+	function getName(name)
+	{
+		if(!name||name===null||name==="null"||name==="undefined")
+		{
+			return "";
+		}
+		else
+		{
+			return name;
+		}
+	}
+    $(function(){
+        //jquery Ajax全局配置
+        $.ajaxSetup({
+            beforeSend: function (xhr, setting) {  //设置Header
+                xhr.setRequestHeader('sid', localStorage.getItem('sid') ||0 );
+            },
+            cache: false,
+            crossDomain: true
+        });
+    });
+</script>
+</body>
+</html>

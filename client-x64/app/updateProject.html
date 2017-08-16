@@ -1,0 +1,197 @@
+<style>
+    @import url(css/myProjectsStyle.css);
+    @import url(css/zTreeNStyle.css);
+    @import "css/positionMap.css";
+</style>
+<!-- 新建项目页 -->
+<div class="position-map">
+    <a id="curPosition"></a>
+    <a>基本信息</a>
+    <a>项目编辑</a>
+</div>
+<div style="overflow-y:auto;height: 100%;margin-bottom: 10px;" id="updateProject">
+<div id="my-project-add" class="my-project-add" >
+    <div class="my-project-add-title"><i class="iconfont">&#xe604;</i><span  id='createProject' style="font-weight:bold; margin-left:8px;">新建项目</span></div>
+    <div id="my-project-add-content" class="my-project-add-content">
+        <form action="#" class="form-inline" id="create-project">
+            <div class="clearfix" style="position: relative; padding-left:6px;">
+                <span class="pull-left" style="margin-top:22px;">项目图标：</span>
+                <div  class="pull-left my-project-add-image"  id="my-project-add-image">
+                    <img  id="add-project-thumbnail"  src="images/project-add.png"  data-content="projectImg" alt="项目图标">
+                </div>
+                <input class="pull-left my-project-add-image-btn" type="file" id="my-project-add-image-btn" single />
+                <span class="pull-left" style="color:#ccc;margin-top:22px;">（支持png和jpg格式的图片，大小不得超过2M）</span>
+            </div>
+            <div class="form-group project-add-item-bt10" style="margin-right:66px;">
+                <label for="my-project-add-name" class="project-add-item-name"><span style="color:red;">*</span>项目名称：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-name" data-content="name">
+            </div>
+            <div class="form-group project-add-item-bt10">
+                <label for="my-project-add-num" class="project-add-item-name"><span style="color:red;">*</span>项目编号：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-num" data-content="unicode" >
+            </div>
+
+            <div class="form-group project-add-item-bt10  " style="margin-right:66px; margin-left:14px;">
+                <label for="my-project-add-num" class="project-add-item-name"><span style="color:red;">*</span>负责人：</label>
+                <input style="background-color: #fff;" type="text" data-toggle="modal" data-target="#my-project-add-leader" data-content="leader" data-backdrop="static" class="form-control project-add-item-detail" id="my-project-add-proLeader" readonly >
+                <span id="my-project-chooseLeader" data-toggle="modal" data-target="#my-project-add-leader" data-backdrop="static" style="cursor:default;color:#5699c3; font-size:12px;position: absolute;top:124px;left: 244px;">选择</span>
+            </div>
+            <div class="form-group project-add-item-bt10">
+                <label for="my-project-add-schedule" class="project-add-item-name"><span style="color:red;">*</span>项目进度：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-schedule" data-content="schedule">
+                <span style="color:#ccc;">%</span>
+            </div>
+            <div class="form-horizontal project-add-item-bt10">
+                <div class="form-group" style="position: relative; margin-left:-11px;">
+                    <label for="my-project-add-people" class="col-sm-2 control-label project-add-item-oneT"><span style="color:red;">*</span>项目人员：</label>
+                    <div class="col-sm-6">
+                        <input id="my-project-add-people" data-content="members" data-toggle="modal" data-target="#my-project-add-chooseBody" data-backdrop="static" data-value="[]" type="text" style="background-color:#fff; width:542px; padding:0; padding-left:12px; padding-right:46px;" class="form-control project-add-item-one "  readonly >
+                        <!--<input id="my-project-add-people" data-toggle="modal" data-target="#my-project-add-chooseBody" data-backdrop="static" readonly type="text" style="background-color:#fff; width:542px; padding:0; padding-left:12px; padding-right:30px;" class="form-control project-add-item-one" >-->
+                    </div>
+                    <span id="my-project-add-chooseFlag" data-toggle="modal" data-target="#my-project-add-chooseBody" data-backdrop="static"  style="cursor:default;position: absolute; top:6px; right:-6px; color:#5699c3; font-size:12px;">选择</span>
+                </div>
+            </div>
+            <div class="form-group project-add-item-bt10" style="margin-right:70px;">
+                <label for="my-project-add-startTime" class="project-add-item-name"><span style="color:red;">*</span>起止日期：</label>
+                <input type="text" style="background-color:#fff; " class="form-control project-add-item-detail form_datetime" id="my-project-add-startTime" data-content="startDate" readonly>
+            </div>
+            <div class="form-group project-add-item-bt10">
+                <label for="my-project-add-endTime" style="margin-left:-10px; color:#ccc;" class="project-add-item-name">——</label>
+                <input type="text" style="background-color:#fff; margin-left:55px;" class="form-control project-add-item-detail form_datetime" id="my-project-add-endTime" data-content="endDate" readonly >
+            </div>
+
+            <div class="form-horizontal" style="margin-bottom:18px; margin-left:3px;">
+                <div class="form-group">
+                    <label for="my-project-add-des" class="col-sm-2 control-label project-add-item-oneT "><span style="color:red;">*</span>项目描述：</label>
+                    <div class="col-sm-6">
+                        <textarea  id="my-project-add-des" class="form-control"  data-content="desc" style="margin-left:-11px; width:543px; height:175px; padding:0;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div style="width:640px; border-top:1px solid #f1f1f1; margin-left:-5px;margin:10px auto;"></div>
+            <div class="form-group project-add-item-bt10" style="margin-right:102px;">
+                <label for="my-project-add-production" class="project-add-item-name" style="margin-left:32px;">制片：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-production" data-content="productorName">
+            </div>
+            <div class="form-group project-add-item-bt10">
+                <label for="my-project-add-direct" class="project-add-item-name">导演：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-direct" data-content="directorName">
+            </div>
+            <div class="form-group project-add-item-bt10" style="margin-right:88px;">
+                <label for="my-project-add-scriptwriter" class="project-add-item-name" style="margin-left:32px;">编剧：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-scriptwriter" data-content="writerName">
+            </div>
+            <div class="form-group project-add-item-bt10">
+                <label for="my-project-add-investor" class="project-add-item-name">投资方：</label>
+                <input type="text" class="form-control project-add-item-detail" id="my-project-add-investor" data-content="company">
+            </div>
+            <div class="form-group" style="position:relative; margin-bottom:100px; margin-right:70px; margin-left:18px;">
+                <label for="my-project-add-allInvestor" class="project-add-item-name">总投资：</label>
+                <input type="text" style="padding-left:20px;width:197px;" class="form-control project-add-item-detail" id="my-project-add-allInvestor" data-content="invest" >
+                <span style="position: absolute; top:3px; left:67px; font-weight:bold; color:#f4c600; font-size:18px;">¥</span>
+            </div>
+            <div class="clearfix project-add-btn-father">
+                <div id="my-project-add-save" class="project-add-btn" style="background-color: #2ec3e9;">保存</div>
+                <div id="my-project-add-cancel" class="project-add-btn" style="margin-left:22px;background-color: #f0d14d;">取消</div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<div class="modal " id="my-project-add-chooseBody" tabindex="-1" role="dialog" style="font-size: 14px" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="margin-left: 50px;height: 100%; width:106%;">
+            <div class="modal-header"  style="margin-bottom:40px; height:35px; line-height:35px; background-color:#eee;">
+                <button type="button" class="close " id='closeProCreate' style="margin-top:-13px; opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style=" font-size: 0.5em;color: grey">&#xe628;</span></button>
+                <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                    &nbsp;</button>
+                <h4 class="modal-title" id="my-project-add-chooseClose" style="margin-top:-5px;font-size:12px; font-weight:normal;"><b>选择</b></h4>
+            </div>
+            <div class="modal-body" id="my-project-add-chooseContent" style="padding:0;position: relative;">
+                <h5 class="my-project-add-choose-title">按部门分</h5>
+                <div style="border-top:1px solid #e3e2e2; border-bottom:1px solid #e3e2e2; margin:0 30px;">
+                    <div class="clearfix" style="overflow: hidden;">
+                        <div class="test-tree my-project-add-treeBody" id="my-project-add-treeBody">
+                            <div >
+                                <ul id="my-project-add-tree" class="ztree"></ul>
+                            </div>
+                        </div>
+                        <div class="project-add-chooseSplit"></div>
+                        <div class="my-project-add-chooseBox" >
+                            <ul>
+                                <li id="my-project-add-chooseAllPeople" class="my-project-add-choose-people"><i class="iconfont">&#xe64c;</i><span style="color:#5699c3;">全选</span></li>
+                            </ul>
+                            <ul id="my-project-add-chooseList">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%; padding-bottom:12px;">
+                    <div style="height:34px; line-height:34px; color:#11cd6e; padding-left:50px;"><i style="font-size:18px; " class="iconfont">&#xe620;</i>已选用户</div>
+                    <ul id="my-project-add-haveChoose" class="my-project-add-haveChoose clearfix">
+                        <!--<li data-value="xxxxxxx"><span>张三</span><i class="iconfont">&#xe63d;</i></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin:0 30px; padding-top: 6px;padding-bottom: 6px">
+                <button type="button" class="btn btn-default dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseSave" >保存</button>
+                <button type="button" class="btn btn-primary dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseCancelSave"  >取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal " id="my-project-add-leader" tabindex="-1" role="dialog" style="font-size: 14px" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="width:106%;">
+            <div class="modal-header"  style="margin-bottom:40px; height:35px; line-height:35px; background-color:#eee;">
+                <button type="button" class="close "  id="my-project-close" style="margin-top:-13px; opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style=" font-size: 0.5em;color: grey">&#xe628;</span></button>
+                <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                    &nbsp;</button>
+                <h4 class="modal-title"  style="margin-top:-5px;font-size:12px; font-weight:normal;"><b>选择</b></h4>
+            </div>
+            <div class="modal-body"  style="padding:0;position: relative;">
+                <h5 class="my-project-add-choose-title">按部门分</h5>
+
+                <div style="border-top:1px solid #e3e2e2; border-bottom:1px solid #e3e2e2; margin:34px 30px;">
+                    <div class="clearfix" style="overflow: hidden;">
+                        <div class="test-tree my-project-add-treeBody">
+                            <div >
+                                <ul id="my-project-add-departmentTree" class="ztree"></ul>
+                            </div>
+                        </div>
+                        <div  class="project-add-chooseSplit"></div>
+                        <div class="my-project-add-chooseBox">
+                            <ul id="my-project-chooseList">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    /*======================= 新建项目页面高度控制 ===================================== */
+    window.onresize=function(){
+        var height=window.innerHeight;
+        console.log(height);
+        if(height>800){
+            $('#my-project-add').css('height',height-83);
+        }else{
+            $('#my-project-add').css('height','716px');
+        }
+    };
+    $(document).ready(function(){
+        document.getElementById('updateProject').onscroll = function(){
+            $('.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu').css({'display':'none'});
+            $('#my-project-add-startTime').blur();
+            $('#my-project-add-endTime').blur();
+        }
+        projectCommon.projectInit();
+        projectCommon.projectAdd();
+    });
+</script>

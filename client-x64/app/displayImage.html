@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta charset="utf-8"> 
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+	 <script src="libs/jquery.js"></script>
+  <link rel="stylesheet" href="css/normalize.css">
+	 <style>
+		 #images {
+			 width: 100%;
+			 height: 100%;
+			 overflow: hidden;
+			 text-align: center;
+
+		 }
+	 </style>
+  <script language="javascript">
+	    var menudiv=null;
+		var img=null,
+				setTimeoutHandle = null;
+		var imageheight=0;
+		var imagewidth=0;
+		var ismousedown=false;
+		var dis_top=0;
+		var dis_left=0;
+		var maxWidth=50;
+		function setImage(src){
+			img=document.createElement("img");
+			img.src=src;
+			img.id="current_img";
+			img.onload=function() {
+				 img.style.maxWidth = "50%";
+			};
+			img.ondblclick=function(){
+				var gui = require('nw.gui');
+				var win = gui.Window.get();
+				win.close();
+			};
+			document.getElementById("imagetd").appendChild(img);
+			document.getElementById("closs_div").onclick=function(){
+				var gui = require('nw.gui');
+				var win = gui.Window.get();
+				win.close();
+			};
+			document.body.onmousedown=function(e){
+				ismousedown=true;
+				dis_top=e.clientY-img.offsetTop;
+				dis_left=e.clientX-img.offsetLeft;
+				//console.debug(dis_top);
+			};
+
+			document.body.onmousemove=function(e){
+				//console.debug(11111111111);
+				if(ismousedown&&img.style.cursor==="pointer"){
+					var x=e.clientX;//: 621
+					var y=e.clientY;//: 469
+					img.style.left=(x-dis_left)+"px";
+					img.style.top=(y-dis_top)+"px";
+					img.style.position="absolute";
+				}
+			};
+			document.body.onmouseup=function(e){
+				if(e.button===2){
+					if(menudiv!==null)
+					{
+						document.body.removeChild(menudiv);
+						menudiv=null;
+					}
+					menuDisplay(e)
+				}
+				else{
+					if(ismousedown){
+						ismousedown=false;
+					}
+					if(menudiv!==null){
+						document.body.removeChild(menudiv);
+						menudiv=null;
+					}
+				}
+			};
+			document.onmousewheel=function(e){
+			//	console.debug(e.wheelDelta);
+				img.style.position="static";
+				if(e.wheelDelta>0){
+					bigit();
+				}
+				else{
+					smallit();
+				}
+			};
+		}
+		function setImageName(name){
+			document.getElementById("fileDownload").setAttribute("nwsaveas",name);
+		}
+		var displayImages=null;
+		function setImageButton(images) {
+			displayImages = images;
+			var left = document.createElement("img");
+			left.src = "images/img_left.png";
+			left.style.cssText = "position:absolute;top:40%;left:0px;cursor:pointer;";
+			document.body.appendChild(left);
+			left.onclick = function () {
+				var param=getImagesParam();
+				if(param===0){
+					DivAlert("已经是第一张图片");
+					return;
+				}
+				document.getElementById("current_img").src=displayImages[param-1].src;
+				document.getElementById("current_img").onload=function() {
+					this.style.maxWidth = "50%";
+					this.style.position="static";
+				};
+				setImageName(displayImages[param-1].name);
+			}
+
+			//current_img
+
+			var right=document.createElement("img");
+			right.src="images/img_right.png";
+			right.style.cssText="position:absolute;top:40%;right:0px;cursor:pointer;";
+			document.body.appendChild(right);
+			right.onclick = function () {
+				//console.debug(displayImages);
+				var param=getImagesParam();
+				if(param===(displayImages.length-1)){
+					DivAlert("已经是最后一张图片");
+					return;
+				}
+				document.getElementById("current_img").src=displayImages[param+1].src;
+				document.getElementById("current_img").onload=function() {
+					this.style.maxWidth = "50%";
+					this.style.position="static";
+				};
+				setImageName(displayImages[param+1].name);
+			}
+			function getImagesParam(){
+				var result=-1;
+				for(var i=0;i<displayImages.length;i++){
+					var src2=document.getElementById("current_img").src;
+					if(src2===displayImages[i].src)
+					{
+						//console.debug(displayImages[i].src);
+						//console.debug(src2);
+						result=i;
+						break;
+					}
+				}
+				//console.debug(result);
+				return result;
+			}
+		}
+	    function menuDisplay(event){
+			menudiv=document.createElement("div");
+			menudiv.style.cssText="position: absolute;width: 60px;height: 22px;background-color: rgb(255, 255, 255);font-size: 12px;cursor:pointer;text-align:center;padding-top: 5px;background-color:#e8e8e8";
+			menudiv.style.left=event.clientX+"px";
+			menudiv.style.top=event.clientY+"px";
+			menudiv.innerHTML="下载";
+			document.body.appendChild(menudiv);
+			menudiv.onmouseover=function(){
+				this.style.backgroundColor="#3875d6";
+				this.style.color="#FFFFFF";
+			};
+			menudiv.onmouseout=function(){
+				this.style.backgroundColor="#e8e8e8";
+				this.style.color="#000000";
+			};
+			menudiv.onmouseup=function(){
+				document.getElementById("fileDownload").click();
+			};
+		}
+	    function downloadFile(input,originalName){
+			var http = require('http');
+			var fs = require('fs');
+			var file_url=img.src;
+			var path = input.value;
+			var originalNameArr = originalName.split('.');
+			if(originalNameArr.length > 1) {
+				var originalExtensionName = originalNameArr[originalNameArr.length - 1];
+				var NewNameArr = path.split('.');
+				var NewExtensionName = NewNameArr[NewNameArr.length - 1];
+				if (NewExtensionName != originalExtensionName) {
+					path = path + '.' + originalExtensionName;
+				}
+			}
+			var file = fs.createWriteStream(path);
+			var request=http.get(file_url, function(res) {
+				var fsize = res.headers['content-length'];
+				res.on('data', function(data) {
+					file.write(data);
+				}).on('end', function() {
+					file.end();
+					input.value="";
+					DivAlert("下载成功");
+				});
+			});
+			request.on('error', function(e) {
+				DivAlert("下载失败");
+			});
+		}
+//		function DivAlert(msg, time) {
+//			var div=document.createElement("div");
+//			div.setAttribute("class","error");
+//			div.innerHTML="<span>" + msg + "</span>";
+//			document.body.appendChild(div);
+//			setTimeout(function () {
+//				document.body.appendChild(div);
+//				}, 1000);
+//		}
+		function DivAlert(msg, time) {
+			var $alertDiv = $(".error"), html = null,_self = this;
+
+			if ($alertDiv && $alertDiv.length) {
+				if(setTimeoutHandle) {
+					clearTimeout(setTimeoutHandle);
+				}
+				html = $alertDiv;
+				setTimeoutFn();
+			} else {
+				html = html = $('<div class="error"><span>' + msg + '</span></div>');
+				html.on('click', function () {
+					$(this).remove();
+					return false;
+				});
+
+				$('#images').after(html);
+				setTimeoutFn();
+			}
+			function setTimeoutFn(){
+				setTimeoutHandle = setTimeout(function () {
+					html.remove();
+				}, time || 2000);
+			}
+		}
+		function smallit(){
+			maxWidth=maxWidth/1.2;
+			img.style.maxWidth=maxWidth+"%";
+			if(maxWidth===50){
+				img.style.cursor="default";
+			}
+			else{
+				img.style.cursor="pointer";
+			}
+			if(maxWidth>=100){
+				img.style.width=img.offsetWidth/1.2+"px";
+				//img.style.height=img.offsetHeight*1.2+"px";
+			}
+		}
+
+		function bigit(){
+			maxWidth=maxWidth*1.2;
+			img.style.maxWidth=maxWidth+"%";
+			if(maxWidth===50){
+				img.style.cursor="default";
+			}
+			else{
+				img.style.cursor="pointer";
+			}
+			if(maxWidth>=100){
+				img.style.width=img.offsetWidth*1.2+"px";
+				//img.style.height=img.offsetHeight*1.2+"px";
+				if(img.offsetWidth>=document.body.offsetWidth){
+					img.style.width=document.body.offsetWidth+"px";
+				}
+			}
+		}
+  </script>
+ </head>
+
+ <body ondragstart="return false;">
+	<div style="position:absolute;top:0px;left:0px;-webkit-user-select:none;-webkit-app-region:drag;width:90%;height:40px;z-index:100;"></div>
+	<div id="images" title="双击图片可退出">
+		<table id="imagetable" width="100%" height="100%" style="border-collapse:collapse;border:none;position: absolute;top: 0px;left: 0px;">
+			<tr>
+				<td id="imagetd" align="center">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="close_emtry">
+		<i id="closs_div" style="color:#59546f" class="iconfont">&#xe628;</i>
+	</div>
+	<input title="下载" id="fileDownload" style="display:none;" onchange="downloadFile(this,this.nwsaveas)" type="file" nwsaveas="默认名称"/>
+ </body>
+</html>

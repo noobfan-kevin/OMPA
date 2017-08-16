@@ -1,0 +1,47 @@
+{
+  "name": "OMPA_Enterprise_Edition",
+  "version": "1.0.0",
+  "description": "生产平台新版(企业版)",
+  "private": true,
+  "scripts": {
+    "start": "pm2 start app.json",
+    "apidocs": "apidoc -i server/src/api -o server/docs/ -f \\w+\\.js$",
+    "stop": "pm2 kill"
+  },
+  "dependencies": {
+    "async": "^1.3.0",
+    "body-parser": "~1.12.4",
+    "content-disposition": "^0.5.0",
+    "cookie-parser": "~1.3.5",
+    "cron": "^1.0.9",
+    "express": "~4.12.4",
+    "express-session": "^1.11.3",
+    "lodash": "^4.11.0",
+    "method-override": "^2.3.3",
+    "mongodb": "^2.0.39",
+    "mongoose": "^4.0.7",
+    "morgan": "~1.5.3",
+    "multer": "^1.1.0",
+    "on-finished": "^2.3.0",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.13.0",
+    "serve-favicon": "~2.2.1",
+    "socket.io": "^1.4.6",
+    "uid-safe": "^2.0.0",
+    "winston": "^1.0.1",
+    "winston-mongodb": "^1.1.1"
+  },
+  "devDependencies": {
+    "apidoc": "^0.13.1",
+    "blanket": "^1.1.7",
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.2.5",
+    "pm2": "^0.14.3"
+  },
+  "apidoc": {
+    "title": "服务器端接口文档",
+    "url": "http://localhost:1771"
+  }
+}

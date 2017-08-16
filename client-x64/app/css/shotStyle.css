@@ -1,0 +1,170 @@
+#my-project-add-tree_1_ico.ico_open,#my-project-add-tree_1_ico.ico_close{background-position: -34px -78px !important;}
+/*------------------------init start---------------------------*/
+.shot-body{height:100%; overflow:hidden; padding-bottom:50px; background: #f1f1f1;font-family: "Microsoft YaHei UI";cursor: default;}
+.container{padding-right: 10px;}
+.container-fluid,.row,.col-sm-4,.col-md-4
+,.col-lg-4,.col-sm-8,.col-md-8,.col-lg-8,
+.col-md-12,.col-lg-12{margin: 0;padding:0;}
+/*-------------------------------------position---start--------------------------*/
+#position-map { height: 31px; line-height: 30px; padding-left: 1em;background: #02aed9; color: #ffffff;font:12px 'Microsoft Yahei', '微软雅黑', sans-serif;box-shadow: 1px 0 2px #ccc }
+#position-map * { line-height: 30px; display: inline-block; color: #ffffff;text-decoration: none}
+#position-map a:after {content:'/'; padding: 0 2px;}
+#position-map a:last-child::after {content:''}
+/*-------------------------------------position-----end------------------------*/
+/*------------------------init end---------------------------*/
+.shot{border: 1px solid #d1d1d1;background: white;
+height: inherit; margin:10px;}
+.shot-container{height: inherit;position: relative;}
+.shot-structure{height:inherit;}
+.shot-structure .shot-header i{color: rgb(17,205,110);line-height: 46px;
+    font-size: 17px;margin-right: 10px;cursor: default;}
+.shot-details{
+    border-left: 1px solid #d1d1d1;
+    height: inherit;}
+.department-tree{
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    overflow-y: auto;
+    overflow-x: auto;}
+.shot-header{border-bottom:1px solid #d1d1d1; height:40px; }
+#shot-del-btn{}
+#shot-edit-btn,#shot-del-btn{ margin-left: 0;margin-right:16px;font-size: 14px; font-weight: normal;color:#888;cursor: default;}
+#shot-edit-btn:hover,#shot-del-btn:hover{color: #666;}
+.shot-header span{line-height: 40px;font-size: 18px;font-weight: bold;margin-left: 20px;}
+.shot-header i{ line-height:36px !important;}
+/*-----------------------------shot-detail start----------------------------*/
+.shot-details-container{margin-top:10px;}
+.shot-detail{min-height: 40px;height:auto;
+}
+.shot-detail input[type="text"]{height: 30px; width: 30%;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #d1d1d1; }
+.shot-textarea{margin-top: 5px;margin-left: 136px;width:inherit;padding-right: 14px;}
+.shot-textarea textarea{width: 100%;resize: none;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #d1d1d1;}
+.shot-textarea label{line-height: 26px!important;color: black; padding:0 5px;}
+.shot-textarea i{ margin-left:7px;}
+.shot-detail select{width: 30%;display: inline-block;height: 30px;
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; border:1px solid #d1d1d1;}
+.shot-detail label{color: black;}
+.shot-detail label,.shot-detail span{line-height: 40px;font-weight: normal;}
+.shot-detail span{color: rgb(100,100,100);}
+.shot-check{}
+.shot-edit,.shot-new{display: none;}
+/*-----------------------------shot-detail end----------------------------*/
+/*-----------------------------shot-footer start----------------------------*/
+.shot-edit-save,.shot-edit-cancel,.shot-new-save,.shot-new-cancel{height: 36px;width: 70px;color: white;
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.shot-edit-save,.shot-new-save{background: rgba(46,195,233,0.8);border:1px solid rgba(46,195,233,0.8);
+    position: fixed;right: 126px;bottom: 50px;}
+.shot-edit-save:hover,.shot-new-save:hover{background: rgba(46,195,233,1);border:1px solid rgba(46,195,233,1);}
+.shot-edit-cancel,.shot-new-cancel{background: rgba(240,209,77,0.8);border:1px solid rgba(240,209,77,0.8);
+    position: fixed;right: 36px;bottom: 50px;}
+.shot-edit-cancel:hover,.shot-new-cancel:hover{background: rgba(240,209,77,1);border:1px solid rgba(240,209,77,1);}
+/*-----------------------------shot-footer end----------------------------*/
+/*------------------------------ztree start---------------------------------*/
+#shotTree li{}
+#shotTree ul{}
+#shotTree li a{line-height: 26px!important;height: 26px!important;}
+#shotTree li a:hover{text-decoration: none!important;}
+#shotTree li span{line-height: 30px!important;font-size: 14px!important;height: 30px!important;
+color:rgba(0,0,0,0.7)}
+#shotTree li .node_name:hover{text-decoration: none;}
+#shotTree li a.curSelectedNode{background: white!important;border: none!important;}
+#shotTree li span.button.noline_open{opacity: 0.4;
+    background-position: -10px -76px !important;}
+#shotTree li span.button.noline_close{opacity: 0.4;
+    background-position: 6px -76px !important;}
+
+.department-tree-span-active{background: rgba(241,163,37,0.3)!important;}
+.department-tree-span{position: absolute; width: 100%; height: 30px; left: 0;right: 0;}
+.department-tree-span i{font-size: 12px!important; display:inline-block; height: 30px;line-height: 30px;
+    background:rgb(27,147,76);text-align: center;color:white;}
+.department-tree-span i:hover{cursor:default;}
+.department-tree-span .shot-icon{display: none;}
+.shot-icon-add{width: 30px;border-right: 1px solid rgba(0,0,0,0.1);}
+.shot-icon-del{width: 20px;}
+/*-------------------------------ztree end-------------------------------------------*/
+/*----------------------chooose --member--start---------------------------------------*/
+.project-add-chooseSplit{
+    margin-left:1px;padding-bottom:1000px; margin-bottom:-980px; border-left:1px solid #ccc; height:100%; float:left;
+}
+.my-project-add-choose-title{
+    position: absolute;
+    height:28px;
+    line-height:28px;
+    top:-38px;
+    left:42px;
+    border-bottom:3px solid #6cc984;
+}
+#my-project-add-chooseList{  /*ul*/
+
+}
+.my-project-add-choose-people{ /*li*/
+    font-size:12px;
+    height:28px;
+    line-height:28px;
+    cursor:default;
+    white-space:nowrap;
+}
+.my-project-add-choose-people i{    /*li i*/
+    font-size:14px;
+    margin-right:5px;
+    color:#ccc;
+}
+.my-project-add-chooseBox{
+    /* padding-top: 7px; */
+    padding-left: 55px;
+    /* padding-bottom: 1000px; */
+    margin-bottom: 5px;
+    float: left;
+    max-height: 283px;
+    overflow-y: auto;
+    width: 249px;
+    margin-top: 4px;
+    /* margin-left: 20px; */
+}
+.my-project-add-chooseBox .active{
+    color:#999;
+}
+.my-project-add-haveChoose{
+    width:81%;
+    margin-left:75px;
+    color:#2c2c2c;
+    overflow-y: auto;
+    max-height:150px;
+}
+.my-project-add-haveChoose li{
+    float:left;
+    padding:0 8px;
+    margin-right: 8px;
+    height:30px ;
+    line-height:30px;
+    font-size:12px;
+    cursor:pointer;
+    position: relative;
+
+}
+.my-project-add-haveChoose li:hover{color:#999;}
+.my-project-add-haveChoose li i{
+    position: absolute;
+    top:0px;
+    right:-3px;
+    height: 1em;
+    line-height: 1em;
+    font-size:14px;
+    color:#F23614;
+    display:none;
+
+}
+.my-project-add-haveChoose li:hover i{
+    display:block;
+}
+/*----------------------chooose --member--end---------------------------------------*/
+#shot-ask{position: absolute;top: 30%;}
+#shot-ask .modal-body{}
+

@@ -1,0 +1,13 @@
+<style>
+    @import "css/myContract.css";
+    @import "css/contract-template1.css";
+    @import "css/view-voucher.css";
+</style>
+<div class="contractManagement-contain">
+    <div ui-view style="height: inherit;padding-bottom: 30px;"></div>
+</div>
+<script>
+    angular.element('.contractManagement-contain').ready(function(){
+        angular.bootstrap($('.contractManagement-contain'), ['contractManagement']);
+    });
+</script>

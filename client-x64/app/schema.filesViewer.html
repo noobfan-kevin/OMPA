@@ -1,0 +1,22 @@
+<style>
+    @import "css/schema.filesViewer.css";
+</style>
+<div id="schema-files-viewer">
+    <div id="schema-files-viewer-prev" class="schema-files-viewer-btn"><span class="iconfont-schema">&#xe60a;</span></div>
+    <div id="schema-viewer-box">
+        <span id="schema-files-download-btn" class="iconfont" title="点击下载">&#xe66c;
+                <input id="schema-viewer-file-input" type="file" nwsaveas="默认名称"  nwworkingdir="" onchange="schema.saveFile(this)">
+        </span>
+        <span id="schema-files-viewer-close" class="iconfont-schema" title="关闭预览">&#xe60e;</span>
+        <div class="schema-files-viewer-show">
+            <img class="isFile" src="http://www.socwall.com/images/wallpapers/71438-1143x643.jpg">
+            <p class="viewer-title">asdadadad</p>
+        </div>
+        <ul class="schema-thumb-list">
+            <li class="selected"><img src="http://www.socwall.com/images/wallpapers/71516-290x260.jpg" alt=""></li>
+            <li><img src="http://www.socwall.com/images/wallpapers/71496-290x260.jpg" alt=""></li>
+            <li><img src="http://www.socwall.com/images/wallpapers/71438-1143x643.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div id="schema-files-viewer-next" class="schema-files-viewer-btn"><span class="iconfont-schema">&#xe62b;</span></div>
+</div>

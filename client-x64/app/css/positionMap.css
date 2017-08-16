@@ -1,0 +1,5 @@
+.position-map { height: 31px;padding-left: 1em;background: #02aed9;color: #fff;font:12px/30px 'Microsoft YaHei','微软雅黑' ; box-shadow: 1px 0 2px #ccc;}
+.position-map a {color: #fff;text-decoration: none;cursor: default;margin:0 2px; line-height: 33px;}
+.position-map a:after {content:'/';position: absolute; margin-top: -1px; margin-left: 1px;}
+.position-map a:first-child::before {content:''}
+.position-map a:last-child::after {content:''}

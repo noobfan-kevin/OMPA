@@ -1,0 +1,268 @@
+<style>
+    @import url(css/shotManagementStyle.css);
+    @import url(css/ztreeNStyle.css);
+</style>
+<div class="shot-contain" style="display: block;">
+    <div class="shot-header">
+        <span class="shot-position"></span>
+    </div>
+    <div id="shot-headerBar">
+        <div>
+            <select id="shot-partCheck"></select>
+            <button id="shot-partSet" style="display: none">场集设置</button>
+            <button id="shot-new" style="display: none">+新建镜头</button>
+            <button id="shot-task-new" data-type="1" style="display: none">+新建任务</button>
+            <button id="shot-manageTask" style="display: none;">管理任务卡</button>
+        </div>
+    </div>
+    <div id="shot-body" style="display: none;">
+        <div id="shot-table">
+            <table>
+                <thead id="shot-table-head"></thead>
+                <tbody id="shot-table-body">
+                </tbody>
+            </table>
+        </div>
+        <div id="shot-table-foot">
+            <span >共<label class="total-page">0</label>条</span>
+            <div class="shot-table-btn">
+                <button class="first-page"><i class="iconfont">&#xe6a1;</i></button>
+                <button class="prev-page "><i class="iconfont">&#xe682;</i></button>
+                <div class="cur-page-div">
+                    <ul class="cur-page-choose"></ul>
+                    <button class="cur-page" >1/1</button>
+                </div>
+                <button class="next-page"><i class="iconfont">&#xe681;</i></button>
+                <button class="last-page"><i class="iconfont">&#xe6a0;</i></button>
+            </div>
+        </div>
+    </div>
+    <div class="no-data-page" style="display: none;">
+        <span class="no-data-page-span">当前没有镜头</span>
+    </div>
+</div>
+
+<div class="newShot-contain" style="display: none;" >
+    <div class="shot-header">
+        <span class="shot-position"></span>
+    </div>
+    <div class="newShot-body">
+        <div class="newShot-body-title">
+            <span ><i class="iconfont">&#xe667;</i>新建镜头</span>
+        </div>
+        <div class="newShot-info">
+            <div class="newShot-name">
+                <span><span class="zhanwei">占</span>镜头名称：</span>
+                <input id="newShot-name" type="text" placeholder="镜头名称">
+            </div>
+            <div class="newShot-code">
+                <span><span class="zhanwei">占</span>镜头编码：</span>
+                <input id="newShot-code" type="text" placeholder="镜头编码">
+            </div>
+            <div class="newShot-jiChang">
+                <span><span class="zhanwei">占</span>所属场集：</span>
+                <select id="newShot-chang" name="场" ></select>
+                <select id="newShot-ji" name="集" ></select>
+            </div>
+            <div class="newShot-img">
+                <span>镜头缩略图：</span>
+                <div class="newShot-img-add">
+                    <span>点击添加<br/>缩略图</span>
+                    <img id="newShot-img" src="" />
+                    <input id="newShot-file" type="file">
+                </div>
+            </div>
+            <div class="newShot-desc">
+                <span class="newShot-desc-sapn"><span class="zhanwei">占</span>镜头描述：</span>
+                <textarea id="newShot-desc" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="newShot-foot">
+            <button id="newShot-saveBtn">保存</button>
+            <button id="newShot-cancelBtn">取消</button>
+        </div>
+    </div>
+
+</div>
+<div class="checkShot-contain" style="display: none;" >
+    <div class="shot-header">
+        <span class="shot-position"></span>
+    </div>
+    <div class="shotCheck-body">
+        <div class="shotCheck-body-title">
+            <span><i class="iconfont">&#xe667;</i>查看镜头</span>
+            <i class="shot-check-close iconfont">&#xe636;</i>
+        </div>
+        <div class="shot-check-info">
+            <div class="shot-check-name">
+                <span><span class="zhanwei">占</span>镜头名称：</span>
+                <span class="shot-name"></span>
+            </div>
+            <div class="shot-check-code">
+                <span><span class="zhanwei">占</span>镜头编码：</span>
+                <span class="shot-code"></span>
+            </div>
+            <div class="shot-check-changJi">
+                <span><span class="zhanwei">占</span>所属场集：</span>
+                <span class="shot-changJi"></span>
+            </div>
+            <div class="shot-check-img">
+                <span>镜头缩略图：</span>
+                <div><img class="shot-img" src="images/defaultAvatar.jpg"/></div>
+            </div>
+            <div class="shot-check-desc">
+                <span><span class="zhanwei">占</span>镜头描述：</span>
+                <div class="shot-desc-div">
+                    <span class="shot-desc">打司机大赛科技大神快来大叔控大叔控
+                    dasdasdasdas
+                    大叔大婶大叔大婶打开速度大神快结婚大圣丢到哈市大声哭还打算kldash
+                    的金卡是大叔控大声哭还打算科技大厦大声哭还打算的暗示当前无就回答说
+                    大欧式嗲US会丢按属地哈斯偶打算的来电四段时候</span>
+                </div>
+            </div>
+            <div class="shot-check-task">
+                <span>任务卡列表：</span>
+                <div class="shot-task-div">
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                    <span>任务卡1</span>
+                </div>
+            </div>
+        </div>
+        <div class="shot-check-foot">
+            <button class="shot-check-editBtn" style="display: none">编辑</button>
+            <button class="shot-check-delBtn" style="display: none">删除</button>
+        </div>
+    </div>
+</div>
+<div class="editShot-contain" style="display: none;" >
+    <div class="shot-header">
+        <span class="shot-position"></span>
+    </div>
+    <div class="editShot-body">
+        <div class="editShot-body-title">
+            <span ><i class="iconfont">&#xe623;</i>编辑镜头</span>
+        </div>
+        <div class="editShot-info">
+            <div class="editShot-name">
+            <span><span class="zhanwei">占</span>镜头名称：</span>
+            <input id="editShot-name" type="text" placeholder="资产名称">
+        </div>
+            <div class="editShot-code">
+                <span><span class="zhanwei">占</span>镜头编码：</span>
+                <input id="editShot-code" type="text" placeholder="资产名称">
+            </div>
+            <div class="editShot-changJi">
+                <span><span class="zhanwei">占</span>所属场集：</span>
+                <select id="editShot-chang" name="场" ></select>
+                <select id="editShot-ji" name="集" ></select>
+            </div>
+            <div class="editShot-img">
+                <span>镜头缩略图：</span>
+                <div class="editShot-img-add">
+                    <span>点击添加<br/>缩略图</span>
+                    <img id="editShot-img" src="" />
+                    <input id="editShot-file" type="file">
+                </div>
+            </div>
+            <div class="editShot-desc">
+                <span class="editShot-desc-sapn"><span class="zhanwei">占</span>镜头描述：</span>
+                <textarea id="editShot-desc" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="editShot-foot">
+            <button class="editShot-saveBtn">保存</button>
+            <button class="editShot-cancelBtn">取消</button>
+        </div>
+    </div>
+
+</div>
+<div class="shot-changJi-body" style="display: none;">
+    <div class="shot-changJi container-fluid row">
+        <div class="shot-changJi-container col-md-12 col-lg-12">
+            <div class="shot-changJi-structure col-sm-4 col-md-4 col-lg-4">
+                <div class="shot-changJi-header">
+                    <span><i id="shot-changJi-header-back" class="iconfont">&#xe636;</i>场集设置</span>
+                    <i id="shot-changJi-add-btn" class="iconfont pull-right" >&#xe641;</i>
+                </div>
+                <div class="shot-changJi-tree" id="shot-changJi-tree">
+                    <div >
+                        <ul id="shot-changJiTree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="shot-changJi-details col-sm-8 col-md-8 col-lg-8">
+                <div class="shot-changJi-check">
+                    <div class="shot-changJi-header">
+                        <span>场集信息</span>
+                        <span  class="pull-right" id="shot-changJi-del-btn">删除</span>
+                        <span  class="pull-right" id="shot-changJi-edit-btn">编辑</span>
+                    </div>
+                    <div class="shot-changJi-details-container" id="shot-changJi-check-detail">
+
+                    </div>
+                </div>
+                <div class="shot-changJi-edit">
+                    <div class="shot-changJi-header">
+                        <span>场集信息</span>
+                    </div>
+                    <div class="shot-changJi-details-container" id="shot-changJi-edit-detail">
+
+                    </div>
+                    <div class="shot-changJi-footer">
+                        <button class="shot-changJi-edit-save">保存</button>
+                        <button class="shot-changJi-edit-cancel">取消</button>
+                    </div>
+                </div>
+                <div class="shot-changJi-new">
+                    <div class="shot-changJi-header">
+                        <span>场集信息</span>
+                    </div>
+                    <div class="shot-changJi-details-container" id="shot-changJi-new-detail">
+                        <div class="shot-changJi-detail">
+                            <span>节点名称：</span>
+                            <input id="shot-changJi-new-name" maxlength="20" type="text" onKeypress="javascript:if(event.keyCode == 32||event.keyCode == 39)event.returnValue = false;">
+                        </div>
+                        <div class="shot-changJi-detail">
+                            <span>上级节点：</span>
+                            <select id="shot-changJi-new-parentId">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="shot-changJi-footer">
+                        <button class="shot-changJi-new-save">保存</button>
+                        <button class="shot-changJi-new-cancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="newTask-contain" style="display: none;">
+    <div class="shot-header">
+        <span class="shot-position"></span>
+    </div>
+    <div class="newTaskOfShot">
+
+    </div>
+</div>
+<div class="taskUnderAsset" style="display: block">
+</div>
+<script>
+$(document).ready(function(){
+    ShotMangement.init();
+})
+</script>

@@ -1,0 +1,44 @@
+
+
+#schema-wrap-outer { position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+#schema-area { margin: 8px; border: 1px solid #d9d9d9;border-radius: 5px; height: 384px;display: flex}
+#schema-area .header { height: 39px; line-height: 39px; width: 100%; background: #eee }
+
+/* 编辑、操作部分 */
+#schema-operation-area {flex:1;display: flex;flex-direction: column}
+#editor-area {flex:1 }
+
+/* 编辑器按钮组 */
+#schema-operation-area .header { padding-left: 8px;}
+#schema-operation-area .header>a { float: left;margin-left: 2px; width: 39px; height: 39px;background-repeat:no-repeat;
+    background-position: center center; overflow: hidden;}
+#schema-operation-area .header>a:hover { background-color: #16DAD2;}
+#schema-operation-area .header>a:nth-child(1) { background-image: url('img/schema/标题-1.png'); margin-left: 10px;}
+#schema-operation-area .header>a:nth-child(2) { background-image: url('img/schema/标题-2.png');}
+#schema-operation-area .header>a:nth-child(3) { background-image: url('img/schema/标题-3.png');}
+#schema-operation-area .header>a:nth-child(4) { background-image: url('img/schema/标题-4.png');}
+#schema-operation-area .header>a:nth-child(5) { background-image: url('img/schema/飘红.png');}
+#schema-operation-area .header>a:nth-child(6) { background-image: url('img/schema/tu.png');}
+#schema-operation-area .header>a:nth-child(7) { background-image: url('img/schema/视频.png');}
+#schema-operation-area .header>a:nth-child(8) { background-image: url('img/schema/附件.png');}
+#schema-operation-area .header>a input { display: block;width:39px; height: 39px; opacity: 0;}
+
+/* 标题列表部分 */
+#schema-title-area { height: 100%; width: 250px; border-right: 1px solid #d9d9d9; box-sizing: border-box; display: flex; flex-direction: column}
+#schema-title-area .header { font-size: 12px; text-indent: 28px;}
+#schema-title-list {flex:1;box-sizing: border-box; overflow-y: auto;}
+#schema-title-list::-webkit-scrollbar {width: 9px; height:9px; }
+#schema-title-list::-webkit-scrollbar-thumb {border-radius: 5px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.2); background: rgba(255,255,255,.5); }
+#schema-title-list>li>span { display: block;;max-width: 100%;text-overflow: ellipsis; line-height: 33px; word-wrap: break-word; white-space: nowrap; overflow: hidden;}
+#schema-title-list>li { padding:0 10px;}
+#schema-title-list>li:hover {background: #E4E4E4;}
+
+
+
+/* 方案按钮 */
+#schema-btn-wrap { overflow: hidden; padding:10px 0 20px 0;}
+#schema-btn-wrap span { float: right; width: 70px; height: 30px; line-height: 30px;text-align: center; border-radius: 3px;
+    margin-right: 18px; color: #ffffff;font-size:12px}
+#schema-btn-wrap .schema-save-btn-disable { background: #B8B8B8;}
+#schema-btn-wrap .schema-save-btn-enable { background: #2ec3e9;}
+/*#schema-btn-wrap #schema-cancel-btn { background: #f0d14d;}*/

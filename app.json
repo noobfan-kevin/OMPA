@@ -1,0 +1,4 @@
+{
+    "name"        : "ompa-server",
+    "script"      : "./server/src/app.js"
+}

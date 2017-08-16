@@ -1,0 +1,82 @@
+@import "../iconfont/iconfont.css";
+
+/* 滚动条 */
+#downloaderWrap ::-webkit-scrollbar/*整体部分*/
+{
+    width: 9px;
+    height:9px;
+}
+
+#downloaderWrap ::-webkit-scrollbar-thumb/*滑块*/
+{
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    background: rgba(255,255,255,.5);
+}
+
+#downloaderWrap ::-webkit-scrollbar-thumb:hover/*滑块效果*/
+{
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    background: rgba(255,255,255,.5);
+}
+
+/* reset */
+#downloaderWrap { position: fixed; z-index: 9999;; bottom: -500px; right: 50%; background: #ffffff; height: 242px; width: 425px;
+    font:14px 'Microsoft YaHei'; border: 1px solid #dadada;box-shadow: 0 -2px 8px #bababa }
+#downloaderWrap * { padding: 0; margin: 0;cursor: default}
+#downloaderWrap li {list-style: none}
+
+/* header */
+#downloaderHeader { position: relative; height: 44px; line-height: 44px; background: #52aaf4; color: #ffffff;}
+#downloaderHeader .downloader-header-btn-wrap{ position: absolute; top: 0; right: 0; height: 100%;}
+#downloaderHeader .downloader-header-btn-wrap span{ margin-right: 12px;}
+#downloader-title {font-size:16px;font-weight: 400; padding-left: 14px;  line-height: 44px;}
+
+#downloaderWrap .iconfont {transition: .3s}
+#downloaderWrap .iconfont:hover {transform: scale(1.1)}
+
+/* 列表 */
+#downloader-list {max-height:167px;overflow-y: auto}
+#downloaderWrap .list-item { position: relative;overflow: hidden; border-bottom: 1px solid #F5F5F5;}
+#downloaderWrap .list-item li { float: left; text-align: center;box-sizing: border-box; line-height: 31px;}
+#downloaderWrap .list-item .name{ width: 50%; text-align: left; padding-left: 12px;text-overflow: ellipsis;word-wrap: break-word;
+    white-space: nowrap; overflow: hidden;}
+#downloaderWrap .list-item .size{ width: 20%;}
+#downloaderWrap .list-item .status{ width: 20%;}
+#downloaderWrap .list-item .option{ width: 10%;}
+#downloader-list .list-item li.name { padding-left: 28px;}
+/* 状态 */
+#downloaderWrap .list-item .status span{ display: none;}
+#downloaderWrap .list-item li.status-error .status-error{ display: block; color: #eb4f38;}
+#downloaderWrap .list-item li.status-success .status-success{ display: block; color: #11cd6e;}
+#downloaderWrap .list-item li.status-warn .status-warn{ display: block; color: #eb6e19;}
+#downloaderWrap .list-item li.status-downloading .status-downloading{ display: block;font-size:12px; color: #666;}
+#downloaderWrap .list-item li.status-pending .status-pending{ display: block;font-size:12px; color: #666;}
+
+/* 操作 */
+#downloaderWrap .list-item .option span{ display: none;}
+#downloaderWrap .list-item li.option-cancel .option-cancel{ display: block;}
+#downloaderWrap .list-item li.option-resume .option-resume{ display: block;}
+#downloaderWrap .list-item li.option-folder .option-folder{ display: block;}
+
+/* 文件类型图标 */
+#downloaderWrap .list-item .fileIcon { position: absolute; top: 7px; left: 7px; height: 16px; width: 16px; background-image: url('img/fileTypeIcon.png');}
+#downloaderWrap .list-item span.image { background-position: 0 0;}
+#downloaderWrap .list-item span.pdf { background-position: -30px 0;}
+#downloaderWrap .list-item span.word { background-position: -60px 0;}
+#downloaderWrap .list-item span.excel { background-position: -90px 0;}
+#downloaderWrap .list-item span.txt { background-position: -120px 0;}
+#downloaderWrap .list-item span.ppt { background-position: -150px 0;}
+#downloaderWrap .list-item span.audio { background-position: -180px 0;}
+#downloaderWrap .list-item span.video { background-position: -210px 0;}
+#downloaderWrap .list-item span.zip { background-position: -240px 0;}
+#downloaderWrap .list-item span.bt { background-position: -270px 0;}
+#downloaderWrap .list-item span.tar { background-position: -300px 0;}
+#downloaderWrap .list-item span.mind { background-position: -330px 0;}
+#downloaderWrap .list-item span.xmind { background-position: -360px 0;}
+#downloaderWrap .list-item span.think { background-position: -390px 0;}
+
+/* 进度条 */
+#downloaderWrap .progress-bar { position: absolute; left: 0; top: 0; z-index: -1; height: 100%; width: 100%;background:rgba(162, 229, 103, 0.41);}
+

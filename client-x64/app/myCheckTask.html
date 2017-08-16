@@ -1,0 +1,51 @@
+<style>
+    @import url(css/myCreateTask.css);
+</style>
+
+<div id="byMeCheckTask">
+    <div class="row" id="user_warnMesageInfo" style="padding: 0;margin: 0">
+        <nav class="navbar navbar-default" style="min-height: 42px;height: 42px;margin-bottom: 5px;">
+            <div class="container-fluid" style="padding: 0;height: 42px">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left: 1%">
+                    <ul class="nav navbar-nav">
+                        <div class="form-group myTask_filter_box" style="margin-top: 10%" id="myCheckTask_filter_box">
+                            <div id="taskType_filter" class="myCreateTask_dropdown myTaskTypeList_filter" >
+                                <div style="font-weight: bold;font-size: 12px;margin-bottom:4px;">任务卡状态</div>
+                                <ul id="myCheckTaskType_filter">
+                                    <li   data-value=3><i class="iconfont">&#xe64c;</i>审核中</li>
+                                    <!--<li   data-value=4><i class="iconfont">&#xe64c;</i>审核完成</li>-->
+                                    <li   data-value=5><i class="iconfont">&#xe64c;</i>已完成</li>
+                                </ul>
+                                <span id="myCheckTask_filter_sure" class="myTask_filter_sure">确定</span>
+
+                            </div>
+                            <div id="myCheckTask_filter"  class="clearFix myTaskList_filter"><i class="iconfont">&#xe669;</i><span>未筛选</span><span class="caret user_down_flag" style="margin-top: 14%"></span></div>
+                        </div>
+                    </ul>
+
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div class="row" id="tableList">
+        <div class="col-xs-12" id="tablefather">
+            <table id="checkTaskList" class="display" cellspacing="0" width="100%"  >
+
+            </table>
+        </div>
+        <div id="task-notask" style="display: none;text-align:center;margin-top: 30%;"><b id="showInfo" style="display: inline-block; font-size: 20px;color: #aaa;">当前没有任务卡</b></div>
+        <div id="task-nosearch" style="display: none;text-align:center;margin-top: 30%;"><b id="searchshowInfo" style="display: inline-block; font-size: 20px;color: #aaa;">没有符合条件的任务卡</b></div>
+    </div>
+</div>
+<script>
+    window.onresize=function(){
+        var height=window.innerHeight;
+        $('#task-notask').css({'margin-top':height*0.35});
+        $('#task-nosearch').css({'margin-top':height*0.35});
+    };
+    $(document).ready(function(){
+        var userFlag='check';
+        myCheckTask.init(userFlag);
+    });
+</script>

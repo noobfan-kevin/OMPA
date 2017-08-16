@@ -1,0 +1,253 @@
+
+/*用户信息区域*/
+#user-info{
+    max-width: 100px;
+    white-space: nowrap;
+    cursor: default;
+}
+#user-info-show-btn,#credits-detail-show-btn{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 4px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#user-info-show-btn:hover,#credits-detail-show-btn:hover{
+    border: 1px outset rgb(113, 231, 240);
+}
+#user-info-show-btn:active,#credits-detail-show-btn:active{
+    border: 1px inset rgb(113, 231, 240);
+}
+
+/* 用户信息面板 */
+#user-info-panel-mask { position: fixed; z-index: 9999; top: 0; bottom: 0; left: 0; right: 0; display: none;}
+#user-info-panel-mask .user-info-mask { width: 100%; height: 100%; background: #000; opacity: .2;}
+#user-info-panel {position: absolute; z-index: 5;top:50%;left: 50%;width: 480px;transform: translate(-50%, -50%);
+    padding: 15px; border:1px solid #ccc; border-radius: 5px 5px 0 0;background: #fff;box-sizing:border-box; display: none;}
+/* 用户信息面板 信息部分 */
+#user-info-panel ul { margin-left: 170px; margin-top: 40px;}
+#user-info-panel  li{ position: relative;height: 36px;width: 240px;line-height:32px;padding:0;margin:3px 0 4px 4px;outline: none;}
+#user-info-panel  label{ position: absolute;left: 0; top: 0;width: 70px;margin-left: -80px;text-align: right; font-size:12px;color: #888;}
+#user-info-panel  label span {position: absolute;color:#f00; display: none;  margin-left: -10px;margin-top: 3px;font-size:14px}
+
+/* 用户信息面板 头像 */
+#user-info-panel .user-avatar .user-image-box{ position: relative;display: inline-block;width: 80px; height: 80px;
+    margin-top: 40px; border-radius: 50%;font-size: 0; overflow: hidden;cursor: pointer}
+#user-info-panel .user-avatar .user-avatar-mask {position: absolute; height: 82px; width: 82px;line-height: 82px;
+    text-align: center;font-size:12px;background: rgba(24, 24, 24, 0.6); color: #fff;font-weight: 100;letter-spacing:0;
+    top: 84px;transition:.2s linear}
+#user-info-panel .user-avatar:hover .user-avatar-mask {top: 0;}
+#user-info-panel .user-avatar img {height: 80px;width: 80px;}
+
+/* 用户信息面板 title部分 */
+#user-panel-close { position: absolute;  top: 8px; right: 10px;cursor: pointer}
+#user-info-panel .user-info-panel-title h2{position: relative;line-height: 42px; padding: 0 15px;margin: -10px;font-size: 16px;
+    font-weight:bold;border-bottom: 1px solid #e0e0e0;}
+
+/* 用户信息面板 input */
+#user-info-panel input[type='text'],
+#user-info-panel input[type='password'] { width:230px; padding: 0 5px;border:1px solid #ccc}
+#user-info-panel input:disabled {border: 0; background: #fff; }
+
+/* 用户信息面板 button */
+#user-info-panel .login-btn-wrap { margin-top: 15px; margin-left: -20px;}
+#user-info-panel .login-btn { display: inline-block;width: 81px;height: 30px; border: 0;outline:0; white-space: nowrap;text-align: center;
+    font:12px/30px 'Microsoft Yahei', '微软雅黑',Arial;background: #2ec3e9;color: #eee;box-shadow: 0;border-radius: 3px;cursor: default}
+#user-info-panel .btn-cancel {background: #f0d14d;}
+#user-info-panel .login-btn:hover{background: #2485D8;}
+
+/* 用户信息 input的显示与隐藏（js需要） */
+#user-info-panel .user-info-show-input {display: none}
+#user-info-panel .user-info-hide-input {display: inline-block}
+#user-info-panel .user-info-editor .user-info-show-input {display: inline-block}
+#user-info-panel .user-info-editor .user-info-hide-input {display: none}
+#user-info-panel .user-info-editor label span { display: inline-block;}
+
+/*右上角扩展功能按钮*/
+.extEntryContainer{
+    position: absolute;
+    bottom: 10px;
+    right: 112px;
+    text-align: right;
+}
+.extEntry{
+    line-height: 28px !important;
+    font-size: 24px !important;
+}
+.extEntry:hover{
+    color: beige;
+}
+.extEntryPressed{
+    line-height: 28px !important;
+    font-size: 28px !important;
+    color: beige;
+}
+/*---------------积分明细 start--------------------------------------------------------------------------------*/
+#creditsDetailBox{
+    position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(100,100,100,0.4);z-index:1050;
+}
+.creditsDetailContent{
+    display:none;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top:-290px;
+    margin-left:-390px;
+    width:780px;
+    height:580px;
+    padding:10px;
+    background-color: #fff;
+    border-radius:6px;
+    box-shadow: 2px 4px 8px 1px #aaa;
+}
+.creditsDetailTitle{
+    border-bottom:1px solid #e0e0e0;
+    padding-bottom:10px;
+    margin-bottom:10px;
+}
+.creditsDetailTitle:after{content:'';clear:both; display: block;}
+#creditsDetailBoxClose{
+    cursor:default;float:right; font-size:14px; padding-right:10px;
+}
+#creditsDetailBoxClose:hover{color: #333;}
+.creditsDetailLists{
+    width:100%;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    border-collapse: collapse;
+}
+.creditsDetailLists th{
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    vertical-align: middle;
+    text-align: center;
+    /*font-weight: normal;*/
+    /*white-space: nowrap;*/
+    /* padding: 0 25px; */
+    height: 50px;
+    background-color: #f2f2f2;
+}
+.creditsDetailLists td{
+    height:40px;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    vertical-align: middle;
+    text-align: center;
+}
+.creditsDetailLists tbody tr:hover{ background-color: #ffebc4;}
+.creditsDetailPageBox{height:56px; padding-top:10px; vertical-align: middle;}
+.creditsDetailPageBox:after{content:'';display:block; clear: both;}
+.creditsDetailPageCount{
+    margin-left:10px;
+    float:left;
+    height:36px;
+    line-height:36px;
+}
+.creditsDetailPageSkip{
+    margin-right:8px;
+    float:right;
+}
+.creditsDetailPageSkip:after{content:'';display:block; clear: both;}
+.creditsDetailPageSkip>span,#creditsDetailPageWrap{
+    float:left;
+    border:1px solid #ccc;
+    height:34px;
+    line-height:34px;
+    text-align:center;
+    padding:0 12px;
+    margin-left:4px;
+    cursor: default;
+
+}
+.creditsDetailPageSkip>span:hover{color:#000;}
+#creditsDetailNowPage:hover{color:#000;}
+#creditsDetailPrevPage,#creditsDetailAfterPage{/*margin-top:-1px;*/}
+#creditsDetailPageLists{
+    display:none;
+    position: absolute;
+    bottom:37px;
+    left:-13px;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    width:calc(100% + 26px);
+    max-height:110px;
+    overflow-y: auto;
+}
+#creditsDetailPageLists li{
+    height:22px;
+    line-height:22px;
+}
+#creditsDetailPageLists li:hover{
+    background-color: #ffebc4;
+}
+#creditsDetailNotScore{
+    display:none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #aaaaaa;
+    position: absolute;
+    top: 45%;
+    left: 42%;
+}
+#creditsDetailFirstPage,#creditsDetailLastPage{
+    line-height:34px;
+}
+
+/*---------------积分明细 end--------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
+.turn-DataBase-contain{
+    z-index:1100; height: 100%;width: 100%; position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+}
+.turn-DataBase-div{position: relative;width: auto;height: 100%;background: rgba(0,0,0,0.3);}
+.turn-DataBase-check{ position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: white;height: 460px;width: 330px;margin: auto auto;
+    border: 1px solid rgba(100,100,100,0.6);border-radius: 6px;overflow: hidden;
+}
+.turn-DataBase-check-head{
+    height: 40px;
+    background: #f1f1f1;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+}
+.turn-DataBase-check-head span{
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: bold;
+}
+.turn-DataBase-check-head i{
+    float: right;
+    font-size: 16px;
+    line-height: 40px;
+}
+.turn-DataBase-check-head i:hover{
+    color: red;
+}
+
+.turn-DataBase-check-body{
+    height: 380px;
+    padding: 10px 0 0 10px;
+    overflow: auto;
+}
+.turn-DataBase-check-footer button{
+    float: right;
+    margin-right: 10px;
+    margin-top: 3px;
+    height: 30px;
+    width: 58px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    opacity: 0.8;
+}
+.turn-DataBase-check-footer button:hover{
+    opacity: 1;
+}
+#TDC-btn-sure{
+    background: rgb(46,195,233);
+}
+#TDC-btn-cancel{
+    background: rgb(240,209,77);
+}

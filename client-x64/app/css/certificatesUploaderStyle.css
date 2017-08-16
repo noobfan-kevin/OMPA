@@ -1,0 +1,159 @@
+#myContractView .uploader-contain{z-index:1100; height: 100%;width: 100%; position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+}
+#myContractView .uploader-div{position: relative;width: auto;height: 100%;background: rgba(0,0,0,0.3);}
+#myContractView .uploader-check{ position: absolute;
+    top: 50%; left: 50%;
+    background: white;height: 430px;width: 630px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(100,100,100,0.6);overflow: hidden;
+}
+#myContractView .uploader-head{
+    height: 32px;
+    width: 100%;
+    background: #f1f1f1;
+}
+#myContractView .uploader-head span{
+    font-size: 13px;
+    line-height: 32px;
+    display: inline-block;
+    margin-left: 20px;
+}
+#myContractView .uploader-head i{
+    float: right;
+    display: inline-block;
+    line-height: 32px;
+    margin-right: 10px;
+    font-size: 13px;
+}
+#myContractView .uploader-head i:after{
+    clear: both;
+}
+#myContractView .uploader-info{
+    height: 42px;
+    padding-left: 12px;
+    border-bottom: 1px solid #eaeaea;
+}
+#myContractView .uploader-info span{
+    line-height: 42px;
+    font-size: 13px;
+    margin-left: 10px;
+}
+#myContractView .uploader-info input{
+    width: 114px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #eaeaea;
+}
+#myContractView .uploader-btn{
+   padding: 10px 26px;
+    margin-bottom: 10px;
+}
+#myContractView .uploader-btn input{
+    position: absolute;
+    display: block;
+    width: 140px;
+    /* background: red; */
+    height: 28px;
+    opacity: 0;
+}
+#myContractView .uploader-btn button{
+    border: none;
+    height: 28px;
+    width: 140px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: white;
+    background: rgba(92,184,92,0.8);
+}
+#certificates-file:hover + #certificates-btn{
+   background: rgba(92,184,92,1);
+}
+#myContractView .uploader-btn button i{
+    margin-right: 4px;
+}
+#myContractView .uploader-btn span{
+    font-size: 12px;
+    color: #ccc;
+}
+#myContractView .uploader-images{
+    padding: 10px 20px;
+    height:220px;
+    overflow-y: auto;
+}
+#myContractView .uploader-images ul{
+
+}
+#myContractView .certificates{
+    display: inline-block;
+    width: 176px;
+    height: 100px;
+    background: #f1f1f1;
+    margin-right: 8px;
+    margin-left: 6px;
+    position: relative;
+    border:1px solid #eee;
+    padding: 1px;
+}
+#myContractView .certificates img{
+    height: 100%;
+    width: 100%;
+}
+#myContractView .img-hover-div{
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    text-align: center;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    opacity: 0;
+}
+#myContractView .img-hover-div:hover{
+    opacity: 1;
+}
+#myContractView .img-hover-div i{
+    font-size: 34px;
+    line-height: 100px;
+    color: red;
+}
+#myContractView .uploader-control{
+    margin-top: 16px;
+    height: 46px;
+    border-top: 1px solid #eee;
+}
+#myContractView .uploader-control button{
+    height: 28px;
+    width: 56px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    /* position: absolute; */
+    float: right;
+    margin-top: 12px;
+}
+#myContractView .uploader-btn-save{
+    margin-right: 20px;
+    background-color: rgba(46,195,233,0.8);
+}
+#myContractView .uploader-btn-save:hover{
+    background-color: rgba(46,195,233,1);
+}
+#myContractView .uploader-btn-cancel{
+    margin-right: 38px;
+background: rgba(240,209,77,0.8);
+}
+#myContractView .uploader-btn-cancel:hover{
+    background: rgba(240,209,77,1);
+}
+
+#myContractView button.uploader-btn-save-disabled{
+    margin-right: 20px;
+    background-color: rgba(183, 183, 183, 0.8);
+}
+
+
+
+
+
+
+

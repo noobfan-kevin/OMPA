@@ -1,0 +1,38 @@
+<style>
+    @import url(css/operationLogStyle.css);
+</style>
+<div class="contract-logs">
+    <div class="contract-log-table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="log-person">操作人</th>
+                    <th class="log-time">操作时间</th>
+                    <th >操作内容</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="log in contractLogs">
+                <td class="log-person">{{log.person}}</td>
+                <td class="log-time">{{log.time}}</td>
+                <td class="log-detail"><p ng-repeat="detail in log.detail">{{detail}}</p></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="contract-table-foot">
+            <span>共<label class="total-page">{{contractNum}}</label>条</span>
+            <div class="contract-table-btn">
+                <button class="last-page" ng-click="goPage('last')">尾页</button>
+                <button class="next-page" ng-click="goPage('next')"><i class="iconfont">&#xe681;</i></button>
+                <div class="cur-page-div" ng-click="changeChoosePage()">
+                    <ul class="contract-page-choose"  ng-show="choosePage">
+                        <li  ng-click="goPage(page.offset)" ng-repeat="page in contractPageList">{{page.page}}</li>
+                    </ul>
+                    <button class="cur-page">{{curPage}}/{{contractPages}}</button>
+                </div>
+                <button class="prev-page " ng-click="goPage('prev')"><i class="iconfont">&#xe682;</i></button>
+                <button class="first-page" ng-click="goPage('first')">首页</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,326 @@
+<style>
+    @import url(css/asset.css);
+    @import url(css/zTreeStyle.css);
+    @import url(css/ztreeNStyle.css);
+</style>
+<div class="position-map">
+    <a id="assetcurPositionName"></a>
+    <a>组织结构</a>
+    <a>资产</a>
+</div>
+<div class="asset-body" style="padding-bottom: 40px">
+    <div class="asset container-fluid row">
+        <div class="asset-container col-md-12 col-lg-12">
+            <div class="asset-structure col-sm-4 col-md-4 col-lg-4">
+                <div class="asset-header">
+                    <span>资产结构</span>
+                    <i id="asset-add-btn" style="display:none;" class="iconfont pull-right" >&#xe641;</i>
+                </div>
+                <div class="asset-tree" id="asset-tree">
+                    <div >
+                        <ul id="assetTree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="asset-details col-sm-8 col-md-8 col-lg-8">
+                <div class="asset-check">
+                    <div class="asset-header">
+                        <span>节点信息</span>
+                        <span  class="pull-right" id="asset-del-btn" style="display:none;">删除</span>
+                        <span  class="pull-right" id="asset-edit-btn" style="display:none;">编辑</span>
+                    </div>
+                    <div class="asset-details-container" id="asset-check-detail">
+                        <div id='asset-info' class="form-horizontal" >
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">节点名称:</label>
+                            <div class="col-sm-9">
+                               <p id="asset-name" data-content="name"></p>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label  class="col-sm-3 control-label">节点进度:</label>-->
+                            <!--<div class="col-sm-9">-->
+                                <!--<p id="asset-process" data-content="progress"></p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group " style="display:none">
+                            <label  class="col-sm-3 control-label">上级节点:</label>
+                            <div class="col-sm-9">
+                                <p id="asset-parentId" data-content="father"></p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label  class="col-sm-3 control-label">任务卡负责人:</label>
+                            <div class="col-sm-9">
+                                <p  id= 'asset-taskCardLeader' data-content="taskCardLeader"></p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label  class="col-sm-3 control-label">合同负责人:</label>
+                            <div class="col-sm-9">
+                                <p id="asset-contractLeader" data-content="contractLeader"></p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label  class="col-sm-3 control-label">支付负责人:</label>
+                            <div class="col-sm-9">
+                                <p id="asset-payLeader" data-content="payLeader"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">节点成员:</label>
+                            <div class="col-sm-9" style="margin-left: -10px;height:auto;max-height: 300px;overflow-y:auto">
+                                <ul id="asset-member" class='aeeset-member' data-content="member">
+
+                                </ul>
+                            </div>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="asset-new" style="display:none;">
+                    <div class="asset-header">
+                        <span>节点信息</span>
+                    </div>
+                    <div class="asset-details-container" id="asset-new-detail">
+                        <form id="asset-create" class="form-horizontal" style="padding-left: 15px;padding-top: 15px;">
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>节点名称:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-new-name" data-content="name" placeholder="请输入节点名称" maxlength="10">
+                                </div>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label  class="col-sm-3 control-label"><span style="color:red">*</span>节点进度:</label>-->
+                                <!--<div class="col-sm-4">-->
+                                    <!--<input type="text" class="form-control"   id="asset-new-schedule" data-content="progress" placeholder="请输入节点进度">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>上级节点:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-new-parent" data-content="father" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  placeholder="请选择上级节点" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul  id="dropNodeParent" class="dropdown-menu"  style="font-size: 12px;height: auto;max-height:200px;overflow-y:auto" >
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>任务卡负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-new-taskLeader"  data-content="taskLeader"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择任务卡负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="dropTaskLeader"  class="dropdown-menu asset-leader edit-leader" style="font-size: 12px;" >
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>合同负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-new-contractLeader" data-content="contractLeader" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择合同负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="dropContractLeader"  class="dropdown-menu asset-leader edit-leader"  style="font-size: 12px;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>支付负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-new-payLeader" data-content="payLeader" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择支付负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="dropPayLeader"  class="dropdown-menu asset-leader edit-leader"  style="font-size: 12px;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>节点成员:</label>
+                                <div class="shot-textarea col-sm-6" id="node-member-new" data-value="['0ttetretettt','1rettrsss','2hjferdgtr']">
+                                    <i id="shotMember-newBtn" class="iconfont shotChoosemember"  >&#xe61d;</i>
+                                    <div style="max-height:124px; overflow-y:auto; height:auto;">
+                                        <strong id="shot-havaChoose">
+
+                                        </strong>
+                                    </div>
+
+                                </div>
+                            </div>
+                         </form>
+                    </div>
+                    <div class="asset-footer">
+                        <button id="asset-new-save" class="asset-new-save">保存</button>
+                        <button id="asset-new-cancel" class="asset-new-cancel">取消</button>
+                    </div>
+                </div>
+                <div class="asset-edit" style="display:none;">
+                    <div class="asset-header">
+                        <span>节点信息</span>
+                    </div>
+                    <div class="asset-details-container" id="asset-edit-detail">
+                        <form id="asset-edit" class="form-horizontal" style="padding-left: 15px;padding-top: 15px;">
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>节点名称:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-edit-name" data-content="name" placeholder="请输入节点名称" maxlength="10">
+                                </div>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label  class="col-sm-3 control-label"><span style="color:red">*</span>节点进度:</label>-->
+                                <!--<div class="col-sm-4">-->
+                                    <!--<input type="text" class="form-control"   id="asset-edit-schedule" data-content="progress" placeholder="请输入节点进度">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>上级节点:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-edit-parent" data-content="father" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  placeholder="请选择上级节点" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul  id="editdropNodeParent" class="dropdown-menu"  style="font-size: 12px;height: 200px;overflow-y:scroll" >
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>任务卡负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-edit-taskLeader"  data-content="taskLeader"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择任务卡负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="editdropTaskLeader"  class="dropdown-menu asset-leader  " style="font-size: 12px;" >
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>合同负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-edit-contractLeader" data-content="contractLeader" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择合同负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="editdropContractLeader"  class="dropdown-menu asset-leader"  style="font-size: 12px;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>支付负责人:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="asset-edit-payLeader" data-content="payLeader" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-right:2%" placeholder="请选择支付负责人" readonly>
+                                    <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" ></span>
+                                    <ul id="editdropPayLeader"  class="dropdown-menu asset-leader"  style="font-size: 12px;">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label"><span style="color:red">*</span>节点成员:</label>
+                                <div class="shot-textarea col-sm-6" id="node-member-edit" data-value="['0ttetretettt','1rettrsss','2hjferdgtr']">
+                                    <i id="shotMember-editBtn" class="iconfont shotChoosemember"  >&#xe61d;</i>
+                                    <div style="max-height:124px; overflow-y:auto; height:auto;  ">
+                                        <strong id="shot-havaChoose-edit">
+
+                                        </strong>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="asset-footer">
+                        <button id="asset-edit-save" class="asset-new-save">保存</button>
+                        <button id="asset-edit-cancel" class="asset-new-cancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="my-project-add-chooseBody" tabindex="-1" role="dialog" style="font-size: 14px" >
+    <div class="modal-dialog" role="document"  >
+        <div class="modal-content" style="margin-left: 50px;height: 100%; width:106%;">
+            <div class="modal-header"  style="margin-bottom:40px; height:35px; line-height:35px; background-color:#eee;">
+                <button type="button" class="close " id='closeProCreate' style="margin-top:-13px; opacity: 1;" data-dismiss="modal" aria-label="Close">
+                    &nbsp;<span class="iconfont" style=" font-size: 0.5em;color: grey">&#xe628;</span></button>
+                <button type="button" class="close dismiss"  style="opacity: 1; display: none"data-dismiss="modal" aria-label="Close"><span class="iconfont"  style=" color: grey;font-size: 0.5em">&#xe629;</span>
+                    &nbsp;</button>
+                <h4 class="modal-title" id="my-project-add-chooseClose" style="margin-top:-5px;font-size:12px; font-weight:normal;"><b>选择</b></h4>
+            </div>
+            <div class="modal-body" id="my-project-add-chooseContent" style="padding:0;position: relative;">
+                <h5 class="my-project-add-choose-title">按部门分</h5>
+                <div style="border-top:1px solid #e3e2e2; border-bottom:1px solid #e3e2e2; margin:0 30px;">
+                    <div class="clearfix" style="overflow: hidden;">
+                        <div class="test-tree my-project-add-treeBody" id="my-project-add-treeBody">
+                            <div >
+                                <ul id="my-asset-add-tree" class="ztree"></ul>
+                            </div>
+                        </div>
+                        <div class="project-add-chooseSplit"></div>
+                        <div class="my-project-add-chooseBox" >
+                            <ul>
+                                <li id="my-project-add-chooseAllPeople" class="my-project-add-choose-people"><i class="iconfont">&#xe64c;</i><span style="color:#5699c3;">全选</span></li>
+                            </ul>
+                            <ul id="my-project-add-chooseList">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%; padding-bottom:12px;">
+                    <div style="height:34px; line-height:34px; color:#11cd6e; padding-left:50px;"><i style="font-size:18px; " class="iconfont">&#xe620;</i>已选用户</div>
+                    <ul id="my-project-add-haveChoose" class="my-project-add-haveChoose clearfix">
+                        <!--<li data-value="xxxxxxx"><span>张三</span><i class="iconfont">&#xe63d;</i></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin:0 30px; padding-top: 6px;padding-bottom: 6px">
+                <button type="button" class="btn btn-default dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseSave" >保存</button>
+                <button type="button" class="btn btn-primary dismiss" data-dismiss="modal" aria-label="Close" id="my-project-add-chooseCancelSave"  >取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="manageTasks">
+</div>
+<script>
+    $(document).ready(function(){
+
+       // aa();
+        shot.memberRecord=[];
+        assetObj.init();
+        assetObj.initChoose();
+    });
+
+   // function aa(){
+//        console.log('00000');
+//        var data={
+//            name:'fsdfsfsfsfsf',
+//            step:'778789',
+//            percent:'67%',
+//            startDate:'2013-09-09',
+//            predictDate:'2013-12-12',
+//            completeDate:'2013-12-31',
+//            creatorId:localStorage.getItem('userId'),
+//            //producerId:''
+//            taskVersionId:'f82751a0-1bd1-11e6-a4a1-e55f92e4617e',
+//            projectId:localStorage.getItem('projectId')
+//        };
+      //  console.log('00000',data);
+     //   var taskVersionId='f82751a0-1bd1-11e6-a4a1-e55f92e4617e';
+//        var data={userId:'6c5e0710-c66b-11e5-baf3-2fe5cd1b9a4e',taskVersionId:'f82751a0-1bd1-11e6-a4a1-e55f92e4617e',progressId:'1dccabd0-1bd7-11e6-875b-636b94782f6e',status:0};
+//        $.ajax({
+//            type: 'post',
+//            async: true,
+//            dataType:'json',
+//            data:data,
+//            url: '/api/progress/checkProgress',
+//            success:function(data) {
+//                console.log('aaaa'+JSON.stringify(data));
+//            },
+//            error:function(err){
+//                console.log(err);
+//            }
+//        });
+//    }
+</script>

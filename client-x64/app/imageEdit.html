@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"> 
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+	 <script src="libs/jquery.js"></script>
+	<style type="text/css">
+		.btnBox{
+			background-color: #BCDEFD;
+			border-radius: 4px;
+			padding: 3px 6px 1px 6px;
+			display: table;
+		}
+		.btn{
+			width: 30px;
+			height: 23px;
+			border: none;
+			display: table-cell;
+		}
+		.btn:first-child{
+			background: url(images/imageEdit/cancle.png) no-repeat center center;
+			cursor: pointer;
+		}
+		.btn:last-child{
+			background: url(images/imageEdit/ok.png) no-repeat center center;
+			cursor: pointer;
+		}
+		#rRightDown,#rLeftDown,#rLeftUp,#rRightUp,#rRight,#rLeft,#rUp,#rDown{
+			position:absolute;
+			background:#C00;
+			width:7px;
+			height:7px;
+			z-index:5;
+			font-size:0;
+		}
+		#rLeftDown,#rRightUp{cursor:ne-resize;}
+		#rRightDown,#rLeftUp{cursor:nw-resize;}
+		#rRight,#rLeft{cursor:e-resize;}
+		#rUp,#rDown{cursor:n-resize;}
+
+		#rRightDown{ bottom:-3px; right:-3px;}
+		#rLeftDown{ bottom:-3px; left:-3px;}
+		#rRightUp{ top:-3px; right:-3px;}
+		#rLeftUp{ top:-3px; left:-3px;}
+		#rRight{ right:-3px; top:50%}
+		#rLeft{ left:-3px; top:50%}
+		#rUp{ top:-3px; left:50%}
+		#rDown{ bottom:-3px; left:50%}
+	</style>
+  <script language="javascript">
+		var image=null;
+		var context=null;
+		var cuteDiv=null;
+		var editdiv=null;
+		var divtop=0;
+		var divleft=0;
+		var into_ok=false;
+		var mainwindow=null;
+		var type;
+		function setMainWindow(main_window)
+		{
+			mainwindow=main_window;
+		}
+		function setType(type2)
+		{
+			type=type2;
+		}
+		function init()
+		{
+			imageLoad();
+			document.body.onkeyup=function(e){
+				if(e.keyCode===27)
+				{
+					var gui = require('nw.gui');
+					var win = gui.Window.get();
+					win.close();
+				}
+			};
+			cuteImage();
+		}
+		function imageLoad()
+		{
+			var canvas=document.getElementById("imageEdit");
+			canvas.width=window.screen.width;
+			canvas.height=window.screen.height;
+			context=canvas.getContext("2d");
+			image=new Image();
+			image.src="screen1.png";
+			image.onload=function(){
+				//console.debug(window.screen.height);
+				//console.debug(window.screen.width);
+				context.drawImage(image,0,0,window.screen.width,window.screen.height);	
+			}
+			
+		}
+		var ismove=false;
+		var dis_left=0;
+		var dis_top=0;
+		var move_divid=null;
+		function cuteImage()
+		{
+			var mouseup=true;
+			document.body.onmousedown=function(e){
+				if(into_ok)
+				{
+					return;
+				}
+				if(cuteDiv!==null&&ismove){
+					dis_top= e.clientY-cuteDiv.offsetTop;
+					dis_left= e.clientX-cuteDiv.offsetLeft;
+					return;
+				}
+				divtop=e.offsetY;
+				divleft=e.offsetX;
+				if(cuteDiv!==null)
+				{
+					cuteDiv.parentNode.removeChild(cuteDiv);
+					cuteDiv=null;
+				}
+				if(editdiv!==null)
+				{
+					editdiv.parentNode.removeChild(editdiv);
+					editdiv=null;
+				}
+				cuteDiv=document.createElement("div");
+				document.body.appendChild(cuteDiv);
+				cuteDiv.style.cssText="position:absolute;top:"+divtop+"px;cursor:move;left:"+divleft+"px;z-index:2;-webkit-box-shadow: 0 0 10px rgba(81, 203, 238, 1);-webkit-box-shadow: 0 0 10px rgba(81, 203, 238, 1);-moz-box-shadow: 0 0 10px rgba(81, 203, 238, 1);border: #35a5e5 1px solid;";
+				cuteDiv.onmousedown=function(){
+					ismove=true;
+				};
+				mouseup=false;
+				//offsetX: 182
+				//offsetY: 208
+				////console.debug(e)
+				//cuteDiv=document.createElement("div");//filter:alpha(opacity:0);opacity: 0;
+				//cuteDiv.style.cssText="position:absolute;top:"+e.
+			}
+			document.body.onmousemove=function(e){
+				//console.debug(e);
+//				ismove=true;
+//				dis_top= e.offsetY-cuteDiv.offsetTop;
+//				dis_left= e.offsetX-cuteDiv.offsetLeft;
+				if(!ismove) {
+					if(cuteDiv===null||mouseup)
+					{
+						return;
+					}
+					var x=e.clientX;
+					var y=e.clientY;
+					var width=x-divleft;
+					var height=y-divtop;
+					cuteDiv.style.width=width+"px";
+					cuteDiv.style.height=height+"px";
+				}
+				else{
+//					dis_top= e.offsetY-cuteDiv.offsetTop;
+//					dis_left= e.offsetX-cuteDiv.offsetLeft;
+					//console.debug(move_divid);
+					if(move_divid===null){
+						divtop=e.clientY-dis_top;
+						divleft=e.clientX-dis_left;
+						cuteDiv.style.top= divtop+"px";
+						cuteDiv.style.left= divleft+"px";
+					}
+					else{
+						changArea(e)
+					}
+				}
+				while(cuteDiv.childNodes.length!==0)
+				{
+					cuteDiv.removeChild(cuteDiv.childNodes[0]);
+				}
+				var div_ids=["rRightDown","rLeftDown","rRightUp","rLeftUp","rRight","rLeft","rUp","rDown"];
+				for(var i=0;i<div_ids.length;i++){
+					//console.debug(div_ids[i]);
+					var div2=document.createElement("div");
+					div2.setAttribute("id",div_ids[i]);
+					cuteDiv.appendChild(div2);
+					//console.debug(div2);
+					div2.onmousedown=function(e2){
+						move_divid=this.getAttribute("id");
+						bottom=cuteDiv.offsetTop+cuteDiv.offsetHeight;
+						rightpos=cuteDiv.offsetLeft+cuteDiv.offsetWidth;
+						ismove=true;
+					}
+				}
+				if(editdiv!==null)
+				{
+					editdiv.parentNode.removeChild(editdiv);
+					editdiv=null;
+				}
+				getCuteImage(true);
+			};
+			document.body.onmouseup=function(){
+				if(into_ok)
+				{
+					return;
+				}
+				if(cuteDiv.offsetWidth<10||cuteDiv.offsetHeight<10)
+				{
+					if(cuteDiv!==null)
+					{
+						cuteDiv.parentNode.removeChild(cuteDiv);
+						cuteDiv=null;
+					}
+				}
+				else
+				{
+					createEditDiv();
+				}
+				mouseup=true;
+				ismove=false;
+				move_divid=null;
+			}
+		}
+		var bottom=0;
+		var rightpos=0;
+		function changArea(e){
+			//console.debug(move_divid);
+			if(move_divid==="rUp"){
+				var height=bottom-e.clientY;
+				if(height>=10){
+					cuteDiv.style.top=e.clientY+"px";
+					cuteDiv.style.height=height+"px";
+					divtop=e.clientY;
+				}
+			}
+			else if(move_divid==="rDown"){
+				var height=e.clientY-cuteDiv.offsetTop;
+				if(height>=10){
+					cuteDiv.style.height=height+"px";
+				}
+			}
+			else if(move_divid==="rLeft"){
+				var width=rightpos-e.clientX;
+				if(width>=10){
+					cuteDiv.style.left=e.clientX+"px";
+					cuteDiv.style.width=width+"px";
+					divleft=e.clientX;
+				}
+			}
+			else if(move_divid==="rRight"){
+				var width=e.clientX-cuteDiv.offsetLeft;
+				if(width>=10){
+					cuteDiv.style.width=width+"px";
+				}
+			}
+			else if(move_divid==="rLeftUp"){
+				var width=rightpos-e.clientX;
+				var height=bottom-e.clientY;
+				if(width>=10&&height>=10){
+					cuteDiv.style.left=e.clientX+"px";
+					cuteDiv.style.top=e.clientY+"px";
+					cuteDiv.style.width=width+"px";
+					cuteDiv.style.height=height+"px";
+					divtop=e.clientY;
+					divleft=e.clientX;
+				}
+			}
+			else if(move_divid==="rLeftDown"){
+				var width=rightpos-e.clientX;
+				var height=e.clientY-cuteDiv.offsetTop;
+				if(width>=10&&height>=10){
+					cuteDiv.style.left=e.clientX+"px";
+					cuteDiv.style.width=width+"px";
+					cuteDiv.style.height=height+"px";
+					divleft=e.clientX;
+				}
+			}
+			else if(move_divid==="rRightUp"){
+				var width=e.clientX-cuteDiv.offsetLeft;
+				var height=bottom-e.clientY;
+				if(width>=10&&height>=10){
+					cuteDiv.style.top=e.clientY+"px";
+					cuteDiv.style.width=width+"px";
+					cuteDiv.style.height=height+"px";
+					divtop=e.clientY;
+				}
+			}
+			else if(move_divid==="rRightDown"){
+				var width=e.clientX-cuteDiv.offsetLeft;
+				var height=e.clientY-cuteDiv.offsetTop;
+				if(width>=10&&height>=10){
+					cuteDiv.style.width=width+"px";
+					cuteDiv.style.height=height+"px";
+				}
+			}
+		}
+		function createEditDiv(){
+			if(editdiv!==null)
+			{
+				editdiv.parentNode.removeChild(editdiv);
+				editdiv=null;
+			}
+			editdiv=document.createElement("div");
+			var y=divtop+cuteDiv.offsetHeight;
+			var x=divleft+cuteDiv.offsetWidth;
+			//console.debug("x:"+x);
+			//console.debug("y:"+y);
+
+			editdiv.style.cssText="position:absolute;top:"+(y-40)+"px;left:"+(x-80)+"px;z-index:100";
+			editdiv.setAttribute("class", "btnBox");
+			var button1=document.createElement("input");
+			button1.setAttribute("class", "btn");
+			button1.type="button";
+			editdiv.appendChild(button1);
+			button1.onclick=function(){
+				var gui = require('nw.gui');
+				var win = gui.Window.get();
+				win.close();
+			};
+
+
+			var button2=document.createElement("input");
+			button2.setAttribute("class", "btn");
+			button2.type="button";
+			editdiv.appendChild(button2);
+			button2.onclick=function(){
+				getCuteImage();
+			};
+			editdiv.onmouseover=function(){
+				into_ok=true;
+			};
+			editdiv.onmouseout=function(){
+				into_ok=false;
+			}
+			document.body.appendChild(editdiv);
+		}
+		function getCuteImage(flag)
+		{
+			var canvas=document.createElement("canvas");
+			canvas.width=cuteDiv.offsetWidth-2;
+			canvas.height=cuteDiv.offsetHeight-2;
+			if(flag)
+			{
+				cuteDiv.appendChild(canvas);
+			}
+			var context2=canvas.getContext("2d");
+			var image2=new Image();
+			image2.src="screen1.png";
+			image2.onload=function(){
+				context2.drawImage(image2,divleft,divtop,cuteDiv.offsetWidth-2,cuteDiv.offsetHeight-2,0,0,cuteDiv.offsetWidth-2,cuteDiv.offsetHeight-2);
+				var img_png_src = canvas.toDataURL("image/png");
+				var image = new Image();
+				image.src = img_png_src;
+				//console.debug(mainwindow.window.mainWindow.window.userInfo.configinfo.server_url);
+				if(!flag)
+				{
+					sendFile(img_png_src);
+				}
+			}
+		}
+		function sendFile(content)
+		{
+			$.ajax({
+                type : 'post',
+                url :mainwindow.window.mainWindow.window.userInfo.configinfo.server_url+"/api/file/uploadCuteImage",
+                data : 'imagesrc='+content+'&filename='+(new Date().getTime()),
+                success : function(data) {
+					//console.debug(data);
+					if(data.ok)
+					{
+						//console.debug(data.info);
+						mainwindow.window.fileope.sendCuteImage(data.info,type);
+//                        win.showDevTools('', true);
+						//__v: 0_id: "55f39338075c9eb83bdf04fb"ext: "png"name: "1442026296414.png"originalName: "1442026296414.png"path: "D:\ompa_chat\uploads\/1442026296414.png"sourceType: 0time: "2015-09-12T02:51:36.429Z"
+						var gui = require('nw.gui');
+						var win = gui.Window.get();
+						win.close();
+					}
+					else
+					{
+						alert(data.message);
+					}
+                },
+                error:function(data){
+                    console.debug("成功");
+                }
+            });
+			/*var fs = require('fs');
+			var path = require("path");
+			var imagepath=path.dirname(process.execPath);
+			var base64Data = content.replace(/^data:image\/\w+;base64,/,"");//.replace("data:image/octet-stream;base64,", ""),
+			console.debug(base64Data);
+            var dataBuffer = new Buffer(base64Data, 'base64');
+			fs.writeFile(imagepath+"/image2.png", dataBuffer, function(err) {
+				if(err){
+					console.debug("保存失败");
+				}else{
+					console.debug("保存成功");
+				}
+			});*/
+		}
+  </script>
+ </head>
+ <body onselectstart="return false" onload="init()" style="overflow:hidden;padding:0;border:0;margin:0;">
+  <!-- <img src="screen1.png"> -->
+  	<div style="position:absolute;top: 0px;left: 0px;width:100%;height: 100%;z-index: 1;filter:alpha(opacity:50);opacity:0.5;background-color: #000000;;overflow:hidden;padding:0;border:0;margin:0;"></div>
+	<canvas id="imageEdit">
+		Your browser does not support HTML5 Canvas. 
+	</canvas>
+ </body>
+</html>

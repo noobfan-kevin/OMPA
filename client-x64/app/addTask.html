@@ -1,0 +1,77 @@
+
+<style>
+    @import url(css/addTask.css);
+</style>
+<div class="addTask" style="position: relative;">
+<form class="form-inline">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="newTaskName" class="col-sm-2 task-name"><span style="color:red;">*</span>名称：</label>
+            <div class="col-sm-6" style="padding:0">
+                <input id="newTaskName"  type="text"  class="form-control task-input-one">
+              </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="newTaskChecker" class="col-sm-2 task-name"><span style="color:red;">*</span>审核人：</label>
+            <div class="col-sm-6" style="padding:0">
+                <input id="newTaskChecker" data-content="members" data-toggle="modal" data-target="#my-project-add-chooseBody" data-backdrop="static" data-value="[]" type="text"  class="form-control task-input-one"  readonly >
+            </div>
+            <span id="task-checker-choose"   style="cursor:default;position: absolute; top:65px; left:600px; color:#5699c3; font-size:12px;">选择</span>
+        </div>
+    </div>
+
+    <div class="form-group" style="position: relative">
+        <label for="newTaskStartTime" class="task-name-two"><span style="color:red;">*</span>开始时间：</label>
+        <input id="newTaskStartTime" type="text" class="form-control task-input-two form_datetime" readonly>
+        <span><i class="glyphicon glyphicon-calendar"style="right:27px; top:-4px;"></i></span>
+    </div>
+    <div class="form-group" style="position: relative">
+        <label for="newTaskEndTime" class="task-name-two"><span style="color:red;">*</span>结束时间：</label>
+        <input id="newTaskEndTime" type="text" class="form-control task-input-two form_datetime" readonly>
+        <span><i class="glyphicon glyphicon-calendar"style="right:27px; top:-4px;"></i></span>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="newTaskNeedDay" class="col-sm-2 task-name"><span style="color:red;">*</span>所需工作日：</label>
+            <div class="col-sm-6" style="padding:0">
+                <input id="newTaskNeedDay" class="form-control task-input-two" style="margin-left:0">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback" >
+        <label for="newTaskType" class="task-name-two"><span style="color:red;">*</span>类别：</label>
+        <input id="newTaskType" value="资产" type="text" class="form-control task-input-three" data-toggle="dropdown" readonly>
+        <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+        <ul  id="newTaskTypeSelect" class="dropdown-menu newTaskSelect"  aria-labelledby="userDepartment" style="  margin-left: 96px;height: auto;overflow-y: auto; margin-top: -14px;width: 168px;">
+            <li>资产</li>
+            <li>镜头</li>
+        </ul>
+    </div>
+    <div class="form-group has-feedback">
+        <input id="newTaskModule" type="text" class="form-control task-input-three" readonly>
+        <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input id="newTaskStep" type="text" class="form-control task-input-three" readonly>
+        <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" style="right:15px; top:-1px;"></span>
+    </div>
+    <span class="newTaskBtn" id="newTaskSave">保存</span>
+    <span class="newTaskBtn" id="newTaskCancel">取消</span>
+</form>
+</div>
+<script>
+    //一加载   选择日期
+    $('.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu').remove();
+    $(".form_datetime").datetimepicker({
+        format: "yyyy-mm-dd",
+        minView: "month",
+        autoclose: true,
+        todayBtn: true,
+        language:'zh-CN',
+    });
+
+</script>

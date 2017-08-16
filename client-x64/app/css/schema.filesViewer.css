@@ -1,0 +1,40 @@
+@font-face {font-family: 'iconfont-schema-files-viewer';
+    src: url('../libs/ueditor/font/iconfont.eot'); /* IE9*/
+    src: url('../libs/ueditor/font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../libs/ueditor/font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../libs/ueditor/font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../libs/ueditor/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+#schema-files-viewer .iconfont-schema{
+    font-family:"iconfont-schema-files-viewer" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+#schema-files-viewer * {cursor:default;list-style: none}
+
+#schema-files-viewer { position: fixed; top: 0; left: 0; width:100vw; height: 100vh; background: #000;z-index: 4000;}
+#schema-files-viewer .schema-files-viewer-btn{ float: left; position: relative;height: 100%; width: 10%;background: rgba(200, 200, 200, .1); transition: .3s}
+#schema-files-viewer .schema-files-viewer-btn:hover {background: rgba(200, 200, 200,.3); }
+#schema-files-viewer .schema-files-viewer-btn:hover span { opacity: 1;}
+#schema-files-viewer .schema-files-viewer-btn>span{ position: absolute;font-size:50px;color: #ffffff;top: 50%; left: 50%;transform: translate(-50%, -50%);opacity: .3}
+#schema-files-viewer #schema-files-viewer-close { position: absolute; z-index: 3; font-size: 30px; color: #ffffff; top: 0;
+    right: 0; opacity: .6;transition: .6s; margin-top: 20px; margin-right: 20px;}
+#schema-files-viewer #schema-files-download-btn {position: absolute; z-index: 3;background: rgba(255,255,255,.6); line-height: 30px; width: 50px; text-align: center;
+    border-radius:16px; right: 10%; top: 0; margin-top: 30px; color: #000;transition: .6s;  }
+#schema-files-viewer #schema-files-viewer-close:hover ,
+#schema-files-viewer #schema-files-download-btn:hover {opacity: .9;transform: scale(1.1)}
+#schema-files-viewer #schema-viewer-file-input { position: absolute; top: 0; width: 100%; height: 100%; z-index: 4; opacity: 0;;}
+
+
+#schema-files-viewer #schema-viewer-box { position: relative; float: left;height: 100%; width: 80%; display: flex; flex-direction: column}
+#schema-files-viewer .schema-files-viewer-show {flex:1; position: relative; padding:10px 0;}
+#schema-files-viewer .schema-files-viewer-show .isFile { position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%);max-height:100%;max-width:100%}
+#schema-files-viewer .viewer-title { position: absolute;box-sizing: border-box; width: 100%; bottom: -1px; background: #000000;
+    color: #ffffff; z-index: 2; opacity: .6; padding:10px 20px;}
+/* 缩略图 */
+#schema-files-viewer ul.schema-thumb-list { display: inline-block; padding:20px 10px 30px 10px;}
+#schema-files-viewer .schema-thumb-list li { float: left; border:1px solid transparent;}
+#schema-files-viewer .schema-thumb-list li.selected {border:1px solid #54cc62;}
+#schema-files-viewer .schema-thumb-list img{height: 50px; width: 50px;}
